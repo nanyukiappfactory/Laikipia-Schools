@@ -37,7 +37,7 @@
     // var_dump($cats);
     foreach ($cats as $cat) {
         ?> 
-                            <li class="dropdown">
+                            <!-- <li class="dropdown">
                                 <a href="javascript:;" class="">
                                     <?php foreach ($categories->result() as $value) {
             if ($value->category_id == $cat) {?>
@@ -59,7 +59,7 @@ foreach ($categories->result() as $value) {
         }?>
                                 </ul>
                             </li>
-                            <hr>
+                            <hr> -->
                             <?php }
 }?>
                         </ul>
