@@ -49,7 +49,7 @@ class Migration_Add_school extends CI_Migration
             ),
             'school_write_up' => array(
                 'type' => 'VARCHAR',
-                'constraint' => '100',
+                'constraint' => '255',
                 'null' => true,
                 'default' => null,
             ),

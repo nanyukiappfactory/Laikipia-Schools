@@ -295,13 +295,8 @@ if ($query->num_rows() > 0) {
                             <?php echo form_input(['name' => 'post_title', 'class' => 'form-control', 'value' => set_value('post_title', $row->post_title)]) ?>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="post_title" class="col-sm-2 col-form-label">Post
-                            Category</label>
-                        <div class="col-md-10">
-                            <?php echo form_input(['name' => 'post_title', 'class' => 'form-control', 'value' => set_value('post_title', $row->post_title)]) ?>
-                        </div>
-                    </div>
+
+
 
                      <div class="form-group row">
                         <label for="post_image_name" class="col-sm-2 col-form-label" >Post
