@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <title><?php echo $title; ?></title>
- 
+
 <!-- Bootstrap core CSS -->
 <link href="<?php echo base_url(); ?>assets/vendor/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
@@ -18,22 +18,23 @@
 
 
 
- 
+
 <!-- <script defer src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script> -->
 <script defer src="<?php echo base_url(); ?>assets/tinymce/js/tinymce/jquery.tinymce.min.js"></script>
 <!-- <script defer src="<?php echo base_url(); ?>assets/tinymce/js/tinymce/tinymce.min.js"></script> -->
 <script type="text/javascript" src="<?php echo base_url(); ?>/assets/tinymce/js/tinymce/tinymce.min.js"></script>
- 
+
+
 <!-- <script src="<?php echo base_url(); ?>assets/themes/custom/js/script1.js"></script> -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
 <?php echo '<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMfrWKiELcjgQDzNq1n3LTVMSQAXGSs6E"></script>'; ?>
- 
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
- 
+
 <!-- <script type="text/javascript" src="<?php echo base_url(); ?>assets/tinymce/js/tinymce/tinymce.min.js"></script> -->
 <!-- Just be careful that you give correct path to your tinymce.min.js file, above is the default example -->
 <script>
 tinymce.init({
-selector: 'textarea'
+    selector: 'textarea'
 });
 </script>
