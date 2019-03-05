@@ -47,6 +47,11 @@ class Migration_Add_post extends CI_Migration
                 'constraint' => '20',
                 'null' => false,
             ),
+            'post_status' => array(
+                'type' => 'BOOLEAN',
+                'null' => false,
+                'default' => 0,
+            ),
         ));
 
         $this->dbforge->add_field("`created_by` int NOT NULL");
