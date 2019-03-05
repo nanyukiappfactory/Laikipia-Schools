@@ -150,7 +150,7 @@ $this->form_validation->set_rules("post_date", "Post Date", "required");
             $this->session->set_userdata('posts_search_title', $search_title);
         }
         // var_dump($search);die();
-        redirect("administration/posts");
+        redirect("laikipiaschools/posts");
     }
     public function deactivate_post($post_id, $status_id)
     {
@@ -169,7 +169,7 @@ $this->form_validation->set_rules("post_date", "Post Date", "required");
             $this->session->set_flashdata('error', "post ID: " . $post_id . " failed to " . $message);
         }
 
-        redirect('administration/posts');
+        redirect('laikipiaschools/posts');
     }
     public function export_post()
     {
