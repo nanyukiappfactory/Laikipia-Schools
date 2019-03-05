@@ -17,6 +17,11 @@ class Migration_Add_school extends CI_Migration
                 'constraint' => '100',
                 'null' => false,
             ),
+            'school_zone' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '100',
+                'null' => false,
+            ),
             'school_latitude' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '100',
