@@ -1,6 +1,6 @@
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
-        <h3 class="form-group row mt-5">Edit Donation</h3>
+        <h3 class="form-group row ml-5">Edit Donation</h3>
 	</div>
 	<?php echo form_open($this->uri->uri_string()); ?>
 	<div class="card-body">
@@ -17,7 +17,7 @@
 	<label for="donation_amount" class="col-sm-2 col-form-label">Partner</label>
 	<div class="col-sm-10">
 		<select class="custom-select my-1 mr-sm-2" name="partner_id">
-			<option selected>Choose Parner...</option>
+			<option selected>Choose Partner...</option>
 			<?php
 if ($partners->num_rows() > 0) {
         foreach ($partners->result() as $row) {?>

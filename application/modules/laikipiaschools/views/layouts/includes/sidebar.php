@@ -25,6 +25,13 @@
                                 </ul>
                             </li>
                             <hr>
+                            <li class="dropdown">
+                                <a href="<?php echo base_url(); ?>administration/donations" class="">
+                                    <span class="fas fa-gift"></span><span
+                                        class="mtext"><b>&nbsp;Donations</b></span>
+                                </a>
+                            </li>
+                            <!-- <hr> -->
                         <?php if (is_array($categories->result())) {
     $cats = array();
     foreach ($categories->result() as $cat) {
@@ -58,8 +65,8 @@ foreach ($categories->result() as $value) {
                                     <?php }
         }?>
                                 </ul>
-                            </li>
-                            <hr> -->
+                            </li> -->
+                            
                             <?php }
 }?>
                         </ul>
