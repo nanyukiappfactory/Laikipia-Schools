@@ -229,7 +229,7 @@ if ($query->num_rows() > 0) {
 
 								<div class=" form-group">
                                 <label for="school_write_up">School Write Up</label>
-                                <?php echo form_textarea(array('name' => 'school_write_up', 'id' => 'editable', 'class' => "editable", 'value' => set_value('school_write_up', $row->school_write_up))); ?>   
+                                <?php echo form_textarea(array('name' => 'school_write_up', 'id' => 'editable', 'class' => "editable", 'value' => set_value('school_write_up', $row->school_write_up))); ?>
                                 <div class="form-group">
                                     <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
                                 </div>
@@ -252,7 +252,7 @@ if ($query->num_rows() > 0) {
             </div>
         </div>
         <?php if ($row->school_status == 1) {
-            echo anchor("administration/deactivate-school/" . $row->school_id . "/" . $row->school_status, "<i class='far fa-thumbs-down'></i>", array("class" => "btn btn-info btn-sm p-left-10", "onclick" => "return confirm('Are you sure you want to deactivate?')"));
+            echo anchor("administration/deactivate-school/" . $row->school_id . "/" . $row->school_status, "<i class='far fa-thumbs-down'></i>", array("class" => "btn btn-default btn-sm p-left-10", "onclick" => "return confirm('Are you sure you want to deactivate?')"));
         } else {
             echo anchor("administration/deactivate-school/" . $row->school_id . "/" . $row->school_status, "<i class='far fa-thumbs-up'></i>", array("class" => "btn btn-info btn-sm", "onclick" => "return confirm('Are you sure you want to activate?')"));
         }?>
