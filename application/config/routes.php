@@ -94,10 +94,11 @@ $route['administration/donations'] = 'laikipiaschools/donations/index';
 $route['administration/single-donation/(:num)'] = 'laikipiaschools/donations/single_donation/$1';
 $route['administration/edit-donation/(:num)'] = 'laikipiaschools/donations/edit_donation/$1';
 $route['administration/delete-donation/(:num)'] = 'laikipiaschools/donations/delete_donation/$1';
-$route['administration/export-donations'] = 'laikipiaschools/donations/export_transactions';
+$route['administration/export-donations'] = 'laikipiaschools/donations/export_donations';
 $route['administration/donations/(:any)/(:any)/(:num)'] = 'laikipiaschools/donations/index/$1/$2/$3';
 $route['administration/donations/(:any)/(:any)'] = 'laikipiaschools/donations/index/$1/$2';
 $route['administration/donations/bulk-actions'] = 'laikipiaschools/donations/bulk_actions';
+$route['administration/deactivate-donation/(:num)/(:num)'] = 'laikipiaschools/donations/deactivate_donation/$1/$2';
 
 //donation corrections
 

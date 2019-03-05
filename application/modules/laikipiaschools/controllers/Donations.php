@@ -10,6 +10,7 @@ class Donations extends MX_Controller
     {
         parent::__construct();
         $this->load->model("donations_model");
+        $this->load->model("site_model");
         // $this->load->model("payments_model");
     }
 
@@ -48,33 +49,25 @@ class Donations extends MX_Controller
             $segment = 5;
             $this->load->library('pagination');
             $config['base_url'] = site_url() . 'donations/' . $order . '/' . $order_method;
-            // $config['total_rows'] = $this->site_model->count_items($table, $where);
+            $config['total_rows'] = $this->site_model->count_items($table, $where);
             $config['uri_segment'] = $segment;
             $config['per_page'] = 20;
             $config['num_links'] = 5;
 
-            $config['full_tag_open'] = '<ul class="pagination pull-right">';
-            $config['full_tag_close'] = '</ul>';
-
-            $config['first_tag_open'] = '<li>';
-            $config['first_tag_close'] = '</li>';
-
-            $config['last_tag_open'] = '<li>';
-            $config['last_tag_close'] = '</li>';
-
-            $config['next_tag_open'] = '<li>';
-            $config['next_link'] = 'Next';
-            $config['next_tag_close'] = '</span>';
-
-            $config['prev_tag_open'] = '<li>';
-            $config['prev_link'] = 'Prev';
-            $config['prev_tag_close'] = '</li>';
-
-            $config['cur_tag_open'] = '<li class="active"><a href="#">';
-            $config['cur_tag_close'] = '</a></li>';
-
-            $config['num_tag_open'] = '<li>';
-            $config['num_tag_close'] = '</li>';
+            $config['full_tag_open'] = '<div class="pagging text-center"><nav aria-label="Page navigation example"><ul class="pagination">';
+            $config['full_tag_close'] = '</ul></nav></div>';
+            $config['num_tag_open'] = '<li class="page-item"><span class="page-link">';
+            $config['num_tag_close'] = '</span></li>';
+            $config['cur_tag_open'] = '<li class="page-item active"><span class="page-link">';
+            $config['cur_tag_close'] = '<span class="sr-only">(current)</span></span></li>';
+            $config['next_tag_open'] = '<li class="page-item"><span class="page-link">';
+            $config['next_tagl_close'] = '<span aria-hidden="true">&raquo;</span></span></li>';
+            $config['prev_tag_open'] = '<li class="page-item"><span class="page-link">';
+            $config['prev_tagl_close'] = '</span></li>';
+            $config['first_tag_open'] = '<li class="page-item"><span class="page-link">';
+            $config['first_tagl_close'] = '</span></li>';
+            $config['last_tag_open'] = '<li class="page-item"><span class="page-link">';
+            $config['last_tagl_close'] = '</span></li>';
             $this->pagination->initialize($config);
 
             $page = ($this->uri->segment($segment)) ? $this->uri->segment($segment) : 0;
@@ -104,10 +97,56 @@ class Donations extends MX_Controller
             $v_data['schools'] = $this->donations_model->all_schools();
             $v_data['partners'] = $this->donations_model->all_partners();
             $v_data['page'] = $page;
+            $v_data['categories'] = $this->site_model->get_all_categories();
             $data['content'] = $this->load->view('donations/all_donations', $v_data, true);
 
             $this->load->view("laikipiaschools/layouts/layout", $data);
         }
+
+    }
+
+    public function export_donations()
+    {
+        $order = 'donation.donation_id';
+        $order_method = 'DESC';
+        $where = 'donation_id > 0';
+        $table = 'donation';
+        $donations_search = $this->session->userdata('donations_search');
+        $search_title = $this->session->userdata('donations_search_title');
+
+        if (!empty($donations_search) && $donations_search != null) {
+            $where .= $donations_search;
+        }
+        $title = 'Donations';
+
+        if (!empty($search_title) && $search_title != null) {
+            $title = 'Donations filtered by ' . $search_title;
+        }
+
+        if ($this->site_model->export_results($table, $where, $order, $order_method, $title)) {
+        } else {
+            $this->session->set_userdata('error_message', "Unable to export results");
+        }
+
+    }
+    public function deactivate_donation($donation_id, $status_id)
+    {
+        if ($status_id == 1) {
+            $new_donation_status = 0;
+            $message = 'Deactivated';
+        } else {
+            $new_donation_status = 1;
+            $message = 'Activated';
+        }
+
+        $result = $this->donations_model->change_donation_status($donation_id, $new_donation_status);
+        if ($result == true) {
+            $this->session->set_flashdata('success', "donation ID: " . $donation_id . " " . $message . " successfully!");
+        } else {
+            $this->session->set_flashdata('error', "donation ID: " . $donation_id . " failed to " . $message);
+        }
+
+        redirect('administration/donations');
 
     }
 
@@ -118,9 +157,12 @@ class Donations extends MX_Controller
         $this->form_validation->set_rules('partner_id', 'Partner', 'required|numeric');
         $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
 		
-        if ($this->form_validation->run()) {
+        if ($this->form_validation->run())
+         {
             if ($this->donations_model->update_donation($donation_id)) {
+                
                 $this->session->set_flashdata('success', 'Donation ID: ' . $donation_id . ' updated successfully');
+                
 
                 redirect('laikipiaschools/donations');
             } else {
@@ -129,7 +171,9 @@ class Donations extends MX_Controller
                 $v_data['schools'] = $this->donations_model->all_schools();
                 $v_data['partners'] = $this->donations_model->all_partners();
                 $v_data['title'] = "Edit Donation";
+                $v_data['categories'] = $this->site_model->get_all_categories();
                 $data['content'] = $this->load->view('donations/edit_donation', $v_data, true);
+                
 
                 $this->load->view("laikipiaschools/layouts/layout", $data);
             }
@@ -138,8 +182,8 @@ class Donations extends MX_Controller
             $v_data['schools'] = $this->donations_model->all_schools();
             $v_data['partners'] = $this->donations_model->all_partners();
             $v_data['title'] = "Edit Donation";
+            $v_data['categories'] = $this->site_model->get_all_categories();
             $data['content'] = $this->load->view('donations/edit_donation', $v_data, true);
-
             $this->load->view("laikipiaschools/layouts/layout", $data);
         }
 

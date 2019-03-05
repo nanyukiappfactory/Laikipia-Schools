@@ -9,6 +9,9 @@ if (!empty($validation_errors)) {
 }
 ?>
     <!-- dynamically generating a form in brackets where to submit data to-->
+    <div class="card-header py-3">
+        <h3 class="form-group row ml-5">Edit Categories</h3>
+	</div>
     <div class="container">
     <?php echo form_open($this->uri->uri_string()); ?>
     <div class="form-group">

@@ -2,6 +2,8 @@
     <div class="card-header py-3">
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createDonation">Add
             Donation</button>
+            <a href="<?php echo site_url() . "administration/export-donations" ?>" target="_blank"
+            class="btn btn-default pull-right"><i class="fas fa-file-export"></i> Export</a>
 
         <div class="modal fade" id="createDonation" tabindex="-1" role="dialog" aria-labelledby="createDonationLabel"
             aria-hidden="true">
@@ -9,9 +11,11 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="createDonationLabel">Add Donation</h5>
+                        
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
+                        
                     </div>
                     <div class="modal-body">
                         <?php echo form_open($this->uri->uri_string()); ?>
@@ -26,7 +30,7 @@
                         <div class="form-group row">
                             <div class="col-sm-12 col-md-12">
                                 <select class="custom-select my-1 mr-sm-2" name="partner_id" required>
-                                    <option selected>Choose Parner...</option>
+                                    <option selected>Choose Partner...</option>
                                     <?php
 if ($partners->num_rows() > 0) {
     foreach ($partners->result() as $row) {?>
@@ -58,6 +62,26 @@ if ($schools->num_rows() > 0) {
                             </div>
 
                         </div>
+                        <div class="form-group">
+                                    <label for="donation_status">Status</label>
+                                    <div class="col-sm-10 row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="donation_status"
+                                                id="donation_status" value="1" checked>
+                                            <label class="form-check-label mr-5" for="gridRadios1">
+                                                Active
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="donation_status"
+                                                id="donation_status" value="0">
+                                            <label class="form-check-label mb-3" for="gridRadios2">
+                                                Inactive
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <small id="emailHelp" class="form-text text-muted"></small>
+                                </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>
@@ -76,10 +100,11 @@ if ($schools->num_rows() > 0) {
                     <tr>
                         <th>#</th>
                         <th>Partner</th>
-                        <th>School</th>
+                        <th>school</th>
                         <th>Amount</th>
-                        <!-- <th>GroupType</th> -->
                         <th>Donation Date</th>
+                        <th>Status</th>
+
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -89,9 +114,10 @@ if ($schools->num_rows() > 0) {
                         <th>Partner</th>
                         <th>School</th>
                         <th>Amount</th>
-                        <!-- <th>GroupType</th> -->
                         <th>Donation Date</th>
+                        <th>Status</th>
                         <th>Actions</th>
+                        
                     </tr>
                 </tfoot>
                 <tbody>
@@ -114,12 +140,73 @@ if ($query->num_rows() > 0) {
                         <td>
                             <?php echo number_format($row->donation_amount); ?>
                         </td>
+
                         <td>
                             <?php echo date('jS M Y', strtotime($row->created_on)); ?>
                         </td>
                         <td>
-                            <?php echo anchor("laikipiaschools/edit-donation/" . $row->donation_id, "Edit", "class='btn btn-warning'"); ?>
-                            <?php echo anchor("laikipiaschools/delete-donation/" . $row->donation_id, "Delete", array("onclick" => "return confirm('Are sure you want to delete!!!')", "class" => "btn btn-danger")); ?>
+                            <?php if($row->donation_status == 1){?>
+                                <span class="badge badge-pill badge-success">Active</span>
+                                <?php } else {?>
+                                <span class="badge badge-pill badge-secondary">Inactive</span>
+                                <?php }?>
+                        </td>
+                        <td>
+                        <?php if ($row->donation_status == 1) {?>
+                            <a href="" class="btn btn-dark btn-sm" data-toggle="modal"
+                                data-target="#modalLoginAvatar<?php echo $row->donation_id; ?>"><i
+                                    class="fas fa-eye"></i></a>
+                            <?php }?>
+
+                            <!--Modal: Login with Avatar Form-->
+                            <div class="modal fade" id="modalLoginAvatar<?php echo $row->donation_id; ?>" tabindex="-1"
+                                role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog cascading-modal modal-avatar modal-md" role="document">
+                                    <!--Content-->
+                                    <div class="modal-content" style="margin-left:0px;">
+
+                                        <!--Body-->
+                                        <div class="modal-body">
+
+                                            <h5 class=" pb-3"><b>Retrieved Donor:</b> <br /> <?php echo $row->partner_name; ?>
+                                            </h5>
+
+                                            <div class=" ml-1 pb-3" style="font-size:20px;list-style-type:none;">
+                                                <li><b>Donation Amount:</b> <br /> <?php echo $row->donation_amount; ?>
+                                                </li>
+                                            </div>
+                                            <div class=" ml-1 pb-3" style="font-size:20px;list-style-type:none;">
+                                                <li><b>Partner Name: </b> <br /><?php echo $row->partner_name; ?></li>
+                                            </div>
+                                            <div class="ml-1 pb-3" style="font-size:20px;list-style-type:none;">
+                                                <li><b>School Name: </b> <br /><?php echo $row->school_name; ?></li>
+                                            </div>
+                                            <div class="ml-1 pb-3" style="font-size:20px;list-style-type:none;">
+                                                <li><b>donation Status: </b> <br /><?php echo $row->donation_status; ?>
+                                                </li>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary"
+                                                    data-dismiss="modal">Close</button>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!--/.Content-->
+                                </div>
+                            </div>
+                            <!--Modal: Login with Avatar Form-->
+
+
+                        <?php echo anchor("administration/edit-donation/" . $row->donation_id, "<i class='fas fa-edit'></i>", "class='btn btn-warning btn-sm p-left-10'", "style='padding-left:10px;'"); ?>
+
+<?php if ($row->donation_status == 1) {
+echo anchor("administration/deactivate-donation/" . $row->donation_id . "/" . $row->donation_status, "<i class='far fa-thumbs-down'></i>", array("class" => "btn btn-info btn-sm p-left-10", "onclick" => "return confirm('Are you sure you want to deactivate?')"));
+} else {
+echo anchor("administration/deactivate-donation/" . $row->donation_id . "/" . $row->donation_status, "<i class='far fa-thumbs-up'></i>", array("class" => "btn btn-info btn-sm", "onclick" => "return confirm('Are you sure you want to activate?')"));
+}?>
+<?php echo anchor("administration/delete-donation/" . $row->donation_id, "<i class='fas fa-trash-alt'></i>", array("class" => "btn btn-danger btn-sm", "onclick" => "return confirm('Are you sure you want to Delete?')")); ?>
                         </td>
                     </tr>
                     <?php

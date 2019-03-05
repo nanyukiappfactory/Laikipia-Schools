@@ -10,11 +10,13 @@ class Donations_model extends CI_Model
      */
     public function get_all_donations($table, $where, $per_page, $page, $order = 'created_on', $order_method = 'DESC')
     {
+        // var_dump($table);die();
+        $select = "donation.*, school.school_id, school.school_name, partner.partner_id, partner.partner_name";
+        $this->db->select($select);
         $this->db->from($table);
         $this->db->where($where);
         $this->db->order_by($order, $order_method);
         $query = $this->db->get('', $per_page, $page);
-
         return $query;
     }
 
@@ -62,6 +64,18 @@ class Donations_model extends CI_Model
         }
     }
 
+    public function change_donation_status($donation_id, $new_donation_status)
+    {
+
+        $this->db->set('donation_status', $new_donation_status);
+        $this->db->where('donation_id', $donation_id);
+        if ($this->db->update('donation')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function delete_donation($donation_id)
     {
         $data = array(
@@ -85,6 +99,7 @@ class Donations_model extends CI_Model
             'donation_amount' => $this->input->post("donation_amount"),
             'partner_id' => $this->input->post("partner_id"),
             'school_id' => $this->input->post("school_id"),
+            'donation_status' => 1,
         );
 
         if ($this->db->insert('donation', $data)) {
