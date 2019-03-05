@@ -69,9 +69,10 @@ class Schools extends MX_Controller
                 "width" => 600,
                 "height" => 600,
             );
-            if($this->input->post("school_image_name"))
+            
+            if(isset($_FILES['school_image']) && $_FILES['school_image']['size'] > 0)
             {
-                $upload_response = $this->file_model->upload_image($this->upload_path, "school_image_name", $resize);
+                $upload_response = $this->file_model->upload_image($this->upload_path, "school_image", $resize);
                 // var_dump($upload_response);die();
 
                 if ($upload_response['check'] == false) {
