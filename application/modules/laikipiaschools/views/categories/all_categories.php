@@ -48,7 +48,7 @@ if (!empty($validation_errors)) {
                         <input type="name" class="form-control" name="category_name" id="category_name"
                             naria-describedby="emailHelp" placeholder="Enter category Name">
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                                     <label for="category_status">Status</label>
                                     <div class="col-sm-10 row">
                                         <div class="form-check">
@@ -67,7 +67,7 @@ if (!empty($validation_errors)) {
                                         </div>
                                     </div>
                                     <small id="emailHelp" class="form-text text-muted"></small>
-                                </div>
+                                </div> -->
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>

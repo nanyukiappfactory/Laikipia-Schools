@@ -62,12 +62,12 @@ class Migration_Add_school extends CI_Migration
             'school_image_name' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '100',
-                'null' => false,
+                'null' => FALSE,
             ),
             'school_thumb_name' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '100',
-                'null' => false,
+                'null' => FALSE,
             ),
             'school_status' => array(
                 'type' => 'BOOLEAN',
