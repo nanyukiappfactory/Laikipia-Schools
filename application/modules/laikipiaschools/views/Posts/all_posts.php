@@ -34,7 +34,7 @@ if (!empty($validation_errors)) {
                                 <div class="form-group row">
                                     <div class="col-sm-12 col-md-12">
                                         <label for="category_id">Categories</label>
-                                        <select id="inputState" class="form-control" name="category_id">
+                                        <select id="inputState" class="form-control" name="category_id" required>
                                             <option selected>Choose Category</option>
 
                                             <?php if ($categories->num_rows() > 0) {
@@ -103,7 +103,7 @@ if (!empty($validation_errors)) {
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                    <button type="button" class="btn btn-secondary"><i
                                             class="fas fa-times"></i>Close</button>
                                     <button type="submit" class="btn btn-primary"><i
                                             class="fas fa-check"></i>Save</button>
