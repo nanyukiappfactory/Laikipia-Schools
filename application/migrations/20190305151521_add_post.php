@@ -33,7 +33,7 @@ class Migration_Add_post extends CI_Migration
                 'constraint' => '100',
                 'null' => true,
             ),
-            'post_image_name' => array(
+            'post_thumb_name' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '100',
                 'null' => true,
