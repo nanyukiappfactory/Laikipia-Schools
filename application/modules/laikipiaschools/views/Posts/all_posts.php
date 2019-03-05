@@ -34,7 +34,7 @@ if (!empty($validation_errors)) {
                                 <div class="form-group row">
                                     <div class="col-sm-12 col-md-12">
                                         <label for="category_id">Categories</label>
-                                        <select id="inputState" class="form-control" name="category_id" required>
+                                        <select id="inputState" class="form-control" name="category_id">
                                             <option selected>Choose Category</option>
 
                                             <?php if ($categories->num_rows() > 0) {
@@ -95,7 +95,7 @@ if (!empty($validation_errors)) {
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="post_description">Post Description</label>
                                     <?php echo form_textarea(array('name' => 'post_description', 'placeholder' => 'Write s description of the post', 'id' => 'editable', 'class' => "editable")); ?>
@@ -305,11 +305,11 @@ if ($query->num_rows() > 0) {
                         </div>
                     </div>
                     <div class="form-group row">
-                                <div class="col-sm-12 col-md-12">
-                                        <label for="post_image_name">Post
+                         <label for="post_image_name">Post
                                             Image</label>
-                                        <input type="file" id="post_image_name" name="post_image_name">
-                                </div>
+                        <div class="col-md-10">
+                           <input type="file" id="post_image_name" name="post_image_name">
+                        </div>
                     </div>
                     <div class="row">
                         <label class="col-form-label col-sm-2 pt-0">Post Status</label>

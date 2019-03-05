@@ -45,7 +45,7 @@ class posts extends MX_Controller
                 "width" => 600,
                 "height" => 600,
             );
-            if($this->input->post("post_image_name"))
+             if(isset($_FILES['post_image_name']) && $_FILES['school_image']['size'] > 0)
             {
                 $upload_response = $this->file_model->upload_image($this->upload_path, "post_image_name", $resize);
                 // var_dump($upload_response);die();

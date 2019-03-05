@@ -26,7 +26,8 @@
                                 <div class="form-group">
                                     <label for="school_name">School Name</label>
                                     <input type="text" class="form-control" id="school_name"
-                                        aria-describedby="emailHelp" name="school_name" placeholder="School Name" required>
+                                        aria-describedby="emailHelp" name="school_name" placeholder="School Name"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label for="school_name">Zone</label>
@@ -120,13 +121,15 @@
                                 <div class="form-group">
                                     <label for="school_latitude">Latitude</label>
                                     <input type="numeric" class="form-control" id="school_latitude"
-                                        aria-describedby="emailHelp" name="school_latitude" placeholder="Latitude" required>
+                                        aria-describedby="emailHelp" name="school_latitude" placeholder="Latitude"
+                                        required>
                                     <small id="emailHelp" class="form-text text-muted"></small>
                                 </div>
                                 <div class="form-group">
                                     <label for="school_longitude">Longitude</label>
                                     <input type="numeric" class="form-control" id="school_longitude"
-                                        aria-describedby="emailHelp" name="school_longitude" placeholder="Longitude" required>
+                                        aria-describedby="emailHelp" name="school_longitude" placeholder="Longitude"
+                                        required>
                                     <small id="emailHelp" class="form-text text-muted"></small>
                                 </div>
                                 <div class="form-group row">
@@ -136,35 +139,6 @@
                                         <input type="file" id="school_image" name="school_image">
                                     </div>
                                 </div>
-
-
-
-                                <!--
-                                <div class="form-group row">
-                                    <label>Choose Files</label>
-                                    <input type="file" name="files[]" multiple />
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" name="school_image_name" value="UPLOAD" />
-                                </div>
-
-                                <div class="row">
-                                    <ul class="gallery">
-                                        <?php if (!empty($files)) {foreach ($files as $file) {?>
-                                        <li class="item">
-                                            <img
-                                                src="<?php echo base_url('assets/uploads/files/' . $file['school_image_name']); ?>">
-                                            <p>Uploaded On <?php echo date("j M Y", strtotime($file['created_on'])); ?>
-                                            </p>
-                                        </li>
-                                        <?php }} else {?>
-                                        <p>Image(s) not found.....</p>
-                                        <?php }?>
-                                    </ul>
-                                </div> -->
-
-
-
 
                                 <div class="form-group">
                                     <label for="school_write_up">School Write Up</label>
