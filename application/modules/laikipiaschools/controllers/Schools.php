@@ -69,20 +69,35 @@ class Schools extends MX_Controller
                 "width" => 600,
                 "height" => 600,
             );
-            $upload_response = $this->file_model->upload_image($this->upload_path, "school_image", $resize);
-            // var_dump($upload_response);die();
+            if($this->input->post("school_image_name"))
+            {
+                $upload_response = $this->file_model->upload_image($this->upload_path, "school_image_name", $resize);
+                // var_dump($upload_response);die();
 
-            if ($upload_response['check'] == false) {
-                $this->session->set_flashdata('error', $upload_response['message']);
-                redirect('laikipiaschools/schools');
-            } else {
-                if ($this->schools_model->add_school($upload_response['file_name'], $upload_response['thumb_name'])) {
+                if ($upload_response['check'] == false) {
+                    $this->session->set_flashdata('error', $upload_response['message']);
+                    redirect('laikipiaschools/schools');
+                } else {
+                    if ($this->schools_model->add_school($upload_response['file_name'], $upload_response['thumb_name'])) {
+                        $this->session->set_flashdata('success', 'school Added successfully!!');
+                        redirect('laikipiaschools/schools');
+                    } else {
+                        $this->session->flashdata("error_message", "Unable to add  school");
+                    }
+                }
+
+            }
+            else
+            {
+                if ($this->schools_model->add_school(null, null)) {
                     $this->session->set_flashdata('success', 'school Added successfully!!');
                     redirect('laikipiaschools/schools');
                 } else {
                     $this->session->flashdata("error_message", "Unable to add  school");
                 }
+
             }
+           
         } else {
 
             //pagination
@@ -173,6 +188,7 @@ class Schools extends MX_Controller
             $this->session->set_userdata('schools_search', $search);
             $this->session->set_userdata('schools_search_title', $search_title);
         }
+
         redirect("administration/schools");
     }
 

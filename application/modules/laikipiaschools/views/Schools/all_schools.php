@@ -20,16 +20,17 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
+
                             <div class="modal-body">
                                 <?php echo form_open_multipart($this->uri->uri_string()); ?>
                                 <div class="form-group">
                                     <label for="school_name">School Name</label>
                                     <input type="text" class="form-control" id="school_name"
-                                        aria-describedby="emailHelp" name="school_name" placeholder="School Name">
+                                        aria-describedby="emailHelp" name="school_name" placeholder="School Name" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="school_name">Zone</label>
-                                    <select id="inputState" class="form-control" name="school_zone">
+                                    <select id="inputState" class="form-control" name="school_zone" required>
                                         <option selected>Choose your zone...</option>
                                         <option value="Daiga">Daiga </option>
                                         <option value="Gituamba"> Gituamba </option>
@@ -76,14 +77,14 @@
                                     <label for="school_boys_number">Number of boys</label>
                                     <input type="number" class="form-control" id="school_boys_number"
                                         aria-describedby="emailHelp" name="school_boys_number"
-                                        placeholder="Number of Boys">
+                                        placeholder="Number of Boys" required>
                                     <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
                                 </div>
                                 <div class="form-group">
                                     <label for="school_girls_number">Number of Girls</label>
                                     <input type="number" class="form-control" id="school_girls_number"
                                         aria-describedby="emailHelp" name="school_girls_number"
-                                        placeholder="Number of Girls">
+                                        placeholder="Number of Girls" required>
                                     <small id="emailHelp" class="form-text text-muted"></small>
                                 </div>
 
@@ -112,20 +113,20 @@
                                     <label for="school_location_name">Location Description</label>
                                     <input type="text" class="form-control" id="school_location_name"
                                         aria-describedby="emailHelp" name="school_location_name"
-                                        placeholder="Location Description">
+                                        placeholder="Location Description" required>
                                     <small id="emailHelp" class="form-text text-muted"></small>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="school_latitude">Latitude</label>
                                     <input type="numeric" class="form-control" id="school_latitude"
-                                        aria-describedby="emailHelp" name="school_latitude" placeholder="Latitude">
+                                        aria-describedby="emailHelp" name="school_latitude" placeholder="Latitude" required>
                                     <small id="emailHelp" class="form-text text-muted"></small>
                                 </div>
                                 <div class="form-group">
                                     <label for="school_longitude">Longitude</label>
                                     <input type="numeric" class="form-control" id="school_longitude"
-                                        aria-describedby="emailHelp" name="school_longitude" placeholder="Longitude">
+                                        aria-describedby="emailHelp" name="school_longitude" placeholder="Longitude" required>
                                     <small id="emailHelp" class="form-text text-muted"></small>
                                 </div>
                                 <div class="form-group row">
