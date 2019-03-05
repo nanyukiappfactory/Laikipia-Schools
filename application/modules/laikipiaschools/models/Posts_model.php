@@ -48,8 +48,7 @@ class Posts_model extends CI_Model
 
     public function get_all_categories()
     {
-        $this->db->distinct('category_name');
-        $this->db->select('category_name');
+        $this->db->select("*");
         $this->db->from("category");
         $query = $this->db->get();
         return $query;
