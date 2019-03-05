@@ -100,12 +100,8 @@ if ($schools->num_rows() > 0) {
                     <tr>
                         <th>#</th>
                         <!-- <th>Partner</th> -->
-                        <th><?php echo anchor("administration/donations/donation.partner_id/" . $order_method, "Partner"); ?>
-                    </th>
-                        
-                        <!-- <th>school</th> -->
-                        <th><?php echo anchor("administration/donations/donation.school_id/" . $order_method, "school"); ?>
-                    </th>
+                        <th>Partner</th>
+                        <th>School</th>
                         <!-- <th>Amount</th> -->
                         <th><?php echo anchor("administration/donations/donation.donation_amount/" . $order_method, "Amount"); ?>
                     </th>
