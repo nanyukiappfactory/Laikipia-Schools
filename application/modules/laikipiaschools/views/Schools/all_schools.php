@@ -1,10 +1,3 @@
-<?php
-
-$validation_errors = validation_errors();
-if (!empty($validation_errors)) {
-    echo $validation_errors;
-}
-?>
 <!--
 <div class="container"> -->
 <div class="shadow-lg p-3 mb-5 bg-white rounded" id="ads">
@@ -27,6 +20,7 @@ if (!empty($validation_errors)) {
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
+
                             <div class="modal-body">
                                 <?php echo form_open_multipart($this->uri->uri_string()); ?>
                                 <div class="form-group">
