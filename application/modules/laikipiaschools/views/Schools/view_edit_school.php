@@ -52,8 +52,8 @@ if ($query->num_rows() > 0) {
                             <div class="row">
                                 <div class="col-md-5 col-sm-12">
                                     <img style="max-width:100%;"
-                                        src="<?php echo base_url() . 'assets/uploads/' . $image; ?>"
-                                        class="d-block w-100" alt="No Image" />
+                                        src="<?php echo base_url() . 'assets/uploads/' . $image; ?>" class="rounded"
+                                        alt="No Image" />
                                 </div>
                                 <div class="col-md-7 col-sm-12 " style="border:0px solid gray">
                                     <div class="form-group">
@@ -140,7 +140,6 @@ if ($query->num_rows() > 0) {
                 </div>
             </div>
         </div>
-
         </div>
         <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
             data-target="#editModal<?php echo $row->school_id; ?>"><i class="fas fa-edit"></i></button>
@@ -256,7 +255,7 @@ if ($query->num_rows() > 0) {
         } else {
             echo anchor("administration/deactivate-school/" . $row->school_id . "/" . $row->school_status, "<i class='far fa-thumbs-up'></i>", array("class" => "btn btn-info btn-sm", "onclick" => "return confirm('Are you sure you want to activate?')"));
         }?>
-        <?php echo anchor("administration/delete-school/" . $row->school_id, '<i class="fas fa-trash-alt"></i>', array("class" => "btn btn-danger btn-sm", "onclick" => "return confirm('Are you sure you want to Delete?')"));?>
+        <?php echo anchor("administration/delete-school/" . $row->school_id, '<i class="fas fa-trash-alt"></i>', array("class" => "btn btn-danger btn-sm", "onclick" => "return confirm('Are you sure you want to Delete?')")); ?>
 
 
     </td>

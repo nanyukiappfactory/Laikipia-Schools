@@ -357,11 +357,9 @@ class Schools extends MX_Controller
                 $this->session->set_flashdata('error', validation_errors());
                 redirect("administration/schools");
             }
-
         } else {
             redirect("administration/schools");
         }
-
     }
 
     public function close_search()

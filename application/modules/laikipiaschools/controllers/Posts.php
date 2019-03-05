@@ -216,7 +216,7 @@ class posts extends MX_Controller
             $post_views = $row->post_views;
             $post_status = $row->post_status;
             $data = array(
-                'post_image_name' => $post_title,
+                'post_title' => $post_title,
                 'post_description' => $post_description,
                 'post_image_name' => $post_image_name,
                 'post_views' => $post_views,

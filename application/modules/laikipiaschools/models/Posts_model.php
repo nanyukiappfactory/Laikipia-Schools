@@ -54,7 +54,6 @@ class Posts_model extends CI_Model
         return $query;
 
     }
-
     public function change_post_status($post_id, $new_post_status)
     {
         $this->db->set('post_status', $new_post_status);
@@ -65,7 +64,6 @@ class Posts_model extends CI_Model
             return false;
         }
     }
-
     public function get_single_post($post_id)
     {
         $this->db->where("post_id", $post_id);
