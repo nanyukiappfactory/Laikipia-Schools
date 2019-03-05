@@ -89,16 +89,18 @@ class Posts_model extends CI_Model
         }
     }
 
-    public function update_post($post_id)
+    public function update_post($post_id, $data)
     {
         $data = array(
             "post_title" => $this->input->post("post_title"),
             "post_description" => $this->input->post("post_description"),
+            "post_image_name" => $file_name,
+            "post_thumb_name" => $thumb_name,
         );
 
         $this->db->set($data);
         $this->db->where('post_id', $post_id);
-        if ($this->db->update('post')) {
+        if ($this->db->update('post', $data)) {
             return true;
         } else {
             return false;

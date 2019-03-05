@@ -38,15 +38,14 @@ class posts extends MX_Controller
         $this->form_validation->set_rules("post_description", "Post Description", "required");
 
         //  validate
-       $form_errors = "";
+        $form_errors = "";
         if ($this->form_validation->run()) {
 
             $resize = array(
                 "width" => 600,
                 "height" => 600,
             );
-             if(isset($_FILES['post_image_name']) && $_FILES['post_image_name']['size'] > 0)
-            {
+            if (isset($_FILES['post_image_name']) && $_FILES['post_image_name']['size'] > 0) {
                 $upload_response = $this->file_model->upload_image($this->upload_path, "post_image_name", $resize);
                 // var_dump($upload_response);die();
 
@@ -62,9 +61,7 @@ class posts extends MX_Controller
                     }
                 }
 
-            }
-            else
-            {
+            } else {
                 if ($this->posts_model->add_post(null, null)) {
                     $this->session->set_flashdata('success', 'post Added successfully!!');
                     redirect('laikipiaschools/posts');
@@ -241,24 +238,47 @@ class posts extends MX_Controller
         $this->form_validation->set_rules("post_title", "Post Title", "required");
         $this->form_validation->set_rules("post_description", "Post Description", "required");
 
-        if ($this->form_validation->run()) 
-        {
-            if ($this->posts_model->update_post($post_id)) 
-            {
-                $this->session->set_flashdata('success', 'post ID: ' . $post_id . ' updated successfully');
+        $form_errors = "";
+        if ($this->form_validation->run()) {
 
-                redirect('administration/posts');
-            } 
-            else 
+            $resize = array(
+                "width" => 600,
+                "height" => 600,
+            );
+            if(isset($_FILES['post_image_name']) && $_FILES['post_image_name']['size'] > 0)
             {
-                $this->session->set_flashdata('error', validation_errors());
-                redirect('administration/posts');
+                $upload_response = $this->file_model->upload_image($this->upload_path, "post_image_name", $resize);
+               
+
+                if ($upload_response['check'] == false) {
+                    $this->session->set_flashdata('error', $upload_response['message']);
+                    redirect('administration/posts');
+                } else {
+                    if ($this->posts_model->update_post($upload_response['file_name'], $upload_response['thumb_name'])) {
+                        $this->session->set_flashdata('success', 'post Added successfully!!');
+                        redirect('administration/posts');
+                    } else {
+                        $this->session->flashdata("error_message", "Unable to add  post");
+                    }
+                }
+
             }
+                        
 
-        }
-        else 
-        {
-            redirect('administration/posts');
+ else
+            {
+                if ($this->posts_model->update_post(null, null)) {
+                    $this->session->set_flashdata('success', 'post updated successfully!!');
+                    redirect('laikipiaschools/posts');
+                } else {
+                    $this->session->flashdata("error_message", "Unable to update post");
+                }
+
+            }
+        } else {
+            $data["form_errors"] = validation_errors();
+            $this->load->view("administration/posts", $data);
+
         }
     }
 
