@@ -102,22 +102,7 @@ class Donations extends MX_Controller
         }
 
     }
-    public function search_partners()
-    {
-        $partner_type_id = $this->input->post('search_param');
-        $search_title = '';
-
-        if (!empty($partner_type_id)) {
-            $search_title .= ' Searched: <strong>' . $partner_type_id . '</strong>';
-            $partner_type_id = ' AND partner.partner_type_id = ' . $partner_type_id;
-        }
-        $search = $partner_type_id;
-        $this->session->set_userdata('partners_search', $search);
-        $this->session->set_userdata('partners_search_title', $search_title);
-        redirect("administration/partners");
-    }
-
-   
+    
     public function close_search()
     {
         $this->session->unset_userdata('donations_search');

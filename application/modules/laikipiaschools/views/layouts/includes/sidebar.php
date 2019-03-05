@@ -1,6 +1,6 @@
 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
     <div class="list-group-flush">
-        <ul class="nav flex-column">
+        <ul class="nav flex-column" style="list-style-type:none;">
 
             <li class="nav-item pl-4 ">
 
@@ -31,44 +31,7 @@
                                         class="mtext"><b>&nbsp;Donations</b></span>
                                 </a>
                             </li>
-                            <!-- <hr> -->
-                        <?php if (is_array($categories->result())) {
-    $cats = array();
-    foreach ($categories->result() as $cat) {
-        if (!in_array($cat->category_parent, $cats) && ($cat->category_parent != "0" || $cat->category_parent != 0)) {
-
-            array_push($cats, $cat->category_parent);
-        }
-
-    }
-    // var_dump($cats);
-    foreach ($cats as $cat) {
-        ?> 
-                            <!-- <li class="dropdown">
-                                <a href="javascript:;" class="">
-                                    <?php foreach ($categories->result() as $value) {
-            if ($value->category_id == $cat) {?>
-                                    <?php echo $value->category_name;
-            }
-        }
-        ?>
-                                </a>
-                                <ul class="submenu">
-                                    <?php
-foreach ($categories->result() as $value) {
-            if ($value->category_parent == $cat) {?>
-
-                                    <li><a
-                                            href="<?php echo base_url(); ?>administration/<?php echo strtolower($value->category_name); ?>"><?php echo $value->category_name; ?></a>
-                                    </li>
-
-                                    <?php }
-        }?>
-                                </ul>
-                            </li> -->
-                            
-                            <?php }
-}?>
+    
                         </ul>
                     </div>
                 </div>
