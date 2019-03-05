@@ -31,7 +31,12 @@ class Migration_Add_post extends CI_Migration
             'post_image_name' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '100',
-                'null' => false,
+                'null' => true,
+            ),
+            'post_image_name' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '100',
+                'null' => true,
             ),
             'image_id' => array(
                 'type' => 'INT',

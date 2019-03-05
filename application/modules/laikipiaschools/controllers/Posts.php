@@ -38,24 +38,40 @@ class posts extends MX_Controller
         $this->form_validation->set_rules("post_description", "Post Description", "required");
 
         //  validate
-        $form_errors = "";
+       $form_errors = "";
         if ($this->form_validation->run()) {
+
             $resize = array(
                 "width" => 600,
                 "height" => 600,
             );
-            $upload_response = $this->file_model->upload_image($this->upload_path, "post_image_name", $resize);
-            if ($upload_response['check'] == false) {
-                $this->session->set_flashdata('error', $upload_response['message']);
-                redirect('administration/posts');
-            } else {
-                if ($this->posts_model->add_post($upload_response['file_name'], $upload_response['thumb_name'])) {
-                    $this->session->set_flashdata('success', 'Post Added successfully');
-                    redirect('administration/posts');
+            if($this->input->post("post_image_name"))
+            {
+                $upload_response = $this->file_model->upload_image($this->upload_path, "post_image_name", $resize);
+                // var_dump($upload_response);die();
 
+                if ($upload_response['check'] == false) {
+                    $this->session->set_flashdata('error', $upload_response['message']);
+                    redirect('laikipiaschools/posts');
                 } else {
-                    $this->session->flashdata("error_message", "Unable to add  post!!! Try again");
+                    if ($this->posts_model->add_school($upload_response['file_name'], $upload_response['thumb_name'])) {
+                        $this->session->set_flashdata('success', 'post Added successfully!!');
+                        redirect('laikipiaschools/posts');
+                    } else {
+                        $this->session->flashdata("error_message", "Unable to add  post");
+                    }
                 }
+
+            }
+            else
+            {
+                if ($this->posts_model->add_post(null, null)) {
+                    $this->session->set_flashdata('success', 'post Added successfully!!');
+                    redirect('laikipiaschools/posts');
+                } else {
+                    $this->session->flashdata("error_message", "Unable to add  post");
+                }
+
             }
         } else {
             //pagination

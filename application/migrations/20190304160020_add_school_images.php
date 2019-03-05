@@ -16,7 +16,12 @@ class Migration_Add_school_images extends CI_Migration
             'school_image_name' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '255',
-                'null' => false,
+                'null' => true,
+            ),
+             'school_thumb_name' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+                'null' => true,
             ),
             'school_id' => array(
                 'type' => 'INT',
