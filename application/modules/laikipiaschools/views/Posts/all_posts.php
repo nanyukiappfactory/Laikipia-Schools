@@ -66,9 +66,9 @@ if (!empty($validation_errors)) {
                                 </div> -->
                                 <div class="form-group row">
                                     <div class="col-sm-12 col-md-12">
-                                        <label for="created_on">Post Date</label>
+                                        <label for="post_date">Post Date</label>
                                         <input type="date" class="form-control" id="form-control form_datetime"
-                                            name="created_on" placeholder="Post Title" required>
+                                            name="post_date" placeholder="Post Date" required>
                                     </div>
                                 </div>
 
@@ -132,7 +132,7 @@ if (!empty($validation_errors)) {
                     <th><?php echo anchor("administration/posts/post.category_id/" . $order_method, "Post Category"); ?>
                     </th>
                     <th>Post Status</th>
-                    <th>Date Created</th>
+                    <th>Post Date </th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -143,7 +143,7 @@ if (!empty($validation_errors)) {
                     <th>Post Title</th>
                     <th>Post Category</th>
                     <th>Post Status</th>
-                    <th>Date Created</th>
+                    <th>Post Date</th>
 
                     <th>Actions</th>
                 </tr>
@@ -188,7 +188,7 @@ if ($query->num_rows() > 0) {
                         <?php }?>
                     </td>
                     <td>
-                        <?php echo $row->created_on; ?>
+                        <?php echo $row->post_date; ?>
                     </td>
 
                     <td>
@@ -245,8 +245,7 @@ if ($query->num_rows() > 0) {
                                                     <?php }?>
                                                 </div>
                                                 <div>
-                                                    <p class="card-text"><small class="text-muted">Date
-                                                            Created:<?php echo $row->created_on; ?></small>
+                                                    <p class="card-text"><small class="text-muted">Post date:<?php echo $row->post_date; ?></small>
                                                     </p>
                                                 </div>
                                             </div>
