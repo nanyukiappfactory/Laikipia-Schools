@@ -173,7 +173,6 @@ class Schools extends MX_Controller
             $this->session->set_userdata('schools_search', $search);
             $this->session->set_userdata('schools_search_title', $search_title);
         }
-
         redirect("administration/schools");
     }
 

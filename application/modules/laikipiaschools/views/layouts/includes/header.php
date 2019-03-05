@@ -35,6 +35,6 @@
 <!-- Just be careful that you give correct path to your tinymce.min.js file, above is the default example -->
 <script>
 tinymce.init({
-    selector: 'textarea#editable'
+    selector: 'textarea'
 });
 </script>

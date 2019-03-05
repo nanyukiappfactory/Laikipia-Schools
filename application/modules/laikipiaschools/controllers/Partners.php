@@ -114,7 +114,6 @@ class Partners extends MX_Controller
             $search_title .= ' Searched: <strong>' . $partner_type_id . '</strong>';
             $partner_type_id = ' AND partner.partner_type_id = ' . $partner_type_id;
         }
-
         $search = $partner_type_id;
         $this->session->set_userdata('partners_search', $search);
         $this->session->set_userdata('partners_search_title', $search_title);

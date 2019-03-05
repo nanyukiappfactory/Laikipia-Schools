@@ -44,7 +44,7 @@ if (!empty($validation_errors)) {
                                             <?php
 }
 }?>
-                                            '
+                                            
                                         </select>
                                     </div>
                                 </div>
@@ -295,16 +295,11 @@ if ($query->num_rows() > 0) {
                             <?php echo form_input(['name' => 'post_title', 'class' => 'form-control', 'value' => set_value('post_title', $row->post_title)]) ?>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="post_title" class="col-sm-2 col-form-label">Post
-                            Category</label>
-                        <div class="col-md-10">
-                            <?php echo form_input(['name' => 'post_title', 'class' => 'form-control', 'value' => set_value('post_title', $row->post_title)]) ?>
-                        </div>
-                    </div>
+
+
 
                      <div class="form-group row">
-                        <label for="post_image_name" class="col-sm-2 col-form-label">Post
+                        <label for="post_image_name" class="col-sm-2 col-form-label" >Post
                             Image</label>
                         <div class="col-md-10">
                             <?php echo form_input(['name' => 'post_image_name', 'type' => 'file', 'class' => 'form-control']) ?>
@@ -321,14 +316,14 @@ if ($query->num_rows() > 0) {
                     </div>
 
 
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                         <label for="created_on">Post Date</label>
                         <?php echo form_input(array('name' => 'modified_on', 'type' => 'date', 'placeholder' => 'Post data', 'id' => 'date', 'class' => "date", 'value' => set_value('created_on', $row->created_on))); ?>
                         <small id="emailHelp" class="form-text text-muted"></small>
-                    </div> -->
+                    </div>
                     <div class="form-group">
                                     <label for="post_description">Post Description</label>
-                                    <?php echo form_textarea(array('name' => 'post_description', 'placeholder' => 'Write a description of the post', 'id' => 'editable', 'class' => "editable")); ?>
+                                    <?php echo form_textarea(array('name' => 'post_description', 'placeholder' => 'Write a description of the post', 'class' => "editable", 'value' => set_value('created_on', $row->post_description))); ?>
                                     <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
                                 </div>
                     <div class="modal-footer row">
