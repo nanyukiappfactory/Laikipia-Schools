@@ -15,7 +15,7 @@ class Schools_model extends CI_Model
             "school_zone" => $this->input->post("school_zone"),
             "school_image_name" => $file_name,
             "school_thumb_name" => $thumb_name,
-            'donation_status' => 1,
+            'school_status' => 1,
 
         );
 

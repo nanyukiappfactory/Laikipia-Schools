@@ -104,19 +104,19 @@ $route['administration/deactivate-donation/(:num)/(:num)'] = 'laikipiaschools/do
 
 //partners
 
-// $route['administration/partners'] = 'laikipiaschools/partners/index';
-// $route['administration/partners/add-partners'] = 'laikipiaschools/partners/create_partner';
-// $route['administration/partners/read-partner/(:num)'] = 'laikipiaschools/partners/read_partner/$1';
-// $route['administration/edit_partner/(:num)'] = 'laikipiaschools/partners/edit/$1';
-// $route['administration/deactivate-partner/(:num)/(:num)'] = 'laikipiaschools/partners/deactivate_partner/$1/$2';
-// $route['administration/search-partners'] = 'laikipiaschools/partners/search_partners';
-// $route['administration/partners/close-search'] = 'laikipiaschools/partners/close_search';
-// $route['administration/export-partners'] = 'laikipiaschools/partners/export_partners';
-// $route['administration/partners/(:any)/(:any)/(:num)'] = 'laikipiaschools/partners/index/$1/$2/$3';
-// $route['administration/partners/(:any)/(:any)'] = 'laikipiaschools/partners/index/$1/$2';
-// $route['administration/partners/bulk-actions'] = 'laikipiaschools/partners/bulk_actions';
-// $route['administration/delete-partner/(:num)'] = 'laikipiaschools/partners/delete_partner/$1';
-// $route['administration/import-partners'] = 'laikipiaschools/partners/import_partners';
+$route['administration/partners'] = 'laikipiaschools/partners/index';
+$route['administration/partners/add-partners'] = 'laikipiaschools/partners/create_partner';
+$route['administration/partners/read-partner/(:num)'] = 'laikipiaschools/partners/read_partner/$1';
+$route['administration/edit_partner/(:num)'] = 'laikipiaschools/partners/edit/$1';
+$route['administration/deactivate-partner/(:num)/(:num)'] = 'laikipiaschools/partners/deactivate_partner/$1/$2';
+$route['administration/search-partners'] = 'laikipiaschools/partners/search_partners';
+$route['administration/partners/close-search'] = 'laikipiaschools/partners/close_search';
+$route['administration/export-partners'] = 'laikipiaschools/partners/export_partners';
+$route['administration/partners/(:any)/(:any)/(:num)'] = 'laikipiaschools/partners/index/$1/$2/$3';
+$route['administration/partners/(:any)/(:any)'] = 'laikipiaschools/partners/index/$1/$2';
+$route['administration/partners/bulk-actions'] = 'laikipiaschools/partners/bulk_actions';
+$route['administration/delete-partner/(:num)'] = 'laikipiaschools/partners/delete_partner/$1';
+$route['administration/import-partners'] = 'laikipiaschools/partners/import_partners';
 
 
 
