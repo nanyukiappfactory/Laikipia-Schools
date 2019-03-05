@@ -125,8 +125,12 @@ if (!empty($validation_errors)) {
                 <tr>
                     <th>#</th>
                     <th>Post Image</th>
-                    <th>Post Title</th>
-                    <th>Post Category</th>
+                    <!-- <th>Post Title</th> -->
+                    <th><?php echo anchor("administration/posts/post.post_title/" . $order_method, "Post Title"); ?>
+                    </th>
+                    <!-- <th>Post Category</th> -->
+                    <th><?php echo anchor("administration/posts/post.category_id/" . $order_method, "Post Category"); ?>
+                    </th>
                     <th>Post Status</th>
                     <th>Date Created</th>
                     <th>Actions</th>

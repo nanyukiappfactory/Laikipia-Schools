@@ -99,10 +99,18 @@ if ($schools->num_rows() > 0) {
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Partner</th>
-                        <th>school</th>
-                        <th>Amount</th>
-                        <th>Donation Date</th>
+                        <!-- <th>Partner</th> -->
+                        <th><?php echo anchor("administration/donations/donation.partner_id/" . $order_method, "Partner"); ?>
+                    </th>
+                        
+                        <!-- <th>school</th> -->
+                        <th><?php echo anchor("administration/donations/donation.school_id/" . $order_method, "school"); ?>
+                    </th>
+                        <!-- <th>Amount</th> -->
+                        <th><?php echo anchor("administration/donations/donation.donation_amount/" . $order_method, "Amount"); ?>
+                    </th>
+                        <!-- <th>Donation Date</th> -->
+                       <th> <?php echo anchor("administration/donations/donation.created_on/" . $order_method, "Donation Date"); ?></th>
                         <th>Status</th>
 
                         <th>Actions</th>

@@ -19,10 +19,11 @@ class Donations extends MX_Controller
      *    Default action is to show all the donations
      *
      */
-    public function index($donation_id = null, $order = null, $order_method = null)
+    // public function index($donation_id = null, $order = null, $order_method = null)
+    public function index($order = 'donation.donation_amount', $order_method = 'ASC')
     {
-        $order = 'donation.created_on';
-        $order_method = 'DESC';
+        // $order = 'donation.donation_amount';
+        // $order_method = 'DESC';
         $this->form_validation->set_rules('donation_amount', 'Donation Amount', 'required|numeric');
         $this->form_validation->set_rules('partner_id', 'Partner', 'required|numeric');
         $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
@@ -37,7 +38,9 @@ class Donations extends MX_Controller
             }
         } else {
             $where = 'donation.deleted=0 AND donation.school_id = school.school_id AND donation.partner_id = partner.partner_id';
+           // $where = 'donation.deleted=0 AND donation.school_id = school.school_id AND donation.category_id = post.category_id';
             $table = 'donation, school, partner';
+           // $table = 'donation, school, post';
             $donations_search = $this->session->userdata('donations_search');
             $search_title = $this->session->userdata('donations_search_title');
 
