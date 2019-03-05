@@ -95,10 +95,10 @@ if (!empty($validation_errors)) {
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="post_description">Post Description</label>
-                                    <?php echo form_textarea(array('name' => 'post_description', 'placeholder' => 'Write s description of the post', 'id' => 'editable', 'class' => "editable")); ?>
+                                    <?php echo form_textarea(array('name' => 'post_description', 'placeholder' => 'Write s description of the post', 'class' => "editable")); ?>
                                     <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
                                 </div>
 
