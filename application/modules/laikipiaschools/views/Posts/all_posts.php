@@ -311,11 +311,11 @@ if ($query->num_rows() > 0) {
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="post_image_name" class="col-sm-2 col-form-label">Post
-                            Image</label>
-                        <div class="col-md-10">
-                            <?php echo form_input(['name' => 'post_image_name', 'type' => 'file', 'class' => 'form-control']) ?>
-                        </div>
+                                <div class="col-sm-12 col-md-12">
+                                        <label for="post_image_name">Post
+                                            Image</label>
+                                        <input type="file" id="post_image_name" name="post_image_name">
+                                </div>
                     </div>
                     <div class="row">
                         <label class="col-form-label col-sm-2 pt-0">Post Status</label>

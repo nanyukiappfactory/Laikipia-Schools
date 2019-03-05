@@ -22,7 +22,7 @@ class posts extends MX_Controller
         $this->load->model("laikipiaschools/file_model");
         // $this->load->model("administration/payments_model");
     }
-    public function index($order = 'created_on', $order_method = 'ASC', $start = null)
+    public function index($order = 'created_on', $order_method = 'DESC', $start = null)
     {
         $where = 'post_id > 0 AND deleted = 0';
         $table = 'post';
