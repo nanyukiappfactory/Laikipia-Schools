@@ -258,33 +258,32 @@ if ($query->num_rows() > 0) {
 
                         </div>
     </div>
-    <!-- <?php echo anchor("administration/edit-school/" . $row->post_id, "<i class='fas fa-edit'></i>", "class='btn btn-warning btn-sm'"); ?> -->
-    <!-- Button trigger modal -->
-    <button type="button" class="class='btn btn-warning btn-sm" data-toggle="modal"
-        data-target="#exampleModal<?php echo $row->post_id; ?>">
-        <i class='fas fa-edit'></i>
-    </button>
+
+    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+        data-target="#editModal<?php echo $row->post_id; ?>"><i class="fas fa-edit"></i></button>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal<?php echo $row->post_id; ?>" tabindex="-1" role="dialog"
+    <div class="modal fade" id="editModal<?php echo $row->post_id; ?>" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel<?php echo $row->post_id; ?>">Update Post</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Update Post
+                        Details</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Enter Post Details to update</h5>
+                    <h5 class="card-title">Enter Post Details to
+                        update</h5>
 
-                    <?php echo
-        form_open($this->uri->uri_string()); ?>
+                    <?php echo form_open(base_url() . 'administration/edit-post/' . $row->post_id); ?>
                     <div class="form-group row">
-                        <label for="post_title" class="col-sm-2 col-form-label">Post
-                            Title</label>
+                        <label for="post_title" class="col-sm-2 col-form-label">Post Title</label>
+
                         <div class="col-md-10">
-                            <?php echo form_input(['name' => 'post_title', 'class' => 'form-control', 'value' => set_value('post_title', $row->post_title)]) ?>
+                            <?php echo form_input(['name' => 'post_title', 'placeholder' => 'Post Name', 'class' => 'form-control', 'value' => set_value('post_title', $row->post_title)]) ?>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -311,14 +310,26 @@ if ($query->num_rows() > 0) {
                             <?php echo form_input(['name' => 'post_image_name', 'type' => 'file', 'class' => 'form-control']) ?>
                         </div>
                     </div>
-                    <div class="row">
-                        <label class="col-form-label col-sm-2 pt-0">Post Status</label>
-                        <div class="form-group">
-                            <input type="radio" name="post_status" value="1"
-                                <?php echo ($row->post_status == 'Active') ? 'checked' : '' ?>>Active
-                            <input type="radio" name="post_status" value="0"
-                                <?php echo ($row->post_status == 'Inactive') ? 'checked' : '' ?>>Inactive
+
+                    <div class="form-group">
+                        <label for="post_status">Status</label>
+                        <div class="col-sm-10 row">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="post_status" id="post_status"
+                                    value="1" checked>
+                                <Legend class="form-check-label" for="gridRadios1">
+                                    Active
+                                </Legend>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="post_status" id="post_status"
+                                    value="0">
+                                <Legend class="form-check-label" for="gridRadios2">
+                                    Inactive
+                                </Legend>
+                            </div>
                         </div>
+                        <small id="emailHelp" class="form-text text-muted"></small>
                     </div>
                     <div class="form-group row">
                         <label for="created_on" class="col-sm-2 col-form-label">Post
@@ -327,46 +338,45 @@ if ($query->num_rows() > 0) {
                             <?php echo form_input(['name' => 'created_on', 'type' => 'date', 'class' => 'form-control', 'value' => set_value('created_on', $row->created_on)]) ?>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label for="post_description">Post Description</label>
                         <?php echo form_textarea(array('name' => 'post_description', 'placeholder' => 'Write a description of the post', 'class' => "editable", 'value' => set_value('created_on', $row->post_description))); ?>
                         <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
                     </div>
-                    <div class="modal-footer row">
-
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>Save
-                            Changes</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
-                                class="fas fa-times"></i>Close</button>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                        class="fas fa-times"></i>Close</button>
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>Save
+                                    Post</button>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
-
+                <?php echo form_close(); ?>
             </div>
-            <?php echo form_close(); ?>
         </div>
     </div>
-</div>
-<?php if ($row->post_status == 1) {
+    <?php if ($row->post_status == 1) {
             echo anchor("administration/deactivate-post/" . $row->post_id . "/" . $row->post_status, "<i class='far fa-thumbs-down'></i>", array("class" => "btn btn-default btn-sm", "onclick" => "return confirm('Are you sure you want to deactivate?')"));
         } else {
             echo anchor("administration/deactivate-post/" . $row->post_id . "/" . $row->post_status, "<i class='far fa-thumbs-up'></i>", array("class" => "btn btn-info btn-sm", "onclick" => "return confirm('Are you sure you want to activate?')"));
         }?>
 
-<?php echo anchor("administration/delete-post/" . $row->post_id, '<i class="fas fa-trash-alt"></i>', array("class" => "btn btn-danger btn-sm", "onclick" => "return confirm('Are you sure you want to Delete?')")); ?>
+    <?php echo anchor("administration/delete-post/" . $row->post_id, '<i class="fas fa-trash-alt"></i>', array("class" => "btn btn-danger btn-sm", "onclick" => "return confirm('Are you sure you want to Delete?')")); ?>
 
 
-</td>
-</tr>
-<?php
+    </td>
+    </tr>
+    <?php
 }
 }
 ?>
-</tbody>
-</table>
+    </tbody>
+    </table>
 
-<p>
-    <?php echo $links; ?>
-</p>
+    <p>
+        <?php echo $links; ?>
+    </p>
 </div>

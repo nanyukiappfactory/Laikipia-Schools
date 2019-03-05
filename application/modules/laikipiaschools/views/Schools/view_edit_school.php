@@ -140,7 +140,6 @@ if ($query->num_rows() > 0) {
                 </div>
             </div>
         </div>
-
         </div>
         <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
             data-target="#editModal<?php echo $row->school_id; ?>"><i class="fas fa-edit"></i></button>
