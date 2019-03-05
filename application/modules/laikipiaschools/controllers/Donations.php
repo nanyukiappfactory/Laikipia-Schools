@@ -19,10 +19,10 @@ class Donations extends MX_Controller
      *    Default action is to show all the donations
      *
      */
-    public function index($donation_id = NULL , $order = NULL, $order_method = NULL)
+    public function index($donation_id = null, $order = null, $order_method = null)
     {
-		$order = 'donation.created_on';
-		$order_method = 'DESC';
+        $order = 'donation.created_on';
+        $order_method = 'DESC';
         $this->form_validation->set_rules('donation_amount', 'Donation Amount', 'required|numeric');
         $this->form_validation->set_rules('partner_id', 'Partner', 'required|numeric');
         $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
@@ -90,19 +90,40 @@ class Donations extends MX_Controller
 
             $v_data['order'] = $order;
             $v_data['order_method'] = $order_method;
-            // $v_data['transacted_agents'] = $this->donations_model->get_transacted_agents();
-            // $v_data['transacted_locations'] = $this->donations_model->get_transacted_locations();
-            // $v_data['transacted_customers'] = $this->payments_model->get_transacted_customers();
             $v_data['query'] = $query;
             $v_data['schools'] = $this->donations_model->all_schools();
-            $v_data['partners'] = $this->donations_model->all_partners();
             $v_data['page'] = $page;
             $v_data['categories'] = $this->site_model->get_all_categories();
-            $data['content'] = $this->load->view('donations/all_donations', $v_data, true);
+            $v_data['partners'] = $this->donations_model->all_partners();
 
+            $data['content'] = $this->load->view('donations/all_donations', $v_data, true);
+           
             $this->load->view("laikipiaschools/layouts/layout", $data);
         }
 
+    }
+
+    public function search_donations()
+    {
+        $partner_id = $this->input->post('search_param');
+        $search_title = '';
+
+        if (!empty($partner_id)) {
+            $search_title .= ' Searched: <strong>' . $partner_id . '</strong>';
+            $partner_id = ' AND partner.partner_id = ' . $partner_id;
+        }
+        $search = $partner_id;
+        $this->session->set_userdata('donations_search', $search);
+        $this->session->set_userdata('donations_search_title', $search_title);
+        redirect("administration/donations");
+    }
+
+    public function close_search()
+    {
+        $this->session->unset_userdata('donations_search');
+        $this->session->unset_userdata('donations_search_title');
+        $this->session->set_userdata("success_message", "Search has been closed");
+        redirect("administration/donations");
     }
 
     public function export_donations()
@@ -152,17 +173,15 @@ class Donations extends MX_Controller
 
     public function edit_donation($donation_id)
     {
-		// echo $this->input->post("donation_amount");die();
+        // echo $this->input->post("donation_amount");die();
         $this->form_validation->set_rules('donation_amount', 'Donation Amount', 'required|numeric');
         $this->form_validation->set_rules('partner_id', 'Partner', 'required|numeric');
         $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
-		
-        if ($this->form_validation->run())
-         {
+
+        if ($this->form_validation->run()) {
             if ($this->donations_model->update_donation($donation_id)) {
-                
+
                 $this->session->set_flashdata('success', 'Donation ID: ' . $donation_id . ' updated successfully');
-                
 
                 redirect('laikipiaschools/donations');
             } else {
@@ -173,7 +192,6 @@ class Donations extends MX_Controller
                 $v_data['title'] = "Edit Donation";
                 $v_data['categories'] = $this->site_model->get_all_categories();
                 $data['content'] = $this->load->view('donations/edit_donation', $v_data, true);
-                
 
                 $this->load->view("laikipiaschools/layouts/layout", $data);
             }
@@ -202,16 +220,13 @@ class Donations extends MX_Controller
 
     public function delete_donation($donation_id)
     {
-		if($this->donations_model->delete_donation($donation_id))
-		{
-			$this->session->set_flashdata('success', 'Deleted successfully');
-			redirect('laikipiaschools/donations');
-		}
-		else 
-		{
-			$this->session->set_flashdata('error', 'Unable to delete, Try again!!');
-			redirect('laikipiaschools/donations');
-		}
+        if ($this->donations_model->delete_donation($donation_id)) {
+            $this->session->set_flashdata('success', 'Deleted successfully');
+            redirect('laikipiaschools/donations');
+        } else {
+            $this->session->set_flashdata('error', 'Unable to delete, Try again!!');
+            redirect('laikipiaschools/donations');
+        }
     }
 
 }
