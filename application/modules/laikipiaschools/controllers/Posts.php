@@ -45,7 +45,7 @@ class posts extends MX_Controller
                 "width" => 600,
                 "height" => 600,
             );
-             if(isset($_FILES['post_image_name']) && $_FILES['school_image']['size'] > 0)
+             if(isset($_FILES['post_image_name']) && $_FILES['post_image_name']['size'] > 0)
             {
                 $upload_response = $this->file_model->upload_image($this->upload_path, "post_image_name", $resize);
                 // var_dump($upload_response);die();
@@ -54,7 +54,7 @@ class posts extends MX_Controller
                     $this->session->set_flashdata('error', $upload_response['message']);
                     redirect('laikipiaschools/posts');
                 } else {
-                    if ($this->posts_model->add_school($upload_response['file_name'], $upload_response['thumb_name'])) {
+                    if ($this->posts_model->add_post($upload_response['file_name'], $upload_response['thumb_name'])) {
                         $this->session->set_flashdata('success', 'post Added successfully!!');
                         redirect('laikipiaschools/posts');
                     } else {
