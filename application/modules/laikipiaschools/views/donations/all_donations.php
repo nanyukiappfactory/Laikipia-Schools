@@ -106,7 +106,7 @@ if ($schools->num_rows() > 0) {
                         <th><?php echo anchor("administration/donations/donation.donation_amount/" . $order_method, "Amount"); ?>
                     </th>
                         <!-- <th>Donation Date</th> -->
-                       <th> <?php echo anchor("administration/donations/donation.created_on/" . $order_method, "Donation Date"); ?></th>
+                       <th> <?php echo anchor("administration/donations/donation.created_on/" . $order_method,"Donation Date"); ?></th>
                         <th>Status</th>
 
                         <th>Actions</th>
