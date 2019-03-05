@@ -33,10 +33,11 @@ class posts extends MX_Controller
             $where .= $post_search;
             // var_dump($where);die();
         }
-
         $this->form_validation->set_rules("post_title", "Post Title", "required");
         $this->form_validation->set_rules("post_description", "Post Description", "required");
 $this->form_validation->set_rules("category_id", "Post Category", "required");
+$this->form_validation->set_rules("post_date", "Post Date", "required");
+
 
         //  validate
         $form_errors = "";
