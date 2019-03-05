@@ -52,6 +52,10 @@ class Migration_Add_post extends CI_Migration
                 'null' => false,
                 'default' => 0,
             ),
+            'post_date' => array(
+                'type' => 'DATE',
+                'null' => true,
+            ),
         ));
 
         $this->dbforge->add_field("`created_by` int NOT NULL");

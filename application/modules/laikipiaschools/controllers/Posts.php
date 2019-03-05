@@ -53,11 +53,11 @@ $this->form_validation->set_rules("post_date", "Post Date", "required");
 
                 if ($upload_response['check'] == false) {
                     $this->session->set_flashdata('error', $upload_response['message']);
-                    redirect('laikipiaschools/posts');
+                    redirect('administration/posts');
                 } else {
                     if ($this->posts_model->add_post($upload_response['file_name'], $upload_response['thumb_name'])) {
                         $this->session->set_flashdata('success', 'post Added successfully!!');
-                        redirect('laikipiaschools/posts');
+                        redirect('administration/posts');
                     } else {
                         $this->session->flashdata("error_message", "Unable to add  post");
                     }
@@ -66,7 +66,7 @@ $this->form_validation->set_rules("post_date", "Post Date", "required");
             } else {
                 if ($this->posts_model->add_post(null, null)) {
                     $this->session->set_flashdata('success', 'post Added successfully!!');
-                    redirect('laikipiaschools/posts');
+                    redirect('administration/posts');
                 } else {
                     $this->session->flashdata("error_message", "Unable to add  post");
                 }
@@ -150,7 +150,7 @@ $this->form_validation->set_rules("post_date", "Post Date", "required");
             $this->session->set_userdata('posts_search_title', $search_title);
         }
         // var_dump($search);die();
-        redirect("laikipiaschools/posts");
+        redirect("administration/posts");
     }
     public function deactivate_post($post_id, $status_id)
     {
@@ -169,13 +169,13 @@ $this->form_validation->set_rules("post_date", "Post Date", "required");
             $this->session->set_flashdata('error', "post ID: " . $post_id . " failed to " . $message);
         }
 
-        redirect('laikipiaschools/posts');
+        redirect('administration/posts');
     }
     public function export_post()
     {
         $this->load->model("excel_export_model");
         $data["post_data"] = $this->excel_export_model->fetch_data();
-        $this->load->view("Administration/posts", $data
+        $this->load->view("administration/posts", $data
         );
     }
 
@@ -271,7 +271,7 @@ $this->form_validation->set_rules("post_date", "Post Date", "required");
             {
                 if ($this->posts_model->update_post(null, null)) {
                     $this->session->set_flashdata('success', 'post updated successfully!!');
-                    redirect('laikipiaschools/posts');
+                    redirect('administration/posts');
                 } else {
                     $this->session->flashdata("error_message", "Unable to update post");
                 }
