@@ -20,7 +20,6 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-
                             <div class="modal-body">
                                 <?php echo form_open_multipart($this->uri->uri_string()); ?>
                                 <div class="form-group">
