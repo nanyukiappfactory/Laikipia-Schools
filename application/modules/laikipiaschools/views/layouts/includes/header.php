@@ -21,7 +21,7 @@
 
 <!-- <script defer src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script> -->
 <script defer src="<?php echo base_url(); ?>assets/tinymce/js/tinymce/jquery.tinymce.min.js"></script>
-<script defer src="<?php echo base_url(); ?>assets/tinymce/js/tinymce/tinymce.min.js"></script>
+<!-- <script defer src="<?php echo base_url(); ?>assets/tinymce/js/tinymce/tinymce.min.js"></script> -->
 <script type="text/javascript" src="<?php echo base_url(); ?>/assets/tinymce/js/tinymce/tinymce.min.js"></script>
 
 

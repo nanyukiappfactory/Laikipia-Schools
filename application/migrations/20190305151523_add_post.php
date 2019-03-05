@@ -25,7 +25,7 @@ class Migration_Add_post extends CI_Migration
             'post_description' => array(
                 'type' => 'VARCHAR',
                 'null' => false,
-                'constraint' => '200',
+                'constraint' => '255',
 
             ),
             'post_image_name' => array(
@@ -41,11 +41,16 @@ class Migration_Add_post extends CI_Migration
             'image_id' => array(
                 'type' => 'INT',
                  'constraint' => '11',
+                  'null' => true,
+            ), 
+            'post_date' => array(
+                'type' => 'DATE',
+                'null' => true,
             ),
-            'post_views' => array(
-                'type' => 'NUMERIC',
-                'constraint' => '20',
+            'post_status' => array(
+                'type' => 'BOOLEAN',
                 'null' => false,
+                'default' => 0,
             ),
         ));
 
