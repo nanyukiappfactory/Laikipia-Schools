@@ -93,7 +93,7 @@ class Donations_model extends CI_Model
         }
     }
 
-    public function create_donation($donation_id)
+    public function create_donation()
     {
         $data = array(
            
