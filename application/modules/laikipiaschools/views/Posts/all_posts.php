@@ -45,6 +45,7 @@ if (!empty($validation_errors)) {
 }
 }?>
                                         </select>
+                            
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -130,8 +131,13 @@ if (!empty($validation_errors)) {
                     <!-- <th>Post Category</th> -->
                     <th><?php echo anchor("administration/posts/post.category_id/" . $order_method, "Post Category"); ?>
                     </th>
+                    <th>#</th>
+                    <th>Post Image</th>
+                    <th>Post Title</th>
+                    <th>Post Category</th>
                     <th>Post Status</th>
-                    <th>Post Date </th>
+                    <th>Post Date</th>
+
                     <th>Actions</th>
                 </tr>
             </thead>
