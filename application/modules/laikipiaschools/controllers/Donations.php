@@ -25,15 +25,15 @@ class Donations extends MX_Controller
         // $order = 'donation.donation_amount';
         // $order_method = 'DESC';
         $this->form_validation->set_rules('donation_amount', 'Donation Amount', 'required|numeric');
-        $this->form_validation->set_rules('partner_id', 'Partner', 'required|numeric');
+        $this->form_validation->set_rules('partner_id', 'donor', 'required|numeric');
         $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
 
         if ($this->form_validation->run()) {
             if ($this->donations_model->create_donation($donation_id)) {
-                $this->session->set_flashdata('success', 'Donation ID: ' . $donation_id . ' updated successfully');
+                $this->session->set_flashdata('success', 'Donation ID: ' . $donation_id . ' Created successfully');
                 redirect('laikipiaschools/donations');
             } else {
-                $this->session->set_flashdata('error', 'Unable to update: ' . $donation_id);
+                $this->session->set_flashdata('error', 'Unable to Create: ' . $donation_id);
                 redirect('laikipiaschools/donations');
             }
         } else {
@@ -97,7 +97,8 @@ class Donations extends MX_Controller
             $v_data['schools'] = $this->donations_model->all_schools();
             $v_data['page'] = $page;
             $v_data['categories'] = $this->site_model->get_all_categories();
-            echo json_encode($v_data['categories']->result());die();
+            //echo json_encode($v_data['categories']->result());die();
+           //var_dump($v_data['categories']->result());die();
             $v_data['partners'] = $this->donations_model->all_partners();
 
             $data['content'] = $this->load->view('donations/all_donations', $v_data, true);
@@ -180,6 +181,7 @@ class Donations extends MX_Controller
                 $v_data['partners'] = $this->donations_model->all_partners();
                 $v_data['title'] = "Edit Donation";
                 $v_data['categories'] = $this->site_model->get_all_categories();
+               
                 $data['content'] = $this->load->view('donations/edit_donation', $v_data, true);
 
                 $this->load->view("laikipiaschools/layouts/layout", $data);

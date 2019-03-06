@@ -31,21 +31,23 @@
                             <div class="col-sm-12 col-md-12">
                                 <select class="custom-select my-1 mr-sm-2" name="partner_id" required>
                                     <option selected>Choose Partner...</option>
-                                    <?php if($categories->num_rows() > 0) {
+                                    <?php  
+                                        $donations = array();
                                         foreach ($categories->result() as $row) {
-                                            if($row->category_name == "Partner" || $row->category_name == "Donor"){
-                                                
-                                            }?>
-                                            <option value="<?php echo $row->partner_id; ?>">
-                                        <?php echo $row->partner_name; ?>
-                                    </option>
-                                    <?php
+                                            if(strtolower($row->category_name) == strtolower("partner")){?>
+                                                 <option value="<?php echo $row->post_id; ?>"><?php echo $row->post_title; ?></option>
+                                            <?php }
+                                            if(strtolower($row->category_name) == strtolower("Donors")){?>
+                                                <option value="<?php echo $row->post_id; ?>"><?php echo $row->post_title; ?></option>
+                                            <?php }
 }
-}
+
 ?>
+
                                 </select>
                             </div>
-                        </div>
+                            </div>
+
                         <div class="form-group row">
                             <div class="col-sm-12 col-md-12">
                                 <select class="custom-select my-1 mr-sm-2" name="school_id" required>
@@ -102,7 +104,7 @@ if ($schools->num_rows() > 0) {
                     <tr>
                         <th>#</th>
                         <!-- <th>Partner</th> -->
-                        <th>Partner</th>
+                        <th>Donor</th>
                         <th>School</th>
                         <!-- <th>Amount</th> -->
                         <th><?php echo anchor("administration/donations/donation.donation_amount/" . $order_method, "Amount"); ?>
@@ -117,7 +119,7 @@ if ($schools->num_rows() > 0) {
                 <tfoot>
                     <tr>
                         <th>#</th>
-                        <th>Partner</th>
+                        <th>Donor</th>
                         <th>School</th>
                         <th>Amount</th>
                         <th>Donation Date</th>
@@ -181,9 +183,7 @@ if ($query->num_rows() > 0) {
                                                 <li><b>Donation Amount:</b> <br /> <?php echo $row->donation_amount; ?>
                                                 </li>
                                             </div>
-                                            <div class=" ml-1 pb-3" style="font-size:20px;list-style-type:none;">
-                                                <li><b>Partner Name: </b> <br /><?php echo $row->partner_name; ?></li>
-                                            </div>
+                                            
                                             <div class="ml-1 pb-3" style="font-size:20px;list-style-type:none;">
                                                 <li><b>School Name: </b> <br /><?php echo $row->school_name; ?></li>
                                             </div>

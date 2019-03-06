@@ -30,7 +30,6 @@ class Site_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('category');
 		$this->db->join('post','post.category_id=category.category_id', 'left');
-
 		return $this->db->get();
     }
 
