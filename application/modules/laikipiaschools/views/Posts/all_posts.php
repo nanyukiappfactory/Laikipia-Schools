@@ -173,6 +173,7 @@ if ($query->num_rows() > 0) {
                         <?php foreach ($categories->result() as $category) {
             if ($category->category_id == $row->category_id) {
                 echo $category->category_name;
+                break;
             }
         }
         ?>
@@ -374,7 +375,7 @@ if ($query->num_rows() > 0) {
 }
 ?>
     </tbody>
-    
+
     </table>
 
     <p>
