@@ -104,7 +104,7 @@ class Donations_model extends CI_Model
         );
 
         if ($this->db->insert('donation', $data)) {
-            return true;
+            return $this->db->insert_id();
         } else {
             return false;
         }
