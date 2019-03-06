@@ -229,7 +229,8 @@ if ($query->num_rows() > 0) {
 
 								<div class=" form-group">
                                 <label for="school_write_up">School Write Up</label>
-                                <?php echo form_textarea(array('name' => 'school_write_up', 'id' => 'editable', 'class' => "editable", 'value' => set_value('school_write_up', $row->school_write_up))); ?>   
+                                
+                                <textarea name="shool_write_up"><?php echo set_value('school_write_up', $row->school_write_up);?></textarea>
                                 <div class="form-group">
                                     <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
                                 </div>

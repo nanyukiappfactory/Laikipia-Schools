@@ -174,7 +174,7 @@ if (!empty($validation_errors)) {
 
                                 <div class="form-group">
                                     <label for="school_write_up">School Write Up</label>
-                                    <?php echo form_textarea(array('name' => 'school_write_up', 'id' => 'editable', 'class' => "editable")); ?>
+                                    <?php echo form_textarea(array('name' => 'school_write_up')); ?>
                                     <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
                                 </div>
                                 <div class="modal-footer">
