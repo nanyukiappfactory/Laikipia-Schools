@@ -40,7 +40,7 @@ if (!empty($validation_errors)) {
                                             <?php if ($categories->num_rows() > 0) {
     foreach ($categories->result() as $row) {?>
                                             <option value="<?php echo $row->category_id; ?>">
-                                                <?php echo $row->category_name; ?></option>
+                                                <?php echo $row->category_name;break; ?></option>
                                             <?php
 }
 }?>
