@@ -38,7 +38,7 @@ if (!empty($validation_errors)) {
                             <option value="">Choose a parent...</option>
                             <?php if (is_array($categories->result())) {
     foreach ($categories->result() as $cat) {?>
-                            <option value="<?php echo $cat->category_id; ?>"><?php echo $cat->category_name; break;?></option>
+                            <option value="<?php echo $cat->category_id; ?>"><?php echo $cat->category_name;?></option>
                             <?php }
 }?>
                         </select>
@@ -177,7 +177,7 @@ if ($query->num_rows() > 0) {
                     break;
                 }
 
-                
+
             }
         }
 
