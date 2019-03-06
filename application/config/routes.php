@@ -183,6 +183,7 @@ $route['administration/search-posts'] = 'laikipiaschools/posts/search_posts';
 $route['administration/posts/close-search'] = 'laikipiaschools/posts/close_search';
 $route['administration/export-posts'] = 'laikipiaschools/posts/export_posts';
 
+
 $route['administration/posts/(:any)/(:any)/(:num)'] = 'laikipiaschools/posts/index/$1/$2/$3';
 $route['administration/posts/(:any)/(:any)'] = 'laikipiaschools/posts/index/$1/$2';
 $route['administration/post/bulk-actions'] = 'laikipiaschools/posts/bulk_actions';

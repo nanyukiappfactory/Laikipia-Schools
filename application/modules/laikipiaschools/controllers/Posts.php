@@ -33,9 +33,11 @@ class posts extends MX_Controller
             $where .= $post_search;
             // var_dump($where);die();
         }
-
         $this->form_validation->set_rules("post_title", "Post Title", "required");
         $this->form_validation->set_rules("post_description", "Post Description", "required");
+$this->form_validation->set_rules("category_id", "Post Category", "required");
+$this->form_validation->set_rules("post_date", "Post Date", "required");
+
 
         //  validate
         $form_errors = "";
@@ -51,11 +53,11 @@ class posts extends MX_Controller
 
                 if ($upload_response['check'] == false) {
                     $this->session->set_flashdata('error', $upload_response['message']);
-                    redirect('laikipiaschools/posts');
+                    redirect('administration/posts');
                 } else {
                     if ($this->posts_model->add_post($upload_response['file_name'], $upload_response['thumb_name'])) {
                         $this->session->set_flashdata('success', 'post Added successfully!!');
-                        redirect('laikipiaschools/posts');
+                        redirect('administration/posts');
                     } else {
                         $this->session->flashdata("error_message", "Unable to add  post");
                     }
@@ -64,7 +66,7 @@ class posts extends MX_Controller
             } else {
                 if ($this->posts_model->add_post(null, null)) {
                     $this->session->set_flashdata('success', 'post Added successfully!!');
-                    redirect('laikipiaschools/posts');
+                    redirect('administration/posts');
                 } else {
                     $this->session->flashdata("error_message", "Unable to add  post");
                 }
@@ -173,7 +175,7 @@ class posts extends MX_Controller
     {
         $this->load->model("excel_export_model");
         $data["post_data"] = $this->excel_export_model->fetch_data();
-        $this->load->view("Administration/posts", $data
+        $this->load->view("administration/posts", $data
         );
     }
 
@@ -269,7 +271,7 @@ class posts extends MX_Controller
             {
                 if ($this->posts_model->update_post(null, null)) {
                     $this->session->set_flashdata('success', 'post updated successfully!!');
-                    redirect('laikipiaschools/posts');
+                    redirect('administration/posts');
                 } else {
                     $this->session->flashdata("error_message", "Unable to update post");
                 }
