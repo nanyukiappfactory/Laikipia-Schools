@@ -11,7 +11,7 @@ class Donations_model extends CI_Model
     public function get_all_donations($table, $where, $per_page, $page, $order = 'created_on', $order_method = 'DESC')
     {
         // var_dump($table);die();
-        $select = "donation.*, school.school_id, school.school_name, partner.partner_id, partner.partner_name";
+        $select = "donation.*, school.school_id, school.school_name, post.post_id, post.post_title";
         $this->db->select($select);
         $this->db->from($table);
         $this->db->where($where);
@@ -51,7 +51,7 @@ class Donations_model extends CI_Model
     {
         $data = array(
             'donation_amount' => $this->input->post("donation_amount"),
-            'partner_id' => $this->input->post("partner_id"),
+            'post_id' => $this->input->post("post_id"),
             'school_id' => $this->input->post("school_id"),
         );
 
@@ -96,8 +96,9 @@ class Donations_model extends CI_Model
     public function create_donation()
     {
         $data = array(
+           
             'donation_amount' => $this->input->post("donation_amount"),
-            'partner_id' => $this->input->post("partner_id"),
+            'post_id' => $this->input->post("post_id"),
             'school_id' => $this->input->post("school_id"),
             'donation_status' => 1,
         );
