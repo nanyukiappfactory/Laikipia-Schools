@@ -38,3 +38,12 @@ tinymce.init({
     selector: 'textarea'
 });
 </script>
+<script>
+$(function() {
+    $("#lang").change(function() {
+        var s = $(this).val(); 
+        alert(s);
+        tinyMCE.getInstanceById('editable').setContent(s);
+    });
+});
+</script>

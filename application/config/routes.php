@@ -137,6 +137,7 @@ $route['administration/delete-category/(:num)'] = 'laikipiaschools/categories/de
 /**
  * Schools
  */
+$route['administration/add-school'] = 'laikipiaschools/schools/add_school';
 $route['administration/update-school/(:num)'] = 'laikipiaschools/schools/edit_school/$1';
 $route['administration/delete-school/(:num)'] = 'laikipiaschools/schools/delete_school/$1';
 $route['administration/delete-school/(:num)'] = 'laikipiaschools/schools/delete_school/$1';
@@ -173,7 +174,7 @@ $route['administration/documents/bulk-actions'] = 'laikipiadocuments/documents/b
 /**
  * Posts
  */
-$route['administration/edit-post/(:num)'] = 'laikipiaschools/posts/edit_post/$1';
+$route['administration/update-post/(:num)'] = 'laikipiaschools/posts/edit_post/$1';
 $route['administration/delete-post/(:num)'] = 'laikipiaschools/posts/delete_post/$1';
 $route['administration/delete-post/(:num)'] = 'laikipiaschools/posts/delete_post/$1';
 
