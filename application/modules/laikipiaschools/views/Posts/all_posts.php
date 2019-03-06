@@ -171,7 +171,7 @@ if ($query->num_rows() > 0) {
                     </td> -->
                     <td>
                         <?php foreach ($categories->result() as $category) {
-            if (indexOf($category->category_id) == $row->category_id) {
+            if ($category->category_id == $row->category_id) {
                 echo $category->category_name;
                 break;
             }
