@@ -31,10 +31,12 @@
                             <div class="col-sm-12 col-md-12">
                                 <select class="custom-select my-1 mr-sm-2" name="partner_id" required>
                                     <option selected>Choose Partner...</option>
-                                    <?php
-if ($partners->num_rows() > 0) {
-    foreach ($partners->result() as $row) {?>
-                                    <option value="<?php echo $row->partner_id; ?>">
+                                    <?php if($categories->num_rows() > 0) {
+                                        foreach ($categories->result() as $row) {
+                                            if($row->category_name == "Partner" || $row->category_name == "Donor"){
+                                                
+                                            }?>
+                                            <option value="<?php echo $row->partner_id; ?>">
                                         <?php echo $row->partner_name; ?>
                                     </option>
                                     <?php
