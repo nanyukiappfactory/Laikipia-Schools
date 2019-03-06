@@ -1,3 +1,10 @@
+<?php
+
+$validation_errors = validation_errors();
+if (!empty($validation_errors)) {
+    echo $validation_errors;
+}
+?>
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
         <h3 class="form-group row ml-5">Edit Donation</h3>
@@ -18,25 +25,24 @@
 	<div class="col-sm-10">
 		<select class="custom-select my-1 mr-sm-2" name="partner_id">
 			<option selected>Choose Partner...</option>
-			
-			<?php  
-			$donations = array();
-			foreach ($categories->result() as $row) 
-			{
-				if(strtolower($row->category_name) == strtolower("partner")){?>
+
+			<?php
+$donations = array();
+    foreach ($categories->result() as $row) {
+        if (strtolower($row->category_name) == strtolower("partner")) {?>
 						<option value="<?php echo $row->post_id; ?>">
 						<!-- <?php echo $row->post_id == $categories->post_title ? "selected" : ""; ?> -->
 						<?php echo $row->post_title; ?></option>
 				<?php }
-				if(strtolower($row->category_name) == strtolower("Donors")){?>
+        if (strtolower($row->category_name) == strtolower("Donors")) {?>
 					<option value="<?php echo $row->post_id; ?>">
 					<!-- <?php echo $row->post_id == $categories->post_id ? "selected" : ""; ?> -->
 					<?php echo $row->post_title; ?></option>
 				<?php }
-			}
+    }
 
-			?>
-			
+    ?>
+
 		</select>
 	</div>
 </div>

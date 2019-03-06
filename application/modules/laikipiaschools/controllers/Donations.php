@@ -29,7 +29,8 @@ class Donations extends MX_Controller
         $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
 
         if ($this->form_validation->run()) {
-            if ($this->donations_model->create_donation($donation_id)) {
+            $donation_id = $this->donations_model->create_donation();
+            if ($donation_id) {
                 $this->session->set_flashdata('success', 'Donation ID: ' . $donation_id . ' Created successfully');
                 redirect('laikipiaschools/donations');
             } else {
@@ -165,7 +166,7 @@ class Donations extends MX_Controller
     {
         // echo $this->input->post("donation_amount");die();
         $this->form_validation->set_rules('donation_amount', 'Donation Amount', 'required|numeric');
-        $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
+        // $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
         $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
 
         if ($this->form_validation->run()) {
@@ -176,16 +177,9 @@ class Donations extends MX_Controller
                 redirect('laikipiaschools/donations');
             } else {
                 $this->session->set_flashdata('error', 'Unable to update: ' . $donation_id);
-                $v_data['query'] = $this->donations_model->get_single_donation($donation_id);
-                $v_data['schools'] = $this->donations_model->all_schools();
-                $v_data['partners'] = $this->donations_model->all_partners();
-                $v_data['title'] = "Edit Donation";
-                $v_data['categories'] = $this->site_model->get_all_categories();
-               
-                $data['content'] = $this->load->view('donations/edit_donation', $v_data, true);
-
-                $this->load->view("laikipiaschools/layouts/layout", $data);
+                redirect('administration/edit-donations');
             }
+            
         } else {
             $v_data['query'] = $this->donations_model->get_single_donation($donation_id);
             $v_data['schools'] = $this->donations_model->all_schools();
