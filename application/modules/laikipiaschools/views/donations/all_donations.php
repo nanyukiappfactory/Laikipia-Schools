@@ -29,7 +29,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-12 col-md-12">
-                                <select class="custom-select my-1 mr-sm-2" name="partner_id" required>
+                                <select class="custom-select my-1 mr-sm-2" name="post_id" required>
                                     <option selected>Choose Partner...</option>
                                     <?php  
                                         $donations = array();
@@ -140,7 +140,7 @@ if ($query->num_rows() > 0) {
                             <?php echo $count ?>
                         </td>
                         <td>
-                            <?php echo $row->partner_name; ?>
+                            <?php echo $row->post_title; ?>
                         </td>
                         <td>
                             <?php echo $row->school_name; ?>
@@ -176,7 +176,7 @@ if ($query->num_rows() > 0) {
                                         <!--Body-->
                                         <div class="modal-body">
 
-                                            <h5 class=" pb-3"><b>Retrieved Donor:</b> <br /> <?php echo $row->partner_name; ?>
+                                            <h5 class=" pb-3"><b>Retrieved Donor:</b> <br /> <?php echo $row->post_title; ?>
                                             </h5>
 
                                             <div class=" ml-1 pb-3" style="font-size:20px;list-style-type:none;">
@@ -188,7 +188,11 @@ if ($query->num_rows() > 0) {
                                                 <li><b>School Name: </b> <br /><?php echo $row->school_name; ?></li>
                                             </div>
                                             <div class="ml-1 pb-3" style="font-size:20px;list-style-type:none;">
-                                                <li><b>donation Status: </b> <br /><?php echo $row->donation_status; ?>
+                                                <li><b>Donation Status: </b> <br /><?php if($row->donation_status == 1){?>
+                                                    <span class="badge badge-pill badge-success">Active</span>
+                                                    <?php } else {?>
+                                                    <span class="badge badge-pill badge-secondary">Inactive</span>
+                                                    <?php }?>
                                                 </li>
                                             </div>
                                             <div class="modal-footer">

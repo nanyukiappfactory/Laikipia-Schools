@@ -15,7 +15,7 @@ class Migration_Add_donation extends CI_Migration {
                 'type' => 'DOUBLE',
                 'null' => TRUE,
             ),
-            'partner_id' => array(
+            'post_id' => array(
                 'type' => 'INT',
                 'constraint' => '11',
                 'null' => FALSE,

@@ -25,7 +25,7 @@ class Donations extends MX_Controller
         // $order = 'donation.donation_amount';
         // $order_method = 'DESC';
         $this->form_validation->set_rules('donation_amount', 'Donation Amount', 'required|numeric');
-        $this->form_validation->set_rules('partner_id', 'donor', 'required|numeric');
+        $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
         $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
 
         if ($this->form_validation->run()) {
@@ -37,9 +37,9 @@ class Donations extends MX_Controller
                 redirect('laikipiaschools/donations');
             }
         } else {
-            $where = 'donation.deleted=0 AND donation.school_id = school.school_id AND donation.partner_id = partner.partner_id';
+            $where = 'donation.deleted=0 AND donation.school_id = school.school_id AND donation.post_id = post.post_id';
            // $where = 'donation.deleted=0 AND donation.school_id = school.school_id AND donation.category_id = post.category_id';
-            $table = 'donation, school, partner';
+            $table = 'donation, school, post';
            // $table = 'donation, school, post';
             $donations_search = $this->session->userdata('donations_search');
             $search_title = $this->session->userdata('donations_search_title');
@@ -165,7 +165,7 @@ class Donations extends MX_Controller
     {
         // echo $this->input->post("donation_amount");die();
         $this->form_validation->set_rules('donation_amount', 'Donation Amount', 'required|numeric');
-        $this->form_validation->set_rules('partner_id', 'Partner', 'required|numeric');
+        $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
         $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
 
         if ($this->form_validation->run()) {

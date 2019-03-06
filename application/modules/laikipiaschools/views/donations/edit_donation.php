@@ -18,16 +18,25 @@
 	<div class="col-sm-10">
 		<select class="custom-select my-1 mr-sm-2" name="partner_id">
 			<option selected>Choose Partner...</option>
-			<?php
-if ($partners->num_rows() > 0) {
-        foreach ($partners->result() as $row) {?>
-			<option value="<?php echo $row->partner_id; ?>" <?php echo $row->partner_id == $donation->partner_id ? "selected" : ""; ?>>
-				<?php echo $row->partner_name; ?>
-			</option>
-			<?php
-}
-    }
-    ?>
+			
+			<?php  
+			$donations = array();
+			foreach ($categories->result() as $row) 
+			{
+				if(strtolower($row->category_name) == strtolower("partner")){?>
+						<option value="<?php echo $row->post_id; ?>">
+						<!-- <?php echo $row->post_id == $categories->post_title ? "selected" : ""; ?> -->
+						<?php echo $row->post_title; ?></option>
+				<?php }
+				if(strtolower($row->category_name) == strtolower("Donors")){?>
+					<option value="<?php echo $row->post_id; ?>">
+					<!-- <?php echo $row->post_id == $categories->post_id ? "selected" : ""; ?> -->
+					<?php echo $row->post_title; ?></option>
+				<?php }
+			}
+
+			?>
+			
 		</select>
 	</div>
 </div>
