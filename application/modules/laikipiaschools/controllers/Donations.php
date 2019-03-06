@@ -29,7 +29,7 @@ class Donations extends MX_Controller
         $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
 
         if ($this->form_validation->run()) {
-            if ($this->donations_model->create_donation($donation_id)) {
+            if ($this->donations_model->create_donation()) {
                 $this->session->set_flashdata('success', 'Donation ID: ' . $donation_id . ' Created successfully');
                 redirect('laikipiaschools/donations');
             } else {
