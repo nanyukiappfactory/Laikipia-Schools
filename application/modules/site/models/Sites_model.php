@@ -52,6 +52,8 @@ class Sites_model extends CI_Model
         $this->db->select('post.*, category.category_id, category.category_name');
         $this->db->from('post');
         $this->db->join('category', 'post.category_id=category.category_id', 'left');
+        $this->db->limit('5');
+        $this->db->order_by('post_date', 'ASC');
         return $this->db->get();
 
     }
@@ -60,6 +62,8 @@ class Sites_model extends CI_Model
         $this->db->select('post.*, category.category_id, category.category_name');
         $this->db->from('post');
         $this->db->join('category', 'post.category_id=category.category_id', 'left');
+        $this->db->limit('3');
+        $this->db->order_by('post_date', 'ASC');
         return $this->db->get();
  
     }

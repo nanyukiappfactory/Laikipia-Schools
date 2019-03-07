@@ -33,6 +33,15 @@ class Site_model extends CI_Model
         return $this->db->get();
     }
 
+	 public function get_categories()
+    {
+		$this->db->distinct();
+        $this->db->select('category.*, post.post_id, post.post_title');
+        $this->db->from('category');
+        $this->db->join('post', 'post.category_id=category.category_id', 'left');
+        return $this->db->get();
+    }
+
     public function count_items($table, $where, $limit = null)
     {
         if ($limit != null) {

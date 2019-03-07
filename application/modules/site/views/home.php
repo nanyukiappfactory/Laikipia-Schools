@@ -181,7 +181,7 @@ echo json_encode($news);die();
 
 $picture_array = array();
 foreach ($pictures->result() as $row) {
-    if (strtolower($row->category_name) == strtolower("Dignity pack")) {
+    if (strtolower($row->category_name) == strtolower("Sensitization")) {
 
         array_push($picture_array, array(
             "post_title" => $row->post_title,
@@ -195,6 +195,31 @@ foreach ($pictures->result() as $row) {
 }
 
 // echo json_encode($picture_array);die();
+?>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-12 col-md-12">
+
+            <?php
+
+$picture_array = array();
+foreach ($pictures->result() as $row) {
+    if (strtolower($row->category_name) == strtolower("Student")) {
+
+        array_push($picture_array, array(
+            "post_title" => $row->post_title,
+            "post_description" => $row->post_description,
+            "post_image_name" => $row->post_image_name,
+            "post_date" => $row->post_date,
+        ));
+
+    }
+
+}
+
+echo json_encode($picture_array);die();
 ?>
         </div>
     </div>
