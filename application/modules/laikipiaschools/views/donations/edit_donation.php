@@ -30,7 +30,7 @@ if (!empty($validation_errors)) {
                     <?php
 $donations = array();
     foreach ($categories->result() as $row) {
-        if (strtolower($row->category_name) == strtolower("Partners")) {?>
+        if (strtolower($row->category_name) == strtolower("Partner")) {?>
                     <option value="<?php echo $row->post_id; ?>">
 
                         <?php echo $row->post_title; ?></option>
