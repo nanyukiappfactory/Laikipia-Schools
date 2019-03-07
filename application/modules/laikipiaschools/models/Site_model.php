@@ -33,12 +33,14 @@ class Site_model extends CI_Model
         return $this->db->get();
     }
 
-	 public function get_categories()
+    public function get_categories()
     {
-		$this->db->distinct();
+		
         $this->db->select('category.*, post.post_id, post.post_title');
+        $this->db->distinct('category.category_id');
         $this->db->from('category');
-        $this->db->join('post', 'post.category_id=category.category_id', 'left');
+		$this->db->join('post', 'post.category_id=category.category_id', 'left');
+		$this->db->group_by('category.category_id');
         return $this->db->get();
     }
 
