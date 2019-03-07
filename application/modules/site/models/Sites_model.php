@@ -24,7 +24,7 @@ class Sites_model extends CI_Model
         return $this->db->get();
     }
 
-    public function get_dinity_packs()
+    public function get_dignity_packs()
     {
         $this->db->select('post.*, category.category_id, category.category_name');
         $this->db->from('post');
@@ -49,10 +49,18 @@ class Sites_model extends CI_Model
 
     public function get_new_items()
     {
+        $this->db->select('post.*, category.category_id, category.category_name');
+        $this->db->from('post');
+        $this->db->join('category', 'post.category_id=category.category_id', 'left');
+        return $this->db->get();
 
     }
     public function get_gallery_pictures()
     {
-
+        $this->db->select('post.*, category.category_id, category.category_name');
+        $this->db->from('post');
+        $this->db->join('category', 'post.category_id=category.category_id', 'left');
+        return $this->db->get();
+ 
     }
 }
