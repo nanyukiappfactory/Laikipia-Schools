@@ -37,10 +37,10 @@ if (!empty($validation_errors)) {
                         <select id="inputState" class="form-control" name="category_parent">
                             <option value="">Choose a parent...</option>
                             <?php if (is_array($categories->result())) {
-    foreach ($categories->result() as $cat) {?>
-                            <option value="<?php echo $cat->category_id; ?>"><?php echo $cat->category_name;?></option>
-                            <?php }
-}?>
+                        foreach ($categories->result() as $cat) {?>
+                        <option value="<?php echo $cat->category_id; ?>"><?php echo $cat->category_name; ?></option>
+                        <?php }
+                    }?>
                         </select>
                     </div>
                     <div class="form-group">
@@ -48,26 +48,7 @@ if (!empty($validation_errors)) {
                         <input type="name" class="form-control" name="category_name" id="category_name"
                             naria-describedby="emailHelp" placeholder="Enter category Name">
                     </div>
-                    <!-- <div class="form-group">
-                                    <label for="category_status">Status</label>
-                                    <div class="col-sm-10 row">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="category_status"
-                                                id="category_status" value="1" checked>
-                                            <label class="form-check-label mr-5" for="gridRadios1">
-                                                Active
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="category_status"
-                                                id="category_status" value="0">
-                                            <label class="form-check-label mb-3" for="gridRadios2">
-                                                Inactive
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <small id="emailHelp" class="form-text text-muted"></small>
-                                </div> -->
+                   
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>

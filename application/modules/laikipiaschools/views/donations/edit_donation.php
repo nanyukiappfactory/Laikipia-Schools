@@ -31,12 +31,12 @@ $donations = array();
     foreach ($categories->result() as $row) {
         if (strtolower($row->category_name) == strtolower("partner")) {?>
 						<option value="<?php echo $row->post_id; ?>">
-						<!-- <?php echo $row->post_id == $categories->post_title ? "selected" : ""; ?> -->
+						
 						<?php echo $row->post_title; ?></option>
 				<?php }
         if (strtolower($row->category_name) == strtolower("Donors")) {?>
 					<option value="<?php echo $row->post_id; ?>">
-					<!-- <?php echo $row->post_id == $categories->post_id ? "selected" : ""; ?> -->
+					 <?php echo $row->post_id == $categories->post_id ? "selected" : ""; ?> 
 					<?php echo $row->post_title; ?></option>
 				<?php }
     }
