@@ -44,7 +44,6 @@ if (!empty($validation_errors)) {
                                             <?php 
 }
 }?>
-
                                         </select>
 
                                     </div>
