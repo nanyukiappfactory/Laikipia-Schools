@@ -34,7 +34,7 @@
                                     <?php  
                                         
                                         foreach ($categories->result() as $row) {
-                                            if(strtolower($row->category_name) == strtolower("partner")){?>
+                                            if(strtolower($row->category_name) == strtolower("partners")){?>
                                                  <option value="<?php echo $row->post_id; ?>"><?php echo $row->post_title; ?></option>
                                             <?php }
                                             if(strtolower($row->category_name) == strtolower("Donor")){?>
