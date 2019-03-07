@@ -38,7 +38,7 @@ if (!empty($validation_errors)) {
                                         <select id="inputState" class="form-control" name="category_id" required>
                                             <option selected>Choose Category</option>
 
-                                            <?php if ($all_categories->num_rows() > 0) {foreach ($all_categories->result() as $row) {?>
+                                            <?php if ($categories->num_rows() > 0) {foreach ($categories->result() as $row) {?>
                                             <option value="<?php echo $row->category_id; ?>">
                                                 <?php echo $row->category_name; ?></option>
                                             <?php 

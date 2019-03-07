@@ -101,7 +101,6 @@ $this->form_validation->set_rules("post_date", "Post Date", "required");
             $page = ($this->uri->segment($segment)) ? $this->uri->segment($segment) : 0;
             $v_data["links"] = $this->pagination->create_links();
             $v_data['categories'] = $this->site_model->get_all_categories();
-            $v_data['all_categories'] = $this->site_model->get_categories();
 
             $query = $this->posts_model->get_all_posts($table, $where,  $config["per_page"],
                 $page, $order, $order_method);
@@ -116,7 +115,7 @@ $this->form_validation->set_rules("post_date", "Post Date", "required");
                 $data['title'] = 'post filtered by ' . $search_title;
             }
             $v_data['title'] = $data['title'];
-
+            $v_data['all_categories'] = $this->site_model->get_categories();
             $v_data['order'] = $order;
             $v_data['order_method'] = $order_method;
             $v_data['query'] = $query;

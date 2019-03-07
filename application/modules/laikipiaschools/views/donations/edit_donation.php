@@ -36,11 +36,12 @@ $donations = array();
                         <?php echo $row->post_title; ?></option>
                     <?php }
         if (strtolower($row->category_name) == strtolower("Donor")) {?>
-					<option value="<?php echo $row->post_id; ?>">
-					
-					<?php echo $row->post_title; ?></option>
-				<?php }
+                    <option value="<?php echo $row->post_id; ?>">
+
+                        <?php echo $row->post_title; ?></option>
+                    <?php }
     }
+
     ?>
 
                 </select>
