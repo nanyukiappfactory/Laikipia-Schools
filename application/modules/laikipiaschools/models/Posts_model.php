@@ -16,7 +16,6 @@ class Posts_model extends CI_Model
             "post_date" => $this->input->post("post_date"),
             "category_id" => $this->input->post("category_id"),
         );
-
         if ($this->db->insert("post", $data)) {
             return $this->db->insert_id();
         } else {
