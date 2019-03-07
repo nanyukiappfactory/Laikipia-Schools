@@ -12,7 +12,7 @@
                     class="btn btn-default pull-right"><i class="fas fa-file-export"></i> Export</a>
                 <div class="modal fade" id="createDonation" tabindex="-1" role="dialog"
                     aria-labelledby="createDonationLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                    <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="createDonationLabel">Enter New School</h5>
@@ -217,35 +217,7 @@
     </div>
 </div>
 
-<div class=" table-responsive">
-    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th> School Picture</th>
-                <th>School Name</th>
-                <th>Number of Boys</th>
-                <th>Number of Girls</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>#</th>
-                <th>School Picture</th>
-                <th>School Name</th>
-                <th>Number of Boys</th>
-                <th>Number of Girls</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-        </tfoot>
-        <tbody>
-            <?php $this->load->view('view_edit_school');?>
-        </tbody>
-    </table>
-</div>
+
 <p>
     <?php echo $links; ?>
 </p>
