@@ -231,11 +231,7 @@ if ($query->num_rows() > 0) {
         ?>
                                                     </p>
                                                 </div>
-                                                <div>
-                                                    <h5><b> Post Description:</b></h5>
-                                                    <p><?php echo $row->post_description; ?>
-                                                    </p>
-                                                </div>
+                                                
                                                 <div>
                                                     <?php if ($row->post_status == 1) {?>
                                                     <span class="badge badge-pill badge-success">Active</span>
@@ -248,8 +244,17 @@ if ($query->num_rows() > 0) {
                                                             date:<?php echo $row->post_date; ?></small>
                                                     </p>
                                                 </div>
+                                                
                                             </div>
+                                            
                                         </div>
+                                         <div class="row">
+                                            <div>
+                                                    <h5><b> Post Description:</b></h5>
+                                                    <p><?php echo $row->post_description; ?>
+                                                    </p>
+                                                </div>
+                                            </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-primary" data-dismiss="modal"><i
