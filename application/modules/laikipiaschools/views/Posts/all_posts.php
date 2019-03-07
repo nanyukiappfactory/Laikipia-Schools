@@ -231,7 +231,6 @@ if ($query->num_rows() > 0) {
         ?>
                                                     </p>
                                                 </div>
-
                                                 <div>
                                                     <?php if ($row->post_status == 1) {?>
                                                     <span class="badge badge-pill badge-success">Active</span>
