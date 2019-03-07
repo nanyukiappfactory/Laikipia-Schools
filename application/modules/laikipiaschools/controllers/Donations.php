@@ -19,25 +19,29 @@ class Donations extends MX_Controller
      *    Default action is to show all the donations
      *
      */
-    public function index($donation_id = null, $order = null, $order_method = null)
+    // public function index($donation_id = null, $order = null, $order_method = null)
+    public function index($order = 'donation.donation_amount', $order_method = 'ASC')
     {
-        $order = 'donation.created_on';
-        $order_method = 'DESC';
+        // $order = 'donation.donation_amount';
+        // $order_method = 'DESC';
         $this->form_validation->set_rules('donation_amount', 'Donation Amount', 'required|numeric');
-        $this->form_validation->set_rules('partner_id', 'Partner', 'required|numeric');
+        $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
         $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
 
         if ($this->form_validation->run()) {
-            if ($this->donations_model->create_donation($donation_id)) {
-                $this->session->set_flashdata('success', 'Donation ID: ' . $donation_id . ' updated successfully');
+            $donation_id = $this->donations_model->create_donation();
+            if ($donation_id) {
+                $this->session->set_flashdata('success', 'Donation ID: ' . $donation_id . ' Created successfully');
                 redirect('laikipiaschools/donations');
             } else {
-                $this->session->set_flashdata('error', 'Unable to update: ' . $donation_id);
+                $this->session->set_flashdata('error', 'Unable to Create: ' . $donation_id);
                 redirect('laikipiaschools/donations');
             }
         } else {
-            $where = 'donation.deleted=0 AND donation.school_id = school.school_id AND donation.partner_id = partner.partner_id';
-            $table = 'donation, school, partner';
+            $where = 'donation.deleted=0 AND donation.school_id = school.school_id AND donation.post_id = post.post_id';
+           // $where = 'donation.deleted=0 AND donation.school_id = school.school_id AND donation.category_id = post.category_id';
+            $table = 'donation, school, post';
+           // $table = 'donation, school, post';
             $donations_search = $this->session->userdata('donations_search');
             $search_title = $this->session->userdata('donations_search_title');
 
@@ -94,6 +98,10 @@ class Donations extends MX_Controller
             $v_data['schools'] = $this->donations_model->all_schools();
             $v_data['page'] = $page;
             $v_data['categories'] = $this->site_model->get_all_categories();
+            // $v_data['cats'] = $this->site_model->get_categories();
+
+            // echo json_encode($v_data['categories']->result());die();
+           //var_dump($v_data['categories']->result());die();
             $v_data['partners'] = $this->donations_model->all_partners();
 
             $data['content'] = $this->load->view('donations/all_donations', $v_data, true);
@@ -102,22 +110,7 @@ class Donations extends MX_Controller
         }
 
     }
-    public function search_partners()
-    {
-        $partner_type_id = $this->input->post('search_param');
-        $search_title = '';
-
-        if (!empty($partner_type_id)) {
-            $search_title .= ' Searched: <strong>' . $partner_type_id . '</strong>';
-            $partner_type_id = ' AND partner.partner_type_id = ' . $partner_type_id;
-        }
-        $search = $partner_type_id;
-        $this->session->set_userdata('partners_search', $search);
-        $this->session->set_userdata('partners_search_title', $search_title);
-        redirect("administration/partners");
-    }
-
-   
+    
     public function close_search()
     {
         $this->session->unset_userdata('donations_search');
@@ -170,43 +163,48 @@ class Donations extends MX_Controller
         redirect('administration/donations');
 
     }
-
-    public function edit_donation($donation_id)
+public function edit_donation($donation_id)
     {
-        // echo $this->input->post("donation_amount");die();
-        $this->form_validation->set_rules('donation_amount', 'Donation Amount', 'required|numeric');
-        $this->form_validation->set_rules('partner_id', 'Partner', 'required|numeric');
-        $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
+      $this->form_validation->set_rules('donation_amount', 'Donation Amount', 'required|numeric');
+// $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
+$this->form_validation->set_rules('school_id', 'School', 'required|numeric');
+
 
         if ($this->form_validation->run()) {
-            if ($this->donations_model->update_donation($donation_id)) {
-
-                $this->session->set_flashdata('success', 'Donation ID: ' . $donation_id . ' updated successfully');
-
-                redirect('laikipiaschools/donations');
-            } else {
-                $this->session->set_flashdata('error', 'Unable to update: ' . $donation_id);
-                $v_data['query'] = $this->donations_model->get_single_donation($donation_id);
-                $v_data['schools'] = $this->donations_model->all_schools();
-                $v_data['partners'] = $this->donations_model->all_partners();
-                $v_data['title'] = "Edit Donation";
-                $v_data['categories'] = $this->site_model->get_all_categories();
-                $data['content'] = $this->load->view('donations/edit_donation', $v_data, true);
-
-                $this->load->view("laikipiaschools/layouts/layout", $data);
+            $update_status = $this->donations_model->update_donation($donation_id);
+            if ($update_status) {
+                redirect("administration/donations");
             }
         } else {
-            $v_data['query'] = $this->donations_model->get_single_donation($donation_id);
-            $v_data['schools'] = $this->donations_model->all_schools();
-            $v_data['partners'] = $this->donations_model->all_partners();
-            $v_data['title'] = "Edit Donation";
-            $v_data['categories'] = $this->site_model->get_all_categories();
-            $data['content'] = $this->load->view('donations/edit_donation', $v_data, true);
-            $this->load->view("laikipiaschools/layouts/layout", $data);
+            //name from form is the unique identifier
+            $my_donation = $this->donations_model->get_single_donation($donation_id);
+            if ($my_donation->num_rows() > 0) {
+                $row = $my_donation->row();
+                $donation_amount = $row->donation_amount;
+                $school_id = $row->school_id;
+                $post_id = $row->post_id;
+
+                $v_data["donation_amount"] = $donation_amount;
+                $v_data["school_id"] = $school_id;
+                $v_data["post_id"] = $post_id;
+                $v_data['categories'] = $this->site_model->get_all_categories();
+                $v_data['schools'] = $this->donations_model->all_schools();
+                $v_data['query'] = $this->donations_model->get_single_donation($donation_id);
+
+
+
+                
+                $data = array("title" => "Update donation",
+                    "content" => $this->load->view("donations/edit_donation", $v_data, true),
+                );
+                // var_dump($data);die();
+                $this->load->view("laikipiaschools/layouts/layout", $data);
+            } else {
+                $this->session->set_flashdata("error_message", "couldnt");
+                redirect("administration/donations");
+            }
         }
-
     }
-
     public function single_donation($donation_id)
     {
         $v_data['query'] = $this->donations_model->get_single_donation($donation_id);

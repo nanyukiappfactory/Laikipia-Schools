@@ -1,10 +1,3 @@
-<?php
-
-$validation_errors = validation_errors();
-if (!empty($validation_errors)) {
-    echo $validation_errors;
-}
-?>
 <!--
 <div class="container"> -->
 <div class="shadow-lg p-3 mb-5 bg-white rounded" id="ads">
@@ -222,6 +215,37 @@ if (!empty($validation_errors)) {
             </tbody>
         </table>
     </div>
-    <p>
-        <?php echo $links; ?>
-    </p>
+</div>
+
+<div class=" table-responsive">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th> School Picture</th>
+                <th>School Name</th>
+                <th>Number of Boys</th>
+                <th>Number of Girls</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>#</th>
+                <th>School Picture</th>
+                <th>School Name</th>
+                <th>Number of Boys</th>
+                <th>Number of Girls</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            <?php $this->load->view('view_edit_school');?>
+        </tbody>
+    </table>
+</div>
+<p>
+    <?php echo $links; ?>
+</p>

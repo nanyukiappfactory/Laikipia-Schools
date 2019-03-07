@@ -104,19 +104,19 @@ $route['administration/deactivate-donation/(:num)/(:num)'] = 'laikipiaschools/do
 
 //partners
 
-// $route['administration/partners'] = 'laikipiaschools/partners/index';
-// $route['administration/partners/add-partners'] = 'laikipiaschools/partners/create_partner';
-// $route['administration/partners/read-partner/(:num)'] = 'laikipiaschools/partners/read_partner/$1';
-// $route['administration/edit_partner/(:num)'] = 'laikipiaschools/partners/edit/$1';
-// $route['administration/deactivate-partner/(:num)/(:num)'] = 'laikipiaschools/partners/deactivate_partner/$1/$2';
-// $route['administration/search-partners'] = 'laikipiaschools/partners/search_partners';
-// $route['administration/partners/close-search'] = 'laikipiaschools/partners/close_search';
-// $route['administration/export-partners'] = 'laikipiaschools/partners/export_partners';
-// $route['administration/partners/(:any)/(:any)/(:num)'] = 'laikipiaschools/partners/index/$1/$2/$3';
-// $route['administration/partners/(:any)/(:any)'] = 'laikipiaschools/partners/index/$1/$2';
-// $route['administration/partners/bulk-actions'] = 'laikipiaschools/partners/bulk_actions';
-// $route['administration/delete-partner/(:num)'] = 'laikipiaschools/partners/delete_partner/$1';
-// $route['administration/import-partners'] = 'laikipiaschools/partners/import_partners';
+$route['administration/partners'] = 'laikipiaschools/partners/index';
+$route['administration/partners/add-partners'] = 'laikipiaschools/partners/create_partner';
+$route['administration/partners/read-partner/(:num)'] = 'laikipiaschools/partners/read_partner/$1';
+$route['administration/edit_partner/(:num)'] = 'laikipiaschools/partners/edit/$1';
+$route['administration/deactivate-partner/(:num)/(:num)'] = 'laikipiaschools/partners/deactivate_partner/$1/$2';
+$route['administration/search-partners'] = 'laikipiaschools/partners/search_partners';
+$route['administration/partners/close-search'] = 'laikipiaschools/partners/close_search';
+$route['administration/export-partners'] = 'laikipiaschools/partners/export_partners';
+$route['administration/partners/(:any)/(:any)/(:num)'] = 'laikipiaschools/partners/index/$1/$2/$3';
+$route['administration/partners/(:any)/(:any)'] = 'laikipiaschools/partners/index/$1/$2';
+$route['administration/partners/bulk-actions'] = 'laikipiaschools/partners/bulk_actions';
+$route['administration/delete-partner/(:num)'] = 'laikipiaschools/partners/delete_partner/$1';
+$route['administration/import-partners'] = 'laikipiaschools/partners/import_partners';
 
 
 
@@ -137,6 +137,7 @@ $route['administration/delete-category/(:num)'] = 'laikipiaschools/categories/de
 /**
  * Schools
  */
+$route['administration/add-school'] = 'laikipiaschools/schools/add_school';
 $route['administration/update-school/(:num)'] = 'laikipiaschools/schools/edit_school/$1';
 $route['administration/delete-school/(:num)'] = 'laikipiaschools/schools/delete_school/$1';
 $route['administration/delete-school/(:num)'] = 'laikipiaschools/schools/delete_school/$1';
@@ -173,7 +174,7 @@ $route['administration/documents/bulk-actions'] = 'laikipiadocuments/documents/b
 /**
  * Posts
  */
-$route['administration/edit-post/(:num)'] = 'laikipiaschools/posts/edit_post/$1';
+$route['administration/update-post/(:num)'] = 'laikipiaschools/posts/edit_post/$1';
 $route['administration/delete-post/(:num)'] = 'laikipiaschools/posts/delete_post/$1';
 $route['administration/delete-post/(:num)'] = 'laikipiaschools/posts/delete_post/$1';
 
@@ -183,9 +184,18 @@ $route['administration/search-posts'] = 'laikipiaschools/posts/search_posts';
 $route['administration/posts/close-search'] = 'laikipiaschools/posts/close_search';
 $route['administration/export-posts'] = 'laikipiaschools/posts/export_posts';
 
+
 $route['administration/posts/(:any)/(:any)/(:num)'] = 'laikipiaschools/posts/index/$1/$2/$3';
 $route['administration/posts/(:any)/(:any)'] = 'laikipiaschools/posts/index/$1/$2';
 $route['administration/post/bulk-actions'] = 'laikipiaschools/posts/bulk_actions';
 $route['administration/deactivate-post/(:num)/(:num)'] = 'laikipiaschools/posts/deactivate_post/$1/$2';
 
 $route['administration/schools/get-posts-details'] = 'laikipiaschools/webservice/get_post_details';
+
+
+
+/**
+ * Posts
+ */
+
+ $route['client/home'] = 'site/sites/index1';

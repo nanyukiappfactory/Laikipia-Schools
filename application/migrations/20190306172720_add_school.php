@@ -17,6 +17,12 @@ class Migration_Add_school extends CI_Migration
                 'constraint' => '100',
                 'null' => false,
             ),
+            'school_zone' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '100',
+                'null' => false,
+            ),
+
             'school_latitude' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '100',
@@ -43,9 +49,10 @@ class Migration_Add_school extends CI_Migration
                 'null' => false,
             ),
             'school_write_up' => array(
-                'type' => 'VARCHAR',
+                'type' => 'text',
+                'constraint' => '5000',
                 'null' => false,
-                'default' => null,
+              
             ),
             'school_write_up' => array(
                 'type' => 'VARCHAR',
@@ -56,12 +63,12 @@ class Migration_Add_school extends CI_Migration
             'school_image_name' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '100',
-                'null' => false,
+                'null' => FALSE,
             ),
             'school_thumb_name' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '100',
-                'null' => false,
+                'null' => FALSE,
             ),
             'school_status' => array(
                 'type' => 'BOOLEAN',

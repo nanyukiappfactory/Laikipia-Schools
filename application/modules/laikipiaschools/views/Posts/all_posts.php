@@ -4,6 +4,7 @@ $validation_errors = validation_errors();
 if (!empty($validation_errors)) {
     echo $validation_errors;
 }
+
 ?>
 
 <div class="shadow-lg p-3 mb-5 bg-white rounded">
@@ -14,7 +15,7 @@ if (!empty($validation_errors)) {
                     data-target="#createDonation">Add Post</button>
                 <div class="modal fade" id="createDonation" tabindex="-1" role="dialog"
                     aria-labelledby="createDonationLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                    <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="createDonationLabel">Enter New Post</h5>
@@ -34,18 +35,18 @@ if (!empty($validation_errors)) {
                                 <div class="form-group row">
                                     <div class="col-sm-12 col-md-12">
                                         <label for="category_id">Categories</label>
-                                        <select id="inputState" class="form-control" name="category_id">
+                                        <select id="inputState" class="form-control" name="category_id" required>
                                             <option selected>Choose Category</option>
 
-                                            <?php if ($categories->num_rows() > 0) {
-    foreach ($categories->result() as $row) {?>
+                                            <?php if ($categories->num_rows() > 0) {foreach ($categories->result() as $row) {?>
                                             <option value="<?php echo $row->category_id; ?>">
                                                 <?php echo $row->category_name; ?></option>
-                                            <?php
+                                            <?php 
 }
 }?>
 
                                         </select>
+
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -66,9 +67,9 @@ if (!empty($validation_errors)) {
                                 </div> -->
                                 <div class="form-group row">
                                     <div class="col-sm-12 col-md-12">
-                                        <label for="created_on">Post Date</label>
+                                        <label for="post_date">Post Date</label>
                                         <input type="date" class="form-control" id="form-control form_datetime"
-                                            name="created_on" placeholder="Post Title" required>
+                                            name="post_date" placeholder="Post Date" required>
                                     </div>
                                 </div>
 
@@ -103,7 +104,7 @@ if (!empty($validation_errors)) {
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                    <button type="button" class="btn btn-secondary"><i
                                             class="fas fa-times"></i>Close</button>
                                     <button type="submit" class="btn btn-primary"><i
                                             class="fas fa-check"></i>Save</button>
@@ -128,7 +129,8 @@ if (!empty($validation_errors)) {
                     <th>Post Title</th>
                     <th>Post Category</th>
                     <th>Post Status</th>
-                    <th>Date Created</th>
+                    <th>Post Date</th>
+
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -139,7 +141,7 @@ if (!empty($validation_errors)) {
                     <th>Post Title</th>
                     <th>Post Category</th>
                     <th>Post Status</th>
-                    <th>Date Created</th>
+                    <th>Post Date</th>
 
                     <th>Actions</th>
                 </tr>
@@ -172,6 +174,7 @@ if ($query->num_rows() > 0) {
                         <?php foreach ($categories->result() as $category) {
             if ($category->category_id == $row->category_id) {
                 echo $category->category_name;
+                break;
             }
         }
         ?>
@@ -184,7 +187,7 @@ if ($query->num_rows() > 0) {
                         <?php }?>
                     </td>
                     <td>
-                        <?php echo $row->created_on; ?>
+                        <?php echo $row->post_date; ?>
                     </td>
 
                     <td>
@@ -220,19 +223,16 @@ if ($query->num_rows() > 0) {
 
                                                 <div>
                                                     <h5><b>Category:</b> </h5>
+
                                                     <p> <?php foreach ($categories->result() as $category) {
             if ($category->category_id == $row->category_id) {
-                echo $category->category_name;
+                echo $category->category_name; break;
             }
         }
         ?>
                                                     </p>
                                                 </div>
-                                                <div>
-                                                    <h5><b> Post Description:</b></h5>
-                                                    <p><?php echo $row->post_description; ?>
-                                                    </p>
-                                                </div>
+
                                                 <div>
                                                     <?php if ($row->post_status == 1) {?>
                                                     <span class="badge badge-pill badge-success">Active</span>
@@ -241,10 +241,19 @@ if ($query->num_rows() > 0) {
                                                     <?php }?>
                                                 </div>
                                                 <div>
-                                                    <p class="card-text"><small class="text-muted">Date
-                                                            Created:<?php echo $row->created_on; ?></small>
+                                                    <p class="card-text"><small class="text-muted">Post
+                                                            date:<?php echo $row->post_date; ?></small>
                                                     </p>
                                                 </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div>
+                                                <h5><b> Post Description:</b></h5>
+                                                <p><?php echo $row->post_description; ?>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -258,33 +267,32 @@ if ($query->num_rows() > 0) {
 
                         </div>
     </div>
-    <!-- <?php echo anchor("administration/edit-school/" . $row->post_id, "<i class='fas fa-edit'></i>", "class='btn btn-warning btn-sm'"); ?> -->
-    <!-- Button trigger modal -->
-    <button type="button" class="class='btn btn-warning btn-sm" data-toggle="modal"
-        data-target="#exampleModal<?php echo $row->post_id; ?>">
-        <i class='fas fa-edit'></i>
-    </button>
+
+    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+        data-target="#editModal<?php echo $row->post_id; ?>"><i class="fas fa-edit"></i></button>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal<?php echo $row->post_id; ?>" tabindex="-1" role="dialog"
+    <div class="modal fade" id="editModal<?php echo $row->post_id; ?>" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel<?php echo $row->post_id; ?>">Update Post</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Update Post
+                        Details</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Enter Post Details to update</h5>
+                    <h5 class="card-title">Enter Post Details to
+                        update</h5>
 
-                    <?php echo
-        form_open($this->uri->uri_string()); ?>
+                    <?php echo form_open(base_url() . 'administration/edit-post/' . $row->post_id); ?>
                     <div class="form-group row">
-                        <label for="post_title" class="col-sm-2 col-form-label">Post
-                            Title</label>
+                        <label for="post_title" class="col-sm-2 col-form-label">Post Title</label>
+
                         <div class="col-md-10">
-                            <?php echo form_input(['name' => 'post_title', 'class' => 'form-control', 'value' => set_value('post_title', $row->post_title)]) ?>
+                            <?php echo form_input(['name' => 'post_title', 'placeholder' => 'Post Name', 'class' => 'form-control', 'value' => set_value('post_title', $row->post_title)]) ?>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -295,7 +303,7 @@ if ($query->num_rows() > 0) {
                                 <?php if ($categories->num_rows() > 0) {
             foreach ($categories->result() as $row2) {?>
                                 <option value="<?php echo $row2->category_id; ?>"
-                                    <?php echo $row2->category_id ==  $row->category_id ? 'selected' : '';?>>
+                                    <?php echo $row2->category_id == $row->category_id ? 'selected' : ''; ?>>
                                     <?php echo $row2->category_name; ?></option>
                                 <?php
 }
@@ -305,44 +313,55 @@ if ($query->num_rows() > 0) {
                         </div>
                     </div>
                     <div class="form-group row">
-                                <div class="col-sm-12 col-md-12">
-                                        <label for="post_image_name">Post
-                                            Image</label>
-                                        <input type="file" id="post_image_name" name="post_image_name">
-                                </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-form-label col-sm-2 pt-0">Post Status</label>
-                        <div class="form-group">
-                            <input type="radio" name="status" value="1"
-                                <?php echo ($row->post_status == 'Active') ? 'checked' : '' ?>>Active
-                            <input type="radio" name="status" value="0"
-                                <?php echo ($row->post_status == 'Inactive') ? 'checked' : '' ?>>Inactive
+                        <label for="post_title" class="col-sm-2 col-form-label">Post
+                            Image</label>
+                        <div class="col-md-10">
+                            <?php echo form_input(['name' => 'post_image_name', 'type' => 'file', 'class' => 'form-control']) ?>
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="post_status">Status</label>
+                        <div class="col-sm-10 row">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="post_status" id="post_status"
+                                    value="1" checked>
+                                <Legend class="form-check-label" for="gridRadios1">
+                                    Active
+                                </Legend>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="post_status" id="post_status"
+                                    value="0">
+                                <Legend class="form-check-label" for="gridRadios2">
+                                    Inactive
+                                </Legend>
+                            </div>
+                        </div>
+                        <small id="emailHelp" class="form-text text-muted"></small>
                     </div>
                     <div class="form-group row">
                         <label for="created_on" class="col-sm-2 col-form-label">Post
                             Date</label>
                         <div class="col-md-10">
-                            <?php echo form_input(['name' => 'created_on','type' => 'date','class' => 'form-control', 'value' => set_value('created_on', $row->created_on)]) ?>
+                            <?php echo form_input(['name' => 'created_on', 'type' => 'date', 'class' => 'form-control', 'value' => set_value('created_on', $row->created_on)]) ?>
                         </div>
                     </div>
-
                     <div class="form-group">
-                                    <label for="post_description">Post Description</label>
-                                    <?php echo form_textarea(array('name' => 'post_description', 'placeholder' => 'Write a description of the post', 'class' => "editable", 'value' => set_value('created_on', $row->post_description))); ?>
-                            <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
-                        </div>
-                        <div class="modal-footer row">
-
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>Save
-                                Changes</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
-                                    class="fas fa-times"></i>Close</button>
-                        </div>
-
+                        <label for="post_description">Post Description</label>
+                        <?php echo form_textarea(array('name' => 'post_description', 'placeholder' => 'Write a description of the post', 'class' => "editable", 'value' => set_value('created_on', $row->post_description))); ?>
+                        <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
                     </div>
-
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                        class="fas fa-times"></i>Close</button>
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>Save
+                                    Post</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <?php echo form_close(); ?>
             </div>
@@ -364,6 +383,7 @@ if ($query->num_rows() > 0) {
 }
 ?>
     </tbody>
+
     </table>
 
     <p>

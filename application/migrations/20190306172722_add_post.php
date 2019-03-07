@@ -15,7 +15,7 @@ class Migration_Add_post extends CI_Migration
             'category_id' => array(
                 'type' => 'INT',
                 'constraint' => '11',
-                'null' => false,
+                'null' => true,
             ),
             'post_title' => array(
                 'type' => 'VARCHAR',
@@ -23,24 +23,33 @@ class Migration_Add_post extends CI_Migration
                 'null' => false,
             ),
             'post_description' => array(
-                'type' => 'VARCHAR',
-                'null' => false,
-                'constraint' => '200',
+                'type' => 'text',
+                'null' => true,
+                'constraint' => '5000',
 
             ),
             'post_image_name' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '100',
-                'null' => false,
+                'null' => true,
+            ),
+            'post_thumb_name' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '100',
+                'null' => true,
             ),
             'image_id' => array(
                 'type' => 'INT',
                  'constraint' => '11',
-            ),
-            'post_views' => array(
-                'type' => 'NUMERIC',
-                'constraint' => '20',
+            ),          
+            'post_status' => array(
+                'type' => 'BOOLEAN',
                 'null' => false,
+                'default' => 0,
+            ),
+            'post_date' => array(
+                'type' => 'DATE',
+                'null' => true,
             ),
         ));
 

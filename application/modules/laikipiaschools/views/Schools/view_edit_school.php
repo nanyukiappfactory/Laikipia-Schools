@@ -8,6 +8,7 @@ if ($query->num_rows() > 0) {
         // $image = 'school_default.jpeg';
         ?>
 
+<<<<<<< HEAD
         <tr>
             <td>
                 <?php echo $count; ?>
@@ -36,6 +37,50 @@ if ($query->num_rows() > 0) {
             data-target="#modalQuickView<?php echo $row->school_id; ?>">
                     <i class="fas fa-eye"></i>
                 </button>
+=======
+    <td>
+        <?php echo $row->school_boys_number; ?>
+    </td>
+    <td>
+        <?php echo $row->school_girls_number; ?>
+    </td>
+    <td>
+        <?php if ($row->school_status == 1) {?>
+        <span class="badge badge-pill badge-success">Active</span>
+        <?php } else {?>
+        <span class="badge badge-pill badge-secondary">Inactive</span>
+        <?php }?>
+    </td>
+    <td>
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+            data-target="#modalQuickView<?php echo $row->school_id; ?>"><i class="fas fa-eye"></i></button>
+        <!-- Modal: modalQuickView -->
+        <div class="modal fade" id="modalQuickView<?php echo $row->school_id; ?>" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            <?php echo $row->school_name; ?>
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-5 col-sm-12">
+                                    <img style="max-width:100%;"
+                                        src="<?php echo base_url() . 'assets/uploads/' . $image; ?>" class="rounded"
+                                        alt="No Image" />
+                                </div>
+                                <div class="col-md-7 col-sm-12 " style="border:0px solid gray">
+                                    <div class="form-group">
+                                        <h6 class="title-price"><small>School</small></h6>
+                                        <label><b>
+                                                <?php echo $row->school_name; ?></b></label>
+>>>>>>> 8ad4a02dee081fa160bd9b3d8ee3629457263714
 
                 <div class="modal fade" id="modalQuickView<?php echo $row->school_id; ?>" tabindex="-1" role="dialog"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -141,6 +186,7 @@ if ($query->num_rows() > 0) {
                                     </div>
                                 </div>
 
+<<<<<<< HEAD
                                 <div class="form-group row">
                                     <label for="school_boys_number" class="col-sm-2 col-form-label">Number
                                         of
@@ -148,6 +194,13 @@ if ($query->num_rows() > 0) {
                                     <div class="col-md-10">
                                         <?php echo form_input(['name' => 'school_boys_number', 'placeholder' => 'Number of boys, eg. 10', 'class' => 'form-control', 'value' => set_value('school_boys_number', $row->school_boys_number)]) ?>
                                     </div>
+=======
+								<div class=" form-group">
+                                <label for="school_write_up">School Write Up</label>
+                                <?php echo form_textarea(array('name' => 'school_write_up', 'id' => 'editable', 'class' => "editable", 'value' => set_value('school_write_up', $row->school_write_up))); ?>
+                                <div class="form-group">
+                                    <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
+>>>>>>> 8ad4a02dee081fa160bd9b3d8ee3629457263714
                                 </div>
                                 <div class="form-group row">
                                     <label for="school_girls_number" class="col-sm-2 col-form-label">Number
@@ -212,6 +265,7 @@ if ($query->num_rows() > 0) {
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
             </td>
             <td>
                 <?php if ($row->school_status == 1) {
@@ -224,6 +278,16 @@ if ($query->num_rows() > 0) {
                 <?php echo anchor("administration/delete-school/" . $row->school_id, '<i class="fas fa-trash-alt"></i>', array("class" => "btn btn-danger btn-sm", "onclick" => "return confirm('Are you sure you want to Delete?')")); ?>
             </td>
         </tr>
+=======
+            </div>
+        </div>
+        <?php if ($row->school_status == 1) {
+            echo anchor("administration/deactivate-school/" . $row->school_id . "/" . $row->school_status, "<i class='far fa-thumbs-down'></i>", array("class" => "btn btn-default btn-sm p-left-10", "onclick" => "return confirm('Are you sure you want to deactivate?')"));
+        } else {
+            echo anchor("administration/deactivate-school/" . $row->school_id . "/" . $row->school_status, "<i class='far fa-thumbs-up'></i>", array("class" => "btn btn-info btn-sm", "onclick" => "return confirm('Are you sure you want to activate?')"));
+        }?>
+        <?php echo anchor("administration/delete-school/" . $row->school_id, '<i class="fas fa-trash-alt"></i>', array("class" => "btn btn-danger btn-sm", "onclick" => "return confirm('Are you sure you want to Delete?')")); ?>
+>>>>>>> 8ad4a02dee081fa160bd9b3d8ee3629457263714
 
         <script type="text/javascript">
             function initialize() {

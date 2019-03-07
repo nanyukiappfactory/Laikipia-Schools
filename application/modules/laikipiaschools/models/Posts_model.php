@@ -8,15 +8,14 @@ class Posts_model extends CI_Model
         $data = array(
             "post_title" => $this->input->post("post_title"),
             "post_description" => $this->input->post("post_description"),
-            "post_image_name" => $this->input->post("post_image_name"),
+            // "post_image_name" => $this->input->post("post_image_name"),
             // "post_views" => $this->input->post("post_views"),
             "post_image_name" => $file_name,
             "post_thumb_name" => $thumb_name,
             "post_status" => $this->input->post("post_status"),
-            "post_data" => $this->input->post("post_data"),
+            "post_date" => $this->input->post("post_date"),
             "category_id" => $this->input->post("category_id"),
         );
-
         if ($this->db->insert("post", $data)) {
             return $this->db->insert_id();
         } else {
@@ -24,7 +23,7 @@ class Posts_model extends CI_Model
         }
 
     }
-    public function get_all_posts($table, $where, $start, $limit, $page, $order, $order_method)
+    public function get_all_posts($table, $where,  $limit, $page, $order, $order_method)
     {
         // $where = "post.deleted = 0";
         $this->db->select("*");
@@ -54,7 +53,6 @@ class Posts_model extends CI_Model
         return $query;
 
     }
-
     public function change_post_status($post_id, $new_post_status)
     {
         $this->db->set('post_status', $new_post_status);
@@ -65,7 +63,6 @@ class Posts_model extends CI_Model
             return false;
         }
     }
-
     public function get_single_post($post_id)
     {
         $this->db->where("post_id", $post_id);
@@ -91,16 +88,18 @@ class Posts_model extends CI_Model
         }
     }
 
-    public function update_post($post_id)
+    public function update_post($post_id, $data)
     {
         $data = array(
             "post_title" => $this->input->post("post_title"),
             "post_description" => $this->input->post("post_description"),
+            // "post_image_name" => $file_name,
+            // "post_thumb_name" => $thumb_name,
         );
 
         $this->db->set($data);
         $this->db->where('post_id', $post_id);
-        if ($this->db->update('post')) {
+        if ($this->db->update('post', $data)) {
             return true;
         } else {
             return false;

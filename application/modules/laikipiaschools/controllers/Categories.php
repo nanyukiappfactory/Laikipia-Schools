@@ -239,7 +239,7 @@ class Categories extends MX_Controller
     public function create_category()
     {
         // $this->form_validation->set_rules("parent", "parent", "required");
-        $this->form_validation->set_rules("category_name", "category_name", "required|is_unique[category.category_name]");
+        $this->form_validation->set_rules("category_name", "category name", "required|is_unique[category.category_name]");
 
         if ($this->form_validation->run()) {
             $category_id = $this->categories_model->add_category();

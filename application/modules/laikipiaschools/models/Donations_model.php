@@ -11,7 +11,7 @@ class Donations_model extends CI_Model
     public function get_all_donations($table, $where, $per_page, $page, $order = 'created_on', $order_method = 'DESC')
     {
         // var_dump($table);die();
-        $select = "donation.*, school.school_id, school.school_name, partner.partner_id, partner.partner_name";
+        $select = "donation.*, school.school_id, school.school_name, post.post_id, post.post_title";
         $this->db->select($select);
         $this->db->from($table);
         $this->db->where($where);
@@ -19,22 +19,21 @@ class Donations_model extends CI_Model
         $query = $this->db->get('', $per_page, $page);
         return $query;
     }
-
     public function all_schools()
     {
         $where = "deleted=0";
         $this->db->select("*");
-		$this->db->from("school");
-		$this->db->where($where);
+        $this->db->from("school");
+        $this->db->where($where);
         return $this->db->get();
     }
 
     public function all_partners()
     {
-		$where = "deleted=0";
+        $where = "deleted=0";
         $this->db->select("*");
-		$this->db->from("partner");
-		$this->db->where($where);
+        $this->db->from("partner");
+        $this->db->where($where);
         return $this->db->get();
     }
 
@@ -51,7 +50,7 @@ class Donations_model extends CI_Model
     {
         $data = array(
             'donation_amount' => $this->input->post("donation_amount"),
-            'partner_id' => $this->input->post("partner_id"),
+            'post_id' => $this->input->post("post_id"),
             'school_id' => $this->input->post("school_id"),
         );
 
@@ -96,14 +95,15 @@ class Donations_model extends CI_Model
     public function create_donation()
     {
         $data = array(
+
             'donation_amount' => $this->input->post("donation_amount"),
-            'partner_id' => $this->input->post("partner_id"),
+            'post_id' => $this->input->post("post_id"),
             'school_id' => $this->input->post("school_id"),
             'donation_status' => 1,
         );
 
         if ($this->db->insert('donation', $data)) {
-            return true;
+            return $this->db->insert_id();
         } else {
             return false;
         }

@@ -37,10 +37,10 @@ if (!empty($validation_errors)) {
                         <select id="inputState" class="form-control" name="category_parent">
                             <option value="">Choose a parent...</option>
                             <?php if (is_array($categories->result())) {
-    foreach ($categories->result() as $cat) {?>
-                            <option value="<?php echo $cat->category_id; ?>"><?php echo $cat->category_name; ?></option>
-                            <?php }
-}?>
+                        foreach ($categories->result() as $cat) {?>
+                        <option value="<?php echo $cat->category_id; ?>"><?php echo $cat->category_name; ?></option>
+                        <?php }
+                    }?>
                         </select>
                     </div>
                     <div class="form-group">
@@ -48,6 +48,7 @@ if (!empty($validation_errors)) {
                         <input type="name" class="form-control" name="category_name" id="category_name"
                             naria-describedby="emailHelp" placeholder="Enter category Name">
                     </div>
+                   
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -68,7 +69,9 @@ if (!empty($validation_errors)) {
                     <th><?php echo anchor("administration/categories/category.category_parent/" . $order_method, "Parent"); ?>
                     </th>
                     <th><?php echo anchor("administration/categories/" . $order . "/" . $order_method, "Name"); ?></th>
+                    <th>Category Status</th>
                     <th>Actions</th>
+                   
 
                 </tr>
             </thead>
@@ -77,7 +80,9 @@ if (!empty($validation_errors)) {
                     <th>#</th>
                     <th>Parent</th>
                     <th>Name</th>
+                    <th>Category Status</th>
                     <th>Actions</th>
+                    
                 </tr>
             </tfoot>
             <tbody>
@@ -99,6 +104,7 @@ if ($query->num_rows() > 0) {
             foreach ($categories->result() as $category) {
                 if ($category->category_id == $row->category_parent) {
                     echo $category->category_name;
+                    break;
                 }
 
             }
@@ -108,6 +114,13 @@ if ($query->num_rows() > 0) {
                     </td>
                     <td>
                         <?php echo $row->category_name; ?>
+                    </td>
+                    <td>
+                            <?php if($row->category_status == 1){?>
+                                <span class="badge badge-pill badge-success">Active</span>
+                                <?php } else {?>
+                                <span class="badge badge-pill badge-secondary">Inactive</span>
+                                <?php }?>
                     </td>
                     <td>
                         <?php if ($row->category_status == 1) {?>
@@ -142,7 +155,9 @@ if ($query->num_rows() > 0) {
             foreach ($categories->result() as $category) {
                 if ($category->category_id == $row->category_parent) {
                     echo $category->category_name;
+                    break;
                 }
+
 
             }
         }

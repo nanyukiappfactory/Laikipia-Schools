@@ -17,6 +17,11 @@
 	border-top-right-radius: 5px;
 }
 
+.modal-dialog {
+	width: 800px;
+	margin: 30px auto;
+}
+
 .bd-placeholder-img {
 	font-size: 1.125rem;
 	text-anchor: middle;
