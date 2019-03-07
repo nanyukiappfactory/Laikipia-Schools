@@ -23,6 +23,13 @@ class Sites_model extends CI_Model
         $this->db->join('category', 'post.category_id=category.category_id', 'left');
         return $this->db->get();
     }
+    public function get_schools()
+    {
+        $this->db->select('*');
+        $this->db->from('school');
+        $this->db->group_by('school_name', 'ASC');
+        return $this->db->get();
+    }
 
     public function get_dignity_packs()
     {

@@ -18,9 +18,12 @@ class Sites extends MX_Controller
         $v_data['donations'] = $this->sites_model->get_donations();
         $v_data['news_items'] = $this->sites_model->get_new_items();
         $v_data['pictures'] = $this->sites_model->get_gallery_pictures();
-
-        // echo json_encode(($data['donations'])->result());die();
+        $v_data['schools'] = $this->sites_model->get_schools();
+        echo json_encode(($v_data['schools'])->result());die();
         $this->load->view('site/home', $v_data);
+
+        
+
 
     }
 }

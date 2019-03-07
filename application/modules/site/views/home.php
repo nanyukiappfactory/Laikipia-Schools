@@ -36,7 +36,7 @@
     <div class="form-group row">
         <div class="col-sm-12 col-md-12">
 
-        <?php
+            <?php
         $donors_post = array();
         foreach ($abouts->result() as $row) {
             if (strtolower($row->category_name) == strtolower("Donor")) {
@@ -79,7 +79,7 @@
 ?>
         </div>
     </div>
-    
+
 
 
     <div class="form-group row">
@@ -107,7 +107,7 @@
     </div>
 
 
- <div class="form-group row">
+    <div class="form-group row">
         <div class="col-sm-12 col-md-12">
 
             <?php
