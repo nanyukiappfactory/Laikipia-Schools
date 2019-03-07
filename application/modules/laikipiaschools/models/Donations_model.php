@@ -19,22 +19,21 @@ class Donations_model extends CI_Model
         $query = $this->db->get('', $per_page, $page);
         return $query;
     }
-
     public function all_schools()
     {
         $where = "deleted=0";
         $this->db->select("*");
-		$this->db->from("school");
-		$this->db->where($where);
+        $this->db->from("school");
+        $this->db->where($where);
         return $this->db->get();
     }
 
     public function all_partners()
     {
-		$where = "deleted=0";
+        $where = "deleted=0";
         $this->db->select("*");
-		$this->db->from("partner");
-		$this->db->where($where);
+        $this->db->from("partner");
+        $this->db->where($where);
         return $this->db->get();
     }
 
@@ -96,7 +95,7 @@ class Donations_model extends CI_Model
     public function create_donation()
     {
         $data = array(
-           
+
             'donation_amount' => $this->input->post("donation_amount"),
             'post_id' => $this->input->post("post_id"),
             'school_id' => $this->input->post("school_id"),
