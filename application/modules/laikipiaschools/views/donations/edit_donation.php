@@ -41,7 +41,6 @@ $donations = array();
 					<?php echo $row->post_title; ?></option>
 				<?php }
     }
-
     ?>
 
                 </select>
