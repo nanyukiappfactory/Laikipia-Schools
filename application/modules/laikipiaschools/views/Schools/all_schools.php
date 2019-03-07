@@ -203,7 +203,7 @@ if (!empty($validation_errors)) {
                     <th>Number of Boys</th>
                     <th>Number of Girls</th>
                     <th>Status</th>
-                    <th>Actions</th>
+                    <th colspan="4">Actions</th>
                 </tr>
             </thead>
             <tfoot>
@@ -214,7 +214,7 @@ if (!empty($validation_errors)) {
                     <th>Number of Boys</th>
                     <th>Number of Girls</th>
                     <th>Status</th>
-                    <th>Actions</th>
+                    <th colspan="4">Actions</th>
                 </tr>
             </tfoot>
             <tbody>
