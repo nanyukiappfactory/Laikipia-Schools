@@ -225,7 +225,7 @@ if ($query->num_rows() > 0) {
 
                                                     <p> <?php foreach ($categories->result() as $category) {
             if ($category->category_id == $row->category_id) {
-                echo $category->category_name;
+                echo $category->category_name; break;
             }
         }
         ?>
