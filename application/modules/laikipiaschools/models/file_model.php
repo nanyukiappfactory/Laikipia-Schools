@@ -94,6 +94,70 @@ class File_model extends CI_Model
             return true;
         }
     }
+
+
+function edit_image($school_id=null){
+
+if($this->data &&is_uploaded_file($this->data['file_name']['image']['tmp_name']) ){
+
+$this->data['school']['school_image_name'] = $this->data['file_name']['image']['name'];
+
+$fileData = fread(
+
+fopen($this->data['file_name']['image']['tmp_name'], "r"),
+
+$this->data['file_name']['image']['size']
+
+);
+
+$this->data['school']['image'] = $fileData;
+
+if($this->school->save($this->data['school'])){
+
+echo 'File uploaded successfully';
+
+}else{
+
+echo 'File does not uploaded successfully';
+
+}
+
+}else{
+
+$this->data = $this->school->read(null, $school_id);
+
+}
+
+}
+public function view_image($school_id){
+
+$this->data = $this->school->read(null,$school_id);
+
+echo $this->data['school']['image'];
+
+die;
+
+}
+
+/*
+
+* method: this method is for retrive the image from database.
+
+* this is action will be on your image sourse.
+
+* (here it is : project_nam/TestUsers/image)
+
+* @arguments: null
+
+* @arguments: null
+
+*/
+
+
+
+
+
+
     public function upload_multi()
     {
         $data = array();

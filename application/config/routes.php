@@ -191,3 +191,11 @@ $route['administration/post/bulk-actions'] = 'laikipiaschools/posts/bulk_actions
 $route['administration/deactivate-post/(:num)/(:num)'] = 'laikipiaschools/posts/deactivate_post/$1/$2';
 
 $route['administration/schools/get-posts-details'] = 'laikipiaschools/webservice/get_post_details';
+
+
+
+/**
+ * Posts
+ */
+
+ $route['client/home'] = 'site/sites/index1';
