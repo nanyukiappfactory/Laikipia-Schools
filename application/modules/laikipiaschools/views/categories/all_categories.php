@@ -104,6 +104,7 @@ if ($query->num_rows() > 0) {
             foreach ($categories->result() as $category) {
                 if ($category->category_id == $row->category_parent) {
                     echo $category->category_name;
+                    break;
                 }
 
             }
@@ -154,7 +155,9 @@ if ($query->num_rows() > 0) {
             foreach ($categories->result() as $category) {
                 if ($category->category_id == $row->category_parent) {
                     echo $category->category_name;
+                    break;
                 }
+
 
             }
         }
