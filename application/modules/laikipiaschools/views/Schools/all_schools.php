@@ -52,25 +52,7 @@
                                     </select>
                                     <small id="emailHelp" class="form-text text-muted"></small>
                                 </div>
-                                <!-- <div class="form-group">
-                                    <label for="school_name">School Name</label>
-                                    <!-- <input type="text" class="form-control" id="school_name"
-                                        aria-describedby="emailHelp" name="school_boys_number"
-                                        placeholder="School Name"> -->
-                                <!-- <select id="inputState" class="form-control" name="school_name">
-                                        <option selected>Choose your School.</option>
-                                        <option value="Draja Academy">Draja Academy</option>
-                                        <option value="G.G Kinamba Day sec school"> G.G Kinamba Day Secondary School
-                                        </option>
-                                        <option value="G.G Kinamba Pry school"> G.G Kinamba Primary School</option>
-                                        <option value="Kiwanja day sec school">Kiwanja Day Secondary School</option>
-                                        <option value="Kunderila Day Sec School"> Kunderila Day Secondary School
-                                        </option>
-                                        <option value="Shamanei day sec school">Shamanei Day Secondary School</option>
-                                        <option value="Shamanei pry school">Shamanei Primary School</option>
-                                        <option value="Tandare Day sec school">Tandare Day Secondary School</option>
-                                    </select>
-                                </div> -->
+                
 
                                 <div class="form-group">
                                     <label for="school_boys_number">Number of boys</label>
@@ -136,39 +118,10 @@
                                     </div>
                                 </div>
 
-
-
-                                <!--
-                                <div class="form-group row">
-                                    <label>Choose Files</label>
-                                    <input type="file" name="files[]" multiple />
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" name="school_image_name" value="UPLOAD" />
-                                </div>
-
-                                <div class="row">
-                                    <ul class="gallery">
-                                        <?php if (!empty($files)) {foreach ($files as $file) {?>
-                                        <li class="item">
-                                            <img
-                                                src="<?php echo base_url('assets/uploads/files/' . $file['school_image_name']); ?>">
-                                            <p>Uploaded On <?php echo date("j M Y", strtotime($file['created_on'])); ?>
-                                            </p>
-                                        </li>
-                                        <?php }} else {?>
-                                        <p>Image(s) not found.....</p>
-                                        <?php }?>
-                                    </ul>
-                                </div> -->
-
-
-
-
                                 <div class="form-group">
                                     <label for="school_write_up">School Write Up</label>
                                     <?php echo form_textarea(array('name' => 'school_write_up')); ?>
-                                    <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
+                            
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
@@ -215,36 +168,6 @@
             </tbody>
         </table>
     </div>
-</div>
-
-<div class=" table-responsive">
-    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th> School Picture</th>
-                <th>School Name</th>
-                <th>Number of Boys</th>
-                <th>Number of Girls</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>#</th>
-                <th>School Picture</th>
-                <th>School Name</th>
-                <th>Number of Boys</th>
-                <th>Number of Girls</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-        </tfoot>
-        <tbody>
-            <?php $this->load->view('view_edit_school');?>
-        </tbody>
-    </table>
 </div>
 <p>
     <?php echo $links; ?>
