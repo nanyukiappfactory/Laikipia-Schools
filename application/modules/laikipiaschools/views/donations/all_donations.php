@@ -32,12 +32,12 @@
                                 <select class="custom-select my-1 mr-sm-2" name="post_id" required>
                                     <option selected>Choose Partner...</option>
                                     <?php  
-                                        $donations = array();
+                                        
                                         foreach ($categories->result() as $row) {
                                             if(strtolower($row->category_name) == strtolower("partner")){?>
                                                  <option value="<?php echo $row->post_id; ?>"><?php echo $row->post_title; ?></option>
                                             <?php }
-                                            if(strtolower($row->category_name) == strtolower("Donors")){?>
+                                            if(strtolower($row->category_name) == strtolower("Donor")){?>
                                                 <option value="<?php echo $row->post_id; ?>"><?php echo $row->post_title; ?></option>
                                             <?php }
 }
