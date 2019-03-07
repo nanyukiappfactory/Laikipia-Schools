@@ -4,6 +4,7 @@ $validation_errors = validation_errors();
 if (!empty($validation_errors)) {
     echo $validation_errors;
 }
+
 ?>
 
 <div class="shadow-lg p-3 mb-5 bg-white rounded">
@@ -37,15 +38,15 @@ if (!empty($validation_errors)) {
                                         <select id="inputState" class="form-control" name="category_id" required>
                                             <option selected>Choose Category</option>
 
-                                            <?php if ($categories->num_rows() > 0) {
-    foreach ($categories->result() as $row) {?>
+                                            <?php if ($all_categories->num_rows() > 0) {foreach ($all_categories->result() as $row) {?>
                                             <option value="<?php echo $row->category_id; ?>">
                                                 <?php echo $row->category_name; ?></option>
-                                            <?php
+                                            <?php 
 }
 }?>
+
                                         </select>
-                            
+
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -222,19 +223,16 @@ if ($query->num_rows() > 0) {
 
                                                 <div>
                                                     <h5><b>Category:</b> </h5>
+
                                                     <p> <?php foreach ($categories->result() as $category) {
             if ($category->category_id == $row->category_id) {
-                echo $category->category_name;
+                echo $category->category_name; break;
             }
         }
         ?>
                                                     </p>
                                                 </div>
-                                                <div>
-                                                    <h5><b> Post Description:</b></h5>
-                                                    <p><?php echo $row->post_description; ?>
-                                                    </p>
-                                                </div>
+
                                                 <div>
                                                     <?php if ($row->post_status == 1) {?>
                                                     <span class="badge badge-pill badge-success">Active</span>
@@ -243,9 +241,19 @@ if ($query->num_rows() > 0) {
                                                     <?php }?>
                                                 </div>
                                                 <div>
-                                                    <p class="card-text"><small class="text-muted">Post date:<?php echo $row->post_date; ?></small>
+                                                    <p class="card-text"><small class="text-muted">Post
+                                                            date:<?php echo $row->post_date; ?></small>
                                                     </p>
                                                 </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div>
+                                                <h5><b> Post Description:</b></h5>
+                                                <p><?php echo $row->post_description; ?>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>

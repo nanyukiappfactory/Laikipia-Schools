@@ -49,9 +49,10 @@ class Migration_Add_school extends CI_Migration
                 'null' => false,
             ),
             'school_write_up' => array(
-                'type' => 'VARCHAR',
+                'type' => 'text',
+                'constraint' => '5000',
                 'null' => false,
-                'default' => null,
+              
             ),
             'school_write_up' => array(
                 'type' => 'VARCHAR',

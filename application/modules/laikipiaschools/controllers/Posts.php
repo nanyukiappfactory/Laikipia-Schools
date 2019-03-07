@@ -35,7 +35,7 @@ class posts extends MX_Controller
         }
         $this->form_validation->set_rules("post_title", "Post Title", "required");
         $this->form_validation->set_rules("post_description", "Post Description", "required");
-$this->form_validation->set_rules("category_id", "Post Category", "required");
+// $this->form_validation->set_rules("category_id", "Post Category", "required");
 $this->form_validation->set_rules("post_date", "Post Date", "required");
 
 
@@ -101,6 +101,8 @@ $this->form_validation->set_rules("post_date", "Post Date", "required");
             $page = ($this->uri->segment($segment)) ? $this->uri->segment($segment) : 0;
             $v_data["links"] = $this->pagination->create_links();
             $v_data['categories'] = $this->site_model->get_all_categories();
+            $v_data['all_categories'] = $this->site_model->get_categories();
+
             $query = $this->posts_model->get_all_posts($table, $where,  $config["per_page"],
                 $page, $order, $order_method);
             if ($order_method == 'DESC') {
