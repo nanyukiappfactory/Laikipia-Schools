@@ -1,12 +1,4 @@
 <!-- Schools -->
-<?php
-if ($schools->num_rows() > 0) {
-    $count = 0;
-    foreach ($schools->result() as $row) {
-        $id = $row->school_id;
-        $count++;
-        // $image = 'school_default.jpeg';
-        ?>
 <section class="schools-brief">
     <div class="container">
         <div class="row">
@@ -17,118 +9,45 @@ if ($schools->num_rows() > 0) {
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-sm-8 col-md-8 col-lg-8">
                 <div id="schoolCarousel" class="owl-carousel">
-                    <div class="c-item">
-                        <div class="school-content">
-                            <div class="school-thumb">
-                                <img class="img-responsive full-img" src="http://placehold.it/300x200/999999/cccccc"
-                                    alt="4.jpg">
-                                <div class="img-overlayer"></div>
-                            </div>
-                            <div class="school-details text-left">
-                                <div class="progress-bar">
-                                    <div class="total-progress" data-percentage="50"></div>
-                                </div>
-                                <ul class="list-inline">
-                                    <li><strong>Donated:</strong> Kes 45000</li>
-                                    <li><strong>Target:</strong> <span class="text-theme">Kes 70000</span></li>
-                                </ul>
-                                <div class="clearfix"></div>
-                                <h3>Laikipia High</h3>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut labore
-                                    et
-                                    dolore magna aliquyam erat, sed diam voluptua.</p>
-                                <div class="center-button">
-                                    <button type="submit" class="btn btn-default btn-theme">Read More</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="c-item">
-                        <div class="school-content">
-                            <div class="school-thumb">
-                                <img class="img-responsive full-img" src="http://placehold.it/300x200/999999/cccccc"
-                                    alt="4.jpg">
-                                <div class="img-overlayer"></div>
-                            </div>
-                            <div class="school-details text-left">
-                                <div class="progress-bar">
-                                    <div class="total-progress" data-percentage="66"></div>
-                                </div>
-                                <ul class="list-inline">
-                                    <li><strong>Donated:</strong> Kes 45000</li>
-                                    <li><strong>Target:</strong> <span class="text-theme">Kes 70000</span></li>
-                                </ul>
-                                <div class="clearfix"></div>
-                                <h3>Laikipia High</h3>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut labore
-                                    et
-                                    dolore magna aliquyam erat, sed diam voluptua.</p>
-                                <div class="center-button">
-                                    <button type="submit" class="btn btn-default btn-theme">Read More</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="c-item">
-                        <div class="school-content">
-                            <div class="school-thumb">
-                                <img class="img-responsive full-img" src="http://placehold.it/300x200/999999/cccccc"
-                                    alt="4.jpg">
-                                <div class="img-overlayer"></div>
-                            </div>
-                            <div class="school-details text-left">
+                    <?php
+if ($donations->num_rows() > 0) {
+    $count = 0;
+    foreach ($donations->result() as $row) {
+        ?>
 
-                                <div class="progress-bar">
-                                    <div class="total-progress" data-percentage="20"></div>
-                                </div>
-                                <ul class="list-inline">
-                                    <li><strong>Donated:</strong> Kes 45000</li>
-                                    <li><strong>Target:</strong> <span class="text-theme">Kes 70000</span></li>
-                                </ul>
-                                <div class="clearfix"></div>
-                                <h3>Laikipia High</h3>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut labore
-                                    et
-                                    dolore magna aliquyam erat, sed diam voluptua.</p>
-                                <div class="center-button">
-                                    <button type="submit" class="btn btn-default btn-theme">Read More</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="c-item">
                         <div class="school-content">
                             <div class="school-thumb">
-                                <img class="img-responsive full-img" src="http://placehold.it/300x200/999999/cccccc"
-                                    alt="4.jpg">
+                                <img style="max-width:100%;"
+                                                src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
+                                                class="d-block w-100" alt="No Image"/>
                                 <div class="img-overlayer"></div>
                             </div>
                             <div class="school-details text-left">
                                 <div class="progress-bar">
-                                    <div class="total-progress" data-percentage="80"></div>
+                                    <?php $progress = ($row->donation_amount / 70000) * 100;?>
+                                    <div class="total-progress" data-percentage="<?php echo $progress; ?>"></div>
                                 </div>
                                 <ul class="list-inline">
-                                    <li><strong>Donated:</strong> Kes 45000</li>
+                                    <li><strong>Donated:</strong><?php echo $row->donation_amount; ?></li>
                                     <li><strong>Target:</strong> <span class="text-theme">Kes 70000</span></li>
                                 </ul>
                                 <div class="clearfix"></div>
-                                <h3>Laikipia High</h3>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut labore
-                                    et
-                                    dolore magna aliquyam erat, sed diam voluptua.</p>
+                                <h3><?php echo $row->school_name; ?></h3>
+                                <p><?php echo $row->school_write_up; ?></p>
                                 <div class="center-button">
                                     <button type="submit" class="btn btn-default btn-theme">Read More</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+                    <?php }}?>
                 </div>
             </div>
             <!-- End schools -->

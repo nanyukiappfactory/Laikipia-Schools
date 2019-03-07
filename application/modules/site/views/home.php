@@ -152,7 +152,7 @@ foreach ($pictures->result() as $row) {
 
 }
 
-echo json_encode($picture_array);die();
+// echo json_encode($picture_array);die();
 ?>
         </div>
     </div>

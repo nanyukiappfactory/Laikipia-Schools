@@ -42,14 +42,15 @@ class Sites_model extends CI_Model
     public function get_donations()
     {
         // var_dump($table);die();
-        $select = "donation.*, school.school_id, school.school_name, category.category_name, category.category_id, post.post_id, post.post_title";
+        $select = "donation.*, school.*, category.category_id, post.post_id, post.post_title";
         $this->db->select($select);
         $this->db->from('donation');
         $this->db->join('post', 'donation.post_id=post.post_id', 'left');
         $this->db->join('school', 'donation.school_id=school.school_id', 'left');
         $this->db->join('category', 'post.category_id=category.category_id', 'left');
-
         $query = $this->db->get();
+        // echo json_encode(($query)->result());die();
+
         return $query;
 
     }
