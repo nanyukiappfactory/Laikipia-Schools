@@ -8,8 +8,8 @@ class File_model extends CI_Model
             "upload_path" => $upload_path,
             "quality" => "100%",
             "max_size" => "0",
-            "min_width" => "100",
-            "min_height" => "100",
+            // "min_width" => "300",
+            // "min_height" => "300",
             "file_name" => md5(date("Y-m-d H:i:s")),
             "overwrite" => true,
         );
@@ -57,21 +57,6 @@ class File_model extends CI_Model
 
         return $response;
     }
-
-    public function insert_image($upload_data)
-    {
-        $filePath = $upload_data['file_name'];
-        //print_r(LARGEPATH);
-        $query = "UPDATE `school_images` set school_image_name='" . $filePath . "'";
-        // $this->db->query($query,array($img));
-        $arg = array($upload_data);
-        if ($this->db->query($query, $arg) == true) {
-            return true; // if added to database
-        } else {
-            return false;
-        }
-    }
-
     public function resize_image($source_image, $resize, $thumbnail = false)
     {
         $resize_config = array(
@@ -93,104 +78,6 @@ class File_model extends CI_Model
         } else {
             return true;
         }
-    }
-
-
-function edit_image($school_id=null){
-
-if($this->data &&is_uploaded_file($this->data['file_name']['image']['tmp_name']) ){
-
-$this->data['school']['school_image_name'] = $this->data['file_name']['image']['name'];
-
-$fileData = fread(
-
-fopen($this->data['file_name']['image']['tmp_name'], "r"),
-
-$this->data['file_name']['image']['size']
-
-);
-
-$this->data['school']['image'] = $fileData;
-
-if($this->school->save($this->data['school'])){
-
-echo 'File uploaded successfully';
-
-}else{
-
-echo 'File does not uploaded successfully';
-
-}
-
-}else{
-
-$this->data = $this->school->read(null, $school_id);
-
-}
-
-}
-public function view_image($school_id){
-
-$this->data = $this->school->read(null,$school_id);
-
-echo $this->data['school']['image'];
-
-die;
-
-}
-
-/*
-
-* method: this method is for retrive the image from database.
-
-* this is action will be on your image sourse.
-
-* (here it is : project_nam/TestUsers/image)
-
-* @arguments: null
-
-* @arguments: null
-
-*/
-
-
-
-
-
-
-    public function upload_multi()
-    {
-        $data = array();
-        if ($this->input->post('submitForm') && !empty($_FILES['upload_Files']['name'])) {
-            $filesCount = count($_FILES['upload_Files']['name']);
-            for ($i = 0; $i < $filesCount; $i++) {$_FILES['upload_File']['name'] = $_FILES['upload_Files']['name'][$i];
-                $_FILES['upload_File']['type'] = $_FILES['upload_Files']['type'][$i];
-                $_FILES['upload_File']['tmp_name'] = $_FILES['upload_Files']['tmp_name'][$i];
-                $_FILES['upload_File']['error'] = $_FILES['upload_Files']['error'][$i];
-                $_FILES['upload_File']['size'] = $_FILES['upload_Files']['size'][$i];
-                $uploadPath = 'assets/uploads/files/';
-                $config['upload_path'] = $uploadPath;
-                $config['allowed_types'] = 'gif|jpg|png';
-                $this->load->library('upload', $config);
-                $this->upload->initialize($config);
-                if ($this->upload->do_upload('upload_File')) {
-                    $fileData = $this->upload->data();
-                    $uploadData[$i]['school_image_name'] = $fileData['school_image_name'];
-                    $uploadData[$i]['created_on'] = date("Y-m-d H:i:s");
-                    $uploadData[$i]['modified_on'] = date("Y-m-d H:i:s");
-                }
-            }
-            if (!empty($uploadData)) {
-                //Insert file information into the database
-                $insert = $this->files->insert($uploadData);
-                $statusMsg = $insert ? 'Files uploaded successfully.' : 'Some problem occurred, please try again.';
-                $this->session->set_flashdata('statusMsg', $statusMsg);
-            }
-        }
-        //Get files data from database
-        $data['school_images'] = $this->files->getRows();
-        //Pass the files data to view
-        $this->load->view('administration_schools', $data);
     }
 
 }
