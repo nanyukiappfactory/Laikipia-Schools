@@ -20,6 +20,6 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
 <script>
 tinymce.init({
-    selector: 'textarea#editable'
+    selector: 'textarea'
 });
 </script>

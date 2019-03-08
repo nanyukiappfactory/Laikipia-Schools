@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Raleway);
+@import url(https://fonts.googleapis.com/css?family=Raleway);
 @import url("../../vendor/fontawesome/css/all.min.css");
 /* 
     0. General
@@ -231,6 +231,7 @@ nav {
 .school-content .school-thumb {
 	position: relative;
 	overflow: hidden;
+	height: 200px;
 }
 
 .full-img {
@@ -275,6 +276,7 @@ nav {
 .school-content h3 {
 	font-weight: bold;
 	text-align: center;
+	font-size: 1.5em;
 }
 
 .school-content:hover h3 {
@@ -335,6 +337,7 @@ nav {
 
 .school-details ul.list-inline li {
 	float: left;
+	font-size: 0.9em;
 }
 
 .school-details ul.list-inline li:nth-child(2) {
@@ -526,6 +529,18 @@ nav {
 	font-size: 2em;
 }
 
+#partnerCarousel .card img {
+	height: 200px;
+}
+
+#partnerCarousel .card-body {
+	min-height: 160px;
+}
+
+#partnerCarousel h5.card-title {
+	min-height: 63px;
+}
+
 /* Footer */
 .footer-section {
 	padding: 90px 0;
@@ -611,4 +626,18 @@ nav {
 		padding-bottom: 0px;
 		margin-bottom: 10px;
 	}
+}
+/* Page Header */
+.page-header {
+	/* The image used */
+	background-image: url("../../img/school.JPG");
+
+	/* Set a specific height */
+	min-height: 500px;
+	padding: 90px 0;
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }

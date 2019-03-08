@@ -17,14 +17,13 @@ class Site extends MX_Controller
         $v_data['donations'] = $this->sites_model->get_donations();
         $v_data['news_items'] = $this->sites_model->get_new_items();
         $v_data['pictures'] = $this->sites_model->get_gallery_pictures();
-
-        // echo json_encode(($v_data['pictures'])->result());die();
-        // $this->load->view('site/home', $v_data);
         $v_data['schools'] = $this->sites_model->get_schools();
         $v_data['partners'] = $this->sites_model->get_partners();
+        //echo json_encode($v_data['partners']->result());die();
 
-        $data['content'] = $this->load->view('site/schools', $v_data, true);
-        $data['content2'] = $this->load->view('site/partners', $v_data, true);
+
+        $data['content'] = $this->load->view('site/home/home', $v_data, true);
+        $data['title'] = $this->sites_model->display_page_title();
 
         $this->load->view("site/layouts/layout", $data);
 

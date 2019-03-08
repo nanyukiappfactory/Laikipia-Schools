@@ -1,6 +1,41 @@
 <?php
 class Sites_model extends CI_Model
 {
+	public function display_page_title()
+	{
+		$page = explode("/",uri_string());
+		$total = count($page);
+		$last = $total - 1;
+		$name = $this->sites_model->decode_web_name($page[$last]);
+		
+		if(is_numeric($name))
+		{
+			$last = $last - 1;
+			$name = $this->sites_model->decode_web_name($page[$last]);
+        }
+        if(empty($name))
+        {
+            $name = "Home";
+        }
+		$page_url = ucwords(strtolower($name));
+		
+		return $page_url;
+    }
+
+	public function create_web_name($field_name)
+	{
+		$web_name = str_replace(" ", "-", $field_name);
+		
+		return $web_name;
+	}
+	
+	public function decode_web_name($web_name)
+	{
+		$field_name = str_replace("-", " ", $web_name);
+		
+		return $field_name;
+	}
+    
     public function get_about_posts()
     {
         $this->db->select('post.*, category.category_id, category.category_name');
