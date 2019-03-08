@@ -21,6 +21,9 @@ if ($donations->num_rows() > 0) {
                     <div class="c-item">
                         <div class="school-content">
                             <div class="school-thumb">
+
+
+
                                 <img style="max-width:100%;"
                                     src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
                                     class="d-block w-10" />
@@ -32,8 +35,10 @@ if ($donations->num_rows() > 0) {
                                     <div class="total-progress" data-percentage="<?php echo $progress; ?>"></div>
                                 </div>
                                 <ul class="list-inline">
+                                    <?php $target = ($row->school_girls_number * 1125) + ($row->school_boys_number * 475);?>
                                     <li><strong>Donated:</strong> <?php echo $row->donation_amount; ?></li>
-                                    <li><strong>Target:</strong> <span class="text-theme">Kes 70000</span></li>
+                                    <li><strong>Target:</strong> <span class="text-theme"><?php echo $target; ?></span>
+                                    </li>
                                 </ul>
                                 <div class="clearfix"></div>
                                 <h3><?php echo $row->school_name; ?></h3>
@@ -55,8 +60,9 @@ if ($donations->num_rows() > 0) {
             <div class="col-sm-4 col-md-4 col-lg-4">
                 <div class="school-content">
                     <div class="school-thumb">
-                        <img class="img-responsive full-img" src="http://placehold.it/300x200/999999/cccccc"
-                            alt="4.jpg">
+                        <img style="max-width:100%;"
+                            src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
+                            class="d-block w-10" />
                         <div class="img-overlayer"></div>
                     </div>
                     <div class="school-details text-left">
@@ -68,20 +74,27 @@ if ($donations->num_rows() > 0) {
                         <div class="mt-4"></div>
                         <ul class="list-inline">
 
-
-
-                            <li><strong>Donated:</strong> <?php
+                            <?php
 if ($donations->num_rows() > 0) {
     $count = 0;
     $sum_array = 0;
+    $total_target = 0;
+    $total_target = 0;
+
     foreach ($donations->result() as $row2) {
         $sum_array += $row2->donation_amount;
-    }
-    echo $sum_array;
-}
+        $targets = ($row->school_girls_number * 1125) + ($row->school_boys_number * 475);
+        $total_target += $targets;
+    }?>
 
-?></li>
-                            <li><strong>Target:</strong> <span class="text-theme">Kes 70000</span></li>
+
+
+
+
+                            <li><strong>Donated:</strong> <?php echo $sum_array; ?> </li>
+                            <li><strong>Target:</strong> <span class="text-theme"><?php echo $total_target; ?></span>
+                            </li>
+                            <?php }?>
                         </ul>
                         <div class="clearfix"></div>
                         <div class="mb-4"></div>

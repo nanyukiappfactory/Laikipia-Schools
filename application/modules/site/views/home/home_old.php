@@ -75,7 +75,7 @@ foreach ($abouts->result() as $row) {
     }
 
 }
-// var_dump($partner_post);die();
+var_dump($partner_post);die();
 ?>
         </div>
     </div>
@@ -152,7 +152,7 @@ foreach ($pictures->result() as $row) {
 
 }
 
-// echo json_encode($picture_array);die();
+echo json_encode($picture_array);die();
 ?>
         </div>
     </div>
