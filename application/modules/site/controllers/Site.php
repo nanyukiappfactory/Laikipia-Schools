@@ -24,6 +24,8 @@ class Site extends MX_Controller
         // $v_data['partners'] = $this->sites_model->get_partners();
 
         $data['content'] = $this->load->view('site/schools', $v_data, true);
+        $data['content2'] = $this->load->view('site/partners', $v_data, true);
+
         $this->load->view("site/layouts/layout", $data);
 
     }

@@ -11,6 +11,9 @@
         <div class='container-fluid'>
             <?php echo $content; ?>
         </div>
+        <div class='container-fluid'>
+            <?php echo $content2; ?>
+        </div>content2
         <script src="<?php echo base_url(); ?>assets/jquery-3.3.1.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/themes/website/assets/vendor/bootstrap/js/bootstrap.min.js">
         </script>

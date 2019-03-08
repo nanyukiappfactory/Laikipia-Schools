@@ -12,4 +12,3 @@
 	<!-- Custom styles for this template -->
 	<link rel="stylesheet" type="text/css" media="screen"
 	    href="<?php echo base_url(); ?>assets/themes/website/assets/custom/css/main.css">
-		
