@@ -529,6 +529,14 @@ nav {
 	font-size: 2em;
 }
 
+#partnerCarousel .card img {
+	height: 200px;
+}
+
+#partnerCarousel .card-body {
+	min-height: 160px;
+}
+
 /* Footer */
 .footer-section {
 	padding: 90px 0;
