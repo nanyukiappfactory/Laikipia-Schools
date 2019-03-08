@@ -21,9 +21,11 @@ class Site extends MX_Controller
         // echo json_encode(($v_data['pictures'])->result());die();
         // $this->load->view('site/home', $v_data);
         $v_data['schools'] = $this->sites_model->get_schools();
-        // $v_data['partners'] = $this->sites_model->get_partners();
+        $v_data['partners'] = $this->sites_model->get_partners();
 
         $data['content'] = $this->load->view('site/schools', $v_data, true);
+        $data['content2'] = $this->load->view('site/partners', $v_data, true);
+
         $this->load->view("site/layouts/layout", $data);
 
     }
