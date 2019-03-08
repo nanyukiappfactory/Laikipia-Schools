@@ -11,3 +11,15 @@
 <link href="<?php echo base_url(); ?>assets/custom/css/styles.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/themes/custom/css/sidenav.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/fontawesome/css/all.css" rel="stylesheet">
+
+
+<script defer src="<?php echo base_url(); ?>assets/tinymce/js/tinymce/jquery.tinymce.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>/assets/tinymce/js/tinymce/tinymce.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+<?php echo '<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMfrWKiELcjgQDzNq1n3LTVMSQAXGSs6E"></script>'; ?>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+<script>
+tinymce.init({
+    selector: 'textarea#editable'
+});
+</script>
