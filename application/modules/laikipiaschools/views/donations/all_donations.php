@@ -32,7 +32,7 @@
                                 <select class="custom-select my-1 mr-sm-2" name="post_id" required>
                                     <option selected>Choose Partner...</option>
                                     <?php  
-                                        
+
                                         foreach ($categories->result() as $row) {
                                             if(strtolower($row->category_name) == strtolower("Partners")){?>
                                                  <option value="<?php echo $row->post_id; ?>"><?php echo $row->post_title; ?></option>
