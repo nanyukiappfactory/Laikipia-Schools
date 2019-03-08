@@ -44,6 +44,7 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMfrWKiELcjgQDzNq1n3LTVMSQAXGSs6E">
     </script>
     <script src="<?php echo base_url(); ?>assets/vendor/script.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendor/script1.js"></script>
     <script src="<?php echo base_url(); ?>assets/custom/js/custom.js"></script>
 </body>
 

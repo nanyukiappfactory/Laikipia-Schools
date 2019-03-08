@@ -202,6 +202,50 @@ public function edit_donation($donation_id)
             }
         }
     }
+
+    //edit gi
+    public function edit($donation_id)
+    {
+        $this->form_validation->set_rules ('donation_amount', 'Donation Amount', 'required|numeric');
+        $this->form_validation->set_rules ("phone","Phone","required|numeric");
+        $this->form_validation->set_rules ("image","Image","required");
+    
+        
+     if($this->form_validation->run())
+        {
+            $update_status = $this->friends_model->update_friend($friend_id);
+            if($update_status){
+                redirect("friends");
+            }
+            }
+        
+            
+            else{
+             
+                $my_friend = $this->friends_model->get_single_friend($friend_id);
+                if ($my_friend->num_rows() > 0) {
+                $row = $my_friend->row();
+                $firstname = $row->friend_name;
+                $phone = $row->friend_phone;
+                $image = $row->friend_image;
+                $v_data["friend_name"] = $firstname;
+                $v_data["friend_phone"] = $phone;
+                $v_data["friend_image"] = $image;
+            
+                $data = array("title" => $this->site_model->display_page_title(),
+                "content" => $this->load->view("friends/friend_update", $v_data, true));
+
+                $this->load->view("site/templates/layouts/layout", $data);
+                
+                } else {
+                $this->session->set_flashdata("error_message", "couldnt");
+                redirect("friends");
+                }
+                
+            
+            }
+    
+        }
     public function single_donation($donation_id)
     {
         $v_data['query'] = $this->donations_model->get_single_donation($donation_id);
