@@ -169,11 +169,4 @@
         </table>
     </div>
 </div>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 032329db8a832eae45113748bb7a571afd504f6c
-<p>
-    <?php echo $links; ?>
-</p>
+<?php echo $links; ?>

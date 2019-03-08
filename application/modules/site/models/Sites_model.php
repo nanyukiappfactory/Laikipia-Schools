@@ -58,11 +58,24 @@ class Sites_model extends CI_Model
         $this->db->join('category', 'post.category_id=category.category_id', 'left');
         return $this->db->get();
     }
-    public function get_schools()
+    public function get_schools($boys_pack_amount = 475, $girls_pack_amount = 1125)
     {
-        $this->db->select('*');
+        $this->db->select('school.*, ((school.school_boys_number * '.$boys_pack_amount.') + (school.school_girls_number * '.$girls_pack_amount.')) AS target_amount, SUM(donation.donation_amount) AS total_donated');
         $this->db->from('school');
-        $this->db->group_by('school_name', 'ASC');
+        $this->db->join('donation', 'school.school_id = donation.school_id', 'left');
+        $this->db->where("school_status = 1");
+        $this->db->limit(5);
+        $this->db->group_by('school.school_id');
+        $this->db->order_by('donation.created_on', 'DESC');
+        return $this->db->get();
+    }
+
+    public function get_donation_totals($boys_pack_amount = 475, $girls_pack_amount = 1125)
+    {
+        $this->db->select('SUM((school.school_boys_number * '.$boys_pack_amount.') + (school.school_girls_number * '.$girls_pack_amount.')) AS total_target_amount, SUM(donation.donation_amount) AS total_donated_amount');
+        $this->db->from('school');
+        $this->db->join('donation', 'school.school_id = donation.school_id', 'left');
+        $this->db->where("school_status = 1");
         return $this->db->get();
     }
 

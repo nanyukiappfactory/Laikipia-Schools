@@ -97,6 +97,7 @@
 							</ul>
                             <div class="clearfix"></div>
                         </div>
+                        <div id="map_canvas"></div>
                     </div>
                     <div class="col-sm-8 col-md-9 col-lg-9">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra elit ipsum, a sagittis nulla
@@ -229,7 +230,42 @@
 	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/vendor/owlcarousel/dist/owl.carousel.min.js"></script>
 	<script src="assets/vendor/tweenmax/js/TweenMax.min.js"></script>
-	<script src="assets/custom/js/main.js"></script>
+    <script src="assets/custom/js/main.js"></script>
+    <script type="text/javascript">
+        function initialize() {
+            var position = new google.maps.LatLng('0.1251905', '36.8092602');
+            var myOptions = {
+                zoom: 15,
+                center: position,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(
+                document.getElementById("map_canvas"),
+                myOptions);
+        
+            var marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                title:"This is the place."
+            });
+            var infowincontent = document.createElement("div");
+            var strong = document.createElement("strong");
+            strong.textContent = "Laikipia High";
+            infowincontent.appendChild(strong);
+            infowincontent.appendChild(document.createElement("br"));
+        
+            var text = document.createElement("text");
+            text.textContent = "Marmanet";
+            infowincontent.appendChild(text);
+        
+            var infowindow = new google.maps.InfoWindow({
+                content: infowincontent
+            });
+            infowindow.open(map,marker);
+        
+        }
+        google.maps.event.addDomListener(window, "load", initialize);
+    </script>
 </body>
 
 </html>
