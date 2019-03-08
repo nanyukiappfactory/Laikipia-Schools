@@ -165,10 +165,9 @@ class Donations extends MX_Controller
     }
 public function edit_donation($donation_id)
     {
-      $this->form_validation->set_rules('donation_amount', 'Donation Amount', 'required|numeric');
-// $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
-$this->form_validation->set_rules('school_id', 'School', 'required|numeric');
-
+    $this->form_validation->set_rules('donation_amount', 'Donation Amount', 'required|numeric');
+    // $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
+    $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
 
         if ($this->form_validation->run()) {
             $update_status = $this->donations_model->update_donation($donation_id);
@@ -190,8 +189,6 @@ $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
                 $v_data['categories'] = $this->site_model->get_all_categories();
                 $v_data['schools'] = $this->donations_model->all_schools();
                 $v_data['query'] = $this->donations_model->get_single_donation($donation_id);
-
-
 
                 
                 $data = array("title" => "Update donation",

@@ -53,7 +53,6 @@ class Donations_model extends CI_Model
             'post_id' => $this->input->post("post_id"),
             'school_id' => $this->input->post("school_id"),
         );
-
         $this->db->set($data);
         $this->db->where('donation_id', $donation_id);
         if ($this->db->update('donation')) {
@@ -103,7 +102,6 @@ class Donations_model extends CI_Model
             return false;
         }
     }
-
     public function delete_donation($donation_id)
     {
         $data = array(
@@ -111,7 +109,6 @@ class Donations_model extends CI_Model
             'deleted_by' => 1,
             'deleted_on' => date("Y-m-d H:i:s"),
         );
-
         $this->db->set($data);
         $this->db->where('donation_id', $donation_id);
         if ($this->db->update('donation')) {

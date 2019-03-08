@@ -12,7 +12,7 @@
                     class="btn btn-default pull-right"><i class="fas fa-file-export"></i> Export</a>
                 <div class="modal fade" id="createDonation" tabindex="-1" role="dialog"
                     aria-labelledby="createDonationLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                    <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="createDonationLabel">Enter New School</h5>
@@ -169,6 +169,11 @@
         </table>
     </div>
 </div>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 032329db8a832eae45113748bb7a571afd504f6c
 <p>
     <?php echo $links; ?>
 </p>
