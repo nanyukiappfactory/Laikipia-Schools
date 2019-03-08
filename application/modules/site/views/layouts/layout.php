@@ -9,7 +9,7 @@
         <?php echo $this->load->view('site/layouts/navigation'); ?>
 
         <div class='container-fluid'>
-           <?php echo $content;?>
+            <?php echo $content; ?>
         </div>
         <script src="<?php echo base_url(); ?>assets/jquery-3.3.1.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/themes/website/assets/vendor/bootstrap/js/bootstrap.min.js">

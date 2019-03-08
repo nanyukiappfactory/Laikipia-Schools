@@ -18,13 +18,12 @@ if ($donations->num_rows() > 0) {
     $count = 0;
     foreach ($donations->result() as $row) {
         ?>
-
                     <div class="c-item">
                         <div class="school-content">
                             <div class="school-thumb">
                                 <img style="max-width:100%;"
-                                                src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
-                                                class="d-block w-100" alt="No Image"/>
+                                    src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
+                                    class="d-block w-10" />
                                 <div class="img-overlayer"></div>
                             </div>
                             <div class="school-details text-left">
@@ -33,21 +32,21 @@ if ($donations->num_rows() > 0) {
                                     <div class="total-progress" data-percentage="<?php echo $progress; ?>"></div>
                                 </div>
                                 <ul class="list-inline">
-                                    <li><strong>Donated:</strong><?php echo $row->donation_amount; ?></li>
+                                    <li><strong>Donated:</strong> <?php echo $row->donation_amount; ?></li>
                                     <li><strong>Target:</strong> <span class="text-theme">Kes 70000</span></li>
                                 </ul>
                                 <div class="clearfix"></div>
                                 <h3><?php echo $row->school_name; ?></h3>
-                                <p><?php echo $row->school_write_up; ?></p>
+                                <p><?php echo $row->school_name; ?></p>
                                 <div class="center-button">
                                     <button type="submit" class="btn btn-default btn-theme">Read More</button>
                                 </div>
                             </div>
                         </div>
+
                     </div>
-
-
                     <?php }}?>
+
                 </div>
             </div>
             <!-- End schools -->
@@ -68,7 +67,20 @@ if ($donations->num_rows() > 0) {
                         <h3>Our Target</h3>
                         <div class="mt-4"></div>
                         <ul class="list-inline">
-                            <li><strong>Donated:</strong> Kes 45000</li>
+
+
+
+                            <li><strong>Donated:</strong> <?php
+if ($donations->num_rows() > 0) {
+    $count = 0;
+    $sum_array = 0;
+    foreach ($donations->result() as $row2) {
+        $sum_array += $row2->donation_amount;
+    }
+    echo $sum_array;
+}
+
+?></li>
                             <li><strong>Target:</strong> <span class="text-theme">Kes 70000</span></li>
                         </ul>
                         <div class="clearfix"></div>
