@@ -14,39 +14,49 @@
             <div class="col-sm-8 col-md-8 col-lg-8">
                 <div id="schoolCarousel" class="owl-carousel">
                     <?php
-if ($donations->num_rows() > 0) {
-    $count = 0;
-    foreach ($donations->result() as $row) {
-        ?>
-                    <div class="c-item">
-                        <div class="school-content">
-                            <div class="school-thumb">
-                                <img style="max-width:100%;"
-                                    src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
-                                    class="d-block w-10" />
-                                <div class="img-overlayer"></div>
-                            </div>
-                            <div class="school-details text-left">
-                                <div class="progress-bar">
-                                    <?php $progress = ($row->donation_amount / 70000) * 100;?>
-                                    <div class="total-progress" data-percentage="<?php echo $progress; ?>"></div>
+                    if ($schools->num_rows() > 0) {
+                        foreach ($schools->result() as $row) {
+                            ?>
+                            <div class="c-item">
+                                <div class="school-content">
+                                    <div class="school-thumb">
+                                        <img style="max-width:100%;"
+                                            src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
+                                            class="d-block w-10" />
+                                        <div class="img-overlayer"></div>
+                                    </div>
+                                    <div class="school-details text-left">
+                                        <div class="progress-bar">
+                                            <?php 
+                                            if($row->total_donated > $row->target_amount)
+                                            {
+                                                $progress = 100;
+                                            }
+                                            else
+                                            {
+                                                $progress = ($row->total_donated / $row->target_amount) * 100;
+                                            }
+                                            ?>
+                                            <div class="total-progress" data-percentage="<?php echo number_format($progress); ?>"></div>
+                                        </div>
+                                        <ul class="list-inline">
+                                            <?php $target = $row->target_amount;?>
+                                            <li><strong>Donated:</strong> <?php echo number_format($row->total_donated); ?></li>
+                                            <li><strong>Target:</strong> <span class="text-theme"><?php echo number_format($target); ?></span>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                        <h3><?php echo $row->school_name; ?></h3>
+                                        <p><?php echo $row->school_zone; ?></p>
+                                        <div class="center-button">
+                                            <button type="submit" class="btn btn-default btn-theme">Read More</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <ul class="list-inline">
-                                    <li><strong>Donated:</strong> <?php echo $row->donation_amount; ?></li>
-                                    <li><strong>Target:</strong> <span class="text-theme">Kes 70000</span></li>
-                                </ul>
-                                <div class="clearfix"></div>
-                                <h3><?php echo $row->school_name; ?></h3>
-                                <p><?php echo $row->school_name; ?></p>
-                                <div class="center-button">
-                                    <button type="submit" class="btn btn-default btn-theme">Read More</button>
-                                </div>
+
                             </div>
-                        </div>
-
-                    </div>
-                    <?php }}?>
-
+                        <?php }
+                    }?>
                 </div>
             </div>
             <!-- End schools -->
@@ -55,33 +65,20 @@ if ($donations->num_rows() > 0) {
             <div class="col-sm-4 col-md-4 col-lg-4">
                 <div class="school-content">
                     <div class="school-thumb">
-                        <img class="img-responsive full-img" src="http://placehold.it/300x200/999999/cccccc"
-                            alt="4.jpg">
+                        <img  src="<?php echo base_url() . 'assets/themes/website/assets/img/target.JPG' ; ?>" class="d-block w-10" />
                         <div class="img-overlayer"></div>
                     </div>
                     <div class="school-details text-left">
 
                         <div class="progress-bar">
-                            <div class="total-progress" data-percentage="27"></div>
+                            <div class="total-progress" data-percentage="<?php echo $percentage_donated_total; ?>"></div>
                         </div>
                         <h3>Our Target</h3>
                         <div class="mt-4"></div>
                         <ul class="list-inline">
-
-
-
-                            <li><strong>Donated:</strong> <?php
-if ($donations->num_rows() > 0) {
-    $count = 0;
-    $sum_array = 0;
-    foreach ($donations->result() as $row2) {
-        $sum_array += $row2->donation_amount;
-    }
-    echo $sum_array;
-}
-
-?></li>
-                            <li><strong>Target:</strong> <span class="text-theme">Kes 70000</span></li>
+                            <li><strong>Donated:</strong> <?php echo number_format($project_donation_total); ?> </li>
+                            <li><strong>Target:</strong> <span class="text-theme"><?php echo number_format($project_target_total); ?></span>
+                            </li>
                         </ul>
                         <div class="clearfix"></div>
                         <div class="mb-4"></div>

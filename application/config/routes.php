@@ -60,6 +60,7 @@ $route['translate_uri_dashes'] = false;
  * Auth
  */
 
+$route['login'] = 'auth/laikipiaauth/login_admin';
 $route['administration/login'] = 'auth/laikipiaauth/login_admin';
 $route['administration/logout'] = 'auth/laikipiaauth/logout';
 
