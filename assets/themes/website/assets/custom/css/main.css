@@ -231,6 +231,7 @@ nav {
 .school-content .school-thumb {
 	position: relative;
 	overflow: hidden;
+	height: 200px;
 }
 
 .full-img {
@@ -275,6 +276,7 @@ nav {
 .school-content h3 {
 	font-weight: bold;
 	text-align: center;
+	font-size: 1.5em;
 }
 
 .school-content:hover h3 {
@@ -335,6 +337,7 @@ nav {
 
 .school-details ul.list-inline li {
 	float: left;
+	font-size: 0.9em;
 }
 
 .school-details ul.list-inline li:nth-child(2) {
