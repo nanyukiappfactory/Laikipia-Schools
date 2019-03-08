@@ -11,9 +11,9 @@
         </div>
         <div id="partnerCarousel" class="owl-carousel">
             <?php
-if ($donations->num_rows() > 0) {
+if ($partners->num_rows() > 0) {
     $count = 0;
-    foreach ($donations->result() as $row) {
+    foreach ($partners->result() as $row) {
         ?>
             <div class="card">
                 <img style="max-width:100%;" src="<?php echo base_url() . 'assets/uploads/' . $row->post_image_name; ?>"
