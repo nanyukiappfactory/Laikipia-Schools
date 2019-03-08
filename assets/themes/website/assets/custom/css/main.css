@@ -612,3 +612,17 @@ nav {
 		margin-bottom: 10px;
 	}
 }
+/* Page Header */
+.page-header {
+	/* The image used */
+	background-image: url("../../img/school.JPG");
+
+	/* Set a specific height */
+	min-height: 500px;
+	padding: 90px 0;
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
