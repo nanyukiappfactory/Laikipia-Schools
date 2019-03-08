@@ -537,6 +537,10 @@ nav {
 	min-height: 160px;
 }
 
+#partnerCarousel h5.card-title {
+	min-height: 63px;
+}
+
 /* Footer */
 .footer-section {
 	padding: 90px 0;
