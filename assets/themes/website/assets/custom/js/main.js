@@ -83,6 +83,38 @@ var Accordion = function () {
 
 }();
 
+function initialize_map(lat, long) {
+	var position = new google.maps.LatLng(lat, long);
+	var myOptions = {
+		zoom: 15,
+		center: position,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	var map = new google.maps.Map(
+		document.getElementById("map_canvas"), myOptions);
+
+	var marker = new google.maps.Marker({
+		position: position,
+		map: map,
+		title:"This is the place."
+	});
+	var infowincontent = document.createElement("div");
+	var strong = document.createElement("strong");
+	strong.textContent = "Laikipia High";
+	infowincontent.appendChild(strong);
+	infowincontent.appendChild(document.createElement("br"));
+
+	var text = document.createElement("text");
+	text.textContent = "Marmanet";
+	infowincontent.appendChild(text);
+
+	var infowindow = new google.maps.InfoWindow({
+		content: infowincontent
+	});
+	infowindow.open(map,marker);
+
+}
+
 $(document).ready(function () {
 	$('#myCarousel').carousel({
 		interval: 4000
