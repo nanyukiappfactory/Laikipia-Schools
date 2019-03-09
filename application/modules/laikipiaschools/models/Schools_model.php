@@ -25,7 +25,7 @@ class Schools_model extends CI_Model
             return false;
         }
     }
-    
+
     public function add_new_school()
     {
         // create an array of The data to save
@@ -53,7 +53,7 @@ class Schools_model extends CI_Model
     public function insert_csv($data)
     {
         // create an array of The data to save
-       $data = array(
+        $data = array(
             "school_name" => $this->input->post("school_name"),
             "school_write_up" => $this->input->post("school_write_up"),
             "school_boys_number" => $this->input->post("school_boys_number"),
@@ -81,9 +81,7 @@ class Schools_model extends CI_Model
         $this->db->select("school_zone");
         $this->db->from("school");
         $query = $this->db->get();
-
         // $sql = '';
-
         // foreach ($query->result() as $key => $value)
         // {
         //     $sql .= 'UPDATE school SET school_zone ="' . $value->school_location_name . '" WHERE school_id = ' . $value->school_id . ';';
@@ -107,17 +105,6 @@ class Schools_model extends CI_Model
         $this->db->order_by($order, $order_method);
         return $this->db->get();
 
-    }
-    public function change_school_status($school_id, $new_school_status)
-    {
-
-        $this->db->set('school_status', $new_school_status);
-        $this->db->where('school_id', $school_id);
-        if ($this->db->update('school')) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     public function get_other_images()
@@ -156,15 +143,20 @@ class Schools_model extends CI_Model
         $data = array(
             "school_name" => $this->input->post("school_name"),
             "school_write_up" => $this->input->post("school_write_up"),
+            "school_zone" => $this->input->post("school_zone"),
             "school_boys_number" => $this->input->post("school_boys_number"),
             "school_girls_number" => $this->input->post("school_girls_number"),
             "school_location_name" => $this->input->post("school_location_name"),
             "school_latitude" => $this->input->post("school_latitude"),
             "school_longitude" => $this->input->post("school_longitude"),
             "school_status" => 1,
+            "school_thumb_name" => $thumb_name,
+            "school_image_name" => $file_name,
+
         );
 
         $this->db->set($data);
+
         $this->db->where('school_id', $school_id);
         if ($this->db->update('school')) {
             return true;
@@ -172,15 +164,22 @@ class Schools_model extends CI_Model
             return false;
         }
     }
-
+    public function change_school_status($school_id, $new_school_status)
+    {
+        $this->db->set('school_status', $new_school_status);
+        $this->db->where('school_id', $school_id);
+        if ($this->db->update('school')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public function save_school_flow($table, $data)
     {
         // var_dump($data);die();
-        if ($this->db->insert($table, $data)) 
-        {
+        if ($this->db->insert($table, $data)) {
             return $this->db->insert_id();
-        } else 
-        {
+        } else {
             return false;
         }
     }

@@ -1,3 +1,12 @@
+<?php
+
+$validation_errors = validation_errors();
+if (!empty($validation_errors)) {
+    echo $validation_errors;
+}
+
+?>
+
 <!--
 <div class="container"> -->
 <div class="shadow-lg p-3 mb-5 bg-white rounded" id="ads">
@@ -52,7 +61,7 @@
                                     </select>
                                     <small id="emailHelp" class="form-text text-muted"></small>
                                 </div>
-                
+
 
                                 <div class="form-group">
                                     <label for="school_boys_number">Number of boys</label>
@@ -121,7 +130,7 @@
                                 <div class="form-group">
                                     <label for="school_write_up">School Write Up</label>
                                     <?php echo form_textarea(array('name' => 'school_write_up')); ?>
-                            
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
@@ -169,11 +178,8 @@
         </table>
     </div>
 </div>
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 032329db8a832eae45113748bb7a571afd504f6c
 <p>
     <?php echo $links; ?>
 </p>
