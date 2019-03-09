@@ -226,12 +226,18 @@ nav {
 
 .school-content {
 	position: relative;
+	margin-bottom: 30px;
 }
 
 .school-content .school-thumb {
 	position: relative;
 	overflow: hidden;
 	height: 200px;
+}
+
+.school-content .school-thumb-single {
+	position: relative;
+	overflow: hidden;
 }
 
 .full-img {
@@ -277,6 +283,7 @@ nav {
 	font-weight: bold;
 	text-align: center;
 	font-size: 1.5em;
+	height: 66px;
 }
 
 .school-content:hover h3 {
@@ -548,7 +555,7 @@ nav {
 
 .footer-section .section-title {
 	text-align: center;
-	color:  #313131;
+	color: #313131;
 	margin-bottom: 50px;
 	text-transform: uppercase;
 }
@@ -566,7 +573,7 @@ nav {
 }
 
 #footer a {
-	color:  #313131;
+	color: #313131;
 	text-decoration: none !important;
 	background-color: transparent;
 	-webkit-text-decoration-skip: objects;
@@ -591,7 +598,7 @@ nav {
 
 #footer ul.social li a,
 #footer ul.quick-links li a {
-	color:  #313131;
+	color: #313131;
 }
 
 #footer ul.social li a:hover {
@@ -627,17 +634,48 @@ nav {
 		margin-bottom: 10px;
 	}
 }
+
 /* Page Header */
 .page-header {
-	/* The image used */
-	background-image: url("../../img/school.JPG");
-
 	/* Set a specific height */
-	min-height: 500px;
+	min-height: 200px;
 	padding: 90px 0;
 	/* Create the parallax scrolling effect */
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+
+.thumbnails {
+	padding: 20px;
+	position: relative;
+	background-color: #f7f7f7;
+	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+}
+
+.thumbnails ul {
+	padding-left: 0;
+	margin-left: -5px;
+	list-style: none;
+	margin-bottom: 0;
+}
+
+.thumbnails ul>li {
+	display: inline-block;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+.thumbnails ul>li a {
+	color: #444;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+#map_canvas {
+	position: relative;
+	overflow: hidden;
+	height: 300px;
 }

@@ -178,8 +178,4 @@ if (!empty($validation_errors)) {
         </table>
     </div>
 </div>
-
-
-<p>
-    <?php echo $links; ?>
-</p>
+<?php echo $links; ?>

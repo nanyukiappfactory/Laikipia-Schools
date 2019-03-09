@@ -18,7 +18,7 @@ if ($partners->num_rows() > 0) {
 
             <div class="card">
                                 <img style="max-width:100%;"
-                                    src="<?php echo base_url() . 'assets/uploads/' . $row->post_thumb_name; ?>"
+                                    src="<?php echo base_url() . 'assets/uploads/' . $row->post_image_name; ?>"
                                     class="d-block w-10" />
                                 <div class="img-overlayer"></div>
                 <div class="card-body">
