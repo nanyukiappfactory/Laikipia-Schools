@@ -4,7 +4,9 @@
         <div class="row">
             <div class="col-md-8 offset-md-2 text-center">
                 <div class="section-title">
-                    <a href="<?php echo base_url();?>site/site/view_other"><h2 class="text-uppercase">Our <span class="text-theme">Schools</span></h2></a>
+                    <a href="<?php echo base_url(); ?>site/site/view_other">
+                        <h2 class="text-uppercase">Our <span class="text-theme">Schools</span></h2>
+                    </a>
                     <!-- <h2 class="text-uppercase">Our <span class="text-theme">Schools</span></h2> -->
                     <h4>Our initiative is currently targeting day high schools in Laikipia County</h4>
                 </div>
