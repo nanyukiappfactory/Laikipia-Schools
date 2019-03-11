@@ -28,11 +28,11 @@
 									<div class="accordion_itemContent">
                                         <p>
 									
-										<?php  
-										foreach ($abouts->result() as $row) 
+										<!-- <?php  
+										 foreach ($abouts->result() as $row) 
 											if(strtolower($row->category_name) == strtolower("About")){?>
-												<?php echo $row->post_id; ?><?php echo $row->post_title; ?>
-											<?php }?>
+												<?php echo $row->post_description; ?>
+											<?php }?> -->
 
 
 										</p>
@@ -50,7 +50,13 @@
                                                 </div>
 									</div>
 									<div class="accordion_itemContent">
-										<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+										<p>										
+										<!-- <?php  
+										foreach ($abouts->result() as $row) 
+											if(strtolower($row->category_name) == strtolower("About")){?>
+												<?php echo $row->post_description; ?>
+											<?php }?> -->
+                                              </p>
                                         <div class="center-button">
                                             <a href="#" type="submit" class="btn btn-default btn-dark">Read More</a>
                                         </div>
