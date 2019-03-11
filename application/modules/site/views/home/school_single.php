@@ -42,19 +42,19 @@ if ($allschools->num_rows() > 0) {
 						<div class="row">
 							<div class="col-md-8 offset-md-2 text-center">
 								<div class="section-title">
-									<h2 class="text-uppercase">Donation <span class="text-theme">Progress</span></h2>
-									<h4><?php echo $row->school_name; ?> has received 50% of their donation needs</h4>
-								</div>
-							</div>
-						 </div>
-						 <div class="progress-bar">
-								<?php
+                                <?php
                          if ($row->total_donated > $row->target_amount) {
                                 $progress = 100;
                             } else {
                                 $progress = ($row->total_donated / $row->target_amount) * 100;
                             }
                             ?>
+									<h2 class="text-uppercase">Donation <span class="text-theme">Progress</span></h2>
+									<h4><?php echo $row->school_name; ?> has received <?php echo number_format($progress); ?>% of their donation needs</h4>
+								</div>
+							</div>
+						 </div>
+						 <div class="progress-bar">
                         <div class="total-progress" data-percentage="<?php echo number_format($progress); ?>"></div>
                         </div>
                         </div>
@@ -120,6 +120,7 @@ if ($allschools->num_rows() > 0) {
                 </div>
 			</div>
         </section>
-        <?php }}?>
+        
+        <?php break;}  }?>
 		<!-- End school -->
 	</div>
