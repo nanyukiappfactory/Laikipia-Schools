@@ -43,12 +43,12 @@ if ($allschools->num_rows() > 0) {
 							<div class="col-md-8 offset-md-2 text-center">
 								<div class="section-title">
                                 <?php
-            if ($row->total_donated > $row->target_amount) {
-                $progress = 100;
-            } else {
-                $progress = ($row->total_donated / $row->target_amount) * 100;
-            }
-            ?>
+                                    if ($row->total_donated > $row->target_amount) {
+                                        $progress = 100;
+                                    } else {
+                                        $progress = ($row->total_donated / $row->target_amount) * 100;
+                                    }
+                                    ?>
 									<h2 class="text-uppercase">Donation <span class="text-theme">Progress</span></h2>
 									<h4><?php echo $row->school_name; ?> has received <?php echo number_format($progress); ?>% of their donation needs</h4>
 								</div>
@@ -60,7 +60,78 @@ if ($allschools->num_rows() > 0) {
                         </div>
                 </div>
                 <div>
+
                 <h3>About <?php echo $row->school_name; ?></h3>
+				<div class="row">
+					<div class="col-sm-4 col-md-3 col-lg-3">
+						<div class="school-thumb-single">
+                            <a class="school-image" href=""><img class="img-fluid " src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>" alt="..."></a>
+							<div class="img-overlayer"></div>
+						</div>
+						<div class="school-details text-left">
+							<ul class="list-inline">
+                                <?php $target = $row->target_amount;?>
+                                <li><strong>Donated:</strong> <?php echo number_format($row->total_donated); ?></li>
+                                <li><strong>Target:</strong> <span class="text-theme"><?php echo number_format($target); ?></span>
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+					<div class="col-sm-8 col-md-9 col-lg-9">
+						<div id="map_canvas"></div>
+					</div>
+				</div>
+				<div class="row mt-4">
+					<div class="col-sm-12">
+						<p><?php echo $row->school_write_up; ?></p>
+
+
+					</div>
+				</div>
+				<h3>Gallery</h3>
+				<div id="schoolGalleryCarousel" class="owl-carousel">
+					<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>" alt="..."></a>
+					<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>" alt="..."></a>
+					<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>" alt="..."></a>
+					<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>" alt="..."></a>
+					<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>" alt="..."></a>
+					<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>" alt="..."></a>
+					<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>" alt="..."></a>
+					<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>" alt="..."></a>
+					<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>" alt="..."></a>
+					<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>" alt="..."></a>
+					<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>" alt="..."></a>
+					<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>" alt="..."></a>
+					<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>" alt="..."></a>
+				</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- <h3>About <?php echo $row->school_name; ?></h3>
                </div>
 				<div class="row">
 					<div class="col-sm-4 col-md-3 col-lg-3">
@@ -117,7 +188,7 @@ if ($allschools->num_rows() > 0) {
                     <div class="gallery">
                         <img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>" alt="...">
                     </div>
-                </div>
+                </div> -->
 			</div>
         </section>
 
