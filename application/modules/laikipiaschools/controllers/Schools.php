@@ -51,7 +51,7 @@ class Schools extends MX_Controller
         // Initialize our map, passing in any map_config
         $this->googlemaps->initialize($map_config);
 
-        $order = 'school.created_on';
+        $order = 'school.school_name';
         $order_method = 'ASC';
         $this->form_validation->set_rules("school_name", "School Name", "required");
         $this->form_validation->set_rules("school_write_up", "school Write Up", "required");
@@ -106,16 +106,11 @@ class Schools extends MX_Controller
                     'school_zone' => $this->input->post('school_zone'),
                     'school_latitude' => $this->input->post('school_latitude'),
                     'school_longitude' => $this->input->post('school_longitude'),
-                    'school_write_up' => $this->input->post('school_write_up')
-
+                    'school_write_up' => $this->input->post('school_write_up'),
                 ));
-
                 $this->session->set_flashdata("error", validation_errors());
                 redirect('administration/add-school');
-            }
-            else
-            {
-
+            } else {
                 //pagination
                 $segment = 5;
                 $this->load->library('pagination');
@@ -125,7 +120,6 @@ class Schools extends MX_Controller
                 $config['uri_segment'] = $segment;
                 $config['per_page'] = 20;
                 $config['num_links'] = 5;
-
                 $config['full_tag_open'] = '<div class="pagging text-center"><nav aria-label="Page navigation example"><ul class="pagination">';
                 $config['full_tag_close'] = '</ul></nav></div>';
                 $config['num_tag_open'] = '<li class="page-item"><span class="page-link">';
@@ -142,10 +136,8 @@ class Schools extends MX_Controller
                 $config['last_tagl_close'] = '</span></li>';
 
                 $this->pagination->initialize($config);
-
                 $page = ($this->uri->segment($segment)) ? $this->uri->segment($segment) : 0;
                 $v_data["links"] = $this->pagination->create_links();
-
                 $query = $this->schools_model->get_all_schools($table, $where, $start, $config["per_page"], $page, $order, $order_method);
 
                 //change of order method
@@ -173,7 +165,6 @@ class Schools extends MX_Controller
                 $school_array = array();
 
                 foreach ($v_data["schools"]->result() as $school) {
-                    // array_push($school_array, $school->school_name);
                     array_push($school_array, array(
                         'id' => $school->school_id,
                         'name' => $school->school_name,
@@ -361,6 +352,7 @@ class Schools extends MX_Controller
 
     public function edit_school($school_id)
     {
+
         $this->form_validation->set_rules("school_name", "School Name", "required");
         $this->form_validation->set_rules("school_write_up", "school Write Up", "required");
         $this->form_validation->set_rules("school_boys_number", "Number of Boys", "required");
@@ -370,20 +362,47 @@ class Schools extends MX_Controller
         $this->form_validation->set_rules("school_latitude", "Latitude", "required");
         $this->form_validation->set_rules("school_longitude", "Longitude", "required");
 
+        $form_errors = "";
         if ($this->form_validation->run()) {
-            $update_status = $this->schools_model->update_school($school_id);
 
-            if ($update_status) {
-                redirect("administration/schools");
+            $resize = array(
+                "width" => 600,
+                "height" => 600,
+            );
+
+            if (isset($_FILES['school_image']) && $_FILES['school_image']['size'] > 0) {
+                $upload_response = $this->file_model->upload_image($this->upload_path, "school_image", $resize);
+                // var_dump($upload_response);die();
+
+                if ($upload_response['check'] == false) {
+                    $this->session->set_flashdata('error', $upload_response['message']);
+                    redirect('administration/schools');
+                } else {
+                    $update_status = $this->schools_model->update_school($school_id);
+
+                    if ($this->schools_model->edit_school($upload_response['file_name'], $update_status, $school_id, $upload_response['thumb_name'])) {
+                        $this->session->set_flashdata('success', 'school updated successfully!!');
+                        redirect('administration/schools');
+                    } else {
+                        $this->session->flashdata("error_message", "Unable to update  school");
+                    }
+                }
+
             } else {
-                $this->session->set_flashdata('error', validation_errors());
-                redirect("administration/schools");
+                $update_status = $this->schools_model->update_school($school_id);
+                if ($this->schools_model->update_school(null, null, null)) {
+                    $this->session->set_flashdata('success', 'school updated successfully!!');
+                    redirect('administration/schools');
+                } else {
+                    $this->session->flashdata("error", "Unable to update  school");
+                }
+
             }
-        } else {
+
             redirect("administration/schools");
+
         }
     }
-
     public function close_search()
     {
         $this->session->unset_userdata('schools_search');
@@ -391,7 +410,6 @@ class Schools extends MX_Controller
 
         redirect("laikipiaschools/schools");
     }
-
     public function single_school($school_id)
     {
         $v_data['query'] = $this->schools_model->get_single_school($school_id);
