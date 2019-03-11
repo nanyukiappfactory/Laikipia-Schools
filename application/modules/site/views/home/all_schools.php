@@ -33,7 +33,7 @@
 						<div class="col-md-8 offset-md-2 text-center">
 							<div class="section-title">
 								<h2 class="text-uppercase">Donation <span class="text-theme">Progress</span></h2>
-								<h4>We are<?php echo $percentage_donated_total; ?>% there.</h4>
+								<h4>We are <?php echo $percentage_donated_total; ?>% there.</h4>
 							</div>
 						</div>
 					</div>
