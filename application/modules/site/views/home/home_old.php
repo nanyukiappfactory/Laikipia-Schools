@@ -61,18 +61,18 @@ foreach ($schools->result() as $row) {
         <div class="col-sm-12 col-md-12">
 
             <?php
-$partner_post = array();
-foreach ($abouts->result() as $row) {
-    if (strtolower($row->category_name) == strtolower("Partner")) {
+            $partner_post = array();
+            foreach ($abouts->result() as $row) {
+                if (strtolower($row->category_name) == strtolower("Partner")) {
 
-        array_push($partner_post, array(
-            "post_title" => $row->post_title,
-            "post_description" => $row->post_description,
-            "post_image_name" => $row->post_image_name,
-            "post_date" => $row->post_date,
-        ));
+                    array_push($partner_post, array(
+                        "post_title" => $row->post_title,
+                        "post_description" => $row->post_description,
+                        "post_image_name" => $row->post_image_name,
+                        "post_date" => $row->post_date,
+                    ));
 
-    }
+                }
 
 }
 // var_dump($partner_post);die();

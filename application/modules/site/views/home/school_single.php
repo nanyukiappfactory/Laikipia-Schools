@@ -78,46 +78,44 @@ if ($allschools->num_rows() > 0) {
 						</div>
 					</div>
 					<div class="col-sm-8 col-md-9 col-lg-9">
-                        <div id="map_canvas">
-                                
-                        <script type="text/javascript">
-                        function initialize() {
-                        var position = new google.maps.LatLng('<?php echo $row->school_latitude; ?>',
-                            '<?php echo $row->school_longitude; ?>');
-                        var myOptions = {
-                            zoom: 15,
-                            center: position,
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                        };
-                        var map = new google.maps.Map(
-                            document.getElementById("map_canvas<?php echo $row->school_id; ?>"),
-                            myOptions);
+                    <?php echo '<script type="text/javascript">
+													function initialize() {
+														var position = new google.maps.LatLng(' . $row->school_latitude . ',' . $row->school_longitude . ');
+														var myOptions = {
+														zoom: 15,
+														center: position,
+														mapTypeId: google.maps.MapTypeId.ROADMAP
+														};
+														var map = new google.maps.Map(
+															document.getElementById("map_canvas' . $row->school_id . '"),
+															myOptions);
 
-                        var marker = new google.maps.Marker({
-                            position: position,
-                            map: map,
-                            title: "This is the place."
-                        });
-                        var infowincontent = document.createElement("div");
-                        var strong = document.createElement("strong");
-                        strong.textContent = "<?php echo $row->school_name; ?>";
-                        infowincontent.appendChild(strong);
-                        infowincontent.appendChild(document.createElement("br"));
+														var marker = new google.maps.Marker({
+															position: position,
+															map: map,
+															title:"This is the place."
+														});
+														var infowincontent = document.createElement("div");
+														var strong = document.createElement("strong");
+														strong.textContent = "' . $row->school_name . '"
+														infowincontent.appendChild(strong);
+														infowincontent.appendChild(document.createElement("br"));
 
-                        var text = document.createElement("text");
-                        text.textContent = "<?php echo $row->school_location_name; ?>";
-                        infowincontent.appendChild(text);
+														var text = document.createElement("text");
+														text.textContent = "' . $row->school_location_name . '"
+														infowincontent.appendChild(text);
 
-                        var infowindow = new google.maps.InfoWindow({
-                            content: infowincontent
-                        });
-                        infowindow.open(map, marker);
+														var infowindow = new google.maps.InfoWindow({
+															content: infowincontent
+														});
+														infowindow.open(map,marker);
 
-                        }
-                        google.maps.event.addDomListener(window, "load", initialize);
-                        </script>
+													}
+													google.maps.event.addDomListener(window, "load", initialize);
+													</script>'; ?>
+                        <div id="map_canvas<?php echo $row->school_id; ?>" style="width:100%; height:500px"></div>
                         </div>
-                    
+                       
 					</div>
 				</div>
 				<div class="row mt-4">

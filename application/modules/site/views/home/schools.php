@@ -14,9 +14,9 @@
             <div class="col-sm-8 col-md-8 col-lg-8">
                 <div id="schoolCarousel" class="owl-carousel">
                     <?php
-if ($schools->num_rows() > 0) {
-    foreach ($schools->result() as $row) {
-        ?>
+                    if ($schools->num_rows() > 0) {
+                        foreach ($schools->result() as $row) {
+                            ?>
                     <div class="c-item">
                         <div class="school-content">
                             <div class="school-thumb">
@@ -29,12 +29,12 @@ if ($schools->num_rows() > 0) {
                             <div class="school-details text-left">
                                 <div class="progress-bar">
                                     <?php
-if ($row->total_donated > $row->target_amount) {
-            $progress = 100;
-        } else {
-            $progress = ($row->total_donated / $row->target_amount) * 100;
-        }
-        ?>
+                                if ($row->total_donated > $row->target_amount) {
+                                            $progress = 100;
+                                        } else {
+                                            $progress = ($row->total_donated / $row->target_amount) * 100;
+                                        }
+                                        ?>
                                     <div class="total-progress"
                                         data-percentage="<?php echo number_format($progress); ?>"></div>
                                 </div>
@@ -56,7 +56,7 @@ if ($row->total_donated > $row->target_amount) {
 
                     </div>
                     <?php }
-}?>
+                        }?>
                 </div>
             </div>
             <!-- End schools -->
