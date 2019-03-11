@@ -7,10 +7,19 @@ class Site extends MX_Controller
     {
         parent::__construct();
         $this->load->model("sites_model");
+        $this->load->library('googlemaps');
 
     }
     public function index()
     {
+
+        $map_config['apikey'] = 'AIzaSyAMfrWKiELcjgQDzNq1n3LTVMSQAXGSs6E';
+        $map_config['center'] = '37.4419, -122.1419';
+        $map_config['zoom'] = 'auto';
+        // Initialize our map, passing in any map_config
+        $this->googlemaps->initialize($map_config);
+
+
         $v_data['abouts'] = $this->sites_model->get_about_posts();
         //echo json_encode($v_data['abouts']->result());die();
         $v_data['get_donors'] = $this->sites_model->get_donations();
@@ -21,7 +30,9 @@ class Site extends MX_Controller
         $v_data['schools'] = $this->sites_model->get_schools();
         $v_data['partners'] = $this->sites_model->get_partners();
         $v_data['allschools'] = $this->sites_model->get_all_schools();
+        $v_data['map'] = $this->googlemaps->create_map();
         //echo json_encode($v_data['allschools']->result());die();
+        
         
         $project_donation_total = $project_target_total = $percentage_donated_total = 0;
         if ($donations->num_rows() > 0) {
