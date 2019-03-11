@@ -402,7 +402,6 @@ class Schools extends MX_Controller
                     }
                 }
             } else {
-                $update_status = $this->schools_model->update_school($school_id);
                 if ($this->schools_model->update_school(null, null, null)) {
                     $this->session->set_flashdata('success', 'school updated successfully!!');
                     redirect('administration/schools');
