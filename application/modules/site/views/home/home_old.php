@@ -38,7 +38,7 @@ foreach ($abouts->result() as $row) {
 
             <?php
 $donors_post = array();
-foreach ($abouts->result() as $row) {
+foreach ($schools->result() as $row) {
     if (strtolower($row->category_name) == strtolower("Donor")) {
 
         array_push($donors_post, array(
@@ -51,7 +51,7 @@ foreach ($abouts->result() as $row) {
     }
 
 }
-// var_dump($donors_post);die();
+// echo json_encode($donors_post);die();
 ?>
         </div>
     </div>
@@ -75,7 +75,7 @@ foreach ($abouts->result() as $row) {
     }
 
 }
-var_dump($partner_post);die();
+// var_dump($partner_post);die();
 ?>
         </div>
     </div>
@@ -127,7 +127,8 @@ foreach ($pictures->result() as $row) {
 
 }
 
-// echo json_encode($picture_array);die();
+echo json_encode($pictures);die();
+
 ?>
         </div>
     </div>
@@ -139,7 +140,7 @@ foreach ($pictures->result() as $row) {
 
 $picture_array = array();
 foreach ($pictures->result() as $row) {
-    if (strtolower($row->category_name) == strtolower("Student")) {
+    if (strtolower($row->category_name) == strtolower("Gallery")) {
 
         array_push($picture_array, array(
             "post_title" => $row->post_title,
@@ -152,7 +153,7 @@ foreach ($pictures->result() as $row) {
 
 }
 
-echo json_encode($picture_array);die();
+// echo json_encode($picture_array);die();
 ?>
         </div>
     </div>

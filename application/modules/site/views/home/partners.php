@@ -15,12 +15,10 @@ if ($partners->num_rows() > 0) {
     $count = 0;
     foreach ($partners->result() as $row) {
         ?>
-
             <div class="card">
-                                <img style="max-width:100%;"
-                                    src="<?php echo base_url() . 'assets/uploads/' . $row->post_image_name; ?>"
-                                    class="d-block w-10" />
-                                <div class="img-overlayer"></div>
+                <img style="max-width:100%;" src="<?php echo base_url() . 'assets/uploads/' . $row->post_image_name; ?>"
+                    class="d-block w-10" />
+                <div class="img-overlayer"></div>
                 <div class="card-body">
                     <h5 class="card-title text-center">
                         <?php echo $row->post_title; ?>

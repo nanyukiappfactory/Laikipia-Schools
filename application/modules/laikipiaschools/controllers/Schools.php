@@ -6,6 +6,7 @@ class Schools extends MX_Controller
 {
     public $upload_path;
     public $upload_location;
+
     public function __construct()
     {
         parent::__construct();
@@ -18,6 +19,8 @@ class Schools extends MX_Controller
         $this->load->library("image_lib");
         $this->load->library('googlemaps');
         $this->load->library('ckeditor');
+        $this->load->library('image_CRUD');
+
         $this->load->library('ckfinder');
         $this->ckeditor->basePath = base_url() . 'asset/ckeditor/';
         $this->ckeditor->config['language'] = 'en';
@@ -31,6 +34,23 @@ class Schools extends MX_Controller
         $this->load->model("laikipiaschools/file_model");
 
     }
+    public function example1()
+    {
+        $image_crud = new image_CRUD();
+
+        $image_crud->set_table('school_images');
+
+//If your table have by default the "id" field name as a primary key this line is not required
+        $image_crud->set_primary_key_field('school_image_id');
+
+        $image_crud->set_url_field('url');
+        $image_crud->set_image_path('assets/uploads');
+
+        $output = $image_crud->render();
+
+        $this->_example_output($output);
+    }
+
     public function index($start = null)
     {
 
@@ -352,7 +372,6 @@ class Schools extends MX_Controller
 
     public function edit_school($school_id)
     {
-
         $this->form_validation->set_rules("school_name", "School Name", "required");
         $this->form_validation->set_rules("school_write_up", "school Write Up", "required");
         $this->form_validation->set_rules("school_boys_number", "Number of Boys", "required");
@@ -361,25 +380,20 @@ class Schools extends MX_Controller
         $this->form_validation->set_rules("school_location_name", "Location", "required");
         $this->form_validation->set_rules("school_latitude", "Latitude", "required");
         $this->form_validation->set_rules("school_longitude", "Longitude", "required");
-
         $form_errors = "";
         if ($this->form_validation->run()) {
-
             $resize = array(
                 "width" => 600,
                 "height" => 600,
             );
-
             if (isset($_FILES['school_image']) && $_FILES['school_image']['size'] > 0) {
                 $upload_response = $this->file_model->upload_image($this->upload_path, "school_image", $resize);
                 // var_dump($upload_response);die();
-
                 if ($upload_response['check'] == false) {
                     $this->session->set_flashdata('error', $upload_response['message']);
                     redirect('administration/schools');
                 } else {
                     $update_status = $this->schools_model->update_school($school_id);
-
                     if ($this->schools_model->edit_school($upload_response['file_name'], $update_status, $school_id, $upload_response['thumb_name'])) {
                         $this->session->set_flashdata('success', 'school updated successfully!!');
                         redirect('administration/schools');
@@ -387,7 +401,6 @@ class Schools extends MX_Controller
                         $this->session->flashdata("error_message", "Unable to update  school");
                     }
                 }
-
             } else {
                 $update_status = $this->schools_model->update_school($school_id);
                 if ($this->schools_model->update_school(null, null, null)) {
@@ -396,11 +409,8 @@ class Schools extends MX_Controller
                 } else {
                     $this->session->flashdata("error", "Unable to update  school");
                 }
-
             }
-
             redirect("administration/schools");
-
         }
     }
     public function close_search()

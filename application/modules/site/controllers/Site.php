@@ -20,7 +20,6 @@ class Site extends MX_Controller
         $v_data['pictures'] = $this->sites_model->get_gallery_pictures();
         $v_data['schools'] = $this->sites_model->get_schools();
         $v_data['partners'] = $this->sites_model->get_partners();
-        //echo json_encode( $v_data['partners']->result());die();
         $v_data['allschools'] = $this->sites_model->get_all_schools();
         //echo json_encode($v_data['allschools']->result());die();
         
@@ -129,9 +128,8 @@ class Site extends MX_Controller
                     $v_data['pictures'] = $this->sites_model->get_gallery_pictures();
                     $v_data['schools'] = $this->sites_model->get_schools();
                     $v_data['partners'] = $this->sites_model->get_partners();
-                    
-                    $v_data['allschools'] = $this->sites_model->get_all_schools($school_id);
-                   
+                    $v_data['allschools'] = $this->sites_model->get_all_schools();
+                    $v_data['singleschool'] = $this->sites_model->get_single_school($school_id);
                     //echo json_encode($v_data['allschools']->result());die();
                     
                     $project_donation_total = $project_target_total = $percentage_donated_total = 0;

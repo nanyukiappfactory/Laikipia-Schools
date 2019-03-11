@@ -1,34 +1,26 @@
-<div class="page-content">
+<!-- Carousel -->
+<div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+
     <!-- Carousel -->
     <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 
         <!-- Wrapper for slides -->
-
         <div class="carousel-inner">
             <?php
-if ($pictures->num_rows() > 0) {
-    $count = 0;
-    foreach ($pictures->result() as $row) {
-        ?>
+foreach ($abouts->result() as $row) {
+    if (strtolower($row->category_name) == strtolower("About")) {?>
             <div class="carousel-item active">
-                <img src="http://placehold.it/1400x400/cccccc/ffffff">
+                <img style="max-width:100%;"
+                    src="<?php echo base_url() . 'assets/uploads/' . $row->post_image_name; ?>" />
                 <div class="carousel-caption">
-                    <h3>About</h3>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                        ut labore et
-                        dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing
-                        elitr, sed
-                        diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                        <a href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank"
-                            class="label label-danger">Bootstrap 3 - Carousel Collection</a>
+                    <h3><?php echo $row->post_title; ?></h3>
+                    <p><?php echo $row->post_description; ?>
                     </p>
                 </div>
             </div><!-- End Item -->
-
-
+            <?php }}?>
 
         </div><!-- End Carousel Inner -->
-        <?php }}?>
 
         <ul class="nav nav-pills nav-fill">
             <li class="nav-item" data-target="#myCarousel" data-slide-to="0">
