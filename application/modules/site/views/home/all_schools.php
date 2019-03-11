@@ -1,7 +1,7 @@
 <div class="page-content">
 
 	<!-- Page Header -->
-	<section class="page-header" style="background-image: url('assets/uploads/classroom.JPG')">
+	<section class="page-header" style="background-image: url('<?php echo base_url(); ?>assets/uploads/classroom.JPG')">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 offset-md-2 text-center">
