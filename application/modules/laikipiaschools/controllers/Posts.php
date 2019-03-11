@@ -44,8 +44,8 @@ $this->form_validation->set_rules("post_date", "Post Date", "required");
         if ($this->form_validation->run()) {
 
             $resize = array(
-                // "width" => 600,
-                // "height" => 600,
+                "width" => 600,
+                "height" => 600,
             );
             if (isset($_FILES['post_image_name']) && $_FILES['post_image_name']['size'] > 0) {
                 $upload_response = $this->file_model->upload_image($this->upload_path, "post_image_name", $resize);
