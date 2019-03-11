@@ -3,8 +3,8 @@
 if ($allschools->num_rows() > 0) {
     $count = 0;
     foreach ($allschools->result() as $row) {
-        if($school_id == $row->school_id){
-        ?>
+        if ($school_id == $row->school_id) {
+            ?>
 
 		<!-- Page Header -->
 		<section class="page-header" style="background-image: url('<?php echo base_url(); ?>assets/images/classroom.JPG')">
@@ -25,12 +25,12 @@ if ($allschools->num_rows() > 0) {
 			<div class="container">
 				<ul class="list-inline">
                     <!-- <li><a href="index.html"> Home </a></li> -->
-                    <li><a href="<?php echo base_url();?>site/site/index">Home</a></li>
+                    <li><a href="<?php echo base_url(); ?>site/site/index">Home</a></li>
 					<li><a href="#"> <i class="fas fa-angle-double-right"></i> </a></li>
                     <!-- <li><a href="schools.html"> Schools </a> </li> -->
-                    <li><a href="<?php echo base_url();?>site/site/view_other">Schools</a></li>
+                    <li><a href="<?php echo base_url(); ?>site/site/view_other">Schools</a></li>
 					<li><a href="#"> <i class="fas fa-angle-double-right"></i> </a></li>
-					<li><a href="<?php echo base_url();?>site/site/view-single"> <?php echo $row->school_name; ?> </a> </li>
+					<li><a href="<?php echo base_url(); ?>site/site/view-single"> <?php echo $row->school_name; ?> </a> </li>
 				</ul>
 			</div>
 		</section>
@@ -43,12 +43,12 @@ if ($allschools->num_rows() > 0) {
 							<div class="col-md-8 offset-md-2 text-center">
 								<div class="section-title">
                                 <?php
-                         if ($row->total_donated > $row->target_amount) {
-                                $progress = 100;
-                            } else {
-                                $progress = ($row->total_donated / $row->target_amount) * 100;
-                            }
-                            ?>
+            if ($row->total_donated > $row->target_amount) {
+                $progress = 100;
+            } else {
+                $progress = ($row->total_donated / $row->target_amount) * 100;
+            }
+            ?>
 									<h2 class="text-uppercase">Donation <span class="text-theme">Progress</span></h2>
 									<h4><?php echo $row->school_name; ?> has received <?php echo number_format($progress); ?>% of their donation needs</h4>
 								</div>
@@ -120,7 +120,7 @@ if ($allschools->num_rows() > 0) {
                 </div>
 			</div>
         </section>
-        
-        <?php break;}  }}?>
+
+        <?php break;}}}?>
 		<!-- End school -->
 	</div>
