@@ -49,7 +49,7 @@
 									<div class="accordion_itemContent">
 										<p><?php  
 										 foreach ($abouts->result() as $row) 
-											if(strtolower($row->post_title) == strtolower("Laikipia Schools")){?>
+											if(strtolower($row->post_title) == strtolower("About Laikipia School Project")){?>
 												<?php echo $row->post_description; ?>
 											<?php }?></p>
 										<div class="center-button">
