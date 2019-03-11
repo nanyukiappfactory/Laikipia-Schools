@@ -88,18 +88,39 @@ class Posts_model extends CI_Model
         }
     }
 
-    public function update_post($post_id, $data)
+    // public function update_post($post_id, $data)
+    // {
+    //     $data = array(
+    //         "post_title" => $this->input->post("post_title"),
+    //         "post_description" => $this->input->post("post_description"),
+    //         // "post_image_name" => $file_name,
+    //         // "post_thumb_name" => $thumb_name,
+    //     );
+
+    //     $this->db->set($data);
+    //     $this->db->where('post_id', $post_id);
+    //     if ($this->db->update('post', $data)) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+    public function update_post($post_id)
     {
         $data = array(
             "post_title" => $this->input->post("post_title"),
             "post_description" => $this->input->post("post_description"),
-            // "post_image_name" => $file_name,
-            // "post_thumb_name" => $thumb_name,
+
         );
 
         $this->db->set($data);
         $this->db->where('post_id', $post_id);
-        if ($this->db->update('post', $data)) {
+        if (empty($row->post_image_name)) {
+            $this->db->update('post');
+        } else {
+            $this->db->update('post.post_title, post.description, post.category, post.modified_on, post.modified_by, post.created_on');
+        }
+        if ($this->db->set($data)) {
             return true;
         } else {
             return false;
