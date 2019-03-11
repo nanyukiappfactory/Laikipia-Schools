@@ -1,5 +1,9 @@
 <!-- FAQs -->
 		<section class="faq-section">
+		<?php
+                    if ($abouts->num_rows() > 0) {
+                        foreach ($abouts->result() as $row) {
+                            ?>
 			<div class="container">
 				<div class="row">
 					<div class="col-md-5 offset-md-7">
@@ -22,7 +26,16 @@
                                                 </div>
 									</div>
 									<div class="accordion_itemContent">
-                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                                        <p>
+									
+										<?php  
+										foreach ($abouts->result() as $row) 
+											if(strtolower($row->category_name) == strtolower("About")){?>
+												<?php echo $row->post_id; ?><?php echo $row->post_title; ?>
+											<?php }?>
+
+
+										</p>
                                         <div class="center-button">
                                             <a href="#" type="submit" class="btn btn-default btn-dark">Read More</a>
                                         </div>
@@ -63,5 +76,7 @@
 					</div>
 				</div>
 			</div>
+			<?php }
+                    }?>
 		</section>
 		<!-- End FAQs -->
