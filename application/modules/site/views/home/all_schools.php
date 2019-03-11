@@ -91,7 +91,7 @@
 							</p>
 							<div class="center-button">
                                 <!-- <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>site/site/view_single/<?php echo $row->school_id; ?>">READ MORE</a> -->
-                                <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>site/site/read_more/<?php echo $row->school_id; ?>
+                                <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>client/school/<?php echo $row->school_id; ?>
                                 ">READ MORE</a>
 
 							</div>
