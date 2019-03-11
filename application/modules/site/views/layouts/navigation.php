@@ -13,7 +13,7 @@
 				<li class="nav-item"><a class="nav-link" href="#">About</a></li>
 				<li class="nav-item"> <a class="nav-link" href="#">Services</a>
 				<li class="nav-item"> <a class="nav-link" href="#">Portfolio</a>
-				<li class="nav-item"> <a class="nav-link" href="#">Blog</a>
+				<li class="nav-item"><a class="nav-link" href="#">About</a></li>
 				<li class="nav-item"> <a class="nav-link" href="#">Contact</a>
 				</li>
 			</ul>
