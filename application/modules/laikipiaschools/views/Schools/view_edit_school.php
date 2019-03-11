@@ -161,7 +161,6 @@ if ($query->num_rows() > 0) {
                         <?php
 if ($row->school_id == "") {
             ?>
-
                         <div class="form-group">
                             <label class="form-label" for="school_image">Upload Image</label>
                             <!--span class="desc">e.g. "Beautiful Mind"</span-->
@@ -175,19 +174,12 @@ if ($row->school_id == "") {
                         <div class="form-group row">
                             <label class="form-label" for="field-1">School Image</label>
                             <!--span class="desc">e.g. "Beautiful Mind"</span-->
-                            <div class="controls">
-                                <div>
-                                    <input type="file" name="school_image"
-                                        value="<?php echo base_url() . 'assets/uploads/' . $image; ?>" />
-                                </div>
-
-                                <div>
-                                    <img class="rounded float-center"
-                                        src="<?php echo base_url() . 'assets/uploads/' . $image; ?>" width="70"
-                                        height="70" class="d-block w-100" alt="No Image" />
-                                </div>
+                            <div>
+                                <img src="<?php echo base_url() . 'assets/uploads/' . $image; ?>" height="205"
+                                    width="205">
                             </div>
-                        </div><?php }?>
+                        </div>
+                        <?php }?>
                         <div class="form-group row">
                             <label for="school_latitude" class="col-sm-2 col-form-label">Latitude</label>
                             <div class="col-md-10">

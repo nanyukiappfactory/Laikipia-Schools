@@ -1,41 +1,39 @@
 <?php
 class Sites_model extends CI_Model
 {
-	public function display_page_title()
-	{
-		$page = explode("/",uri_string());
-		$total = count($page);
-		$last = $total - 1;
-		$name = $this->sites_model->decode_web_name($page[$last]);
-		
-		if(is_numeric($name))
-		{
-			$last = $last - 1;
-			$name = $this->sites_model->decode_web_name($page[$last]);
+    public function display_page_title()
+    {
+        $page = explode("/", uri_string());
+        $total = count($page);
+        $last = $total - 1;
+        $name = $this->sites_model->decode_web_name($page[$last]);
+
+        if (is_numeric($name)) {
+            $last = $last - 1;
+            $name = $this->sites_model->decode_web_name($page[$last]);
         }
-        if(empty($name))
-        {
+        if (empty($name)) {
             $name = "Home";
         }
-		$page_url = ucwords(strtolower($name));
-		
-		return $page_url;
+        $page_url = ucwords(strtolower($name));
+
+        return $page_url;
     }
 
-	public function create_web_name($field_name)
-	{
-		$web_name = str_replace(" ", "-", $field_name);
-		
-		return $web_name;
-	}
-	
-	public function decode_web_name($web_name)
-	{
-		$field_name = str_replace("-", " ", $web_name);
-		
-		return $field_name;
-	}
-    
+    public function create_web_name($field_name)
+    {
+        $web_name = str_replace(" ", "-", $field_name);
+
+        return $web_name;
+    }
+
+    public function decode_web_name($web_name)
+    {
+        $field_name = str_replace("-", " ", $web_name);
+
+        return $field_name;
+    }
+
     public function get_about_posts()
     {
         $this->db->select('post.*, category.category_id, category.category_name');
@@ -60,7 +58,7 @@ class Sites_model extends CI_Model
     }
     public function get_schools($boys_pack_amount = 475, $girls_pack_amount = 1125)
     {
-        $this->db->select('school.*, ((school.school_boys_number * '.$boys_pack_amount.') + (school.school_girls_number * '.$girls_pack_amount.')) AS target_amount, SUM(donation.donation_amount) AS total_donated');
+        $this->db->select('school.*, ((school.school_boys_number * ' . $boys_pack_amount . ') + (school.school_girls_number * ' . $girls_pack_amount . ')) AS target_amount, SUM(donation.donation_amount) AS total_donated');
         $this->db->from('school');
         $this->db->join('donation', 'school.school_id = donation.school_id', 'left');
         $this->db->where("school_status = 1");
@@ -72,7 +70,7 @@ class Sites_model extends CI_Model
 
     public function get_donation_totals($boys_pack_amount = 475, $girls_pack_amount = 1125)
     {
-        $this->db->select('SUM((school.school_boys_number * '.$boys_pack_amount.') + (school.school_girls_number * '.$girls_pack_amount.')) AS total_target_amount, SUM(donation.donation_amount) AS total_donated_amount');
+        $this->db->select('SUM((school.school_boys_number * ' . $boys_pack_amount . ') + (school.school_girls_number * ' . $girls_pack_amount . ')) AS total_target_amount, SUM(donation.donation_amount) AS total_donated_amount');
         $this->db->from('school');
         $this->db->join('donation', 'school.school_id = donation.school_id', 'left');
         $this->db->where("school_status = 1");
@@ -118,9 +116,7 @@ class Sites_model extends CI_Model
         $this->db->select('post.*, category.category_id, category.category_name');
         $this->db->from('post');
         $this->db->join('category', 'post.category_id=category.category_id', 'left');
-        $this->db->limit('0,3');
-        $this->db->order_by('post_date', 'ASC');
         return $this->db->get();
- 
+
     }
 }
