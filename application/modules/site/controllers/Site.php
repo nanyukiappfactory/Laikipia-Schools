@@ -73,9 +73,10 @@ class Site extends MX_Controller
     
         }
 
-        public function view_single()
+        public function view_single($school_id)
     
         {
+            // echo  $school_id;die();
             $v_data['abouts'] = $this->sites_model->get_about_posts();
             $v_data['get_donors'] = $this->sites_model->get_donations();
             $v_data['get_dignity_packs'] = $this->sites_model->get_donations();
