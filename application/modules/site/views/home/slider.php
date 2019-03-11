@@ -56,9 +56,10 @@ if ($pictures->num_rows() > 0) {
                             </div>
                             <h5>Schools</h5>
                             <h3>Laikipia schools</h3>
-                            <button type="submit" class="btn btn-default btn-dark">
+                            <button type="submit" href="<?php echo base_url();?>site/site/view_other"class="btn btn-default btn-dark">
                                 More
                             </button>
+                            <!-- <a href="<?php echo base_url();?>site/site/view_other"><h2 class="text-uppercase">Our <span class="text-theme">Schools</span></h2></a> -->
                         </div>
                     </figure>
                 </a>

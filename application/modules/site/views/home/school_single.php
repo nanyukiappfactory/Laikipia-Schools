@@ -3,6 +3,7 @@
 if ($allschools->num_rows() > 0) {
     $count = 0;
     foreach ($allschools->result() as $row) {
+        
         ?>
 
 		<!-- Page Header -->

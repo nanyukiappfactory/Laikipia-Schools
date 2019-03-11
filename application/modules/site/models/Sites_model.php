@@ -135,4 +135,9 @@ class Sites_model extends CI_Model
         return $this->db->get();
  
     }
+    public function get_single_school($school_id)
+    {
+        $this->db->where("school_id", $school_id);
+        return $this->db->get("school");
+    }
 }
