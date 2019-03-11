@@ -158,28 +158,20 @@ if ($query->num_rows() > 0) {
                                 <?php echo form_input(['name' => 'school_girls_number', 'placeholder' => 'Enter First Name', 'class' => 'form-control', 'value' => set_value('firstname', $row->school_girls_number)]) ?>
                             </div>
                         </div>
-                        <?php
-if ($row->school_id == "") {
-            ?>
-                        <div class="form-group">
-                            <label class="form-label" for="school_image">Upload Image</label>
-                            <!--span class="desc">e.g. "Beautiful Mind"</span-->
-                            <div class="controls">
-                                <input type="file" name="school_image" />
-                            </div>
-                        </div>
-                        <?php
-
-        } else {?>
                         <div class="form-group row">
-                            <label class="form-label" for="field-1">School Image</label>
-                            <!--span class="desc">e.g. "Beautiful Mind"</span-->
-                            <div>
+                            <label for="school_girls_number" class="col-sm-2 col-form-label">School Image</label>
+                            <div class="col-md-10">
                                 <img src="<?php echo base_url() . 'assets/uploads/' . $image; ?>" height="205"
                                     width="205">
                             </div>
+
+                            <label for="school_girls_number" class="col-sm-2 col-form-label">Upload New
+                                Image</label>
+                            <div class="col-md-10">
+                                <input type="file" name="school_image" />
+                            </div>
+
                         </div>
-                        <?php }?>
                         <div class="form-group row">
                             <label for="school_latitude" class="col-sm-2 col-form-label">Latitude</label>
                             <div class="col-md-10">
