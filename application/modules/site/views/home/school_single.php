@@ -3,7 +3,7 @@
 if ($allschools->num_rows() > 0) {
     $count = 0;
     foreach ($allschools->result() as $row) {
-        
+        if($school_id == $row->school_id){
         ?>
 
 		<!-- Page Header -->
@@ -121,6 +121,6 @@ if ($allschools->num_rows() > 0) {
 			</div>
         </section>
         
-        <?php break;}  }?>
+        <?php break;}  }}?>
 		<!-- End school -->
 	</div>

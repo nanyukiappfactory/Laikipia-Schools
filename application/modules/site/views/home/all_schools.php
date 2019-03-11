@@ -33,7 +33,7 @@
 						<div class="col-md-8 offset-md-2 text-center">
 							<div class="section-title">
 								<h2 class="text-uppercase">Donation <span class="text-theme">Progress</span></h2>
-								<h4>We are <?php echo $percentage_donated_total; ?>% there.</h4>
+								<h4>We are<?php echo $percentage_donated_total; ?>% there.</h4>
 							</div>
 						</div>
 					</div>
@@ -91,7 +91,7 @@
 							</p>
 							<div class="center-button">
                                 <!-- <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>site/site/view_single/<?php echo $row->school_id; ?>">READ MORE</a> -->
-                                <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>site/site/read_more/1
+                                <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>site/site/read_more/<?php echo $row->school_id; ?>
                                 ">READ MORE</a>
 
 							</div>

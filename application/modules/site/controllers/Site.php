@@ -112,23 +112,15 @@ class Site extends MX_Controller
         public function read_more($school_id)
         {
 
-                //name from form is the unique identifier
-                $my_school = $this->sites_model->get_single_school($school_id);
-                if ($my_school->num_rows() > 0) {
-                    $row = $my_school->row();
-                    $school_name = $row->school_name;
-                    $school_write_up = $row->school_write_up;
-            
-                    $v_data["school_name"] = $school_name;
-                    $v_data["school_write_up"] = $school_write_up;
                     $v_data['get_donors'] = $this->sites_model->get_donations();
                     $v_data['get_dignity_packs'] = $this->sites_model->get_donations();
                     $donations = $this->sites_model->get_donation_totals();
-                    $v_data['news_items'] = $this->sites_model->get_new_items();
+                    // $v_data['news_items'] = $this->sites_model->get_new_items();
                     $v_data['pictures'] = $this->sites_model->get_gallery_pictures();
-                    $v_data['schools'] = $this->sites_model->get_schools();
-                    $v_data['partners'] = $this->sites_model->get_partners();
+                    //$v_data['schools'] = $this->sites_model->get_schools();
+                    //$v_data['partners'] = $this->sites_model->get_partners();
                     $v_data['allschools'] = $this->sites_model->get_all_schools();
+                    $v_data['school_id'] = $school_id;
                     $v_data['singleschool'] = $this->sites_model->get_single_school($school_id);
                     //echo json_encode($v_data['allschools']->result());die();
                     
@@ -153,7 +145,7 @@ class Site extends MX_Controller
             }
                    
     
-        }
+        
     
         
 
