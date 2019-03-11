@@ -29,7 +29,7 @@
                                         <p>
 										<?php  
 										 foreach ($abouts->result() as $row) 
-											if(strtolower($row->post_title) == strtolower("About Laikipia County")){?>
+											if(strtolower($row->post_title) == strtolower("Laikipia County")){?>
 												<?php echo $row->post_description; ?>
 											<?php }?>
 										</p>
