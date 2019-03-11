@@ -126,8 +126,6 @@ class Schools_model extends CI_Model
     {
         $data = array(
             'deleted' => 1,
-            'school_image_name' => 1,
-            'school_thumb_name' => 1,
             'deleted_by' => 1,
             'deleted_on' => date("Y-m-d H:i:s"),
         );
@@ -191,6 +189,7 @@ class Schools_model extends CI_Model
         $image_name = md5(date("Y-m-d H:i:s"));
         $content = file_get_contents($image_url);
         file_put_contents($path . '/' . $image_name . '.jpg', $content);
+
         return $image_name . '.jpg';
     }
 
