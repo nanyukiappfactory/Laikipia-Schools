@@ -25,6 +25,7 @@ if ($schools->num_rows() > 0) {
                                     class="d-block w-10" />
                                 <div class="img-overlayer"></div>
                             </div>
+
                             <div class="school-details text-left">
                                 <div class="progress-bar">
                                     <?php

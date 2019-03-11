@@ -18,7 +18,6 @@ foreach ($abouts->result() as $key => $row) {
             </div>
         </div><!-- End Item -->
         <?php }}?>
-
     </div><!-- End Carousel Inner -->
     <ul class="nav nav-pills nav-fill">
         <li class="nav-item" data-target="#myCarousel" data-slide-to="0">
@@ -38,7 +37,7 @@ foreach ($abouts->result() as $key => $row) {
             </a>
         </li>
         <li class="nav-item" data-target="" data-slide-to="1">
-            <a class="nav-link" href="<?php echo base_url(); ?> client/schools">
+            <a class="nav-link" href="<?php echo base_url(); ?>client/schools">
                 <figure class="slider-figure">
                     <div class="caption">
                         <div class="fc-icon">
