@@ -66,7 +66,11 @@
                                             </div>
 									</div>
 									<div class="accordion_itemContent">
-										<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+										<p><?php  
+										 foreach ($abouts->result() as $row) 
+											if(strtolower($row->post_title) == strtolower("Donations")){?>
+												<?php echo $row->post_description; ?>
+											<?php }?></p>
                                         <div class="center-button">
                                             <a href="#" type="submit" class="btn btn-default btn-dark">Read More</a>
                                         </div>
