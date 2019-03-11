@@ -126,6 +126,8 @@ class Schools_model extends CI_Model
     {
         $data = array(
             'deleted' => 1,
+            'school_image_name' => 1,
+            'school_thumb_name' => 1,
             'deleted_by' => 1,
             'deleted_on' => date("Y-m-d H:i:s"),
         );
@@ -150,8 +152,8 @@ class Schools_model extends CI_Model
             "school_latitude" => $this->input->post("school_latitude"),
             "school_longitude" => $this->input->post("school_longitude"),
             "school_status" => 1,
-            "school_thumb_name" => $thumb_name,
-            "school_image_name" => $file_name,
+            // "school_thumb_name" => $thumb_name,
+            // "school_image_name" => $file_name,
 
         );
 
@@ -189,7 +191,6 @@ class Schools_model extends CI_Model
         $image_name = md5(date("Y-m-d H:i:s"));
         $content = file_get_contents($image_url);
         file_put_contents($path . '/' . $image_name . '.jpg', $content);
-
         return $image_name . '.jpg';
     }
 
