@@ -156,9 +156,13 @@ class Schools_model extends CI_Model
         );
 
         $this->db->set($data);
-
         $this->db->where('school_id', $school_id);
-        if ($this->db->update('school')) {
+        if (empty($row->school_image_name)) {
+            $this->db->update('school');
+        } else {
+            $this->db->update('school.school_name, school.school_zone, school.school_location_name, school.school_write_up, school.modified_on, school.school_lattitude, school.school_longitude, school.created_on, school.modified_by');
+        }
+        if ($this->db->set($data)) {
             return true;
         } else {
             return false;
@@ -183,7 +187,6 @@ class Schools_model extends CI_Model
             return false;
         }
     }
-
     public function save_image($image_url, $path)
     {
         $image_name = md5(date("Y-m-d H:i:s"));
