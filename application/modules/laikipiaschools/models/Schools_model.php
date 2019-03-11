@@ -150,8 +150,8 @@ class Schools_model extends CI_Model
             "school_latitude" => $this->input->post("school_latitude"),
             "school_longitude" => $this->input->post("school_longitude"),
             "school_status" => 1,
-            "school_thumb_name" => $thumb_name,
-            "school_image_name" => $file_name,
+            // "school_thumb_name" => $thumb_name,
+            // "school_image_name" => $file_name,
 
         );
 
