@@ -73,7 +73,8 @@ class Site extends MX_Controller
     
         }
 
-        public function view_single($school_id)
+        // public function view_single($school_id)
+        public function view_single()
     
         {
             // echo  $school_id;die();
@@ -106,6 +107,25 @@ class Site extends MX_Controller
             $this->load->view("site/layouts/layout", $data);
     
         }
+
+        
+    public function read_more($school_id)
+    {
+
+                $v_data["school_name"] = $school_name;
+                $v_data["school_description"] = $school_description;
+                $v_data['categories'] = $this->site_model->get_all_categories();
+                $v_data["partner_types"] = $this->partners_model->all_partner_types();
+
+                $data = array("title" => "Update partner",
+                    "content" => $this->load->view("partners/edit_partners", $v_data, true),
+                );
+                // var_dump($data);die();
+                $this->load->view("laikipiaschools/layouts/layout", $data);
+
+           
+
+    }
     }
         
 
