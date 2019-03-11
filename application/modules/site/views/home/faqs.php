@@ -29,7 +29,7 @@
                                         <p>
 										<?php  
 										 foreach ($abouts->result() as $row) 
-											if(strtolower($row->category_name) == strtolower("About")){?>
+											if(strtolower($row->post_title) == strtolower("About Laikipia County")){?>
 												<?php echo $row->post_description; ?>
 											<?php }?>
 										</p>
@@ -42,16 +42,19 @@
 									<div class="accordion_itemTitleWrap">
 										<h3 class="accordion_itemTitle">Project Overview</h3>
 										<div class="accordion_itemIconWrap">
-                                                <svg viewBox="0 0 24 24">
-                                                    <polyline fill="none" points="21,8.5 12,17.5 3,8.5 " stroke="#FFF" stroke-miterlimit="10" stroke-width="2" /></svg>
-                                                </div>
+											<svg viewBox="0 0 24 24">
+												<polyline fill="none" points="21,8.5 12,17.5 3,8.5 " stroke="#FFF" stroke-miterlimit="10" stroke-width="2" /></svg>
+										</div>
 									</div>
 									<div class="accordion_itemContent">
-										<p>										
-										
-                                        <div class="center-button">
-                                            <a href="#" type="submit" class="btn btn-default btn-dark">Read More</a>
-                                        </div>
+										<p><?php  
+										 foreach ($abouts->result() as $row) 
+											if(strtolower($row->post_title) == strtolower("Laikipia Schools")){?>
+												<?php echo $row->post_description; ?>
+											<?php }?></p>
+										<div class="center-button">
+											<a href="#" type="submit" class="btn btn-default btn-dark">Read More</a>
+										</div>
 									</div>
 								</li>
 								<li class="accordion_item">
