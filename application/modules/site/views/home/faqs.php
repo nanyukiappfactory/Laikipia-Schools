@@ -28,14 +28,7 @@
 									<div class="accordion_itemContent">
                                         <p>
 									
-										<!-- <?php  
-										 foreach ($abouts->result() as $row) 
-											if(strtolower($row->category_name) == strtolower("About")){?>
-												<?php echo $row->post_description; ?>
-											<?php }?> -->
-
-
-										</p>
+										
                                         <div class="center-button">
                                             <a href="#" type="submit" class="btn btn-default btn-dark">Read More</a>
                                         </div>
@@ -51,12 +44,7 @@
 									</div>
 									<div class="accordion_itemContent">
 										<p>										
-										<!-- <?php  
-										foreach ($abouts->result() as $row) 
-											if(strtolower($row->category_name) == strtolower("About")){?>
-												<?php echo $row->post_description; ?>
-											<?php }?> -->
-                                              </p>
+										
                                         <div class="center-button">
                                             <a href="#" type="submit" class="btn btn-default btn-dark">Read More</a>
                                         </div>
