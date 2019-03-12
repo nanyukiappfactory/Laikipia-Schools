@@ -39,9 +39,9 @@ class Donations extends MX_Controller
             }
         } else {
             $where = 'donation.deleted=0 AND donation.school_id = school.school_id AND donation.post_id = post.post_id';
-           // $where = 'donation.deleted=0 AND donation.school_id = school.school_id AND donation.category_id = post.category_id';
+            // $where = 'donation.deleted=0 AND donation.school_id = school.school_id AND donation.category_id = post.category_id';
             $table = 'donation, school, post';
-           // $table = 'donation, school, post';
+            // $table = 'donation, school, post';
             $donations_search = $this->session->userdata('donations_search');
             $search_title = $this->session->userdata('donations_search_title');
 
@@ -101,16 +101,16 @@ class Donations extends MX_Controller
             // $v_data['cats'] = $this->site_model->get_categories();
 
             // echo json_encode($v_data['categories']->result());die();
-           //var_dump($v_data['categories']->result());die();
+            //var_dump($v_data['categories']->result());die();
             $v_data['partners'] = $this->donations_model->all_partners();
 
             $data['content'] = $this->load->view('donations/all_donations', $v_data, true);
-           
+
             $this->load->view("laikipiaschools/layouts/layout", $data);
         }
 
     }
-    
+
     public function close_search()
     {
         $this->session->unset_userdata('donations_search');
@@ -163,11 +163,13 @@ class Donations extends MX_Controller
         redirect('administration/donations');
 
     }
-public function edit_donation($donation_id)
+    
+    //edit gi
+    public function edit_donation($donation_id)
     {
-    $this->form_validation->set_rules('donation_amount', 'Donation Amount', 'required|numeric');
-    // $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
-    $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
+        $this->form_validation->set_rules('donation_amount', 'DonationAmount', 'required|numeric');
+       // $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
+        $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
 
         if ($this->form_validation->run()) {
             $update_status = $this->donations_model->update_donation($donation_id);
@@ -175,77 +177,40 @@ public function edit_donation($donation_id)
                 redirect("administration/donations");
             }
         } else {
-            //name from form is the unique identifier
-            $my_donation = $this->donations_model->get_single_donation($donation_id);
-            if ($my_donation->num_rows() > 0) {
-                $row = $my_donation->row();
-                $donation_amount = $row->donation_amount;
-                $school_id = $row->school_id;
-                $post_id = $row->post_id;
 
+            $query = $this->donations_model->get_single_donation($donation_id);
+                   // echo json_encode($query->result());die();
+
+            if ($query->num_rows() > 0) {
+                $row = $query->row();
+                //var_dump($row);die();
+                $donation_amount = $row->donation_amount;
+                // var_dump($DonationAmount);die();
+                $school = $row->school_id;
+                $post = $row->post_id;
+                $v_data["query"] = $query;
                 $v_data["donation_amount"] = $donation_amount;
-                $v_data["school_id"] = $school_id;
-                $v_data["post_id"] = $post_id;
+                $v_data["school_id"] = $school;
                 $v_data['categories'] = $this->site_model->get_all_categories();
                 $v_data['schools'] = $this->donations_model->all_schools();
-                $v_data['query'] = $this->donations_model->get_single_donation($donation_id);
+                //var_dump($v_data["school_id"]);die();
+                $v_data["post_id"] = $post;
+                //var_dump($v_data["post_id"]);die();
 
-                
-                $data = array("title" => "Update donation",
-                    "content" => $this->load->view("donations/edit_donation", $v_data, true),
-                );
-                // var_dump($data);die();
+                $data = array("title" => $this->site_model->display_page_title(),
+                    "content" => $this->load->view("donations/edit_donation", $v_data, true));
+                    
+                //var_dump($v_data["school_id"]);die();
                 $this->load->view("laikipiaschools/layouts/layout", $data);
+
             } else {
                 $this->session->set_flashdata("error_message", "couldnt");
                 redirect("administration/donations");
             }
+
         }
+
     }
-
-    //edit gi
-    public function edit($donation_id)
-    {
-        $this->form_validation->set_rules ('donation_amount', 'Donation Amount', 'required|numeric');
-        $this->form_validation->set_rules ("phone","Phone","required|numeric");
-        $this->form_validation->set_rules ("image","Image","required");
-    
-        
-     if($this->form_validation->run())
-        {
-            $update_status = $this->friends_model->update_friend($friend_id);
-            if($update_status){
-                redirect("friends");
-            }
-            }
-        
-            
-            else{
-             
-                $my_friend = $this->friends_model->get_single_friend($friend_id);
-                if ($my_friend->num_rows() > 0) {
-                $row = $my_friend->row();
-                $firstname = $row->friend_name;
-                $phone = $row->friend_phone;
-                $image = $row->friend_image;
-                $v_data["friend_name"] = $firstname;
-                $v_data["friend_phone"] = $phone;
-                $v_data["friend_image"] = $image;
-            
-                $data = array("title" => $this->site_model->display_page_title(),
-                "content" => $this->load->view("friends/friend_update", $v_data, true));
-
-                $this->load->view("site/templates/layouts/layout", $data);
-                
-                } else {
-                $this->session->set_flashdata("error_message", "couldnt");
-                redirect("friends");
-                }
-                
-            
-            }
-    
-        }
     public function single_donation($donation_id)
     {
         $v_data['query'] = $this->donations_model->get_single_donation($donation_id);

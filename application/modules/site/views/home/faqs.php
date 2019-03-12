@@ -42,21 +42,24 @@
 									<div class="accordion_itemTitleWrap">
 										<h3 class="accordion_itemTitle">Project Overview</h3>
 										<div class="accordion_itemIconWrap">
-											<svg viewBox="0 0 24 24">
-												<polyline fill="none" points="21,8.5 12,17.5 3,8.5 " stroke="#FFF" stroke-miterlimit="10" stroke-width="2" /></svg>
-										</div>
+                                                <svg viewBox="0 0 24 24">
+                                                    <polyline fill="none" points="21,8.5 12,17.5 3,8.5 " stroke="#FFF" stroke-miterlimit="10" stroke-width="2" /></svg>
+                                                </div>
 									</div>
 									<div class="accordion_itemContent">
-										<p><?php  
+                                        <p>
+										<?php  
 										 foreach ($abouts->result() as $row) 
 											if(strtolower($row->post_title) == strtolower("About Laikipia School Project")){?>
 												<?php echo $row->post_description; ?>
-											<?php }?></p>
-										<div class="center-button">
-											<a href="#" type="submit" class="btn btn-default btn-dark">Read More</a>
-										</div>
+											<?php }?>
+										</p>
+                                        <div class="center-button">
+                                            <a href="#" type="submit" class="btn btn-default btn-dark">Read More</a>
+                                        </div>
 									</div>
 								</li>
+								
 								<li class="accordion_item">
 									<div class="accordion_itemTitleWrap">
 										<h3 class="accordion_itemTitle">Donors and Donations</h3>
