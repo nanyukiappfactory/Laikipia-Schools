@@ -24,6 +24,8 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
 <script>
 tinymce.init({
-    selector: 'textarea'
+    selector: 'textarea',
+    plugins: 'advlist'
+    // advlist_bullet_styles: 'square' // only include square bullets in list
 });
 </script>

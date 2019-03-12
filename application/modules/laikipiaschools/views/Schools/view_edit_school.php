@@ -16,7 +16,7 @@ if ($query->num_rows() > 0) {
         <img src="<?php echo base_url() . 'assets/uploads/' . $row->school_thumb_name; ?>" width="70px">
     </td>
     <td>
-        <?php echo ucwords($row->school_name); ?>
+        <?php echo strtoupper($row->school_name); ?>
     </td>
     <td>
         <?php echo $row->school_boys_number; ?>
@@ -43,7 +43,7 @@ if ($query->num_rows() > 0) {
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">
-                            <?php echo ucwords($row->school_name); ?>
+                            <?php echo strtoupper($row->school_name); ?>
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -57,27 +57,14 @@ if ($query->num_rows() > 0) {
                                         src="<?php echo base_url() . 'assets/uploads/' . $image; ?>"
                                         class="d-block w-100" alt="No Image" />
                                 </div>
-                                <div class="carousel-inner">
-                                    <?php
-$count = 0;
-        foreach ($pictures->result() as $key => $row1) {
-            if($school_id == $row->school_id){
-            $count++;
-            ?>
-                                    <div class="carousel-item <?php echo $count == 1 ? "active" : ""; ?>">
-                                        <img src=" <?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"
-                                            , width=100% height=400px item-align=center items_align=center />
-                                    </div><!-- End Item -->
-                                    <?php } } ?>
-                                </div><!-- End Carousel Inner -->
                                 <div class="col-md-7 col-sm-12 " style="border:0px solid gray">
                                     <div class="form-group">
                                         <h6 class="title-price"><small>School</small></h6>
                                         <label><b>
-                                                <?php echo ucwords($row->school_name); ?></b></label>
+                                                <?php echo strtoupper($row->school_name); ?></b></label>
                                         <h6 class="title-price"><small>Zone</small></h6>
                                         <label><b>
-                                                <?php echo ucwords($row->school_zone); ?></b></label>
+                                                <?php echo strtoupper($row->school_zone); ?></b></label>
                                         <h6 class="title-price"><small>Number Of Boys</small></h6>
                                         <label><b>
                                                 <?php echo $row->school_boys_number; ?></b></label>
@@ -95,6 +82,26 @@ $count = 0;
                                     </div>
                                 </div>
                             </div>
+                            <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+                                    <?php
+$count = 0;
+        foreach ($pictures->result() as $row1) {
+            if ($row1->school_id == $row->school_id) {
+                $count++
+                ?>
+                                    <div class="carousel-item <?php echo $count == 1 ? "active" : ""; ?>">
+                                        <img width=100%
+                                            src=" <?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>" />
+
+                                    </div>
+                                    <!-- End Item -->
+                                    <?php }}?>
+                                </div>
+                                <!-- End Carousel Inner -->
+                            </div>
+                            <!-- End Carousel Inner -->
 
                             <div class="col-md-12 col-sm-12">
                                 <h6 class="title-price mt-4"><small>Write Up</small></h6>
@@ -155,7 +162,6 @@ $count = 0;
                                 <?php echo form_input(['name' => 'school_zone', 'placeholder' => 'School    Zone', 'class' => 'form-control', 'value' => set_value('school_zone', $row->school_zone)]) ?>
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="school_boys_number" class="col-sm-2 col-form-label">Number
                                 of

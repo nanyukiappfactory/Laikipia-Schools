@@ -109,6 +109,7 @@ class Posts_model extends CI_Model
     {
         $data = array(
             "post_title" => $this->input->post("post_title"),
+            "category_id" => $this->input->post("category_id"),
             "post_description" => $this->input->post("post_description"),
 
         );
@@ -118,7 +119,7 @@ class Posts_model extends CI_Model
         if (empty($row->post_image_name)) {
             $this->db->update('post');
         } else {
-            $this->db->update('post.post_title, post.description, post.category, post.modified_on, post.modified_by, post.created_on');
+            $this->db->update('post.post_title, post.category_id, post.description, post.category, post.modified_on, post.modified_by, post.created_on');
         }
         if ($this->db->set($data)) {
             return true;
