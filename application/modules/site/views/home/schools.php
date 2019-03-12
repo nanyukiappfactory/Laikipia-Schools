@@ -16,7 +16,9 @@
                     <?php
                     if ($schools->num_rows() > 0) {
                         foreach ($schools->result() as $row) {
-                            ?>
+                            
+                                ?>
+                            
                     <div class="c-item">
                         <div class="school-content">
                             <div class="school-thumb">
@@ -48,15 +50,13 @@
                                 <div class="clearfix"></div>
                                 <h3><?php echo $row->school_name; ?></h3>
                                 <p><?php echo $row->school_zone; ?></p>
-                                <div class="center-button">
-                                    <button type="submit" class="btn btn-default btn-theme">Read More</button>
-                                </div>
+                                <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>school/<?php echo $row->school_name; ?> ">READ MORE</a>
                             </div>
                         </div>
 
                     </div>
-                    <?php }
-                        }?>
+                    <?php }}
+                        ?>
                 </div>
             </div>
             <!-- End schools -->
