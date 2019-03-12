@@ -220,35 +220,38 @@ if ($query->num_rows() > 0) {
                                 School Status
                             </legend>
                             <div class="form-group">
-                                <input type="radio" name="status" value="1" <?php echo ($row->school_status == 'Active') ? 'checked' : ''; ?>>Active
-                                <input type="radio" name="status" value="0" <?php echo ($row->school_status == 'Inactive') ? 'checked' : ''; ?>>Inactive
+                                <input type="radio" name="status" value="1"
+                                    <?php echo ($row->school_status == 'Active') ? 'checked' : ''; ?>>Active
+                                <input type="radio" name="status" value="0"
+                                    <?php echo ($row->school_status == 'Inactive') ? 'checked' : ''; ?>>Inactive
                             </div>
                         </div>
 
-						    <div class=" form-group">
-                                <label for="school_write_up">School Write Up</label>
-                                
-                                <textarea name="shool_write_up"><?php echo set_value('school_write_up', $row->school_write_up);?></textarea>
-                                <div class="form-group">
-                                    <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
-                                </div>
-                                <small id="emailHelp" class="form-text text-muted"></small>
+                        <div class=" form-group">
+                            <label for="school_write_up">School Write Up</label>
+
+                            <textarea
+                                name="shool_write_up"><?php echo set_value('school_write_up', $row->school_write_up); ?></textarea>
+                            <div class="form-group">
+                                <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
                             </div>
-                            <div class="form-group row">
-                                <div class="col-sm-10">
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
-                                                class="fas fa-times"></i>Close</button>
-                                        <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>Save
-                                            School</button>
-                                    </div>
+                            <small id="emailHelp" class="form-text text-muted"></small>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                            class="fas fa-times"></i>Close</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>Save
+                                        School</button>
                                 </div>
                             </div>
                         </div>
-                        <?php echo form_close(); ?>
                     </div>
+                    <?php echo form_close(); ?>
                 </div>
             </div>
+        </div>
         </div>
         <?php if ($row->school_status == 1) {
             echo anchor("administration/deactivate-school/" . $row->school_id . "/" . $row->school_status, "<i class='far fa-thumbs-down'></i>", array("class" => "btn btn-info btn-sm p-left-10", "onclick" => "return confirm('Are you sure you want to deactivate?')"));
