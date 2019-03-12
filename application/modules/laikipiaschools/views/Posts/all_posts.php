@@ -41,7 +41,7 @@ if (!empty($validation_errors)) {
                                             <?php if ($categories->num_rows() > 0) {foreach ($categories->result() as $row) {?>
                                             <option value="<?php echo $row->category_id; ?>">
                                                 <?php echo $row->category_name; ?></option>
-                                            <?php 
+                                            <?php
 }
 }?>
                                         </select>
@@ -225,7 +225,8 @@ if ($query->num_rows() > 0) {
 
                                                     <p> <?php foreach ($categories->result() as $category) {
             if ($category->category_id == $row->category_id) {
-                echo $category->category_name; break;
+                echo $category->category_name;
+                break;
             }
         }
         ?>

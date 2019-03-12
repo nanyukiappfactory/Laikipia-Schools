@@ -36,8 +36,7 @@ class posts extends MX_Controller
         $this->form_validation->set_rules("post_title", "Post Title", "required");
         $this->form_validation->set_rules("post_description", "Post Description", "required");
 // $this->form_validation->set_rules("category_id", "Post Category", "required");
-$this->form_validation->set_rules("post_date", "Post Date", "required");
-
+        $this->form_validation->set_rules("post_date", "Post Date", "required");
 
         //  validate
         $form_errors = "";
@@ -102,7 +101,7 @@ $this->form_validation->set_rules("post_date", "Post Date", "required");
             $v_data["links"] = $this->pagination->create_links();
             $v_data['categories'] = $this->site_model->get_all_categories();
 
-            $query = $this->posts_model->get_all_posts($table, $where,  $config["per_page"],
+            $query = $this->posts_model->get_all_posts($table, $where, $config["per_page"],
                 $page, $order, $order_method);
             if ($order_method == 'DESC') {
                 $order_method = 'ASC';
@@ -243,45 +242,35 @@ $this->form_validation->set_rules("post_date", "Post Date", "required");
 
         $form_errors = "";
         if ($this->form_validation->run()) {
-
             $resize = array(
                 "width" => 600,
                 "height" => 600,
             );
-            if(isset($_FILES['post_image_name']) && $_FILES['post_image_name']['size'] > 0)
-            {
+            if (isset($_FILES['post_image_name']) && $_FILES['post_image_name']['size'] > 0) {
                 $upload_response = $this->file_model->upload_image($this->upload_path, "post_image_name", $resize);
-               
-
+                // var_dump($upload_response);die();
                 if ($upload_response['check'] == false) {
                     $this->session->set_flashdata('error', $upload_response['message']);
                     redirect('administration/posts');
                 } else {
-                    if ($this->posts_model->update_post($upload_response['file_name'], $upload_response['thumb_name'])) {
-                        $this->session->set_flashdata('success', 'post Added successfully!!');
+                    $update_status = $this->posts_model->update_school($post_id);
+                    if ($this->posts_model->update_post($upload_response['file_name'], $update_status, $post_id, $upload_response['thumb_name'])) {
+                        $this->session->set_flashdata('success', 'post updated successfully!!');
                         redirect('administration/posts');
                     } else {
-                        $this->session->flashdata("error_message", "Unable to add  post");
+                        $this->session->flashdata("error_message", "Unable to update  post");
                     }
                 }
-
-            }
-                        
-
- else
-            {
-                if ($this->posts_model->update_post(null, null)) {
+            } else {
+                $update_status = $this->posts_model->update_post($post_id);
+                if ($this->posts_model->update_post(null, null, null)) {
                     $this->session->set_flashdata('success', 'post updated successfully!!');
                     redirect('administration/posts');
                 } else {
-                    $this->session->flashdata("error_message", "Unable to update post");
+                    $this->session->flashdata("error", "Unable to update  post");
                 }
-
             }
-        } else {
-            $data["form_errors"] = validation_errors();
-            $this->load->view("administration/posts", $data);
-
+            redirect("administration/posts");
         }
     }
 
