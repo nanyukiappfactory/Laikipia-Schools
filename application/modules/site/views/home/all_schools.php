@@ -92,8 +92,7 @@
 							<div class="center-button">
                                 
                                 <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>schools/<?php echo $row->school_name; ?>
-								
-                                ">READ MORE</a>
+">READ MORE</a>
 
 							</div>
 						</div>

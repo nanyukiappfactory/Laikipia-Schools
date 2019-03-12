@@ -144,15 +144,13 @@ if ($row->total_donated > $row->target_amount) {
 
 			<div id="schoolGalleryCarousel" class="owl-carousel">
 			<?php
-				if ($schoolpictures->num_rows() > 0) {
-					$school_id= $row->school_id;
-					$count = 0;
-					foreach ($schoolpictures->result() as $row) {
-						if ($school_id == $row->school_id) {
-							?>
-				<a href="<?php echo $row->school_image_name; ?>"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
+			foreach ($schoolpictures->result() as $row) {
+				if ($school_name == $row->school_name) {
+       
+            ?>
+				<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
 					 alt="..."></a>
-					 <?php break;}}}?>
+					 <?php }}?>
 			</div>
 		</div>
 	</section>
