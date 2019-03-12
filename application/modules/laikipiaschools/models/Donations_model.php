@@ -53,6 +53,7 @@ class Donations_model extends CI_Model
             'post_id' => $this->input->post("post_id"),
             'school_id' => $this->input->post("school_id"),
         );
+        // var_dump($data);die();
         $this->db->set($data);
         $this->db->where('donation_id', $donation_id);
         if ($this->db->update('donation')) {

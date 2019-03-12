@@ -38,7 +38,7 @@ class Donations extends MX_Controller
                 redirect('laikipiaschools/donations');
             }
         } else {
-            $where = 'donation.deleted=0 AND donation.school_id = school.school_id AND donation.post_id = post.post_id';
+            $where = 'donation.deleted=0';
             // $where = 'donation.deleted=0 AND donation.school_id = school.school_id AND donation.category_id = post.category_id';
             $table = 'donation, school, post';
             // $table = 'donation, school, post';
@@ -171,12 +171,20 @@ class Donations extends MX_Controller
        // $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
         $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
 
-        if ($this->form_validation->run()) {
+        if ($this->form_validation->run()) 
+        {
             $update_status = $this->donations_model->update_donation($donation_id);
             if ($update_status) {
                 redirect("administration/donations");
             }
-        } else {
+        } 
+        else 
+        {
+            if(validation_errors())
+            {
+                $this->session->set_flashdata("error", validation_errors());
+                redirect("administration/edit-donation/".$donation_id);
+            }
 
             $query = $this->donations_model->get_single_donation($donation_id);
                    // echo json_encode($query->result());die();
@@ -204,7 +212,7 @@ class Donations extends MX_Controller
                 $this->load->view("laikipiaschools/layouts/layout", $data);
 
             } else {
-                $this->session->set_flashdata("error_message", "couldnt");
+                $this->session->set_flashdata("error", "couldnt");
                 redirect("administration/donations");
             }
 
