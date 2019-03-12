@@ -27,13 +27,15 @@ if ($allschools->num_rows() > 0) {
 		<div class="container">
 			<ul class="list-inline">
 				<!-- <li><a href="index.html"> Home </a></li> -->
-				<li><a href="<?php echo base_url(); ?>site/site/index">Home</a></li>
+				<li><a href="<?php echo base_url(); ?>home">Home</a></li>
 				<li><a href="#"> <i class="fas fa-angle-double-right"></i> </a></li>
 				<!-- <li><a href="schools.html"> Schools </a> </li> -->
-				<li><a href="<?php echo base_url(); ?>site/site/view_other">Schools</a></li>
+				<li><a href="<?php echo base_url(); ?>allschools">Schools</a></li>
 				<li><a href="#"> <i class="fas fa-angle-double-right"></i> </a></li>
-				<li><a href="<?php echo base_url(); ?>site/site/view-single">
-						<?php echo $row->school_name; ?> </a> </li>
+				<li><a href="<?php echo base_url(); ?>schools"></a></li>
+				<li> <?php echo $row->school_name; ?> </li>
+				
+				 
 			</ul>
 		</div>
 	</section>

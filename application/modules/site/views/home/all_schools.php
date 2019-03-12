@@ -17,10 +17,10 @@
 		<div class="container">
 			<ul class="list-inline">
 				<!-- //<li><a href="index.html"> Home </a></li> -->
-				<li><a href="<?php echo base_url(); ?>site/site/index">Home</a></li>
+				<li><a href="<?php echo base_url(); ?>home">Home</a></li>
 				<li><a href="#"> <i class="fas fa-angle-double-right"></i> </a></li>
 				<!-- <li><a href="schools.html"> Schools </a> </li> -->
-				<li><a href="<?php echo base_url(); ?>site/site/view_other">Schools</a></li>
+				<li><a href="<?php echo base_url(); ?>allschools">Schools</a></li>
 			</ul>
 		</div>
 	</section>
@@ -68,7 +68,7 @@
                                         $progress = ($row->total_donated / $row->target_amount) * 100;
                                     }
                                     ?>
-				<div class="total-progress" data-percentage="<?php echo number_format($progress); ?>"></div>
+							<div class="total-progress" data-percentage="<?php echo number_format($progress); ?>"></div>
 							</div>
 							<ul class="list-inline">
 								<?php $target = $row->target_amount;?>
@@ -91,7 +91,7 @@
 							</p>
 							<div class="center-button">
                                 
-                                <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>school/<?php echo $row->school_name; ?>
+                                <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>schools/<?php echo $row->school_name; ?>
 								
                                 ">READ MORE</a>
 

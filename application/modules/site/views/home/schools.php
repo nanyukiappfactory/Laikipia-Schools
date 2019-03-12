@@ -51,7 +51,6 @@
                                 <h3><?php echo $row->school_name; ?></h3>
                                 <p><?php echo $row->school_zone; ?></p>
                                 <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>school/<?php echo $row->school_name; ?>
-								
                                 ">READ MORE</a>
 
                             </div>

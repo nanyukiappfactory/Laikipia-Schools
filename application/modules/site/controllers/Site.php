@@ -114,9 +114,9 @@ class Site extends MX_Controller
 
     }
 
-    public function read_more($school_name)
+    public function single_school($school_name)
     {
-
+        $v_data['school_name'] = $school_name;
         $v_data['get_donors'] = $this->sites_model->get_donations();
         $v_data['get_dignity_packs'] = $this->sites_model->get_donations();
         $donations = $this->sites_model->get_donation_totals();
@@ -125,7 +125,7 @@ class Site extends MX_Controller
         //$v_data['schools'] = $this->sites_model->get_schools();
         //$v_data['partners'] = $this->sites_model->get_partners();
         $v_data['allschools'] = $this->sites_model->get_all_schools();
-        $v_data['school_name'] = $school_name;
+        
         $v_data['singleschool'] = $this->sites_model->get_single_school($school_name);
         //echo json_encode($v_data['allschools']->result());die();
 
