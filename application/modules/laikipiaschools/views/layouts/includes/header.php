@@ -11,7 +11,7 @@
 <link href="<?php echo base_url(); ?>assets/custom/css/styles.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/themes/custom/css/sidenav.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/fontawesome/css/all.css" rel="stylesheet">
-
+<link href="<?php echo base_url(); ?>assets\vendor\owlcarousel\docs\assets\vendors\jquery.min.js" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/themes/vendor/owlcarousel/dist/assets/owl.carousel.min.css"
     rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/themes/vendor/owlcarousel/dist/assets/owl.theme.default.min.css"
