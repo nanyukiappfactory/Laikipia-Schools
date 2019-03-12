@@ -61,36 +61,6 @@ class Donations_model extends CI_Model
             return false;
         }
     }
-    //edit
-    public function update_friend($friend_id)
-    {
-        $data = array(
-            "friend_name" => $this->input->post("firstname"),
-            "friend_phone" => $this->input->post("phone"),
-            "friend_image" => $this->input->post("image"),
-        
-        );
-        $this->db->set($data);
-        $this->db->where('friend_id',$friend_id);
-
-        if($this->db->update('friend1'))
-        {
-            return TRUE;
-        }
-        else
-        {
-            return FALSE;
-        }
-
-
-    }
-    //get single
-    public function get_single_friend($friend_id)
-    {
-        $this->db->where("friend_id",$friend_id);
-        return $this->db->get("friend1");
-    }
-
     public function change_donation_status($donation_id, $new_donation_status)
     {
 

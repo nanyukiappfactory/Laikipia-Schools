@@ -1,7 +1,6 @@
 <div class="page-content">
     <!-- Carousel -->
     <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <?php
@@ -42,7 +41,7 @@ foreach ($abouts->result() as $key => $row) {
                 </a>
             </li>
             <li class="nav-item" data-target="" data-slide-to="1">
-                <a class="nav-link" href="<?php echo base_url(); ?>client/schools">
+                <a class="nav-link" href="<?php echo base_url(); ?>schools">
                     <figure class="slider-figure">
                         <div class="caption">
                             <div class="fc-icon">

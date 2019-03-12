@@ -195,5 +195,8 @@ $route['administration/schools/get-posts-details'] = 'laikipiaschools/webservice
  * Posts
  */
 
-$route['client/school/(:num)'] = 'site/site/read_more/$1';
-$route['client/schools'] = 'site/site/view_other';
+$route['school/(:any)'] = 'site/site/read_more/$1';
+$route['schools'] = 'site/site/view_other';
+$route['home'] = 'site/site/index';
+
+
