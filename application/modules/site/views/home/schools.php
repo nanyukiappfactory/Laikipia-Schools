@@ -19,9 +19,6 @@
                             
                                 ?>
                             
-if ($schools->num_rows() > 0) {
-    foreach ($schools->result() as $row) {
-        ?>
                     <div class="c-item">
                         <div class="school-content">
                             <div class="school-thumb">
@@ -34,12 +31,12 @@ if ($schools->num_rows() > 0) {
                             <div class="school-details text-left">
                                 <div class="progress-bar">
                                     <?php
-if ($row->total_donated > $row->target_amount) {
-            $progress = 100;
-        } else {
-            $progress = ($row->total_donated / $row->target_amount) * 100;
-        }
-        ?>
+                                if ($row->total_donated > $row->target_amount) {
+                                            $progress = 100;
+                                        } else {
+                                            $progress = ($row->total_donated / $row->target_amount) * 100;
+                                        }
+                                        ?>
                                     <div class="total-progress"
                                         data-percentage="<?php echo number_format($progress); ?>"></div>
                                 </div>
@@ -53,17 +50,18 @@ if ($row->total_donated > $row->target_amount) {
                                 <div class="clearfix"></div>
                                 <h3><?php echo $row->school_name; ?></h3>
                                 <p><?php echo $row->school_zone; ?></p>
-                                <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>school/<?php echo $row->school_name; ?> ">READ MORE</a>
+                                <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>school/<?php echo $row->school_name; ?>
+								
+                                ">READ MORE</a>
+
                             </div>
                         </div>
 
                     </div>
                     <?php }}
                         ?>
-                   
                 </div>
             </div>
-            <?php echo $links; ?>
             <!-- End schools -->
 
             <!-- Total donation -->
@@ -75,6 +73,7 @@ if ($row->total_donated > $row->target_amount) {
                         <div class="img-overlayer"></div>
                     </div>
                     <div class="school-details text-left">
+
                         <div class="progress-bar">
                             <div class="total-progress" data-percentage="<?php echo $percentage_donated_total; ?>">
                             </div>
@@ -98,7 +97,5 @@ if ($row->total_donated > $row->target_amount) {
             <!-- End total donation -->
         </div>
     </div>
-
 </section>
-
 <!-- End Schools -->
