@@ -88,9 +88,8 @@
                         </ul>
                         <div class="clearfix"></div>
                         <div class="mb-4"></div>
-                        <div class="center-button">
-                            <button type="submit" class="btn btn-default btn-theme">Read More</button>
-                        </div>
+                        <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>allschools
+                                ">READ MORE</a>
                     </div>
                 </div>
             </div>
