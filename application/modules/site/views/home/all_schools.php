@@ -53,7 +53,7 @@
                         $count = 0;
                         foreach ($allschools->result() as $row) {
                             ?>
-							<?php $field_name = preg_replace('/\s/', '-', $row->school_name); var_dump($field_name);?>
+							<?php $field_name = preg_replace('/\s/', '-', $row->school_name);?>
 				<div class="col-sm-4 col-md-3 col-lg-3">
 					<div class="school-content">
 						<div class="school-thumb">
