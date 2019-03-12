@@ -48,8 +48,7 @@ class Site extends MX_Controller
 
         $this->pagination->initialize($config);
         $page = ($this->uri->segment($segment)) ? $this->uri->segment($segment) : 0;
-        $school_name = preg_replace('/-/', ' ', $school_name);
-        $v_data['school_name'] = $school_name;
+       
 
         $v_data["links"] = $this->pagination->create_links();
         $v_data['abouts'] = $this->sites_model->get_about_posts();
@@ -61,9 +60,10 @@ class Site extends MX_Controller
         $v_data['pictures'] = $this->sites_model->get_gallery_pictures();
         $v_data['schools'] = $this->sites_model->get_schools();
         $v_data['partners'] = $this->sites_model->get_partners();
-        //echo json_encode($v_data['partners']->result());die();
+        //echo json_encode($v_data['schools']->result());die();
         //$v_data['school_name'] = $school_name;
         $v_data['allschools'] = $this->sites_model->get_all_schools();
+       
         $v_data['map'] = $this->googlemaps->create_map();
         //echo json_encode($v_data['allschools']->result());die();
 
