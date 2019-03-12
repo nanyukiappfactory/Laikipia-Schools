@@ -34,8 +34,8 @@ if ($allschools->num_rows() > 0) {
 				<li><a href="#"> <i class="fas fa-angle-double-right"></i> </a></li>
 				<li><a href="<?php echo base_url(); ?>schools"></a></li>
 				<li> <?php echo $row->school_name; ?> </li>
-				
-				 
+
+
 			</ul>
 		</div>
 	</section>
@@ -141,33 +141,18 @@ if ($row->total_donated > $row->target_amount) {
 				</div>
 			</div>
 			<h3>Gallery</h3>
+
 			<div id="schoolGalleryCarousel" class="owl-carousel">
-				<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
+			<?php
+				if ($schoolpictures->num_rows() > 0) {
+					$school_id= $row->school_id;
+					$count = 0;
+					foreach ($schoolpictures->result() as $row) {
+						if ($school_id == $row->school_id) {
+							?>
+				<a href="<?php echo $row->school_image_name; ?>"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
 					 alt="..."></a>
-				<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
-					 alt="..."></a>
-				<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
-					 alt="..."></a>
-				<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
-					 alt="..."></a>
-				<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
-					 alt="..."></a>
-				<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
-					 alt="..."></a>
-				<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
-					 alt="..."></a>
-				<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
-					 alt="..."></a>
-				<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
-					 alt="..."></a>
-				<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
-					 alt="..."></a>
-				<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
-					 alt="..."></a>
-				<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
-					 alt="..."></a>
-				<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
-					 alt="..."></a>
+					 <?php break;}}}?>
 			</div>
 		</div>
 	</section>
