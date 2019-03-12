@@ -16,7 +16,7 @@ if ($query->num_rows() > 0) {
         <img src="<?php echo base_url() . 'assets/uploads/' . $row->school_thumb_name; ?>" width="70px">
     </td>
     <td>
-        <?php echo $row->school_name; ?>
+        <?php echo ucwords($row->school_name); ?>
     </td>
     <td>
         <?php echo $row->school_boys_number; ?>
@@ -43,7 +43,7 @@ if ($query->num_rows() > 0) {
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">
-                            <?php echo $row->school_name; ?>
+                            <?php echo ucwords($row->school_name); ?>
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -57,15 +57,27 @@ if ($query->num_rows() > 0) {
                                         src="<?php echo base_url() . 'assets/uploads/' . $image; ?>"
                                         class="d-block w-100" alt="No Image" />
                                 </div>
-
+                                <div class="carousel-inner">
+                                    <?php
+$count = 0;
+        foreach ($pictures->result() as $key => $row1) {
+            if($school_id == $row->school_id){
+            $count++;
+            ?>
+                                    <div class="carousel-item <?php echo $count == 1 ? "active" : ""; ?>">
+                                        <img src=" <?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"
+                                            , width=100% height=400px item-align=center items_align=center />
+                                    </div><!-- End Item -->
+                                    <?php } } ?>
+                                </div><!-- End Carousel Inner -->
                                 <div class="col-md-7 col-sm-12 " style="border:0px solid gray">
                                     <div class="form-group">
                                         <h6 class="title-price"><small>School</small></h6>
                                         <label><b>
-                                                <?php echo $row->school_name; ?></b></label>
+                                                <?php echo ucwords($row->school_name); ?></b></label>
                                         <h6 class="title-price"><small>Zone</small></h6>
                                         <label><b>
-                                                <?php echo $row->school_zone; ?></b></label>
+                                                <?php echo ucwords($row->school_zone); ?></b></label>
                                         <h6 class="title-price"><small>Number Of Boys</small></h6>
                                         <label><b>
                                                 <?php echo $row->school_boys_number; ?></b></label>
@@ -83,18 +95,6 @@ if ($query->num_rows() > 0) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="carousel-inner">
-                                <?php
-$count = 0;
-        foreach ($pictures->result() as $key => $row1) {
-            $count++;
-            ?>
-                                <div class="carousel-item <?php echo $count == 1 ? "active" : ""; ?>">
-                                    <img src=" <?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"
-                                        , width=100% height=400px item-align=center items_align=center />
-                                </div><!-- End Item -->
-                                <?php }?>
-                            </div><!-- End Carousel Inner -->
 
                             <div class="col-md-12 col-sm-12">
                                 <h6 class="title-price mt-4"><small>Write Up</small></h6>
