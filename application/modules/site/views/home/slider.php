@@ -6,7 +6,7 @@
             <?php
 $count = 0;
 foreach ($abouts->result() as $key => $row) {
-    if (strtolower($row->category_name) == strtolower("About")) {
+    if (strtolower($row->category_name) == strtolower("Slider")) {
         $count++;?>
             <div class="carousel-item <?php echo $count == 1 ? "active" : ""; ?>">
                 <img src=" <?php echo base_url() . 'assets/uploads/' . $row->post_image_name; ?>" , width=100%
