@@ -142,7 +142,7 @@ class Sites_model extends CI_Model
     }
     public function get_school_pictures()
     {
-        $this->db->select('school_images.*, school.school_id');
+        $this->db->select('school_images.*, school.school_id,school.school_name');
         $this->db->from('school_images');
         $this->db->join('school', 'school_images.school_id=school.school_id', 'left');
         return $this->db->get();
