@@ -83,7 +83,7 @@ class Site extends MX_Controller
          $this->load->view("site/layouts/layout", $data);
 
     }
-    public function view_other()
+    public function all_schools()
     {
 
         $v_data['abouts'] = $this->sites_model->get_about_posts();
