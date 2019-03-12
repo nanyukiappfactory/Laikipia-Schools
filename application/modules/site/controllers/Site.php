@@ -48,6 +48,8 @@ class Site extends MX_Controller
 
         $this->pagination->initialize($config);
         $page = ($this->uri->segment($segment)) ? $this->uri->segment($segment) : 0;
+        $school_name = preg_replace('/-/', ' ', $school_name);
+        $v_data['school_name'] = $school_name;
 
         $v_data["links"] = $this->pagination->create_links();
         $v_data['abouts'] = $this->sites_model->get_about_posts();
@@ -126,11 +128,7 @@ class Site extends MX_Controller
         //echo json_encode($v_data['pictures']->result());die();
         $v_data['allschools'] = $this->sites_model->get_all_schools();
         $v_data['schoolpictures'] = $this->sites_model->get_school_pictures();
-        
-        
         $v_data['singleschool'] = $this->sites_model->get_single_school($school_name);
-        
-
         $project_donation_total = $project_target_total = $percentage_donated_total = 0;
         if ($donations->num_rows() > 0) {
             foreach ($donations->result() as $row) {
@@ -146,8 +144,6 @@ class Site extends MX_Controller
         $v_data['percentage_donated_total'] = $percentage_donated_total;
         $data['content'] = $this->load->view('site/home/school_single', $v_data, true);
         $data['title'] = $this->sites_model->display_page_title();
-        
-       
         //  $data['title'] = $this->sites_model->decode_web_name($school_name);
         $this->load->view("site/layouts/layout", $data);
 
