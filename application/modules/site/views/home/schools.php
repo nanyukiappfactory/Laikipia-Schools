@@ -19,6 +19,9 @@
                             
                                 ?>
                             
+if ($schools->num_rows() > 0) {
+    foreach ($schools->result() as $row) {
+        ?>
                     <div class="c-item">
                         <div class="school-content">
                             <div class="school-thumb">
@@ -31,12 +34,12 @@
                             <div class="school-details text-left">
                                 <div class="progress-bar">
                                     <?php
-                                if ($row->total_donated > $row->target_amount) {
-                                            $progress = 100;
-                                        } else {
-                                            $progress = ($row->total_donated / $row->target_amount) * 100;
-                                        }
-                                        ?>
+if ($row->total_donated > $row->target_amount) {
+            $progress = 100;
+        } else {
+            $progress = ($row->total_donated / $row->target_amount) * 100;
+        }
+        ?>
                                     <div class="total-progress"
                                         data-percentage="<?php echo number_format($progress); ?>"></div>
                                 </div>
@@ -57,8 +60,10 @@
                     </div>
                     <?php }}
                         ?>
+                   
                 </div>
             </div>
+            <?php echo $links; ?>
             <!-- End schools -->
 
             <!-- Total donation -->
@@ -70,7 +75,6 @@
                         <div class="img-overlayer"></div>
                     </div>
                     <div class="school-details text-left">
-
                         <div class="progress-bar">
                             <div class="total-progress" data-percentage="<?php echo $percentage_donated_total; ?>">
                             </div>
@@ -94,5 +98,7 @@
             <!-- End total donation -->
         </div>
     </div>
+
 </section>
+
 <!-- End Schools -->

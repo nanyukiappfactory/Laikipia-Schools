@@ -70,7 +70,7 @@ class Sites_model extends CI_Model
     //get all schools no limit
     public function get_all_schools($boys_pack_amount = 475, $girls_pack_amount = 1125)
     {
-        $this->db->select('school.*, ((school.school_boys_number * '.$boys_pack_amount.') + (school.school_girls_number * '.$girls_pack_amount.')) AS target_amount, SUM(donation.donation_amount) AS total_donated');
+        $this->db->select('school.*, ((school.school_boys_number * ' . $boys_pack_amount . ') + (school.school_girls_number * ' . $girls_pack_amount . ')) AS target_amount, SUM(donation.donation_amount) AS total_donated');
         $this->db->from('school');
         $this->db->join('donation', 'school.school_id = donation.school_id', 'left');
         $this->db->where("school_status = 1");
@@ -78,6 +78,15 @@ class Sites_model extends CI_Model
         $this->db->group_by('school.school_id');
         $this->db->order_by('donation.created_on', 'DESC');
         return $this->db->get();
+    }
+    public function count_items($table, $where, $limit = null)
+    {
+        if ($limit != null) {
+            $this->db->limit($limit);
+        }
+        $this->db->from($table);
+        $this->db->where($where);
+        return $this->db->count_all_results();
     }
 
     public function get_donation_totals($boys_pack_amount = 475, $girls_pack_amount = 1125)
