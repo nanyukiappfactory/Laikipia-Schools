@@ -10,12 +10,16 @@ foreach ($abouts->result() as $key => $row) {
     if (strtolower($row->category_name) == strtolower("About")) {
         $count++;?>
             <div class="carousel-item <?php echo $count == 1 ? "active" : ""; ?>">
-                <img src="<?php echo base_url() . 'assets/uploads/' . $row->post_image_name; ?>" , width=100%
-                    item-align=center items_align=center />
-                <div class="carousel-caption">
-                    <h3><?php echo $row->post_title; ?></h3>
-                    <p><?php echo $row->post_description; ?>
-                    </p>
+                <img src=" <?php echo base_url() . 'assets/uploads/' . $row->post_image_name; ?>" , width=100%
+                    height=400px item-align=center items_align=center />
+                <div class="card">
+                    <div class="carousel-caption">
+                        <div class="card-header">
+                            <h3><?php echo $row->post_title; ?></h3>
+                        </div>
+                        <p><?php echo $row->post_description; ?>
+                        </p>
+                    </div>
                 </div>
             </div><!-- End Item -->
             <?php }}?>
