@@ -57,7 +57,18 @@ if ($query->num_rows() > 0) {
                                         src="<?php echo base_url() . 'assets/uploads/' . $image; ?>"
                                         class="d-block w-100" alt="No Image" />
                                 </div>
-
+                                <div class="carousel-inner">
+                                    <?php
+$count = 0;
+        foreach ($pictures->result() as $key => $row1) {
+            $count++;
+            ?>
+                                    <div class="carousel-item <?php echo $count == 1 ? "active" : ""; ?>">
+                                        <img src=" <?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"
+                                            , width=100% height=400px item-align=center items_align=center />
+                                    </div><!-- End Item -->
+                                    <?php }?>
+                                </div><!-- End Carousel Inner -->
                                 <div class="col-md-7 col-sm-12 " style="border:0px solid gray">
                                     <div class="form-group">
                                         <h6 class="title-price"><small>School</small></h6>
@@ -83,18 +94,6 @@ if ($query->num_rows() > 0) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="carousel-inner">
-                                <?php
-$count = 0;
-        foreach ($pictures->result() as $key => $row1) {
-            $count++;
-            ?>
-                                <div class="carousel-item <?php echo $count == 1 ? "active" : ""; ?>">
-                                    <img src=" <?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"
-                                        , width=100% height=400px item-align=center items_align=center />
-                                </div><!-- End Item -->
-                                <?php }?>
-                            </div><!-- End Carousel Inner -->
 
                             <div class="col-md-12 col-sm-12">
                                 <h6 class="title-price mt-4"><small>Write Up</small></h6>

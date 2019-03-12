@@ -12,7 +12,11 @@
 <link href="<?php echo base_url(); ?>assets/themes/custom/css/sidenav.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/fontawesome/css/all.css" rel="stylesheet">
 
-
+<link href="<?php echo base_url(); ?>assets/themes/vendor/owlcarousel/dist/assets/owl.carousel.min.css"
+    rel="stylesheet">
+<link href="<?php echo base_url(); ?>assets/themes/vendor/owlcarousel/dist/assets/owl.theme.default.min.css"
+    rel="stylesheet">
+<!-- Custom styles for this template -->
 <script defer src="<?php echo base_url(); ?>assets/tinymce/js/tinymce/jquery.tinymce.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>/assets/tinymce/js/tinymce/tinymce.min.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
