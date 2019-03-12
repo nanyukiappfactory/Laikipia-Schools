@@ -1,3 +1,4 @@
+
 <div class="page-content">
 
 	<!-- Page Header -->
@@ -52,6 +53,7 @@
                         $count = 0;
                         foreach ($allschools->result() as $row) {
                             ?>
+							<?php $field_name = preg_replace('/\s/', '-', $row->school_name); var_dump($field_name);?>
 				<div class="col-sm-4 col-md-3 col-lg-3">
 					<div class="school-content">
 						<div class="school-thumb">
@@ -91,8 +93,8 @@
 							</p>
 							<div class="center-button">
                                 
-                                <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>schools/<?php echo $row->school_name; ?>
-">READ MORE</a>
+								<a class="btn btn-default btn-theme" href="<?php 
+								 echo base_url(); ?>schools/<?php echo $field_name; ?>">READ MORE</a>
 
 							</div>
 						</div>

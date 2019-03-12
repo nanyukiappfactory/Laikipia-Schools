@@ -116,7 +116,8 @@ class Site extends MX_Controller
 
     public function single_school($school_name)
     {
-        $v_data['school_name'] = urldecode($school_name);
+        $school_name = preg_replace('/-/', ' ', $school_name);
+        $v_data['school_name'] = $school_name;
         $v_data['get_donors'] = $this->sites_model->get_donations();
         $v_data['get_dignity_packs'] = $this->sites_model->get_donations();
         $donations = $this->sites_model->get_donation_totals();
@@ -127,7 +128,7 @@ class Site extends MX_Controller
         $v_data['schoolpictures'] = $this->sites_model->get_school_pictures();
         
         
-        $v_data['singleschool'] = $this->sites_model->get_single_school(urldecode($school_name));
+        $v_data['singleschool'] = $this->sites_model->get_single_school($school_name);
         
 
         $project_donation_total = $project_target_total = $percentage_donated_total = 0;
@@ -145,9 +146,9 @@ class Site extends MX_Controller
         $v_data['percentage_donated_total'] = $percentage_donated_total;
         $data['content'] = $this->load->view('site/home/school_single', $v_data, true);
         $data['title'] = $this->sites_model->display_page_title();
-        // $web_name =  $row->school_name;
+        
        
-        // $data['title'] = $this->sites_model->decode_web_name();
+        //  $data['title'] = $this->sites_model->decode_web_name($school_name);
         $this->load->view("site/layouts/layout", $data);
 
     }
