@@ -64,7 +64,7 @@ class Partners extends MX_Controller
         $v_data["links"] = $this->pagination->create_links();
         //var_dump($v_data['links']);die();
         $query = $this->partners_model->get_partners($table, $where, $config["per_page"], $page, $order, $order_method);
-
+        echo json_encode($query->result());die();
         //change of order method
         if ($order_method == 'DESC') {
             $order_method = 'ASC';

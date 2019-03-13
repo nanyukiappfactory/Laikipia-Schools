@@ -26,12 +26,12 @@ if (!empty($validation_errors)) {
 		<div class="form-group row">
 			<label for="donation_amount" class="col-sm-2 col-form-label">Partner</label>
 			<div class="col-sm-10">
-				<select class="custom-select my-1 mr-sm-2" name="partner_id">
+				<select class="custom-select my-1 mr-sm-2" name="post_id">
 					<option selected>Choose Partner...</option>
 
 					<?php
     foreach ($categories->result() as $row1) {
-        if (strtolower($row1->category_name) == strtolower("Partners")) {?>
+        if (strtolower($row1->category_name) == strtolower("Donor")) {?>
 					<option value="<?php echo $row1->post_id; ?>">
 						<?php echo $row1->post_title; ?>
 					</option>

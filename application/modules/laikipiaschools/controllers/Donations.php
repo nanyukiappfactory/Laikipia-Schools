@@ -50,9 +50,9 @@ class Donations extends MX_Controller
         $this->pagination->initialize($config);
         $page = ($this->uri->segment($segment)) ? $this->uri->segment($segment) : 0;
         $v_data["links"] = $this->pagination->create_links();
-        //var_dump($v_data['links']);die();
-        $query = $this->donations_model->get_donations($table, $where, $config["per_page"], $page, $order, $order_method);
-
+        // var_dump($v_data['links']);die();
+        $query = $this->donations_model->get_all_donations($table, $where, $config["per_page"], $page, $order, $order_method);
+        //echo json_encode($query->result());die();
         //change of order method
         if ($order_method == 'DESC') {
             $order_method = 'ASC';
@@ -60,24 +60,21 @@ class Donations extends MX_Controller
             $order_method = 'DESC';
         }
 
-        $data['title'] = 'Partners';
+        $data['title'] = 'donations';
 
         if (!empty($search_title) && $search_title != null) {
-            $data['title'] = 'Partners filtered by ' . $search_title;
+            $data['title'] = 'Donations filtered by ' . $search_title;
         }
         $v_data['title'] = $data['title'];
-
         $v_data['order'] = $order;
         $v_data['order_method'] = $order_method;
         $v_data['query'] = $query;
         $v_data['page'] = $page;
         $v_data['categories'] = $this->site_model->get_all_categories();
-       // $v_data["donation_types"] = $this->donations_model->get_donation_types();
+        $v_data['schools'] = $this->donations_model->all_schools();
 
-        $donation_type_search = array();
-        $data['search_options'] = $donation_type_search;
-        $data['route'] = 'donations';
         $data['content'] = $this->load->view('donations/all_donations', $v_data, true);
+        //echo json_encode($data['content']->result());die();
         //$this->load->view('admin/layout/home', $data);
         $this->load->view("laikipiaschools/layouts/layout", $data);
     }
