@@ -24,7 +24,6 @@ echo form_open(base_url() . 'administration/search-' . $route, array("class" => 
         </div>
 
         <div>
-
             <select class="custom-select2 form-control mr-sm-2" name="search_param" required>
                 <option value="">Choose post title..</option>
                 <?php foreach ($search_options as $search_option) {?>

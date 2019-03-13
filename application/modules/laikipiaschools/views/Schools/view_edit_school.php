@@ -82,26 +82,25 @@ if ($query->num_rows() > 0) {
                                     </div>
                                 </div>
                             </div>
-                            <div id="myCarousel" class="owl-carousel owl-theme" data-ride="carousel">
-                                <!-- Wrapper for slides -->
-                                <div class="carousel-inner">
-                                    <strong>
-                                        <h6 class="title-price"><small>Other Images:</small></h6>
-                                    </strong>
-                                    <?php
-$count = 0;
-        foreach ($pictures->result() as $row1) {
-            if ($row1->school_id == $row->school_id) {
-                $count++
-                ?>
-                                    <div class="carousel-item <?php echo $count == 1 ? "active" : ""; ?>">
-                                        <img width=100% height=300px
-                                            src=" <?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>" />
 
-                                    </div>
-                                    <!-- End Item -->
-                                    <?php }}?>
-                                </div>
+                            <h3>Gallery</h3>
+
+                            <div id="schoolGalleryCarousel" class="owl-carousel">
+                                <?php
+foreach ($pictures->result() as $row1) {
+            if ($row1->school_id == $row->school_id) {
+                ?>
+                                <a href="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"><img
+                                        src="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"
+                                        alt="..."></a>
+                                <?php }}?>
+                            </div>
+
+
+
+                            <div id="myCarousel" class="owl-carousel owl-theme" data-ride="carousel">
+
+
                                 <?php echo "<script>
             $(document).ready(function() {
               var owl = $('.owl-carousel');

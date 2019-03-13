@@ -17,6 +17,8 @@
 </script>
 <link href="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/dist/assets/owl.carousel.min.css"
     rel="stylesheet">
+<script src="<?php echo base_url(); ?>assets/themes/website/assets/custom/js/main.js"></script>
+
 <link
     href="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/dist/assets/owl.theme.default.min.css"
     rel="stylesheet">
