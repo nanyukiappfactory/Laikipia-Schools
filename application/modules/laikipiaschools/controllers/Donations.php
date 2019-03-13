@@ -50,9 +50,9 @@ class Donations extends MX_Controller
         $this->pagination->initialize($config);
         $page = ($this->uri->segment($segment)) ? $this->uri->segment($segment) : 0;
         $v_data["links"] = $this->pagination->create_links();
-        //var_dump($v_data['links']);die();
-        $query = $this->donations_model->get_donations($table, $where, $config["per_page"], $page, $order, $order_method);
-
+        // var_dump($v_data['links']);die();
+        $query = $this->donations_model->get_all_donations($table, $where, $config["per_page"], $page, $order, $order_method);
+        //echo json_encode($query->result());die();
         //change of order method
         if ($order_method == 'DESC') {
             $order_method = 'ASC';
@@ -60,24 +60,21 @@ class Donations extends MX_Controller
             $order_method = 'DESC';
         }
 
-        $data['title'] = 'Partners';
+        $data['title'] = 'donations';
 
         if (!empty($search_title) && $search_title != null) {
-            $data['title'] = 'Partners filtered by ' . $search_title;
+            $data['title'] = 'Donations filtered by ' . $search_title;
         }
         $v_data['title'] = $data['title'];
-
         $v_data['order'] = $order;
         $v_data['order_method'] = $order_method;
         $v_data['query'] = $query;
         $v_data['page'] = $page;
         $v_data['categories'] = $this->site_model->get_all_categories();
-       // $v_data["donation_types"] = $this->donations_model->get_donation_types();
+        $v_data['schools'] = $this->donations_model->all_schools();
 
-        $donation_type_search = array();
-        $data['search_options'] = $donation_type_search;
-        $data['route'] = 'donations';
         $data['content'] = $this->load->view('donations/all_donations', $v_data, true);
+        //echo json_encode($data['content']->result());die();
         //$this->load->view('admin/layout/home', $data);
         $this->load->view("laikipiaschools/layouts/layout", $data);
     }
@@ -175,6 +172,7 @@ class Donations extends MX_Controller
         {
             $update_status = $this->donations_model->update_donation($donation_id);
             if ($update_status) {
+                $this->session->set_flashdata("success_message",  $donation_id . " has been updated");
                 redirect("administration/donations");
             }
         } 
@@ -221,48 +219,6 @@ class Donations extends MX_Controller
 
     }
 
-    public function edit($donation_id)
-            {
-                    $this->form_validation->set_rules('donation_amount', 'DonationAmount', 'required|numeric');
-                    $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
-                    $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
-            
-                
-             if($this->form_validation->run())
-                {
-                    $update_status = $this->donations_model->update_donation($donation_id);
-                    if($update_status){
-                        redirect("friends");
-                    }
-                    }
-                
-                    
-                    else{
-                     
-                        $my_friend = $this->friends_model->get_single_friend($friend_id);
-                        if ($my_friend->num_rows() > 0) {
-                        $row = $my_friend->row();
-                        $firstname = $row->friend_name;
-                        $phone = $row->friend_phone;
-                        $image = $row->friend_image;
-                        $v_data["friend_name"] = $firstname;
-                        $v_data["friend_phone"] = $phone;
-                        $v_data["friend_image"] = $image;
-                    
-                        $data = array("title" => $this->site_model->display_page_title(),
-                        "content" => $this->load->view("friends/friend_update", $v_data, true));
-
-                        $this->load->view("site/templates/layouts/layout", $data);
-                        
-                        } else {
-                        $this->session->set_flashdata("error_message", "couldnt");
-                        redirect("friends");
-                        }
-                        
-                    
-                    }
-            
-                }
 
 
 
