@@ -41,7 +41,7 @@ class Posts_model extends CI_Model
         $this->db->from($table);
         $this->db->order_by($order, $order_method);
         $this->db->join('category', 'post.category_id=category.category_id', 'left');
-        $this->db->group_by('category.category_name', 'ASC');
+        // $this->db->group_by('category.category_name', 'ASC');
         return $this->db->get();
     }
     public function get_posts_categories($table, $order, $order_method)
