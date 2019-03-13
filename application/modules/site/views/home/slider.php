@@ -25,37 +25,38 @@ foreach ($abouts->result() as $key => $row) {
             <?php }}?>
         </div><!-- End Carousel Inner -->
         <ul class="nav nav-pills nav-fill">
-            <li class="nav-item" data-target="#myCarousel" data-slide-to="0">
-                <a class="nav-link" href="#">
-                    <figure class="slider-figure">
-                        <div class="caption">
-                            <div class="fc-icon">
-                                <i class="fas fa-info"></i>
-                            </div>
-                    </figure>
-                </a>
-            </li>
-            <li class="nav-item" data-target="#myCarousel" data-slide-to="1">
-                <a class="nav-link" href="">
-                    <figure class="slider-figure">
-                        <div class="caption">
-                            <div class="fc-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <h5>Schools</h5>
-                            <h3>Laikipia schools</h3>
-                            <button type="submit" class="btn btn-default btn-dark"
-                                onclick="location.href='<?php echo base_url(); ?>schools'">More
-                            </button>
-                        </div>
-                        <h5>Schools</h5>
+        <li class="nav-item" data-target="#myCarousel" data-slide-to="2">
+        <a class="nav-link" href="#">
+            <figure class="slider-figure">
+                <div class="caption">
+                    <div class="fc-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h5>About</h5>
+                        <h3>The initiatize</h3>
+                    <button type="submit" class="btn btn-default btn-dark"
+                        onclick="location.href='<?php echo base_url(); ?>schools'">More
+                    </button>
+                </div>
+            </figure>
+        </a>
+    </li>
+
+    <li class="nav-item" data-target="#myCarousel" data-slide-to="2">
+        <a class="nav-link" href="#">
+            <figure class="slider-figure">
+                <div class="caption">
+                    <div class="fc-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h5>Schools</h5>
                         <h3>Laikipia schools</h3>
-                        <button type="submit" class="btn btn-default btn-dark"
-                            onclick="location.href='<?php echo base_url(); ?>allschools'">More
-                        </button>
-    </div>
-    </figure>
-    </a>
+                    <button type="submit" class="btn btn-default btn-dark"
+                        onclick="location.href='<?php echo base_url(); ?>schools'">More
+                    </button>
+                </div>
+            </figure>
+        </a>
     </li>
     <li class="nav-item" data-target="#myCarousel" data-slide-to="2">
         <a class="nav-link" href="#">

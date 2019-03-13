@@ -142,7 +142,7 @@ class Donations extends MX_Controller
             $donation_id = $this->donations_model->create_donation();
            // echo json_encode($category_id);die();
             if ($donation_id > 0) {
-                $this->session->set_flashdata("success_message", "New donation ID" . $donation_id . " has been added");
+                $this->session->set_flashdata("success", "New donation ID" .  $donation_id . " has been added");
             } else {
                 $this->session->set_flashdata
                     ("error", "unable to add donation");
@@ -172,7 +172,7 @@ class Donations extends MX_Controller
         {
             $update_status = $this->donations_model->update_donation($donation_id);
             if ($update_status) {
-                $this->session->set_flashdata("success",  $donation_id . " has been updated");
+                $this->session->set_flashdata("success", Donation.''.ID.'' . $donation_id . " has been updated");
                 redirect("administration/donations");
             }
         } 
@@ -198,7 +198,7 @@ class Donations extends MX_Controller
                 $v_data["donation_amount"] = $donation_amount;
                 $v_data["school_id"] = $school;
                 $v_data['categories'] = $this->site_model->get_all_categories();
-               // echo json_encode($v_data['categories']->result());die();
+               //echo json_encode($v_data['categories']->result());die();
                 $v_data['schools'] = $this->donations_model->all_schools();
                 //var_dump($v_data["school_id"]);die();
                 $v_data["post_id"] = $post;
