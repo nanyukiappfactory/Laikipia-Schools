@@ -114,7 +114,7 @@ class posts extends MX_Controller
                 $data['title'] = 'post filtered by ' . $search_title;
             }
             $v_data['title'] = $data['title'];
-            $v_data['all_categories'] = $this->site_model->get_categories();
+            $v_data['all_categories'] = $this->site_model->get_all_categories();
             $v_data['order'] = $order;
             $v_data['order_method'] = $order_method;
             $v_data['query'] = $query;
