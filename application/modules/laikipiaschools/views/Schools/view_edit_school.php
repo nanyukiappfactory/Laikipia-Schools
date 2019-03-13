@@ -90,41 +90,12 @@ if ($query->num_rows() > 0) {
 foreach ($pictures->result() as $row1) {
             if ($row1->school_id == $row->school_id) {
                 ?>
-                                <a href="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"><img
+                                <a href="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"></a>
+                                <img
                                         src="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"
-                                        alt="..."></a>
+                                        alt="...">
                                 <?php }}?>
                             </div>
-
-
-
-                            <div id="myCarousel" class="owl-carousel owl-theme" data-ride="carousel">
-
-
-                                <?php echo "<script>
-            $(document).ready(function() {
-              var owl = $('.owl-carousel');
-              owl.owlCarousel({
-                margin: 10,
-                nav: true,
-                loop: true,
-                responsive: {
-                  0: {
-                    items: 1
-                  },
-                  600: {
-                    items: 3
-                  },
-                  1000: {
-                    items: 5
-                  }
-                }
-              })
-            })
-          </script>" ?>
-                                <!-- End Carousel Inner -->
-                            </div>
-                            <!-- End Carousel Inner -->
 
                             <div class="col-md-12 col-sm-12">
                                 <h6 class="title-price mt-4"><small>Write Up</small></h6>
