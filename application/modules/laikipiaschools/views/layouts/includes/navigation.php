@@ -13,7 +13,7 @@
         <div><?php
 echo form_open(base_url() . 'administration/search-' . $route, array("class" => "form-inline my-2 my-lg-0")) ?>
 
-            <select class="custom-select2 form-control mr-sm-2" name="search_param" required>
+            <select class="custom-select2 form-control mr-sm-2" name="categories_search">
                 <option value="">Choose category..</option>
                 <?php foreach ($search_options as $search_option) {?>
                 <option value="<?php echo $search_option['category_id']; ?>">
@@ -24,8 +24,7 @@ echo form_open(base_url() . 'administration/search-' . $route, array("class" => 
         </div>
 
         <div>
-
-            <select class="custom-select2 form-control mr-sm-2" name="search_param" required>
+            <select class="custom-select2 form-control mr-sm-2" name="post_titles_search">
                 <option value="">Choose post title..</option>
                 <?php foreach ($search_options as $search_option) {?>
                 <option value="<?php echo $search_option['name']; ?>">

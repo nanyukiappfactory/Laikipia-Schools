@@ -11,10 +11,6 @@
 <link href="<?php echo base_url(); ?>assets/custom/css/styles.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/themes/custom/css/sidenav.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/fontawesome/css/all.css" rel="stylesheet">
-<link href="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/docs/assets/vendors/jquery.min.js"
-    rel="stylesheet">
-<script src="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/dist/owl.carousel.min.js">
-</script>
 <link href="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/dist/assets/owl.carousel.min.css"
     rel="stylesheet">
 <link
@@ -26,6 +22,12 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
 <?php echo '<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMfrWKiELcjgQDzNq1n3LTVMSQAXGSs6E"></script>'; ?>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+<link href="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/docs/assets/vendors/jquery.min.js"
+    rel="stylesheet">
+<script src="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/dist/owl.carousel.min.js">
+</script>
+<script src="<?php echo base_url(); ?>assets/themes/website/assets/custom/js/main.js">
+</script>
 <script>
 tinymce.init({
     selector: 'textarea',
