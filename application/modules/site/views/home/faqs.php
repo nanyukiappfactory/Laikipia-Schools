@@ -17,7 +17,7 @@
 						</div>
 						<div class="accordion">
 							<ul class="accordion_list">
-								<li class="accordion_item">
+							<li class="accordion_item">
 									<div class="accordion_itemTitleWrap">
 										<h3 class="accordion_itemTitle">Laikipia County</h3>
 										<div class="accordion_itemIconWrap">
