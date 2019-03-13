@@ -81,7 +81,7 @@
 								<div class="clearfix"></div>
 								<?php echo $row->school_name; ?>
 								<div class="school-description">
-									<?php echo $row->school_write_up; ?>
+									<p><?php echo $row->school_write_up; ?></p>
 								</div>
 								<div class="center-button">
 									<a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>schools/<?php echo $field_name; ?>">READ MORE</a>

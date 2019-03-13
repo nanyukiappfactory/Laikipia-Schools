@@ -8,16 +8,30 @@ class Donations_model extends CI_Model
      *     @param string $where
      *
      */
-    public function get_all_donations($table, $where, $per_page, $page, $order = 'created_on', $order_method = 'DESC')
+    public function get_donations($table, $where, $per_page, $page, $order = 'created_on', $order_method = 'DESC')
     {
         // var_dump($table);die();
-        $select = "donation.*, school.school_id, school.school_name, post.post_id, post.post_title";
+        $select = "donation.*, school.school_id, school.school_name";
         $this->db->select($select);
         $this->db->from($table);
+        $this->db->join('school', 'donation.school_id=school.school_id', 'left');
         $this->db->where($where);
         $this->db->order_by($order, $order_method);
         $query = $this->db->get('', $per_page, $page);
         return $query;
+    }
+    public function get_partners($table, $where, $limit, $start, $order, $order_method)
+    {
+        // $where = "partner.deleted=0";
+        $this->db->select("*");
+        $this->db->from($table);
+        $this->db->where($where);
+        $this->db->limit($limit, $start);
+        $this->db->join("partner_type", "partner.partner_type_id=partner_type.partner_type_id");
+
+        $this->db->order_by($order, $order_method);
+
+        return $this->db->get();
     }
     public function all_schools()
     {

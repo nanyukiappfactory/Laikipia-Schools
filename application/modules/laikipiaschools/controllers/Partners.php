@@ -38,6 +38,7 @@ class Partners extends MX_Controller
         $segment = 5;
         $config['base_url'] = site_url() . 'administration/partners/' . $order . '/' . $order_method;
         $config['total_rows'] = $this->site_model->count_items($table, $where);
+        //echo json_encode($config['total_rows']);die();
 
         // $config['uri_segment'] = $segment;
         $config['per_page'] = 20;

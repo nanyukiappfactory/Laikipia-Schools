@@ -18,7 +18,8 @@
 
 					</div>
 					<div class="modal-body">
-						<?php echo form_open($this->uri->uri_string()); ?>
+						
+						<?php echo form_open(base_url() . 'administration/donations/add-donations') ?>
 
 						<div class="form-group row">
 
