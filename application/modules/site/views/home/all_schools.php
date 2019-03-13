@@ -80,8 +80,8 @@
 								</ul>
 								<div class="clearfix"></div>
 								<h3><?php echo $row->school_name; ?></h3>
-								<div class="school-description">
-									<?php echo strip_tags($row->school_write_up); ?>
+								<div class="school-description mb-5">
+									<p><?php echo strip_tags($row->school_write_up); ?></p>
 								</div>
 								<div class="center-button">
 									<a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>schools/<?php echo $field_name; ?>">READ MORE</a>
