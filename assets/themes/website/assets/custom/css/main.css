@@ -301,7 +301,7 @@ nav {
 }
 
 .school-description {
-	max-height: 120px;
+	max-height: 110px;
 	overflow: hidden;
 }
 
@@ -735,6 +735,7 @@ nav {
 	background: rgba(0, 0, 0, 0);
 	border: #ffffff solid 2px;
 	color: #ffffff;
+	box-shadow: none;
 }
 
 .contact-form .form-control::-webkit-input-placeholder {
@@ -804,57 +805,57 @@ nav {
 	border: none;
 	cursor: pointer;
 }
-.container .box {
+.contact-box {
     position:relative;
     width: 300px;
     height:100px;
     box-sizing:border-box;
     text-align:center;
     margin:0 10px;
-    background:#00171d;
+    background:#ffb606;
     overflow:hidden;
-    border-radius:4px;
-    box-shadow:0 0 0 2px rgba(0,7,10,1);
+	border-radius:4px;
+	cursor: pointer;
 }
-.container .box .icon {
+.contact-box .icon {
     width:100%;
     height:100%;
-    background:#00171d;
+    background:#313131;
     transition: 0.5s;
 }
-.container .box .icon .fa {
+.contact-box .icon .fas {
     font-size: 4em;
     line-height:100px;
-    color: #0ff;
+    color: #ffffff;
 }
-.container .box:hover .icon {
+.contact-box:hover .icon {
     transform:scale(0);
 }
-.container .box .details {
+.contact-box .details {
     position:absolute;
     top:0;
     left:0;
     width:100%;
     height:100%;
-    background:#03a9f4;
+    background:#ffffff;
     transition:0.5s;
     transform:scale(2);
     opacity:0;
 }
-.container .box:hover .details {
+.contact-box:hover .details {
     transform:scale(1);
     opacity:1;
 }
-.container .box .details h3 {
+.contact-box .details h3 {
     margin:0;
     padding:0;
     line-height:100px;
     font-size:24px;
-    color:#fff;
+    color:#313131;
 }
-.container .box .details:nth-child(2) .details {
+.contact-box .details:nth-child(2) .details {
     background:#e91e63;
 }
-.container .box .details:nth-child(2) .details {
+.contact-box .details:nth-child(2) .details {
     background:#607d8b;
 }
