@@ -1,7 +1,4 @@
-
-<div class="page-content">
-
-	<!-- Page Header -->
+<!-- Page Header -->
 	<section class="page-header" style="background-image: url('<?php echo base_url(); ?>assets/uploads/classroom.JPG')">
 		<div class="container">
 			<div class="row">
@@ -38,9 +35,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- <div class="progress-bar">
-                    <div class="total-progress" data-percentage="30"></div>
-                     </div> -->
 					<div class="progress-bar">
 						<div class="total-progress" data-percentage="<?php echo $percentage_donated_total; ?>"></div>
 					</div>
@@ -109,4 +103,3 @@
 	</section>
 	<!-- End schools -->
 
-</div>
