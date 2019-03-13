@@ -143,24 +143,35 @@ class posts extends MX_Controller
     }
     public function search_posts()
     {
-        $post_title = $this->input->post('search_param');
-        $category_id = $this->input->post('search_param');
+        $post_title = $this->input->post('post_titles_search');
+        $category_id = $this->input->post('categories_search');
+
         $search_title = '';
-        if (!empty($post_title)) {
+        if ($post_title != null && !empty($post_title) && !empty($category_id)) {
+            $search_title .= ' Searched: <strong>' . $category_id . '</strong>';
+            $search_title .= ' Searched: <strong>' . $post_title . '</strong>';
+            $post_title = ' AND post.post_title = "' . $post_title . '"';
+
+            $category_id = ' AND post.category_id = "' . $category_id . '"';
+            $search_2 = $category_id . $post_title;
+            // echo $search_2;die();
+            $this->session->set_userdata('posts_search', $search_2);
+            $this->session->set_userdata('posts_search_title', $search_title);
+
+        } else if (!empty($post_title)) {
             $search_title .= ' Searched: <strong>' . $post_title . '</strong>';
             $post_title = ' AND post.post_title = "' . $post_title . '"';
             $search = $post_title;
             $this->session->set_userdata('posts_search', $search);
             $this->session->set_userdata('posts_search_title', $search_title);
-        } else {
-            if (!empty($category_id)) {
-                $search_title .= ' Searched: <strong>' . $category_id . '</strong>';
-                $category_id = ' AND post.category_id = "' . $category_id . '"';
-                $search = $category_id;
-                $this->session->set_userdata('posts_search', $search);
-                $this->session->set_userdata('posts_search_title', $search_title);
-            }
+        } else if (!empty($category_id)) {
+            $search_title .= ' Searched: <strong>' . $category_id . '</strong>';
+            $category_id = ' AND post.category_id = "' . $category_id . '"';
+            $search = $category_id;
+            $this->session->set_userdata('posts_search', $search);
+            $this->session->set_userdata('posts_search_title', $search_title);
         }
+
         redirect("administration/posts");
     }
 
