@@ -1,5 +1,5 @@
 <?php
-
+//echo json_encode($categories->result());die();
 $validation_errors = validation_errors();
 if (!empty($validation_errors)) {
     echo $validation_errors;
@@ -31,7 +31,8 @@ if (!empty($validation_errors)) {
 
 					<?php
     foreach ($categories->result() as $row1) {
-        if (strtolower($row1->category_name) == strtolower("Donor")) {?>
+		$category_name = preg_replace('/\s/', '', $row1->category_name);
+		if (strtolower($category_name) == strtolower("Donor")) {?>
 					<option value="<?php echo $row1->post_id; ?>">
 						<?php echo $row1->post_title; ?>
 					</option>

@@ -22,7 +22,6 @@
 						<?php echo form_open(base_url() . 'administration/donations/add-donations') ?>
 
 						<div class="form-group row">
-
 							<div class="col-sm-12 col-md-12">
 								<input type="number" class="form-control" id="donation_amount" name="donation_amount" placeholder="Donation Amount"
 								 required>
