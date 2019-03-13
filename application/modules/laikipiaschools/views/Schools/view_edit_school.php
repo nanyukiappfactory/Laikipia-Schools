@@ -92,7 +92,7 @@ $count = 0;
                 $count++
                 ?>
                                     <div class="carousel-item <?php echo $count == 1 ? "active" : ""; ?>">
-                                        <img width=100%
+                                        <img width=100% height=400px
                                             src=" <?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>" />
 
                                     </div>
@@ -144,12 +144,10 @@ $count = 0;
                     <div class="modal-body">
                         <h5 class="card-title">Enter school Details to
                             update</h5>
-
                         <?php echo form_open(base_url() . 'administration/edit-school/' . $row->school_id); ?>
                         <div class="form-group row">
                             <label for="school_name" class="col-sm-2 col-form-label">School
                                 Name</label>
-
                             <div class="col-md-10">
                                 <?php echo form_input(['name' => 'school_name', 'placeholder' => 'School Name', 'class' => 'form-control', 'value' => set_value('school_name', $row->school_name)]) ?>
                             </div>
@@ -157,9 +155,32 @@ $count = 0;
                         <div class="form-group row">
                             <label for="school_zone" class="col-sm-2 col-form-label">School
                                 Zone</label>
-
                             <div class="col-md-10">
-                                <?php echo form_input(['name' => 'school_zone', 'placeholder' => 'School    Zone', 'class' => 'form-control', 'value' => set_value('school_zone', $row->school_zone)]) ?>
+                                <select id="inputState" class="form-control" name="school_zone"
+                                    value="<?php echo set_value('school_zone', $this->session->flashdata('form_inputs')['school_zone']); ?>"
+                                    required>
+                                    <option <?php echo $row->school_zone ? 'selected' : ''; ?>>
+                                        <?php echo $row->school_zone ?></option>
+                                    <option value="Daiga">Daiga </option>
+                                    <option value="Gituamba"> Gituamba </option>
+                                    <option value="Igwamiti"> Igwamiti </option>
+                                    <option value="Kinamba"> Kinamba </option>
+                                    <option value="Marmanet"> Marmanet </option>
+                                    <option value="Muhotetu"> Muhotetu </option>
+                                    <option value="Mukogodo East "> Mukogodo East </option>
+                                    <option value="Mutara"> Mutara </option>
+                                    <option value="Nanyuki North "> Nanyuki North </option>
+                                    <option value="Nanyuki South "> Nanyuki South </option>
+                                    <option value="Ngobit"> Ngobit </option>
+                                    <option value="Nyahururu "> Nyahururu </option>
+                                    <option value="Ol Moran"> Ol Moran </option>’
+                                    <option value="Rumuruti "> Rumuruti </option>
+                                    <option value="Salama"> Salama </option>
+                                    <option value="Sipili"> Sipili </option>
+                                    <option value="Sirima"> Sirima </option>
+                                    <option value="Tigithi"> Tigithi </option>
+                                </select>
+                                <small id="emailHelp" class="form-text text-muted"></small>
                             </div>
                         </div>
                         <div class="form-group row">

@@ -25,7 +25,7 @@
 <script>
 tinymce.init({
     selector: 'textarea',
-    plugins: 'advlist'
-    // advlist_bullet_styles: 'square' // only include square bullets in list
+    plugins: "lists",
+    toolbar: "numlist | bullist | Format |undo redo | styleselect | bold italic | link image"
 });
 </script>
