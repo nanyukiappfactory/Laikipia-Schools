@@ -22,8 +22,7 @@ class Donations extends MX_Controller
     // public function index($donation_id = null, $order = null, $order_method = null)
     public function index($order = 'donation.donation_amount', $order_method = 'ASC')
     {
-        // $order = 'donation.donation_amount';
-        // $order_method = 'DESC';
+        
         $this->form_validation->set_rules('donation_amount', 'Donation Amount', 'required|numeric');
         $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
         $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
@@ -39,7 +38,7 @@ class Donations extends MX_Controller
             }
         } else {
             $where = 'donation.deleted=0';
-            // $where = 'donation.deleted=0 AND donation.school_id = school.school_id AND donation.category_id = post.category_id';
+           //  $where = 'donation.deleted=0 AND donation.school_id = school.school_id AND donation.category_id = post.category_id';
             $table = 'donation, school, post';
             // $table = 'donation, school, post';
             $donations_search = $this->session->userdata('donations_search');
@@ -97,11 +96,8 @@ class Donations extends MX_Controller
             $v_data['query'] = $query;
             $v_data['schools'] = $this->donations_model->all_schools();
             $v_data['page'] = $page;
-            $v_data['categories'] = $this->site_model->get_all_categories();
-            // $v_data['cats'] = $this->site_model->get_categories();
-
-            // echo json_encode($v_data['categories']->result());die();
-            //var_dump($v_data['categories']->result());die();
+            $v_data['categories'] = $this->donations_model->get_categories();
+            //echo json_encode($v_data['categories']->result());die();
             $v_data['partners'] = $this->donations_model->all_partners();
 
             $data['content'] = $this->load->view('donations/all_donations', $v_data, true);
@@ -200,6 +196,7 @@ class Donations extends MX_Controller
                 $v_data["donation_amount"] = $donation_amount;
                 $v_data["school_id"] = $school;
                 $v_data['categories'] = $this->site_model->get_all_categories();
+                
                 $v_data['schools'] = $this->donations_model->all_schools();
                 //var_dump($v_data["school_id"]);die();
                 $v_data["post_id"] = $post;
