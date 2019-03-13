@@ -114,13 +114,13 @@ class posts extends MX_Controller
                 $data['title'] = 'post filtered by ' . $search_title;
             }
             $v_data['title'] = $data['title'];
-            $v_data['all_categories'] = $this->site_model->get_categories();
+            $v_data['all_categories'] = $this->site_model->get_all_categories();
             $v_data['order'] = $order;
             $v_data['order_method'] = $order_method;
             $v_data['query'] = $query;
             $v_data['page'] = $page;
             $all_posts = $this->posts_model->get_posts_titles($table, 'post_title', 'ASC');
-            echo json_encode($all_posts->result());die();
+            //echo json_encode($all_posts->result());die();
             $post_array = array();
             foreach ($all_posts->result() as $post) {
                 array_push($post_array, array(

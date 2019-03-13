@@ -24,10 +24,10 @@ if (!empty($validation_errors)) {
 		</div>
 
 		<div class="form-group row">
-			<label for="donation_amount" class="col-sm-2 col-form-label">Partner</label>
+			<label for="donation_amount" class="col-sm-2 col-form-label">Donor</label>
 			<div class="col-sm-10">
 				<select class="custom-select my-1 mr-sm-2" name="post_id">
-					<option selected>Choose Partner...</option>
+					<option selected>Choose Donor...</option>
 
 					<?php
     foreach ($categories->result() as $row1) {
