@@ -39,7 +39,7 @@
                             </div>
                         </div>
 						<div class="progress-bar">
-						<div class="total-progress" data-percentage="<?php echo $percentage_donated_total; ?>"></div>
+							<div class="total-progress" data-percentage="<?php echo $percentage_donated_total; ?>"></div>
 					   </div>
 					</div>
 				</div>
@@ -57,34 +57,35 @@
 								<div class="img-overlayer"></div>
 							</div>
 							<div class="school-details text-left">
-                            <div class="progress-bar">
-								<?php
-                                    if ($row->total_donated > $row->target_amount) {
-                                        $progress = 100;
-                                    } else {
-                                        $progress = ($row->total_donated / $row->target_amount) * 100;
-                                    }
-                                    ?>
-								<div class="total-progress" data-percentage="<?php echo number_format($progress); ?>"></div>
-							</div>
-                            <ul class="list-inline">
-								<?php $target = $row->target_amount;?>
-								<li>
-									<strong>Donated:</strong>
-									<?php echo number_format($row->total_donated); ?>
-								</li>
-								<li>
-									<strong>Target:</strong>
-									<span class="text-theme"><?php echo number_format($target); ?></span>
-								</li>
-							</ul>
-							<div class="clearfix"></div>
-							<?php echo $row->school_name; ?>
-							<div class="school-description">
-								<?php echo $row->school_write_up; ?>
-							</div>
-							<div class="center-button">
-								<a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>schools/<?php echo $field_name; ?>">READ MORE</a>
+								<div class="progress-bar">
+									<?php
+										if ($row->total_donated > $row->target_amount) {
+											$progress = 100;
+										} else {
+											$progress = ($row->total_donated / $row->target_amount) * 100;
+										}
+										?>
+									<div class="total-progress" data-percentage="<?php echo number_format($progress); ?>"></div>
+								</div>
+								<ul class="list-inline">
+									<?php $target = $row->target_amount;?>
+									<li>
+										<strong>Donated:</strong>
+										<?php echo number_format($row->total_donated); ?>
+									</li>
+									<li>
+										<strong>Target:</strong>
+										<span class="text-theme"><?php echo number_format($target); ?></span>
+									</li>
+								</ul>
+								<div class="clearfix"></div>
+								<?php echo $row->school_name; ?>
+								<div class="school-description">
+									<?php echo $row->school_write_up; ?>
+								</div>
+								<div class="center-button">
+									<a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>schools/<?php echo $field_name; ?>">READ MORE</a>
+								</div>
 							</div>
 						</div>
 					</div>
