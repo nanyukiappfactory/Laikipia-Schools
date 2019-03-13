@@ -87,9 +87,10 @@ if ($query->num_rows() > 0) {
                             <div class="container">
                                 <div id="schoolGalleryCarousel" class="owl-carousel">
                                     <?php
+                                    $count=0;
 foreach ($pictures->result() as $row1) {
-            if ($row1->school_id == $row->school_id) {
-
+            if ($row->school_id == $row1->school_id) {
+$count++
                 ?>
                                     <a href="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"><img
                                             src="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"
