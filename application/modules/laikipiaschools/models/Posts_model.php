@@ -30,7 +30,6 @@ class Posts_model extends CI_Model
         $this->db->from($table);
         $this->db->where($where);
         $this->db->limit($limit, $page);
-
         $this->db->order_by($order, $order_method);
         return $this->db->get();
 
@@ -39,6 +38,7 @@ class Posts_model extends CI_Model
     {
         $this->db->select('post.*, category.category_id, category.category_name');
         $this->db->from($table);
+        $this->db->where('post.deleted != 1');
         $this->db->order_by($order, $order_method);
         $this->db->join('category', 'post.category_id=category.category_id', 'left');
         // $this->db->group_by('category.category_name', 'ASC');

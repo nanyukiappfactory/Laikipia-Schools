@@ -120,7 +120,11 @@ class posts extends MX_Controller
             $v_data['query'] = $query;
             $v_data['page'] = $page;
             $all_posts = $this->posts_model->get_posts_titles($table, 'post_title', 'ASC');
+<<<<<<< HEAD
             //echo json_encode($all_posts->result());die();
+=======
+            // echo json_encode($all_posts->result());die();
+>>>>>>> 1c6875f270a2da7cabf735ef548063ca12a1ba59
             $post_array = array();
             foreach ($all_posts->result() as $post) {
                 array_push($post_array, array(
@@ -130,7 +134,6 @@ class posts extends MX_Controller
                     'category_name' => $post->category_name,
                 ));
             }
-
             $v_data['search_options'] = $post_array;
             $v_data['route'] = 'posts';
 
