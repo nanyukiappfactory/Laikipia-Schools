@@ -46,6 +46,12 @@ echo $content;
     <script src="<?php echo base_url(); ?>assets/vendor/script.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/script1.js"></script>
     <script src="<?php echo base_url(); ?>assets/custom/js/custom.js"></script>
+    <link
+        href="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/docs/assets/vendors/jquery.min.js"
+        rel="stylesheet">
+    <script src="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/dist/owl.carousel.min.js">
+    </script>
+    <script src="<?php echo base_url(); ?>assets/themes/website/assets/custom/js/main.js"></script>
 </body>
 
 </html>

@@ -130,7 +130,6 @@ class posts extends MX_Controller
                     'category_name' => $post->category_name,
                 ));
             }
-
             $v_data['search_options'] = $post_array;
             $v_data['route'] = 'posts';
 
