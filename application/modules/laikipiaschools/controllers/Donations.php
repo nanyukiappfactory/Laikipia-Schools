@@ -11,100 +11,75 @@ class Donations extends MX_Controller
         parent::__construct();
         $this->load->model("donations_model");
         $this->load->model("site_model");
-        // $this->load->model("payments_model");
-    }
 
-    /*
-     *
-     *    Default action is to show all the donations
-     *
-     */
-    // public function index($donation_id = null, $order = null, $order_method = null)
+    }
     public function index($order = 'donation.donation_amount', $order_method = 'ASC')
     {
-        
-        $this->form_validation->set_rules('donation_amount', 'Donation Amount', 'required|numeric');
-        $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
-        $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
-
-        if ($this->form_validation->run()) {
-            $donation_id = $this->donations_model->create_donation();
-            if ($donation_id) {
-                $this->session->set_flashdata('success', 'Donation ID: ' . $donation_id . ' Created successfully');
-                redirect('laikipiaschools/donations');
-            } else {
-                $this->session->set_flashdata('error', 'Unable to Create: ' . $donation_id);
-                redirect('laikipiaschools/donations');
-            }
-        } else {
-            $where = 'donation.deleted=0';
-           //  $where = 'donation.deleted=0 AND donation.school_id = school.school_id AND donation.category_id = post.category_id';
-            $table = 'donation, school, post';
-            // $table = 'donation, school, post';
-            $donations_search = $this->session->userdata('donations_search');
-            $search_title = $this->session->userdata('donations_search_title');
-
-            if (!empty($donations_search) && $donations_search != null) {
-                $where .= $donations_search;
-            }
-
-            //pagination
-            $segment = 5;
-            $this->load->library('pagination');
-            $config['base_url'] = site_url() . 'donations/' . $order . '/' . $order_method;
-            $config['total_rows'] = $this->site_model->count_items($table, $where);
-            $config['uri_segment'] = $segment;
-            $config['per_page'] = 20;
-            $config['num_links'] = 5;
-
-            $config['full_tag_open'] = '<div class="pagging text-center"><nav aria-label="Page navigation example"><ul class="pagination">';
-            $config['full_tag_close'] = '</ul></nav></div>';
-            $config['num_tag_open'] = '<li class="page-item"><span class="page-link">';
-            $config['num_tag_close'] = '</span></li>';
-            $config['cur_tag_open'] = '<li class="page-item active"><span class="page-link">';
-            $config['cur_tag_close'] = '<span class="sr-only">(current)</span></span></li>';
-            $config['next_tag_open'] = '<li class="page-item"><span class="page-link">';
-            $config['next_tagl_close'] = '<span aria-hidden="true">&raquo;</span></span></li>';
-            $config['prev_tag_open'] = '<li class="page-item"><span class="page-link">';
-            $config['prev_tagl_close'] = '</span></li>';
-            $config['first_tag_open'] = '<li class="page-item"><span class="page-link">';
-            $config['first_tagl_close'] = '</span></li>';
-            $config['last_tag_open'] = '<li class="page-item"><span class="page-link">';
-            $config['last_tagl_close'] = '</span></li>';
-            $this->pagination->initialize($config);
-
-            $page = ($this->uri->segment($segment)) ? $this->uri->segment($segment) : 0;
-            $v_data["links"] = $this->pagination->create_links();
-            $query = $this->donations_model->get_all_donations($table, $where, $config["per_page"], $page, $order, $order_method);
-
-            //change of order method
-            if ($order_method == 'DESC') {
-                $order_method = 'ASC';
-            } else {
-                $order_method = 'DESC';
-            }
-
-            $data['title'] = 'donations';
-
-            if (!empty($search_title) && $search_title != null) {
-                $data['title'] = 'donations filtered by ' . $search_title;
-            }
-            $v_data['title'] = $data['title'];
-
-            $v_data['order'] = $order;
-            $v_data['order_method'] = $order_method;
-            $v_data['query'] = $query;
-            $v_data['schools'] = $this->donations_model->all_schools();
-            $v_data['page'] = $page;
-            $v_data['categories'] = $this->donations_model->get_categories();
-            //echo json_encode($v_data['categories']->result());die();
-            $v_data['partners'] = $this->donations_model->all_partners();
-
-            $data['content'] = $this->load->view('donations/all_donations', $v_data, true);
-
-            $this->load->view("laikipiaschools/layouts/layout", $data);
+       
+        $where = 'donation_id > 0 AND donation.deleted=0';
+        $table = 'donation';
+        $donations_search = $this->session->userdata('donations_search');
+        $search_title = $this->session->userdata('donations_search_title');
+        if (!empty($donations_search) && $donations_search != null) {
+            $where .= $donations_search;
         }
 
+        //pagination
+        $segment = 5;
+        $config['base_url'] = site_url() . 'administration/donations/' . $order . '/' . $order_method;
+        $config['total_rows'] = $this->site_model->count_items($table, $where);
+       //echo json_encode($config['total_rows']);die();
+
+        // $config['uri_segment'] = $segment;
+        $config['per_page'] = 20;
+        $config['num_links'] = 5;
+        $config['full_tag_open'] = '<div class="pagging text-center"><nav aria-label="Page navigation example"><ul class="pagination">';
+        $config['full_tag_close'] = '</ul></nav></div>';
+        $config['num_tag_open'] = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close'] = '</span></li>';
+        $config['cur_tag_open'] = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close'] = '<span class="sr-only">(current)</span></span></li>';
+        $config['next_tag_open'] = '<li class="page-item"><span class="page-link">';
+        $config['next_tagl_close'] = '<span aria-hidden="true">&raquo;</span></span></li>';
+        $config['prev_tag_open'] = '<li class="page-item"><span class="page-link">';
+        $config['prev_tagl_close'] = '</span></li>';
+        $config['first_tag_open'] = '<li class="page-item"><span class="page-link">';
+        $config['first_tagl_close'] = '</span></li>';
+        $config['last_tag_open'] = '<li class="page-item"><span class="page-link">';
+        $config['last_tagl_close'] = '</span></li>';
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment($segment)) ? $this->uri->segment($segment) : 0;
+        $v_data["links"] = $this->pagination->create_links();
+        //var_dump($v_data['links']);die();
+        $query = $this->donations_model->get_donations($table, $where, $config["per_page"], $page, $order, $order_method);
+
+        //change of order method
+        if ($order_method == 'DESC') {
+            $order_method = 'ASC';
+        } else {
+            $order_method = 'DESC';
+        }
+
+        $data['title'] = 'Partners';
+
+        if (!empty($search_title) && $search_title != null) {
+            $data['title'] = 'Partners filtered by ' . $search_title;
+        }
+        $v_data['title'] = $data['title'];
+
+        $v_data['order'] = $order;
+        $v_data['order_method'] = $order_method;
+        $v_data['query'] = $query;
+        $v_data['page'] = $page;
+        $v_data['categories'] = $this->site_model->get_all_categories();
+       // $v_data["donation_types"] = $this->donations_model->get_donation_types();
+
+        $donation_type_search = array();
+        $data['search_options'] = $donation_type_search;
+        $data['route'] = 'donations';
+        $data['content'] = $this->load->view('donations/all_donations', $v_data, true);
+        //$this->load->view('admin/layout/home', $data);
+        $this->load->view("laikipiaschools/layouts/layout", $data);
     }
 
     public function close_search()
@@ -158,6 +133,35 @@ class Donations extends MX_Controller
 
         redirect('administration/donations');
 
+    }
+    public function createDonation()
+    {
+        
+        $this->form_validation->set_rules('donation_amount', 'Donation Amount', 'required|numeric');
+        $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
+        $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
+
+        if ($this->form_validation->run()) {
+            $donation_id = $this->donations_model->create_donation();
+           // echo json_encode($category_id);die();
+            if ($donation_id > 0) {
+                $this->session->set_flashdata("success_message", "New donation ID" . $donation_id . " has been added");
+            } else {
+                $this->session->set_flashdata
+                    ("error", "unable to add donation");
+            }
+            redirect("administration/donations");
+        }
+        else{
+             $this->session->set_flashdata
+                    ("error", validation_errors());
+        
+             redirect("administration/donations");
+        }
+
+        redirect("administration/donations");
+
+       
     }
     
     //edit gi
@@ -286,6 +290,8 @@ class Donations extends MX_Controller
             $this->session->set_flashdata('error', 'Unable to delete, Try again!!');
             redirect('laikipiaschools/donations');
         }
+
+        
     }
 
 }

@@ -92,6 +92,7 @@ $route['administration/deactivate-section/(:num)/(:num)'] = 'admin/sections/deac
  * Donations
  */
 $route['administration/donations'] = 'laikipiaschools/donations/index';
+$route['administration/donations/add-donations'] = 'laikipiaschools/donations/createDonation';
 $route['administration/single-donation/(:num)'] = 'laikipiaschools/donations/single_donation/$1';
 $route['administration/edit-donation/(:num)'] = 'laikipiaschools/donations/edit_donation/$1';
 $route['administration/delete-donation/(:num)'] = 'laikipiaschools/donations/delete_donation/$1';

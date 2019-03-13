@@ -241,6 +241,7 @@ class Categories extends MX_Controller
 
         if ($this->form_validation->run()) {
             $category_id = $this->categories_model->add_category();
+           // echo json_encode($category_id);die();
             if ($category_id > 0) {
                 $this->session->set_flashdata("success_message", "New category ID" . $category_id . " has been added");
             } else {
