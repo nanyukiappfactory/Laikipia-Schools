@@ -96,7 +96,7 @@ class Donations extends MX_Controller
             $v_data['query'] = $query;
             $v_data['schools'] = $this->donations_model->all_schools();
             $v_data['page'] = $page;
-            $v_data['categories'] = $this->site_model->get_categories();
+            $v_data['categories'] = $this->donations_model->get_categories();
             //echo json_encode($v_data['categories']->result());die();
             $v_data['partners'] = $this->donations_model->all_partners();
 

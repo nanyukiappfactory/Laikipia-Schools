@@ -1,4 +1,4 @@
-<div class="page-content">
+
 	<?php
 if ($allschools->num_rows() > 0) {
     $count = 0;
@@ -153,7 +153,8 @@ if ($row->total_donated > $row->target_amount) {
 					 <?php }}?>
 			</div>
 		</div>
+		<?php break;}}}?>
 	</section>
-	<?php break;}}}?>
-</div>
+	
+
 <!-- End school -->
