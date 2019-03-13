@@ -85,7 +85,7 @@
 								<?php echo $row->school_name; ?>
 							</h3>
                             
-							<h4 style="margin-left:70px;">
+							<h4>
 								<?php echo $row->school_zone; ?>
 							</h4>
 							<div class="school-description">
