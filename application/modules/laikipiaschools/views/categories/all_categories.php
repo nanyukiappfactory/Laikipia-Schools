@@ -1,4 +1,5 @@
 <?php
+
 $validation_errors = validation_errors();
 if (!empty($validation_errors)) {
     echo $validation_errors;

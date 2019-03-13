@@ -243,7 +243,7 @@ class Categories extends MX_Controller
             $category_id = $this->categories_model->add_category();
            // echo json_encode($category_id);die();
             if ($category_id > 0) {
-                $this->session->set_flashdata("success_message", "New category ID" . $category_id . " has been added");
+                $this->session->set_flashdata("success", "New category ID" . $category_id . " has been added");
             } else {
                 $this->session->set_flashdata
                     ("error", "unable to add category");
@@ -267,6 +267,8 @@ class Categories extends MX_Controller
         if ($this->form_validation->run()) {
             $update_status = $this->categories_model->update_category($category_id);
             if ($update_status) {
+                $this->session->set_flashdata("success", "New category ID" . $category_id . " has been added");
+                
                 redirect("administration/categories");
             }
         } else {
@@ -288,7 +290,7 @@ class Categories extends MX_Controller
                 $this->load->view("laikipiaschools/layouts/layout", $data);
 
             } else {
-                $this->session->set_flashdata("error_message", "couldnt");
+                $this->session->set_flashdata("error", "couldnt");
                 redirect("categories");
             }
 
