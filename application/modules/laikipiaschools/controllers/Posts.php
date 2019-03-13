@@ -126,8 +126,11 @@ class posts extends MX_Controller
                 array_push($post_array, array(
                     'id' => $post->post_id,
                     'name' => $post->post_title,
+                    'category_id' => $post->category_id,
+                    'category_name' => $post->category_name,
                 ));
             }
+
             $v_data['search_options'] = $post_array;
             $v_data['route'] = 'posts';
 
@@ -141,6 +144,7 @@ class posts extends MX_Controller
     public function search_posts()
     {
         $post_title = $this->input->post('search_param');
+        $category_id = $this->input->post('search_param');
         $search_title = '';
         if (!empty($post_title)) {
             $search_title .= ' Searched: <strong>' . $post_title . '</strong>';
@@ -148,8 +152,23 @@ class posts extends MX_Controller
             $search = $post_title;
             $this->session->set_userdata('posts_search', $search);
             $this->session->set_userdata('posts_search_title', $search_title);
+        } else {
+            if (!empty($category_id)) {
+                $search_title .= ' Searched: <strong>' . $category_id . '</strong>';
+                $category_id = ' AND post.category_id = "' . $category_id . '"';
+                $search = $category_id;
+                $this->session->set_userdata('posts_search', $search);
+                $this->session->set_userdata('posts_search_title', $search_title);
+            }
         }
-        // var_dump($search);die();
+        redirect("administration/posts");
+    }
+
+    public function close_search()
+    {
+        $this->session->unset_userdata('posts_search');
+        $this->session->unset_userdata('posts_search_title');
+
         redirect("administration/posts");
     }
     public function deactivate_post($post_id, $status_id)
@@ -274,14 +293,6 @@ class posts extends MX_Controller
             }
             redirect("administration/posts");
         }
-    }
-
-    public function close_search()
-    {
-        $this->session->unset_userdata('posts_search');
-        $this->session->unset_userdata('posts_search_title');
-
-        redirect("administration/posts");
     }
 
     public function single_post($post_id)

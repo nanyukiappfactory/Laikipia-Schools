@@ -340,15 +340,15 @@ if ($query->num_rows() > 0) {
                         <small id="emailHelp" class="form-text text-muted"></small>
                     </div>
                     <div class="form-group row">
-                        <label for="created_on" class="col-sm-2 col-form-label">Post
+                        <label for="post_date" class="col-sm-2 col-form-label">Post
                             Date</label>
                         <div class="col-md-10">
-                            <?php echo form_input(['name' => 'created_on', 'type' => 'date', 'class' => 'form-control', 'value' => set_value('created_on', $row->created_on)]) ?>
+                            <?php echo form_input(['name' => 'post_date', 'type' => 'date', 'class' => 'form-control', 'value' => set_value('post_date', $row->post_date)]) ?>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="post_description">Post Description</label>
-                        <?php echo form_textarea(array('name' => 'post_description', 'placeholder' => 'Write a description of the post', 'class' => "editable", 'value' => set_value('created_on', $row->post_description))); ?>
+                        <?php echo form_textarea(array('name' => 'post_description', 'placeholder' => 'Write a description of the post', 'class' => "editable", 'value' => set_value('post_description', $row->post_description))); ?>
                         <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
                     </div>
                     <div class="form-group row">

@@ -40,8 +40,8 @@ class Migration_Add_posts extends CI_Migration
             ),
             'image_id' => array(
                 'type' => 'INT',
-                 'constraint' => '11',
-            ),          
+                'constraint' => '11',
+            ),
             'post_status' => array(
                 'type' => 'BOOLEAN',
                 'null' => false,

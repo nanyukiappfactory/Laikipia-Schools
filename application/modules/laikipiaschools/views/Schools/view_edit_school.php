@@ -82,9 +82,12 @@ if ($query->num_rows() > 0) {
                                     </div>
                                 </div>
                             </div>
-                            <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+                            <div id="myCarousel" class="owl-carousel owl-theme" data-ride="carousel">
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner">
+                                    <strong>
+                                        <h6 class="title-price"><small>Other Images:</small></h6>
+                                    </strong>
                                     <?php
 $count = 0;
         foreach ($pictures->result() as $row1) {
@@ -92,13 +95,34 @@ $count = 0;
                 $count++
                 ?>
                                     <div class="carousel-item <?php echo $count == 1 ? "active" : ""; ?>">
-                                        <img width=100% height=400px
+                                        <img width=100% height=300px
                                             src=" <?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>" />
 
                                     </div>
                                     <!-- End Item -->
                                     <?php }}?>
                                 </div>
+                                <?php echo "<script>
+            $(document).ready(function() {
+              var owl = $('.owl-carousel');
+              owl.owlCarousel({
+                margin: 10,
+                nav: true,
+                loop: true,
+                responsive: {
+                  0: {
+                    items: 1
+                  },
+                  600: {
+                    items: 3
+                  },
+                  1000: {
+                    items: 5
+                  }
+                }
+              })
+            })
+          </script>" ?>
                                 <!-- End Carousel Inner -->
                             </div>
                             <!-- End Carousel Inner -->
@@ -128,7 +152,6 @@ $count = 0;
             data-target="#editModal<?php echo $row->school_id; ?>">
             <i class="fas fa-edit"></i>
         </button>
-
         <div class="modal fade" id="editModal<?php echo $row->school_id; ?>" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">

@@ -190,6 +190,7 @@ class Schools extends MX_Controller
                         'name' => $school->school_name,
                     ));
                 }
+
                 $v_data['search_options'] = $school_array;
                 $v_data['route'] = 'schools';
                 $data = array(

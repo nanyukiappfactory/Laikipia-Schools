@@ -52,7 +52,7 @@ class Migration_Add_school extends CI_Migration
                 'type' => 'text',
                 'constraint' => '5000',
                 'null' => false,
-              
+
             ),
             'school_write_up' => array(
                 'type' => 'VARCHAR',
@@ -63,12 +63,12 @@ class Migration_Add_school extends CI_Migration
             'school_image_name' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '100',
-                'null' => FALSE,
+                'null' => true,
             ),
             'school_thumb_name' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '100',
-                'null' => FALSE,
+                'null' => true,
             ),
             'school_status' => array(
                 'type' => 'BOOLEAN',
