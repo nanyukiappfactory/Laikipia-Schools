@@ -20,7 +20,7 @@ class Categories extends MX_Controller
         $where = 'category_id > 0 AND deleted=0';
         $table = 'category';
         $category_search = $this->session->userdata('categories_search');
-        
+
         $search_title = $this->session->userdata('categories_search_title');
 
         if (!empty($category_search) && $category_search != null) {
@@ -83,17 +83,15 @@ class Categories extends MX_Controller
 
         $categories_result = $all_categories->result();
 
-        foreach ($categories_result as $value) 
-        {
-            if($value->category_parent == 0)
-            {
+        foreach ($categories_result as $value) {
+            if ($value->category_parent == 0) {
                 array_push($cat_parent, array(
-                    'id' => $value->category_id, 
-                    'name' => $value->category_name
-                    ) );
+                    'id' => $value->category_id,
+                    'name' => $value->category_name,
+                ));
             }
         }
-      
+
         // $v_data["parent"] = $this->categories_model->get_parents();
 
         $data['content'] = $this->load->view('categories/all_categories', $v_data, true);
@@ -111,10 +109,10 @@ class Categories extends MX_Controller
     public function search_categories()
     {
         $category_parent = $this->input->post('search_param');
-        
+
         // $all_categories = ($this->site_model->get_all_categories())->result();
 
-        // foreach ($all_categories as $key => $category) 
+        // foreach ($all_categories as $key => $category)
         // {
         //     if($category_parent_name == $category->category_name)
         //     {
@@ -251,22 +249,20 @@ class Categories extends MX_Controller
                     ("error", "unable to add category");
             }
             redirect("administration/categories");
-        }
-        else{
-             $this->session->set_flashdata
-                    ("error", validation_errors());
-        
-             redirect("administration/categories");
+        } else {
+            $this->session->set_flashdata
+                ("error", validation_errors());
+
+            redirect("administration/categories");
         }
 
         redirect("administration/categories");
 
-       
     }
-    
+
     public function edit($category_id)
-     {
-    $this->form_validation->set_rules("category_name", "Name", "required|is_unique[category.category_name]");
+    {
+        $this->form_validation->set_rules("category_name", "Name", "required|is_unique[category.category_name]");
 
         if ($this->form_validation->run()) {
             $update_status = $this->categories_model->update_category($category_id);
@@ -284,7 +280,7 @@ class Categories extends MX_Controller
                 $v_data['categories'] = $this->site_model->get_all_categories();
                 $v_data["category_parent"] = $category_parent;
                 //var_dump("category_parent");die();
-               
+
                 $data = array("title" => "Update category",
                     "content" => $this->load->view("categories/edit_category", $v_data, true),
                 );
@@ -301,7 +297,7 @@ class Categories extends MX_Controller
 
     //uploading image
     //delete image
-   
+
     public function delete_category($category_id)
     {
         if ($this->categories_model->delete_categories($category_id)) {
@@ -311,8 +307,6 @@ class Categories extends MX_Controller
             $this->session->set_flashdata('error', 'Unable to delete, Try again!!');
             redirect('administration/categories');
         }
-    }   
+    }
 
-    
-    
 }

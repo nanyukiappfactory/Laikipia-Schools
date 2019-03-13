@@ -11,10 +11,14 @@
 <link href="<?php echo base_url(); ?>assets/custom/css/styles.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/themes/custom/css/sidenav.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/fontawesome/css/all.css" rel="stylesheet">
-<link href="<?php echo base_url(); ?>assets\vendor\owlcarousel\docs\assets\vendors\jquery.min.js" rel="stylesheet">
-<link href="<?php echo base_url(); ?>assets/themes/vendor/owlcarousel/dist/assets/owl.carousel.min.css"
+<link href="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/docs/assets/vendors/jquery.min.js"
     rel="stylesheet">
-<link href="<?php echo base_url(); ?>assets/themes/vendor/owlcarousel/dist/assets/owl.theme.default.min.css"
+<script src="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/dist/owl.carousel.min.js">
+</script>
+<link href="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/dist/assets/owl.carousel.min.css"
+    rel="stylesheet">
+<link
+    href="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/dist/assets/owl.theme.default.min.css"
     rel="stylesheet">
 <!-- Custom styles for this template -->
 <script defer src="<?php echo base_url(); ?>assets/tinymce/js/tinymce/jquery.tinymce.min.js"></script>
@@ -25,7 +29,7 @@
 <script>
 tinymce.init({
     selector: 'textarea',
-    plugins: "lists",
-    toolbar: "numlist | bullist | Format |undo redo | styleselect | bold italic | link image"
+    plugins: "advlist lists ",
+    toolbar: "Format |undo redo |numlist | bullist |  styleselect | bold italic | link image"
 });
 </script>

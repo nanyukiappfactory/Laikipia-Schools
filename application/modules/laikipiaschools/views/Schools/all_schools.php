@@ -29,7 +29,8 @@ if (!empty($validation_errors)) {
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
+
+                            <div class="modal-body p-4">
                                 <?php echo form_open_multipart($this->uri->uri_string()); ?>
                                 <div class="form-group">
                                     <label for="school_name">School Name</label>
