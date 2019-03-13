@@ -37,7 +37,6 @@ class Site_model extends CI_Model
 
     public function get_categories()
     {
-
         $this->db->select('category.*, post.post_id, post.post_title');
         // $this->db->distinct('category.category_id');
         $this->db->from('category');
