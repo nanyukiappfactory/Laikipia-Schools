@@ -196,7 +196,7 @@ $route['administration/schools/get-posts-details'] = 'laikipiaschools/webservice
  */
 
 $route['schools/(:any)'] = 'site/site/single_school/$1';
-$route['allschools'] = 'site/site/all_schools';
+$route['schools'] = 'site/site/all_schools';
 $route['home'] = 'site/site/index';
 
 

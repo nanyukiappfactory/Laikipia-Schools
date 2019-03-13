@@ -51,7 +51,7 @@ foreach ($abouts->result() as $key => $row) {
                             <h5>Schools</h5>
                             <h3>Laikipia schools</h3>
                             <button type="submit" class="btn btn-default btn-dark"
-                                onclick="location.href='<?php echo base_url(); ?>allschools'">More
+                                onclick="location.href='<?php echo base_url(); ?>schools'">More
                             </button>
                         </div>
                     </figure>
