@@ -88,9 +88,10 @@
 							<h4 style="margin-left:70px;">
 								<?php echo $row->school_zone; ?>
 							</h4>
-							<p>
+							<div class="school-description">
 								<?php echo $row->school_write_up; ?>
-							</p>
+							</div>
+							
 							<div class="center-button">
                                 
 								<a class="btn btn-default btn-theme" href="<?php 
