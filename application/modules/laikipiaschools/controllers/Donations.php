@@ -219,7 +219,51 @@ class Donations extends MX_Controller
         }
 
     }
-    
+
+    public function edit($donation_id)
+            {
+                    $this->form_validation->set_rules('donation_amount', 'DonationAmount', 'required|numeric');
+                    $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
+                    $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
+            
+                
+             if($this->form_validation->run())
+                {
+                    $update_status = $this->donations_model->update_donation($donation_id);
+                    if($update_status){
+                        redirect("friends");
+                    }
+                    }
+                
+                    
+                    else{
+                     
+                        $my_friend = $this->friends_model->get_single_friend($friend_id);
+                        if ($my_friend->num_rows() > 0) {
+                        $row = $my_friend->row();
+                        $firstname = $row->friend_name;
+                        $phone = $row->friend_phone;
+                        $image = $row->friend_image;
+                        $v_data["friend_name"] = $firstname;
+                        $v_data["friend_phone"] = $phone;
+                        $v_data["friend_image"] = $image;
+                    
+                        $data = array("title" => $this->site_model->display_page_title(),
+                        "content" => $this->load->view("friends/friend_update", $v_data, true));
+
+                        $this->load->view("site/templates/layouts/layout", $data);
+                        
+                        } else {
+                        $this->session->set_flashdata("error_message", "couldnt");
+                        redirect("friends");
+                        }
+                        
+                    
+                    }
+            
+                }
+
+
 
 
 

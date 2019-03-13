@@ -88,7 +88,7 @@
                         </ul>
                         <div class="clearfix"></div>
                         <div class="mb-4"></div>
-                        <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>allschools
+                        <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>schools
                                 ">READ MORE</a>
                     </div>
                 </div>
