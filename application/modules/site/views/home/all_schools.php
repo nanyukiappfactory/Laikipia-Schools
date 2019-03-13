@@ -1,7 +1,7 @@
 
 
 
-	<div class="page-content">
+
 
 		<!-- Page Header -->
 		<section class="page-header" style="background-image: url('assets/img/classroom.JPG')">
@@ -92,7 +92,7 @@
 			</div>
 		</section>
         <!-- End schools -->
-	</div>
+
 
 	<!-- Footer -->
 	

@@ -1,4 +1,5 @@
 <!-- Partners -->
+
 <section class="schools-brief">
 	<div class="container">
 		<div class="row">

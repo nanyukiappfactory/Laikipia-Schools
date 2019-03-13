@@ -1,4 +1,5 @@
 <!-- FAQs -->
+
 		<section class="faq-section">
 		<?php
                     if ($abouts->num_rows() > 0) {

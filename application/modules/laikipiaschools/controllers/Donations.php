@@ -38,7 +38,7 @@ class Donations extends MX_Controller
             }
         } else {
             $where = 'donation.deleted=0';
-            // $where = 'donation.deleted=0 AND donation.school_id = school.school_id AND donation.category_id = post.category_id';
+           //  $where = 'donation.deleted=0 AND donation.school_id = school.school_id AND donation.category_id = post.category_id';
             $table = 'donation, school, post';
             // $table = 'donation, school, post';
             $donations_search = $this->session->userdata('donations_search');

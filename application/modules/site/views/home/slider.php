@@ -1,4 +1,5 @@
     <!-- Carousel -->
+   
     <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
