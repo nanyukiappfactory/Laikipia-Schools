@@ -30,7 +30,7 @@ if ($allschools->num_rows() > 0) {
 				<li><a href="<?php echo base_url(); ?>home">Home</a></li>
 				<li><a href="#"> <i class="fas fa-angle-double-right"></i> </a></li>
 				<!-- <li><a href="schools.html"> Schools </a> </li> -->
-				<li><a href="<?php echo base_url(); ?>allschools">Schools</a></li>
+				<li><a href="<?php echo base_url(); ?>schools">Schools</a></li>
 				<li><a href="#"> <i class="fas fa-angle-double-right"></i> </a></li>
 				<li><a href="<?php echo base_url(); ?>schools"></a></li>
 				<li> <?php echo $row->school_name; ?> </li>
@@ -148,7 +148,7 @@ if ($row->total_donated > $row->target_amount) {
 				if ($school_name == $row->school_name) {
        
             ?>
-				<a href="assets/img/target.JPG"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
+				<a href="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"><img src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
 					 alt="..."></a>
 					 <?php }}?>
 			</div>
