@@ -16,7 +16,10 @@
                     <?php
                     if ($schools->num_rows() > 0) {
                         foreach ($schools->result() as $row) {
-                            ?>
+                            
+                                ?>
+                                <?php $field_name = preg_replace('/\s/', '-', $row->school_name);?>
+                            
                     <div class="c-item">
                         <div class="school-content">
                             <div class="school-thumb">
@@ -48,15 +51,15 @@
                                 <div class="clearfix"></div>
                                 <h3><?php echo $row->school_name; ?></h3>
                                 <p><?php echo $row->school_zone; ?></p>
-                                <div class="center-button">
-                                    <button type="submit" class="btn btn-default btn-theme">Read More</button>
-                                </div>
+                                <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>schools/<?php echo $field_name; ?>
+                                ">READ MORE</a>
+
                             </div>
                         </div>
 
                     </div>
-                    <?php }
-                        }?>
+                    <?php }}
+                        ?>
                 </div>
             </div>
             <!-- End schools -->
@@ -85,9 +88,8 @@
                         </ul>
                         <div class="clearfix"></div>
                         <div class="mb-4"></div>
-                        <div class="center-button">
-                            <button type="submit" class="btn btn-default btn-theme">Read More</button>
-                        </div>
+                        <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>allschools
+                                ">READ MORE</a>
                     </div>
                 </div>
             </div>

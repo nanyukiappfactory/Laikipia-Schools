@@ -167,6 +167,14 @@ class Schools_model extends CI_Model
             return false;
         }
     }
+    public function get_images()
+    {
+        $this->db->select('school_images.*, school.school_id, school.school_name');
+        $this->db->from('school_images');
+        $this->db->join('school', 'school_images.school_id=school.school_id', 'left');
+        return $this->db->get();
+    }
+
     public function change_school_status($school_id, $new_school_status)
     {
         $this->db->set('school_status', $new_school_status);

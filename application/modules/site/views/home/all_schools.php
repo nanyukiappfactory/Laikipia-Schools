@@ -1,3 +1,4 @@
+
 <div class="page-content">
 
 	<!-- Page Header -->
@@ -17,10 +18,10 @@
 		<div class="container">
 			<ul class="list-inline">
 				<!-- //<li><a href="index.html"> Home </a></li> -->
-				<li><a href="<?php echo base_url(); ?>site/site/index">Home</a></li>
+				<li><a href="<?php echo base_url(); ?>home">Home</a></li>
 				<li><a href="#"> <i class="fas fa-angle-double-right"></i> </a></li>
 				<!-- <li><a href="schools.html"> Schools </a> </li> -->
-				<li><a href="<?php echo base_url(); ?>site/site/view_other">Schools</a></li>
+				<li><a href="<?php echo base_url(); ?>allschools">Schools</a></li>
 			</ul>
 		</div>
 	</section>
@@ -52,6 +53,7 @@
                         $count = 0;
                         foreach ($allschools->result() as $row) {
                             ?>
+							<?php $field_name = preg_replace('/\s/', '-', $row->school_name);?>
 				<div class="col-sm-4 col-md-3 col-lg-3">
 					<div class="school-content">
 						<div class="school-thumb">
@@ -68,7 +70,7 @@
                                         $progress = ($row->total_donated / $row->target_amount) * 100;
                                     }
                                     ?>
-				<div class="total-progress" data-percentage="<?php echo number_format($progress); ?>"></div>
+							<div class="total-progress" data-percentage="<?php echo number_format($progress); ?>"></div>
 							</div>
 							<ul class="list-inline">
 								<?php $target = $row->target_amount;?>
@@ -90,10 +92,9 @@
 								<?php echo $row->school_write_up; ?>
 							</p>
 							<div class="center-button">
-                                <!-- <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>site/site/view_single/<?php echo $row->school_id; ?>">READ MORE</a> -->
-                                <a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>school/<?php echo $row->school_id; ?>
-							
-                                ">READ MORE</a>
+                                
+								<a class="btn btn-default btn-theme" href="<?php 
+								 echo base_url(); ?>schools/<?php echo $field_name; ?>">READ MORE</a>
 
 							</div>
 						</div>
