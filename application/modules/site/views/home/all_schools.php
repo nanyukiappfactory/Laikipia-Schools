@@ -79,9 +79,9 @@
 									</li>
 								</ul>
 								<div class="clearfix"></div>
-								<?php echo $row->school_name; ?>
+								<h3><?php echo $row->school_name; ?></h3>
 								<div class="school-description">
-									<?php echo $row->school_write_up; ?>
+									<?php echo strip_tags($row->school_write_up); ?>
 								</div>
 								<div class="center-button">
 									<a class="btn btn-default btn-theme" href="<?php echo base_url(); ?>schools/<?php echo $field_name; ?>">READ MORE</a>
