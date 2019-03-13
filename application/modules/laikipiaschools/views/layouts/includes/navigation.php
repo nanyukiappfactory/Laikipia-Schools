@@ -17,8 +17,9 @@ echo form_open(base_url() . 'administration/search-' . $route, array("class" => 
                 <option value="">Choose category..</option>
                 <?php foreach ($search_options as $search_option) {?>
                 <option value="<?php echo $search_option['category_id']; ?>">
-                    <?php echo $search_option['category_id']; ?> </option>
-                <?php }
+                    <?php if ($search_option['category_name'] !== null) {
+        echo $search_option['category_name'];?> </option>
+                <?php }}
         ?>
             </select>
         </div>

@@ -346,10 +346,13 @@ if ($query->num_rows() > 0) {
                             <?php echo form_input(['name' => 'post_date', 'type' => 'date', 'class' => 'form-control', 'value' => set_value('post_date', $row->post_date)]) ?>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class=" form-group row">
                         <label for="post_description">Post Description</label>
-                        <?php echo form_textarea(array('name' => 'post_description', 'placeholder' => 'Write a description of the post', 'class' => "editable", 'value' => set_value('post_description', $row->post_description))); ?>
-                        <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
+                        <div class="col-md-10">
+                            <textarea id="editable" class="editable"
+                                name="post_description"><?php echo set_value('post_description', $row->post_description); ?></textarea>
+                        </div>
+                        <small id="emailHelp" class="form-text text-muted"></small>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-10">
