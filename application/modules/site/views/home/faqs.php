@@ -19,7 +19,7 @@
 							<ul class="accordion_list">
 								<li class="accordion_item">
 									<div class="accordion_itemTitleWrap">
-										<h3 class="accordion_itemTitle">About Laikipia County</h3>
+										<h3 class="accordion_itemTitle">Laikipia County</h3>
 										<div class="accordion_itemIconWrap">
                                                 <svg viewBox="0 0 24 24">
                                                     <polyline fill="none" points="21,8.5 12,17.5 3,8.5 " stroke="#FFF" stroke-miterlimit="10" stroke-width="2" /></svg>
