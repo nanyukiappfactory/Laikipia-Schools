@@ -391,27 +391,22 @@ class Schools extends MX_Controller
                 // var_dump($upload_response);die();
                 if ($upload_response['check'] == false) {
                     $this->session->set_flashdata('error', $upload_response['message']);
-                    redirect('administration/schools');
                 } else {
-                    $update_status = $this->schools_model->update_school($school_id);
-                    if ($this->schools_model->edit_school($upload_response['file_name'], $update_status, $school_id, $upload_response['thumb_name'])) {
+                    if ($this->schools_model->update_school($school_id, $upload_response['file_name'], $upload_response['thumb_name'])) {
                         $this->session->set_flashdata('success', 'school updated successfully!!');
-                        redirect('administration/schools');
                     } else {
                         $this->session->flashdata("error_message", "Unable to update  school");
                     }
                 }
             } else {
-                $update_status = $this->schools_model->update_school($school_id);
-                if ($this->schools_model->update_school(null, null, null)) {
+                if ($this->schools_model->update_school($school_id)) {
                     $this->session->set_flashdata('success', 'school updated successfully!!');
-                    redirect('administration/schools');
                 } else {
                     $this->session->flashdata("error", "Unable to update  school");
                 }
             }
-            redirect("administration/schools");
         }
+        redirect('administration/schools');
     }
     public function close_search()
     {

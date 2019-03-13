@@ -138,7 +138,7 @@ class Schools_model extends CI_Model
         }
     }
 
-    public function update_school($school_id)
+    public function update_school($school_id, $file_name = FALSE, $thumb_name = FALSE)
     {
         $data = array(
             "school_name" => $this->input->post("school_name"),
@@ -149,20 +149,19 @@ class Schools_model extends CI_Model
             "school_location_name" => $this->input->post("school_location_name"),
             "school_latitude" => $this->input->post("school_latitude"),
             "school_longitude" => $this->input->post("school_longitude"),
-            "school_status" => 1,
-            // "school_thumb_name" => $thumb_name,
-            // "school_image_name" => $file_name,
+            "school_status" => 1
 
         );
 
+        if($file_name != FALSE)
+        {
+            $data["school_thumb_name"] = $thumb_name;
+            $data["school_image_name"] = $file_name;
+        }
+
         $this->db->set($data);
         $this->db->where('school_id', $school_id);
-        if (empty($row->school_image_name)) {
-            $this->db->update('school');
-        } else {
-            $this->db->update('school.school_name, school.school_zone, school.school_location_name, school.school_write_up, school.modified_on, school.school_lattitude, school.school_longitude, school.created_on, school.modified_by');
-        }
-        if ($this->db->set($data)) {
+        if ($this->db->update('school')) {
             return true;
         } else {
             return false;
