@@ -165,14 +165,14 @@ class Donations extends MX_Controller
     public function edit_donation($donation_id)
     {
         $this->form_validation->set_rules('donation_amount', 'DonationAmount', 'required|numeric');
-       // $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
+       $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
         $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
 
         if ($this->form_validation->run()) 
         {
             $update_status = $this->donations_model->update_donation($donation_id);
             if ($update_status) {
-                $this->session->set_flashdata("success_message",  $donation_id . " has been updated");
+                $this->session->set_flashdata("success",  $donation_id . " has been updated");
                 redirect("administration/donations");
             }
         } 
@@ -198,7 +198,7 @@ class Donations extends MX_Controller
                 $v_data["donation_amount"] = $donation_amount;
                 $v_data["school_id"] = $school;
                 $v_data['categories'] = $this->site_model->get_all_categories();
-                
+               // echo json_encode($v_data['categories']->result());die();
                 $v_data['schools'] = $this->donations_model->all_schools();
                 //var_dump($v_data["school_id"]);die();
                 $v_data["post_id"] = $post;
