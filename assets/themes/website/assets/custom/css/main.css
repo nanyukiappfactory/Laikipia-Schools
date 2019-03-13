@@ -300,6 +300,11 @@ nav {
 	color: #fff;
 }
 
+.school-description {
+	max-height: 110px;
+	overflow: hidden;
+}
+
 .donation-amount {
 	width: 100%;
 	height: 12px;
@@ -678,4 +683,179 @@ nav {
 	position: relative;
 	overflow: hidden;
 	height: 300px;
+}
+
+.color-overlay {
+	/* The image used */
+	background-image: url("../../img/school.JPG");
+
+	/* Set a specific height */
+	height: 300px;
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow: hidden;
+}
+
+.color-overlay::before {
+	background-color: rgba(255, 182, 6, .75);
+	content: "";
+	height: 300px;
+	position: absolute;
+	width: 100%;
+}
+
+.color-overlay p {
+	font-weight: bold;
+	color: #ffffff;
+	font-size: 2rem;
+	text-align: center;
+}
+
+.about-brief {
+	background-color: #ffffff;
+	padding: 90px 0;
+}
+
+.contact {
+	background: #ffb606;
+	;
+	padding-top: 10%;
+	padding-bottom: 5%;
+}
+
+.contact-form {
+	color: #ffffff !important;
+}
+
+.contact-form .form-control, .contact-form .form-control:focus {
+	border-radius: 1rem;
+	background: rgba(0, 0, 0, 0);
+	border: #ffffff solid 2px;
+	color: #ffffff;
+	box-shadow: none;
+}
+
+.contact-form .form-control::-webkit-input-placeholder {
+	color: #ffffff !important;
+}
+
+.contact-form .form-control:-moz-placeholder {
+	/* Firefox 18- */
+	color: #ffffff !important;
+}
+
+.contact-form .form-control::-moz-placeholder {
+	/* Firefox 19+ */
+	color: #ffffff !important;
+}
+
+.contact-form .form-control:-ms-input-placeholder {
+	color: #ffffff !important;
+}
+
+.contact-image {
+	text-align: center;
+}
+
+.contact-image i {
+	border-radius: 6rem;
+	width: 11%;
+	margin-top: -3%;
+	transform: rotate(29deg);
+	font-size: 6rem;
+}
+
+.contact-form form {
+	padding: 14%;
+}
+
+.contact-form form .row {
+	margin-bottom: -7%;
+}
+
+.contact-form h3 {
+	margin-bottom: 8%;
+	margin-top: -10%;
+	text-align: center;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+.contact-form .btnContact {
+	width: 50%;
+	border: none;
+	border-radius: 1rem;
+	padding: 1.5%;
+	background-color: #313131;
+	border-color: #313131;
+	color: #fff;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.btnContactSubmit {
+	width: 50%;
+	border-radius: 1rem;
+	padding: 1.5%;
+	color: #fff;
+	background-color: #0062cc;
+	border: none;
+	cursor: pointer;
+}
+.contact-box {
+    position:relative;
+    width: 300px;
+    height:100px;
+    box-sizing:border-box;
+    text-align:center;
+    margin:0 10px;
+    background:#ffb606;
+    overflow:hidden;
+	border-radius:4px;
+	cursor: pointer;
+}
+.contact-box .icon {
+    width:100%;
+    height:100%;
+    background:#313131;
+    transition: 0.5s;
+}
+.contact-box .icon .fas {
+    font-size: 4em;
+    line-height:100px;
+    color: #ffffff;
+}
+.contact-box:hover .icon {
+    transform:scale(0);
+}
+.contact-box .details {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#ffffff;
+    transition:0.5s;
+    transform:scale(2);
+    opacity:0;
+}
+.contact-box:hover .details {
+    transform:scale(1);
+    opacity:1;
+}
+.contact-box .details h3 {
+    margin:0;
+    padding:0;
+    line-height:100px;
+    font-size:24px;
+    color:#313131;
+}
+.contact-box .details:nth-child(2) .details {
+    background:#e91e63;
+}
+.contact-box .details:nth-child(2) .details {
+    background:#607d8b;
 }

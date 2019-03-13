@@ -30,16 +30,11 @@
 						<div class="form-group row">
 							<div class="col-sm-12 col-md-12">
 								<select class="custom-select my-1 mr-sm-2" name="post_id" required>
-									<option selected>Choose Partner...</option>
+									<option selected>Choose Donor...</option>
 									<?php
 
-foreach ($categories->result() as $row) {
-    if (strtolower($row->category_name) == strtolower("Partners")) {?>
-									<option value="<?php echo $row->post_id; ?>">
-										<?php echo $row->post_title; ?>
-									</option>
-									<?php }
-    if (strtolower($row->category_name) == strtolower("Donor")) {?>
+										foreach ($categories->result() as $row) {
+										if (strtolower($row->category_name) == strtolower("Sensitization")) {?>
 									<option value="<?php echo $row->post_id; ?>">
 										<?php echo $row->post_title; ?>
 									</option>
