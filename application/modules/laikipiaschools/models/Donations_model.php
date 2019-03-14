@@ -31,12 +31,13 @@ class Donations_model extends CI_Model
         $this->db->join('school', 'donation.school_id=school.school_id', 'left');
         $this->db->join('category', 'post.category_id=category.category_id', 'left');
         $this->db->limit($limit, $start);
-        $query = $this->db->get();
-        // echo json_encode(($query)->result());die();
-
-        return $query;
+        $this->db->order_by($order, $order_method);
+        return $this->db->get();
+      
 
     }
+    
+    
 
 
 

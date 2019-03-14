@@ -33,7 +33,7 @@ class Categories extends MX_Controller
         $config['total_rows'] = $this->site_model->count_items($table, $where);
         
         // $config['uri_segment'] = $segment;
-        $config['per_page'] = 20;
+        $config['per_page'] = 2;
         $config['num_links'] = 5;
         $config['full_tag_open'] = '<div class="pagging text-center"><nav aria-label="Page navigation example"><ul class="pagination">';
         $config['full_tag_close'] = '</ul></nav></div>';
@@ -50,7 +50,6 @@ class Categories extends MX_Controller
         $config['last_tag_open'] = '<li class="page-item"><span class="page-link">';
         $config['last_tagl_close'] = '</span></li>';
         $this->pagination->initialize($config);
-
         $page = ($this->uri->segment($segment)) ? $this->uri->segment($segment) : 0;
         $v_data["links"] = $this->pagination->create_links();
         //var_dump($v_data['links']);die();
