@@ -20,7 +20,7 @@ class Donations_model extends CI_Model
     //     $this->db->order_by($order, $order_method);
     //     $query = $this->db->get('', $per_page, $page);
     //     return $query;
-   // }
+    // }
     public function get_all_donations($table, $where, $limit, $start, $order, $order_method)
     {
         // var_dump($table);die();
@@ -33,23 +33,15 @@ class Donations_model extends CI_Model
         $this->db->limit($limit, $start);
         $this->db->order_by($order, $order_method);
         return $this->db->get();
-      
 
     }
-    
-    
-
-
-
-
-
-
 
     public function all_schools()
     {
         $where = "deleted=0";
         $this->db->select("*");
         $this->db->from("school");
+        $this->db->where('school.school_status=1');
         $this->db->where($where);
         return $this->db->get();
     }
@@ -134,7 +126,7 @@ class Donations_model extends CI_Model
     {
 
         $this->db->select('category.category_id,category.category_name, post.post_id, post.post_title');
-         $this->db->distinct('category.category_id');
+        $this->db->distinct('category.category_id');
         $this->db->from('category');
         $this->db->join('post', 'post.category_id=category.category_id', 'left');
         $this->db->order_by('post_title', 'ASC');
