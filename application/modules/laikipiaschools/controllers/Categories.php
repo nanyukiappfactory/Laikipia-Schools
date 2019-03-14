@@ -14,15 +14,13 @@ class Categories extends MX_Controller
 
     }
 
-    //public function index
+
     public function index($order = 'category.category_name', $order_method = 'ASC')
     {
         $where = 'category_id > 0 AND deleted=0';
         $table = 'category';
         $category_search = $this->session->userdata('categories_search');
-
         $search_title = $this->session->userdata('categories_search_title');
-
         if (!empty($category_search) && $category_search != null) {
             $where .= $category_search;
         }
@@ -33,11 +31,10 @@ class Categories extends MX_Controller
         $segment = 5;
         $config['base_url'] = site_url() . 'administration/categories/' . $order . '/' . $order_method;
         $config['total_rows'] = $this->site_model->count_items($table, $where);
-
+        
         // $config['uri_segment'] = $segment;
         $config['per_page'] = 20;
         $config['num_links'] = 5;
-
         $config['full_tag_open'] = '<div class="pagging text-center"><nav aria-label="Page navigation example"><ul class="pagination">';
         $config['full_tag_close'] = '</ul></nav></div>';
         $config['num_tag_open'] = '<li class="page-item"><span class="page-link">';
@@ -58,8 +55,6 @@ class Categories extends MX_Controller
         $v_data["links"] = $this->pagination->create_links();
         //var_dump($v_data['links']);die();
         $query = $this->categories_model->get_categories($table, $where, $config["per_page"], $page, $order, $order_method);
-
-        //change of order method
         if ($order_method == 'DESC') {
             $order_method = 'ASC';
         } else {
@@ -67,7 +62,6 @@ class Categories extends MX_Controller
         }
 
         $data['title'] = 'Categories';
-
         if (!empty($search_title) && $search_title != null) {
             $data['title'] = 'Categories filtered by ' . $search_title;
         }
@@ -78,11 +72,8 @@ class Categories extends MX_Controller
         $v_data['page'] = $page;
         $all_categories = $this->site_model->get_all_categories();
         $v_data['categories'] = $all_categories;
-
         $cat_parent = array();
-
         $categories_result = $all_categories->result();
-
         foreach ($categories_result as $value) {
             if ($value->category_parent == 0) {
                 array_push($cat_parent, array(

@@ -25,12 +25,12 @@ class Donations extends MX_Controller
         }
 
         //pagination
-        $segment = 5;
+        $segment = 2;
         $config['base_url'] = site_url() . 'administration/donations/' . $order . '/' . $order_method;
         $config['total_rows'] = $this->site_model->count_items($table, $where);
-       //echo json_encode($config['total_rows']);die();
+       // echo json_encode( $config['total_rows']);die();
 
-        // $config['uri_segment'] = $segment;
+        $config['uri_segment'] = $segment;
         $config['per_page'] = 20;
         $config['num_links'] = 5;
         $config['full_tag_open'] = '<div class="pagging text-center"><nav aria-label="Page navigation example"><ul class="pagination">';
@@ -52,7 +52,7 @@ class Donations extends MX_Controller
         $v_data["links"] = $this->pagination->create_links();
         // var_dump($v_data['links']);die();
         $query = $this->donations_model->get_all_donations($table, $where, $config["per_page"], $page, $order, $order_method);
-        //echo json_encode($query->result());die();
+        // echo json_encode($query->result());die();
         //change of order method
         if ($order_method == 'DESC') {
             $order_method = 'ASC';
