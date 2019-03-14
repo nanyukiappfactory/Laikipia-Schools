@@ -85,7 +85,7 @@ if ($query->num_rows() > 0) {
 
                             <h3>Gallery</h3>
 
-                            <div id="<?php echo $row->school_id; ?>" class="owl-carousel schoolGalleryCarousel">
+                            <div id="schoolid" class="owl-carousel schoolGalleryCarousel">
                                 <?php
 $count = 0;
         foreach ($pictures->result() as $row1) {
