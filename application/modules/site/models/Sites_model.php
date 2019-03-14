@@ -38,6 +38,7 @@ class Sites_model extends CI_Model
     {
         $this->db->select('post.*, category.category_id, category.category_name');
         $this->db->from('post');
+        // $this->db->order_by('category.category_name', 'ASC');
         $this->db->join('category', 'post.category_id=category.category_id', 'left');
         return $this->db->get();
     }
