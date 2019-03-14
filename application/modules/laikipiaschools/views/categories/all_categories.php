@@ -119,7 +119,7 @@ if ($query->num_rows() > 0) {
                         <?php echo $row->category_name; ?>
                     </td>
                     <td>
-							<?php if ($row->donation_status == 1) {?>
+							<?php if ($row->category_status == 1) {?>
 							<span class="badge badge-pill badge-success">Active</span>
 							<?php } else {?>
 							<span class="badge badge-pill badge-secondary">Inactive</span>
