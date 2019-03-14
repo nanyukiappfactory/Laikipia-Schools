@@ -19,7 +19,7 @@
 					</div>
 					<div class="modal-body">
 						<!-- <?//php echo form_open($this->uri->uri_string()); ?> -->
-						<?php echo form_open(base_url() . 'administration/donations/add-donations') ?>
+						<?php echo form_open_multipart(base_url() . 'administration/donations/add-donations') ?>
 
 						<div class="form-group row">
 							<div class="col-sm-12 col-md-12">
