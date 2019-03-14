@@ -175,7 +175,6 @@ $(document).ready(function () {
 			}
 		}
 	});
-
 	$(".schoolGalleryCarousel").owlCarousel({
 		loop: true,
 		margin: 10,
