@@ -176,14 +176,14 @@ class Schools extends MX_Controller
                 $v_data['order'] = $order;
                 $v_data['order_method'] = $order_method;
                 $v_data['query'] = $query;
-                $v_data['other_images'] = ($this->schools_model->get_other_images())->result();
+                $v_data['other_images'] = ($this->schools_model->get_other_images());
                 $v_data['categories'] = $this->site_model->get_all_categories();
                 $v_data['pictures'] = $this->schools_model->get_images();
                 $v_data['page'] = $page;
                 $v_data['schools'] = $this->schools_model->get_all_schools($table, $where, $start, $config["per_page"], $page, $order, $order_method);
                 $v_data['map'] = $this->googlemaps->create_map();
                 $school_array = array();
-                // var_dump($v_data['pictures']->result());die();
+                // echo json_encode($v_data['pictures']->result());die();
                 foreach ($v_data["schools"]->result() as $school) {
                     array_push($school_array, array(
                         'id' => $school->school_id,

@@ -96,7 +96,7 @@ function initialize_map(lat, long) {
 	var marker = new google.maps.Marker({
 		position: position,
 		map: map,
-		title:"This is the place."
+		title: "This is the place."
 	});
 	var infowincontent = document.createElement("div");
 	var strong = document.createElement("strong");
@@ -111,7 +111,7 @@ function initialize_map(lat, long) {
 	var infowindow = new google.maps.InfoWindow({
 		content: infowincontent
 	});
-	infowindow.open(map,marker);
+	infowindow.open(map, marker);
 
 }
 
@@ -174,9 +174,9 @@ $(document).ready(function () {
 				items: 4
 			}
 		}
-    });
+	});
 
-	$("#schoolGalleryCarousel").owlCarousel({
+	$(".schoolGalleryCarousel").owlCarousel({
 		loop: true,
 		margin: 10,
 		responsiveClass: true,
@@ -192,7 +192,23 @@ $(document).ready(function () {
 				items: 4
 			}
 		}
-    });
-    
+	});
+	$(".schoolGalleryCarousel").owlCarousel({
+		loop: true,
+		margin: 10,
+		responsiveClass: true,
+		nav: true,
+		responsive: {
+			0: {
+				items: 1
+			},
+			600: {
+				items: 3
+			},
+			1000: {
+				items: 4
+			}
+		}
+	});
 	Accordion.init();
 });
