@@ -172,7 +172,7 @@ class Donations extends MX_Controller
         {
             $update_status = $this->donations_model->update_donation($donation_id);
             if ($update_status) {
-                $this->session->set_flashdata("success", Donation.''.ID.'' . $donation_id . " has been updated");
+                $this->session->set_flashdata("success", "Donation ID ". $donation_id . " has been updated");
                 redirect("administration/donations");
             }
         } 
