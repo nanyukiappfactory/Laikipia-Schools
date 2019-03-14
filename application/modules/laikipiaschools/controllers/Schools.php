@@ -433,6 +433,17 @@ class Schools extends MX_Controller
         }
     }
 
+    public function delete_school_image($school_image_id)
+    {
+        if ($this->schools_model->delete_school_image($school_image_id)) {
+            $this->session->set_flashdata('success', 'Image deleted successfully');
+            redirect('administration/schools');
+        } else {
+            $this->session->set_flashdata('error', 'Failed to delete imaged!!');
+            redirect('administration/schools');
+        }
+    }
+
     public function bulk_actions()
     {
         $this->form_validation->set_rules('action_name', 'Action', 'required');

@@ -163,13 +163,27 @@ class Schools_model extends CI_Model
             return false;
         }
     }
-
-    public function deleteImage($school_image_id, $path)
+    public function delete_scho_image($school_image_id)
+    {
+        $data = array(
+            'deleted' => 1,
+            'deleted_by' => 1,
+            'deleted_on' => date("Y-m-d H:i:s"),
+        );
+        $this->db->set($data);
+        $this->db->where('school_image_id', $school_image_id);
+        if ($this->db->update('school_images')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function delete_schoo_image($school_image_id, $upload_path)
     {
         $this->db->delete('school_images', array('school_image_id' => $school_image_id));
 
         if ($this->db->affected_rows() >= 1) {
-            if (unlink($path)) {
+            if (unlink($upload_path)) {
                 return true;
             }
 
@@ -177,6 +191,18 @@ class Schools_model extends CI_Model
             return false;
         }
 
+    }
+
+    public function delete_school_image($school_image_id)
+    {
+        $query = $this->db->get_where('school_images', array('school_image_id' => $school_image_id));
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            $school_image_name = $row->school_image_name;
+            unlink(realpath(APPPATH . '../assets/uploads' . $school_image_name));
+            $this->db->delete('school_images', array('school_image_id' => $school_image_name));
+            return true;
+        }
     }
 
     public function get_images()
