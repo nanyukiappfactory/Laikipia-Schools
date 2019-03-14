@@ -246,7 +246,6 @@ class Schools extends MX_Controller
         $data['zones'] = $this->schools_model->get_zones();
         $this->load->view('administration/all_schools', $data);
     }
-
     public function get_country_dropdownlist()
     {
         $data['school'] = $this->schools_model->get_location_dropdownlist();
@@ -276,7 +275,6 @@ class Schools extends MX_Controller
         } else {
             $this->session->set_userdata('error_message', "Unable to export results");
         }
-
     }
 
     public function singleSchool($school_id)
@@ -356,7 +354,6 @@ class Schools extends MX_Controller
                 redirect("laikipiaschools/add_school");
             } else {
                 $this->session->flashdata("error_message", "Unable to add  school");
-
             }
         }
         $v_data['title'] = "add school";
@@ -368,7 +365,6 @@ class Schools extends MX_Controller
         // $this->load->view("schools/add_school", $data);
 
         $this->load->view("laikipiaschools/layouts/layout", $data);
-
     }
 
     public function edit_school($school_id)

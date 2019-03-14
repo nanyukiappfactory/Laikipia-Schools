@@ -64,9 +64,7 @@ class Schools_model extends CI_Model
             "school_zone" => $this->input->post("school_zone"),
             "school_image_name" => $file_name,
             "school_thumb_name" => $thumb_name,
-
             "school_status" => $this->input->post("school_status"),
-
         );
 
         if ($this->db->insert("school", $data)) {
@@ -149,8 +147,7 @@ class Schools_model extends CI_Model
             "school_location_name" => $this->input->post("school_location_name"),
             "school_latitude" => $this->input->post("school_latitude"),
             "school_longitude" => $this->input->post("school_longitude"),
-            "school_status" => 1,
-
+            "school_status" => $this->input->post("school_status"),
         );
 
         if ($file_name != false) {
@@ -166,6 +163,22 @@ class Schools_model extends CI_Model
             return false;
         }
     }
+
+    public function deleteImage($school_image_id, $path)
+    {
+        $this->db->delete('school_images', array('school_image_id' => $school_image_id));
+
+        if ($this->db->affected_rows() >= 1) {
+            if (unlink($path)) {
+                return true;
+            }
+
+        } else {
+            return false;
+        }
+
+    }
+
     public function get_images()
     {
         $this->db->select('school_images.*, school.school_id,school.school_name');
