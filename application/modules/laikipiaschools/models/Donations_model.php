@@ -21,7 +21,7 @@ class Donations_model extends CI_Model
     //     $query = $this->db->get('', $per_page, $page);
     //     return $query;
    // }
-    public function get_all_donations($table, $where, $per_page, $page, $order = 'created_on', $order_method = 'DESC')
+    public function get_all_donations($table, $where, $limit, $start, $order, $order_method)
     {
         // var_dump($table);die();
         $select = "donation.*, school.school_id,school.school_name, category.category_id, post.post_id, post.post_title";
@@ -30,6 +30,7 @@ class Donations_model extends CI_Model
         $this->db->join('post', 'donation.post_id=post.post_id', 'left');
         $this->db->join('school', 'donation.school_id=school.school_id', 'left');
         $this->db->join('category', 'post.category_id=category.category_id', 'left');
+        $this->db->limit($limit, $start);
         $query = $this->db->get();
         // echo json_encode(($query)->result());die();
 
