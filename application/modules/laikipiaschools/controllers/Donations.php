@@ -73,7 +73,7 @@ class Donations extends MX_Controller
         $v_data['schools'] = $this->donations_model->all_schools();
 
         $data['content'] = $this->load->view('donations/all_donations', $v_data, true);
-       // echo json_encode($v_data['schools']->result());die();
+       // echo json_encode($v_data['categories']->result());die();
         //$this->load->view('admin/layout/home', $data);
         $this->load->view("laikipiaschools/layouts/layout", $data);
     }
