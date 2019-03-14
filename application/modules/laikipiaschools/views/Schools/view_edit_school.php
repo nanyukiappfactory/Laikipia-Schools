@@ -85,13 +85,13 @@ if ($query->num_rows() > 0) {
 
                             <h3>Gallery</h3>
 
-                            <div id="<?php echo $row->school_id; ?>" class="schoolGalleryCarousel owl-carousel ">
+                            <div class="owl-carousel schoolGalleryCarousel ">
                                 <?php
-$count = 0;
-        foreach ($pictures->result() as $row1) {
-            if ($row1->school_id == $row->school_id) {
-                $count++
-                ?>
+    $count = 0;
+            foreach ($pictures->result() as $row1) {
+                if ($row1->school_id == $row->school_id) {
+                    $count++
+                    ?>
                                 <div>
                                     <a href="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"><img
                                             src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
