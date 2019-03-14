@@ -50,7 +50,6 @@ class Categories extends MX_Controller
         $config['last_tag_open'] = '<li class="page-item"><span class="page-link">';
         $config['last_tagl_close'] = '</span></li>';
         $this->pagination->initialize($config);
-
         $page = ($this->uri->segment($segment)) ? $this->uri->segment($segment) : 0;
         $v_data["links"] = $this->pagination->create_links();
         //var_dump($v_data['links']);die();

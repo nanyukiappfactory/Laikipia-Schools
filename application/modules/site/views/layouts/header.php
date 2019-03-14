@@ -7,6 +7,7 @@
 <link href="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/dist/assets/owl.carousel.min.css"rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
+<link rel="stylesheet" href="assets/vendor/magnific-popup/dist/magnific-popup.css">
 <link href="<?php echo base_url(); ?>assets/themes/website/assets/custom/css/main.css" rel="stylesheet" type="text/css" media="screen">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
 <?php echo '<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMfrWKiELcjgQDzNq1n3LTVMSQAXGSs6E"></script>'; ?>

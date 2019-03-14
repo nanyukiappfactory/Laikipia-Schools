@@ -15,7 +15,7 @@ class Donations extends MX_Controller
     }
     public function index($order = 'donation.donation_amount', $order_method = 'ASC')
     {
-       
+
         $where = 'donation_id > 0 AND donation.deleted=0';
         $table = 'donation';
         $donations_search = $this->session->userdata('donations_search');
@@ -25,10 +25,10 @@ class Donations extends MX_Controller
         }
 
         //pagination
-        $segment = 2;
+        $segment = 5;
         $config['base_url'] = site_url() . 'administration/donations/' . $order . '/' . $order_method;
         $config['total_rows'] = $this->site_model->count_items($table, $where);
-       // echo json_encode( $config['total_rows']);die();
+        // echo json_encode( $config['total_rows']);die();
 
         $config['uri_segment'] = $segment;
         $config['per_page'] = 20;
@@ -50,7 +50,6 @@ class Donations extends MX_Controller
         $this->pagination->initialize($config);
         $page = ($this->uri->segment($segment)) ? $this->uri->segment($segment) : 0;
         $v_data["links"] = $this->pagination->create_links();
-        // var_dump($v_data['links']);die();
         $query = $this->donations_model->get_all_donations($table, $where, $config["per_page"], $page, $order, $order_method);
         // echo json_encode($query->result());die();
         //change of order method
@@ -74,7 +73,7 @@ class Donations extends MX_Controller
         $v_data['schools'] = $this->donations_model->all_schools();
 
         $data['content'] = $this->load->view('donations/all_donations', $v_data, true);
-        //echo json_encode($data['content']->result());die();
+       // echo json_encode($v_data['categories']->result());die();
         //$this->load->view('admin/layout/home', $data);
         $this->load->view("laikipiaschools/layouts/layout", $data);
     }
@@ -133,59 +132,52 @@ class Donations extends MX_Controller
     }
     public function createDonation()
     {
-        
+
         $this->form_validation->set_rules('donation_amount', 'Donation Amount', 'required|numeric');
         $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
         $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
 
         if ($this->form_validation->run()) {
             $donation_id = $this->donations_model->create_donation();
-           // echo json_encode($category_id);die();
             if ($donation_id > 0) {
-                $this->session->set_flashdata("success", "New donation ID" .  $donation_id . " has been added");
+                $this->session->set_flashdata("success", "New donation ID" . $donation_id . " has been added");
             } else {
                 $this->session->set_flashdata
                     ("error", "unable to add donation");
             }
             redirect("administration/donations");
-        }
-        else{
-             $this->session->set_flashdata
-                    ("error", validation_errors());
-        
-             redirect("administration/donations");
+        } else {
+            $this->session->set_flashdata
+                ("error", validation_errors());
+
+            redirect("administration/donations");
         }
 
         redirect("administration/donations");
 
-       
     }
-    
+
     //edit gi
     public function edit_donation($donation_id)
     {
         $this->form_validation->set_rules('donation_amount', 'DonationAmount', 'required|numeric');
-       $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
+        $this->form_validation->set_rules('post_id', 'Post', 'required|numeric');
         $this->form_validation->set_rules('school_id', 'School', 'required|numeric');
 
-        if ($this->form_validation->run()) 
-        {
+        if ($this->form_validation->run()) {
             $update_status = $this->donations_model->update_donation($donation_id);
             if ($update_status) {
-                $this->session->set_flashdata("success", "Donation ID ". $donation_id . " has been updated");
+                $this->session->set_flashdata("success", "Donation ID " . $donation_id . " has been updated");
                 redirect("administration/donations");
             }
-        } 
-        else 
-        {
-            if(validation_errors())
-            {
+        } else {
+            if (validation_errors()) {
                 $this->session->set_flashdata("error", validation_errors());
-                redirect("administration/edit-donation/".$donation_id);
+                redirect("administration/edit-donation/" . $donation_id);
             }
 
             $query = $this->donations_model->get_single_donation($donation_id);
-                   // echo json_encode($query->result());die();
+            // echo json_encode($query->result());die();
 
             if ($query->num_rows() > 0) {
                 $row = $query->row();
@@ -198,7 +190,7 @@ class Donations extends MX_Controller
                 $v_data["donation_amount"] = $donation_amount;
                 $v_data["school_id"] = $school;
                 $v_data['categories'] = $this->site_model->get_all_categories();
-               //echo json_encode($v_data['categories']->result());die();
+                //echo json_encode($v_data['categories']->result());die();
                 $v_data['schools'] = $this->donations_model->all_schools();
                 //var_dump($v_data["school_id"]);die();
                 $v_data["post_id"] = $post;
@@ -206,7 +198,7 @@ class Donations extends MX_Controller
 
                 $data = array("title" => $this->site_model->display_page_title(),
                     "content" => $this->load->view("donations/edit_donation", $v_data, true));
-                    
+
                 //var_dump($v_data["school_id"]);die();
                 $this->load->view("laikipiaschools/layouts/layout", $data);
 
@@ -218,13 +210,6 @@ class Donations extends MX_Controller
         }
 
     }
-
-
-
-
-
-
-
 
     public function single_donation($donation_id)
     {
@@ -247,7 +232,6 @@ class Donations extends MX_Controller
             redirect('laikipiaschools/donations');
         }
 
-        
     }
 
 }
