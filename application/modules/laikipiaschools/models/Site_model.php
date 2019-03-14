@@ -31,7 +31,8 @@ class Site_model extends CI_Model
         $this->db->select('category.*, post.post_id, post.post_title');
         $this->db->from('category');
         $this->db->join('post', 'post.category_id=category.category_id', 'left');
-        // $this->db->group_by('category.category_id');
+         $this->db->where('category.deleted=0');
+         $this->db->where('post.deleted=0');
         $query =  $this->db->get();
         //echo json_encode($query->result());die();
         return $query;
