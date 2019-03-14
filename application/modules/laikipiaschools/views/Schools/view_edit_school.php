@@ -95,7 +95,7 @@ $count = 0;
                                 <div>
                                     <a href="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"><img
                                             src="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?> "
-                                            alt="...">
+                 g                           alt="...">
                                         <?php echo anchor("deleteimage/delete/" . $row1->school_image_id, "<i class='fas fa-trash-alt'></i>", array("class" => "btn btn-danger btn-sm p-left-10", "onclick" => "return confirm('Are you sure you want to delete image?')")); ?>
                                     </a>
 

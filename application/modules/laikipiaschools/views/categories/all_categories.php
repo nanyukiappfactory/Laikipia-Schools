@@ -1,91 +1,94 @@
 <?php
-
+//echo json_encode($categories->result());die();
 $validation_errors = validation_errors();
 if (!empty($validation_errors)) {
     echo $validation_errors;
 }
 ?>
 <div class="shadow-lg p-3 mb-5 bg-white rounded">
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
 
-            <!-- <button type="button" class="btn btn-success">Add Partner</button> -->
+			<!-- <button type="button" class="btn btn-success">Add Partner</button> -->
 
-            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-                Add Category
-            </button>
-            <a href="<?php echo site_url() . "administration/export-partners" ?>" target="_blank"
-            class="btn btn-default pull-right"><i class="fas fa-file-export"></i> Export</a>
-        </div>
-    </div>
+			<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+				Add Category
+			</button>
+			<a href="<?php echo site_url() . " administration/export-partners" ?>" target="_blank"
+				class="btn btn-default pull-right"><i class="fas fa-file-export"></i> Export</a>
+		</div>
+	</div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add new Category</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <?php echo form_open_multipart(base_url() . 'laikipiaschools/categories/create_category') ?>
-                    <div class="form-group">
-                        <label for="category_Parent">Parent</label>
-                        <!-- <input type="name" class="form-control" name="partner_type" id="partner_type" naria-describedby="emailHelp" placeholder="Select Partner Name"> -->
-                        <select id="inputState" class="form-control" name="category_parent">
-                            <option value="">Choose a parent...</option>
-                            <?php if (is_array($categories->result())) {
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Add new Category</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<?php echo form_open(base_url() . 'laikipiaschools/categories/create_category') ?>
+					<div class="form-group">
+						<label for="category_Parent">Parent</label>
+						<select id="inputState" class="form-control" name="category_parent">
+							<option value="">Choose a parent...</option>
+							<?php if (is_array($categories->result())) {
     foreach ($categories->result() as $cat) {?>
-                        <option value="<?php echo $cat->category_id; ?>"><?php echo $cat->category_name; ?></option>
-                        <?php }
+							<option value="<?php echo $cat->category_id; ?>">
+								<?php echo $cat->category_name; ?>
+							</option>
+							<?php }
 }?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="category_name"> Name</label>
-                        <input type="name" class="form-control" name="category_name" id="category_name"
-                            naria-describedby="emailHelp" placeholder="Enter category Name">
-                    </div>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="category_name"> Name</label>
+						<input type="name" class="form-control" name="category_name" id="category_name" naria-describedby="emailHelp"
+						 placeholder="Enter category Name">
+					</div>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
 
-            </div>
-        </div>
-    </div>
-    <?php echo form_close() ?>
+			</div>
+		</div>
+	</div>
+	<?php echo form_close() ?>
 
-    <!--
+	<!--
 <div class="card-body"> -->
-    <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th><?php echo anchor("administration/categories/category.category_parent/" . $order_method, "Parent"); ?>
-                    </th>
-                    <th><?php echo anchor("administration/categories/" . $order . "/" . $order_method, "Name"); ?></th>
-                    <th>Category Status</th>
-                    <th>Actions</th>
+	<div class="table-responsive">
+		<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>
+						<?php echo anchor("administration/categories/category.category_parent/" . $order_method, "Parent"); ?>
+					</th>
+					<th>
+						<?php echo anchor("administration/categories/" . $order . "/" . $order_method, "Name"); ?>
+					</th>
+					<th>Category Status</th>
+					<th>Actions</th>
 
 
-                </tr>
-            </thead>
-            <tfoot>
-                <tr>
-                    <th>#</th>
-                    <th>Parent</th>
-                    <th>Name</th>
-                    <th>Category Status</th>
-                    <th>Actions</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th>#</th>
+					<th>Parent</th>
+					<th>Name</th>
+					<th>Category Status</th>
+					<th>Actions</th>
 
-                </tr>
-            </tfoot>
+				</tr>
+			</tfoot>
             <tbody>
                 <?php
 if ($query->num_rows() > 0) {
@@ -105,23 +108,15 @@ if ($query->num_rows() > 0) {
             foreach ($categories->result() as $category) {
                 if ($category->category_id == $row->category_parent) {
                     echo $category->category_name;
-                    break;
-                            }
+                }
 
-                        }
-                    }
+            }
+        }
 
-                    ?>
-                                </td>
-                    <td>
-                        <?php echo $row->category_name; ?>
+        ?>
                     </td>
                     <td>
-                            <?php if ($row->category_status == 1) {?>
-                                <span class="badge badge-pill badge-success">Active</span>
-                                <?php } else {?>
-                                <span class="badge badge-pill badge-secondary">Inactive</span>
-                                <?php }?>
+                        <?php echo $row->category_name; ?>
                     </td>
                     <td>
                         <?php if ($row->category_status == 1) {?>
@@ -151,17 +146,17 @@ if ($query->num_rows() > 0) {
                                             style="font-size:20px;list-style-type:none;margin-left:10px;">
                                             <li><b>Parent:</b>
                                                 <?php if ($row->category_parent == 0) {
-                                                        echo "";
-                                                    } else {
-                                                        foreach ($categories->result() as $category) {
-                                                            if ($category->category_id == $row->category_parent) {
-                                                                echo $category->category_name;
-                                                                break;
-                                                            }
+            echo "";
+        } else {
+            foreach ($categories->result() as $category) {
+                if ($category->category_id == $row->category_parent) {
+                    echo $category->category_name;
+                }
 
-                                                        }
-                                                    }
-                                                    ?>
+            }
+        }
+
+        ?>
                                             </li>
                                         </div>
                                         <div class="pl-3" style="font-size:20px;list-style-type:none;margin-left:10px;">
@@ -195,14 +190,13 @@ if ($query->num_rows() > 0) {
 }
 }
 ?>
-            </tbody>
-        </table>
-    </div>
-    <!-- </div> -->
+		</table>
+	</div>
+	<!-- </div> -->
 
 
-    <p>
-        <?php echo $links; ?>
-    </p>
+	<p>
+		<?php echo $links; ?>
+	</p>
 
 </div>
