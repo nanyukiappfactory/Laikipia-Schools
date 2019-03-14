@@ -84,41 +84,50 @@ if ($query->num_rows() > 0) {
                             </div>
 
                             <h3>Gallery</h3>
-                            <div class="container">
-                                <div id="schoolGalleryCarousel" class="owl-carousel">
-                                    <?php
-                                    $count=0;
-foreach ($pictures->result() as $row1) {
-            if ($row->school_id == $row1->school_id) {
-$count++
+
+                            <div id="<?php echo $row->school_id; ?>" class="owl-carousel schoolGalleryCarousel">
+                                <?php
+$count = 0;
+        foreach ($pictures->result() as $row1) {
+            if ($row1->school_id == $row->school_id) {
+                $count++
                 ?>
-                                    <a href="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"><img
-                                            src="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"
+                                <div>
+                                    <a href="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"><img
+                                            src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
                                             alt="..."></a>
-                                    <?php }}?>
                                 </div>
+                                <?php }}?>
                             </div>
 
-                            <!-- End Carousel Inner -->
 
-                            <div class="col-md-12 col-sm-12">
-                                <h6 class="title-price mt-4"><small>Write Up</small></h6>
-                                <div style="width:100%;border-top:1px solid silver">
-                                    <p class="mt-3">
-                                        <small>
-                                            <?php echo $row->school_write_up; ?>
-                                        </small>
-                                    </p>
-                                </div>
+
+
+
+
+
+
+                        </div>
+
+
+                        <div class="col-md-12 col-sm-12">
+                            <h6 class="title-price mt-4"><small>Write Up</small></h6>
+                            <div style="width:100%;border-top:1px solid silver">
+                                <p class="mt-3">
+                                    <small>
+                                        <?php echo $row->school_write_up; ?>
+                                    </small>
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div id="map_canvas<?php echo $row->school_id; ?>" style="width:100%; height:500px"></div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
+                </div>
+                <div id="map_canvas<?php echo $row->school_id; ?>" style="width:100%; height:500px"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
+        </div>
         </div>
     </td>
     <td>

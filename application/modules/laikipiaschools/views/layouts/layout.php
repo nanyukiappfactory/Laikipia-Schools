@@ -49,9 +49,13 @@ echo $content;
     <link
         href="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/docs/assets/vendors/jquery.min.js"
         rel="stylesheet">
-    <script src="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/dist/owl.carousel.min.js">
+    <script src="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/dist/owl.carousel.min.js"
+        type="text/javascript">
     </script>
-    <script src="<?php echo base_url(); ?>assets/themes/website/assets/custom/js/main.js"></script>
+    <script src="<?php echo base_url(); ?>assets/themes/website/assets/vendor/tweenmax/js/TweenMax.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/themes/website/assets/custom/js/main.js" type="text/javascript">
+    </script>
+
 </body>
 
 </html>
