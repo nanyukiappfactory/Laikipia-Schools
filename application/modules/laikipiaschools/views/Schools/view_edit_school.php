@@ -87,29 +87,22 @@ if ($query->num_rows() > 0) {
 
                             <div class="owl-carousel schoolGalleryCarousel ">
                                 <?php
-    $count = 0;
-            foreach ($pictures->result() as $row1) {
-                if ($row->school_id == $row1->school_id) {
-                    $count++
-                    ?>
+$count = 0;
+        foreach ($pictures->result() as $row1) {
+            if ($row->school_id == $row1->school_id) {
+                $count++
+                ?>
                                 <div>
                                     <a href="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"><img
-                                            src="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"
-                                            alt="..."></a>
+                                            src="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?> "
+                                            alt="...">
+                                        <?php echo anchor("deleteimage/delete/" . $row1->school_image_id, "<i class='fas fa-trash-alt'></i>", array("class" => "btn btn-danger btn-sm p-left-10", "onclick" => "return confirm('Are you sure you want to delete image?')")); ?>
+                                    </a>
+
                                 </div>
                                 <?php }}?>
                             </div>
-
-
-
-
-
-
-
-
                         </div>
-
-
                         <div class="col-md-12 col-sm-12">
                             <h6 class="title-price mt-4"><small>Write Up</small></h6>
                             <div style="width:100%;border-top:1px solid silver">
@@ -240,21 +233,14 @@ if ($query->num_rows() > 0) {
                         </div>
                         <div class="form-group">
                             <label for="school_status">School Status</label>
-                            <div class="col-sm-10 row">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="school_status" id="school_status"
-                                        value="1" checked>
-                                    <Legend class="form-check-label" for="gridRadios1">
-                                        Active
-                                    </Legend>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="school_status" id="school_status"
-                                        value="0">
-                                    <Legend class="form-check-label" for="gridRadios2">
-                                        Inactive
-                                    </Legend>
-                                </div>
+                            <div class="col-md-10">
+                                <input type="radio" name="school_status" value="1" <?php
+echo set_value('school_status', $row->school_status) == 1 ? "checked" : "";
+        ?> />Active
+
+                                <input type="radio" name="school_status" value="0" <?php
+echo set_value('school_status', $row->school_status) == 0 ? "checked" : "";
+        ?> />Inactive
                             </div>
                             <small id="emailHelp" class="form-text text-muted"></small>
                         </div>
