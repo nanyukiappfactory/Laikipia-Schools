@@ -176,7 +176,7 @@ $(document).ready(function () {
 		}
 	});
 
-	$("#schoolGalleryCarousel").owlCarousel({
+	$(".schoolGalleryCarousel").owlCarousel({
 		loop: true,
 		margin: 10,
 		responsiveClass: true,
