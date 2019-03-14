@@ -60,13 +60,8 @@ class Site extends MX_Controller
         $v_data['pictures'] = $this->sites_model->get_gallery_pictures();
         $v_data['schools'] = $this->sites_model->get_schools();
         $v_data['partners'] = $this->sites_model->get_partners();
-        //echo json_encode($v_data['schools']->result());die();
-        //$v_data['school_name'] = $school_name;
         $v_data['allschools'] = $this->sites_model->get_all_schools();
-       
         $v_data['map'] = $this->googlemaps->create_map();
-        //echo json_encode($v_data['allschools']->result());die();
-
         $project_donation_total = $project_target_total = $percentage_donated_total = 0;
         if ($donations->num_rows() > 0) {
             foreach ($donations->result() as $row) {
@@ -110,7 +105,7 @@ class Site extends MX_Controller
         $v_data['project_donation_total'] = $project_donation_total;
         $v_data['project_target_total'] = $project_target_total;
         $v_data['percentage_donated_total'] = $percentage_donated_total;
-        $data['content'] = $this->load->view('site/home/all_schools', $v_data, true);
+        $data['content'] = $this->load->view('site/school/all_schools', $v_data, true);
         $data['title'] = $this->sites_model->display_page_title();
         $this->load->view("site/layouts/layout", $data);
 
@@ -142,7 +137,7 @@ class Site extends MX_Controller
         $v_data['project_donation_total'] = $project_donation_total;
         $v_data['project_target_total'] = $project_target_total;
         $v_data['percentage_donated_total'] = $percentage_donated_total;
-        $data['content'] = $this->load->view('site/home/school_single', $v_data, true);
+        $data['content'] = $this->load->view('site/school/school_single', $v_data, true);
         $data['title'] = $this->sites_model->display_page_title();
         //  $data['title'] = $this->sites_model->decode_web_name($school_name);
         $this->load->view("site/layouts/layout", $data);
