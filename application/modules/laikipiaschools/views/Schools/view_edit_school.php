@@ -89,12 +89,12 @@ if ($query->num_rows() > 0) {
                                 <?php
     $count = 0;
             foreach ($pictures->result() as $row1) {
-                if ($row1->school_id == $row->school_id) {
+                if ($row->school_id == $row1->school_id) {
                     $count++
                     ?>
                                 <div>
-                                    <a href="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"><img
-                                            src="<?php echo base_url() . 'assets/uploads/' . $row->school_image_name; ?>"
+                                    <a href="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"><img
+                                            src="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"
                                             alt="..."></a>
                                 </div>
                                 <?php }}?>
