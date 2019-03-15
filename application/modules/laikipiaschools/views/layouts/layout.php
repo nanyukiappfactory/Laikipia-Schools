@@ -56,6 +56,8 @@ echo $content;
     <script src="<?php echo base_url(); ?>assets/themes/website/assets/custom/js/main.js" type="text/javascript">
     </script>
 
+
+
 </body>
 
 </html>

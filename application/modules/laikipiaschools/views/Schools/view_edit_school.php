@@ -123,7 +123,7 @@ $count = 0;
         </div>
     </td>
     <td>
-        <?php echo anchor("administration/update-school/" . $row->school_id, "<i class='fas fa-edit'></i>", "class='btn btn-warning btn-sm p-left-10'", "style='padding-left:10px;'"); ?>
+        <?php echo anchor("administration/edit-school/" . $row->school_id, "<i class='fas fa-edit'></i>", "class='btn btn-warning btn-sm p-left-10'", "style='padding-left:10px;'"); ?>
     </td>
     <td>
         <?php if ($row->school_status == 1) {

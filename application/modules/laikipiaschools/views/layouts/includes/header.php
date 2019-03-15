@@ -17,18 +17,33 @@
 <link href="<?php echo base_url(); ?>assets/custom/css/styles.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/themes/custom/css/sidenav.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/fontawesome/css/all.css" rel="stylesheet">
-
+<script type="text/javascript" src="assets/vendor/css/asColorPicker.css" charset="UTF-8">
+</script>
 <!-- Custom styles for this template -->
 <script defer src="<?php echo base_url(); ?>assets/tinymce/js/tinymce/jquery.tinymce.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>/assets/tinymce/js/tinymce/tinymce.min.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
 <?php echo '<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMfrWKiELcjgQDzNq1n3LTVMSQAXGSs6E"></script>'; ?>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+<script type="text/javascript" src="assets/vendor/js/datescripts.js" charset="UTF-8"></script>
+<script>
+< script type = "text/javascript"
+src = "assets/vendor/js/jquery-asColor.js"
+charset = "UTF-8" >
+</script>
+<script type="text/javascript" src="assets/vendor/js/jquery-asGradient.js" charset="UTF-8">
+</script>
 
+<script type="text/javascript" src="assets/vendor/js/jquery-asColorPicker.js" charset="UTF-8"></script>
 <script>
 tinymce.init({
     selector: 'textarea',
     plugins: "advlist lists ",
-    toolbar: "Format |undo redo |numlist | bullist |  styleselect | bold italic | link image"
+    toolbar: "Format |undo redo |numlist | bullist | styleselect | bold italic | link image"
+});
+</script>
+<script type="text/javascript">
+$(".form_datetime").datetimepicker({
+    format: 'yyyy-mm-dd hh:ii'
 });
 </script>
