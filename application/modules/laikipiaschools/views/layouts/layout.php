@@ -47,7 +47,7 @@
     <script src="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/dist/owl.carousel.min.js" type="text/javascript">
     </script>
     <script src="<?php echo base_url(); ?>assets/themes/website/assets/vendor/tweenmax/js/TweenMax.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/themes/website/assets/custom/js/main.js" type="text/javascript"></script>
+    <!-- <script src="<?php echo base_url(); ?>assets/themes/website/assets/custom/js/main.js" type="text/javascript"></script> -->
 
 	<script defer src="<?php echo base_url(); ?>assets/tinymce/js/tinymce/jquery.tinymce.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/tinymce/js/tinymce/tinymce.min.js"></script>

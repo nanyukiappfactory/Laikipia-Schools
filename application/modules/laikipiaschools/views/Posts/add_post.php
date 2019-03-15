@@ -73,7 +73,7 @@
 
 		<div class="form-group">
 			<label for="post_description">Post Description</label>
-			<textarea name="post_description" class="editable" id="editable" rows="30"><?php echo set_value("post_description");?></textarea>
+			<textarea name="post_description" class="form-control" rows="30"><?php echo set_value("post_description");?></textarea>
 		</div>
 
 		<div class="modal-footer">

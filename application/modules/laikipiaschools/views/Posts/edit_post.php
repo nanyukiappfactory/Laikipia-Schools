@@ -108,7 +108,7 @@ if(!empty($error))
 		<div class=" form-group row">
 			<label for="post_description">Post Description</label>
 			<div class="col-md-10">
-				<textarea name="post_description" class="editable" id="editable" rows="30"><?php echo $post_description;?></textarea>
+				<textarea name="post_description" class="form-control" rows="30"><?php echo $post_description;?></textarea>
 			</div>
 		</div>
 		<div class="form-group row">
