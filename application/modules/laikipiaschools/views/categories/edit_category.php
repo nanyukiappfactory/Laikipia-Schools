@@ -24,9 +24,10 @@ if (!empty($validation_errors)) {
             foreach ($categories->result() as $category) {
                 if(!in_array($category->category_parent, $cat_arr)){
                 foreach($categories->result() as $cat){ 
-                    if($category->category_parent == $cat->category_id){?>
+                    if($category->category_parent == $cat->category_id){
+                    array_push($cat_arr, $category->category_parent); ?>
                     <option value="<?php echo $cat->category_id; ?>" <?php echo $category->category_parent == $category_parent ? "selected" : ""; ?>><?php echo $cat->category_name; ?></option>
-                <?php array_push($cat_arr, $category->category_parent); 
+                <?php 
                // echo json_encode($cat_arr->result());die();
                 }}}}
         ?> 
