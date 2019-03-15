@@ -343,8 +343,11 @@ if ($query->num_rows() > 0) {
                         <label for="post_date" class="col-sm-2 col-form-label">Post
                             Date</label>
                         <div class="col-md-10">
-                            <?php echo form_input(['name' => 'post_date', 'type' => 'date', 'class' => 'form-control', 'value' => set_value('post_date', $row->post_date)]) ?>
+                            <input class="form-control date-picker" name="post_date"
+                                placeholder="<?php echo set_value('post_date', $row->post_date); ?>"
+                                value="<?php echo set_value('post_date', $row->post_date); ?>" type="text">
                         </div>
+
                     </div>
                     <div class=" form-group row">
                         <label for="post_description">Post Description</label>

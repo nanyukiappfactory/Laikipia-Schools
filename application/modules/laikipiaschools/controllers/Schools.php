@@ -369,6 +369,7 @@ class Schools extends MX_Controller
 
     public function edit_school($school_id)
     {
+
         $this->form_validation->set_rules("school_name", "School Name", "required");
         $this->form_validation->set_rules("school_write_up", "school Write Up", "required");
         $this->form_validation->set_rules("school_boys_number", "Number of Boys", "required");
@@ -401,16 +402,30 @@ class Schools extends MX_Controller
                 } else {
                     $this->session->flashdata("error", "Unable to update  school");
                 }
-            }
-        }
-        redirect('administration/schools');
-    }
-    public function close_search()
-    {
-        $this->session->unset_userdata('schools_search');
-        $this->session->unset_userdata('schools_search_title');
 
-        redirect("laikipiaschools/schools");
+            }
+
+        }
+        $query = $this->schools_model->get_single_school($school_id);
+// echo json_encode($query->result());die();
+
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            $school = $row->school_id;
+            $v_data["query"] = $query;
+            $v_data["school_id"] = $school;
+            $v_data['categories'] = $this->site_model->get_all_categories();
+            $v_data['schools'] = $this->schools_model->get_schools();
+            $data = array("title" => $this->site_model->display_page_title(),
+                "content" => $this->load->view("schools/edit_school", $v_data, true));
+
+            $this->load->view("laikipiaschools/layouts/layout", $data);
+
+        } else {
+            $this->session->set_flashdata("error", "Unable to update  school");
+            redirect("administration/schools");
+        }
+
     }
     public function single_school($school_id)
     {
