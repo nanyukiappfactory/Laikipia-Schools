@@ -1,8 +1,9 @@
 
     <!-- <div class="container"> -->
     <div class = "container">
-    <?php
-//  var_dump($category_parent);die();
+    <?php json_encode($categories->result());die();
+    
+
 $validation_errors = validation_errors();
 if (!empty($validation_errors)) {
     echo $validation_errors;
@@ -19,20 +20,17 @@ if (!empty($validation_errors)) {
     
     <select id="inputState" class="form-control" name="category_parent">
      <?php 
-            $cat_arr = array();
-           
+       $cat_arr = array();
             foreach ($categories->result() as $category) {
                 if(!in_array($category->category_parent, $cat_arr)){
                 foreach($categories->result() as $cat){ 
                     if($category->category_parent == $cat->category_id){?>
                     <option value="<?php echo $cat->category_id; ?>" <?php echo $category->category_parent == $category_parent ? "selected" : ""; ?>><?php echo $cat->category_name; ?></option>
-                <?php array_push($cat_arr, $category->category_parent); }}}}
-
+                <?php array_push($cat_arr, $category->category_parent); 
+               // echo json_encode($cat_arr->result());die();
+                }}}}
         ?> 
 
-        
-        
-    
     </select>
     </div>
     <div class="form-group">
