@@ -2,19 +2,16 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Migration_Rename_post_data_field__in_post_table extends CI_Migration
+class Migration_Rename_post_data_field_in_post_table extends CI_Migration
 {
-    public function __construct()
-    {
-        parent::__construct();
-        $this->load->dbforge();
-    }
+
     public function up()
     {
 
         $fields = array(
-            'post_date' => array(
+            'post_data' => array(
                 'name' => 'post_date',
+                'type' => 'DATE',
             ),
         );
         $this->dbforge->modify_column('post', $fields);
@@ -23,10 +20,12 @@ class Migration_Rename_post_data_field__in_post_table extends CI_Migration
     public function down()
     {
         $fields = array(
-            'post_data' => array(
+            'post_date' => array(
                 'name' => 'post_data',
+                'type' => 'DATE',
+
             ),
         );
-        $this->dbforge->modify_column('post_date', $fields);
+        $this->dbforge->modify_column('post', $fields);
     }
 }
