@@ -246,7 +246,6 @@ class Schools extends MX_Controller
         $data['zones'] = $this->schools_model->get_zones();
         $this->load->view('administration/all_schools', $data);
     }
-
     public function get_country_dropdownlist()
     {
         $data['school'] = $this->schools_model->get_location_dropdownlist();
@@ -276,7 +275,6 @@ class Schools extends MX_Controller
         } else {
             $this->session->set_userdata('error_message', "Unable to export results");
         }
-
     }
 
     public function singleSchool($school_id)
@@ -356,7 +354,6 @@ class Schools extends MX_Controller
                 redirect("laikipiaschools/add_school");
             } else {
                 $this->session->flashdata("error_message", "Unable to add  school");
-
             }
         }
         $v_data['title'] = "add school";
@@ -368,11 +365,11 @@ class Schools extends MX_Controller
         // $this->load->view("schools/add_school", $data);
 
         $this->load->view("laikipiaschools/layouts/layout", $data);
-
     }
 
     public function edit_school($school_id)
     {
+
         $this->form_validation->set_rules("school_name", "School Name", "required");
         $this->form_validation->set_rules("school_write_up", "school Write Up", "required");
         $this->form_validation->set_rules("school_boys_number", "Number of Boys", "required");
@@ -405,16 +402,30 @@ class Schools extends MX_Controller
                 } else {
                     $this->session->flashdata("error", "Unable to update  school");
                 }
-            }
-        }
-        redirect('administration/schools');
-    }
-    public function close_search()
-    {
-        $this->session->unset_userdata('schools_search');
-        $this->session->unset_userdata('schools_search_title');
 
-        redirect("laikipiaschools/schools");
+            }
+
+        }
+        $query = $this->schools_model->get_single_school($school_id);
+// echo json_encode($query->result());die();
+
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            $school = $row->school_id;
+            $v_data["query"] = $query;
+            $v_data["school_id"] = $school;
+            $v_data['categories'] = $this->site_model->get_all_categories();
+            $v_data['schools'] = $this->schools_model->get_schools();
+            $data = array("title" => $this->site_model->display_page_title(),
+                "content" => $this->load->view("schools/edit_school", $v_data, true));
+
+            $this->load->view("laikipiaschools/layouts/layout", $data);
+
+        } else {
+            $this->session->set_flashdata("error", "Unable to update  school");
+            redirect("administration/schools");
+        }
+
     }
     public function single_school($school_id)
     {
@@ -433,6 +444,17 @@ class Schools extends MX_Controller
             redirect('administration/schools');
         } else {
             $this->session->set_flashdata('error', 'Unable to delete, Try again!!');
+            redirect('administration/schools');
+        }
+    }
+
+    public function delete_school_image($school_image_id)
+    {
+        if ($this->schools_model->delete_school_image($school_image_id)) {
+            $this->session->set_flashdata('success', 'Image deleted successfully');
+            redirect('administration/schools');
+        } else {
+            $this->session->set_flashdata('error', 'Failed to delete imaged!!');
             redirect('administration/schools');
         }
     }

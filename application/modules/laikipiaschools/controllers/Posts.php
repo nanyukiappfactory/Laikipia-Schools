@@ -99,7 +99,8 @@ class posts extends MX_Controller
 
             $page = ($this->uri->segment($segment)) ? $this->uri->segment($segment) : 0;
             $v_data["links"] = $this->pagination->create_links();
-            $v_data['categories'] = $this->site_model->get_all_categories();
+            //$v_data['categories'] = $this->site_model->get_all_categories();
+            $v_data['categories'] = $this->site_model->all_categories();
 
             $query = $this->posts_model->get_all_posts($table, $where, $config["per_page"],
                 $page, $order, $order_method);

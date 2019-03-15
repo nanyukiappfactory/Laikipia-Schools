@@ -1,0 +1,60 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+@import url("../../vendor/fontawesome/css/all.min.css");
+
+
+/* 1. Carousel */
+#myCarousel .nav a small {
+	display: block;
+}
+
+#myCarousel .nav a {
+	border-radius: 0px;
+}
+
+.nav-pills .nav-link {
+	background-color: rgb(89, 112, 241);
+}
+
+.slider-figure .caption {
+	padding: 20px 15px;
+}
+
+.slider-figure .fc-icon {
+	font-size: 60px;
+	position: absolute;
+	opacity: .5;
+	right: 20px;
+	top: 35%;
+}
+
+.slider-figure .fc-icon h5 {
+	font-size: 16px;
+}
+
+.slider-figure .fc-icon h3 {
+	margin-top: 0;
+}
+
+/* 2. Navbar */
+nav a {
+	font-weight: bolder;
+
+}
+
+nav {
+	background-color: rgb(22, 161, 196);
+	height: 25px;
+}
+
+.owl-nav {
+	text-align: center;
+	margin: 10px 0;
+}
+
+.owl-carousel .owl-nav button.owl-prev,
+.owl-carousel .owl-nav button.owl-next {
+	background-color: #13b4e6;
+	padding: 20px !important;
+	margin: 0 10px;
+	font-size: 2em;
+}

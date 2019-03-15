@@ -64,4 +64,22 @@
 <script src="<?php echo base_url(); ?>assets/themes/website/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/dist/owl.carousel.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/themes/website/assets/vendor/tweenmax/js/TweenMax.min.js"></script>
+<script src="assets/vendor/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/themes/website/assets/custom/js/main.js"></script>
+<script type="text/javascript">
+		$(document).ready(function () {
+			initialize_map('0.1251905', '36.8092602');
+
+			$('.owl-carousel').magnificPopup({
+				delegate: 'a', // child items selector, by clicking on it popup will open
+				type: 'image'
+				// other options
+			});
+
+			$('.school-image').magnificPopup({
+				type: 'image'
+				// other options
+			});
+		});
+
+	</script>

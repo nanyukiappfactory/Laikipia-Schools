@@ -19,7 +19,7 @@
 					</div>
 					<div class="modal-body">
 						<!-- <?//php echo form_open($this->uri->uri_string()); ?> -->
-						<?php echo form_open(base_url() . 'administration/donations/add-donations') ?>
+						<?php echo form_open_multipart(base_url() . 'administration/donations/add-donations') ?>
 
 						<div class="form-group row">
 							<div class="col-sm-12 col-md-12">
@@ -29,39 +29,39 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-sm-12 col-md-12">
-							<select class="custom-select my-1 mr-sm-2" name="post_id">
-					<option selected>Choose Donor...</option>
+								<select class="custom-select my-1 mr-sm-2" name="post_id">
+									<option selected>Choose Donor...</option>
 
-					<?php
-											foreach ($categories->result() as $row1) {
-												$category_name = preg_replace('/\s/', '', $row1->category_name);
-												if (strtolower($category_name) == strtolower("Donor")) {?>
-															<option value="<?php echo $row1->post_id; ?>">
-																<?php echo $row1->post_title; ?>
-															</option>
-															<?php }
-											}
+									<?php
+foreach ($categories->result() as $row1) {
+    $category_name = preg_replace('/\s/', '', $row1->category_name);
+    if (strtolower($category_name) == strtolower("Donor")) {?>
+									<option value="<?php echo $row1->post_id; ?>">
+										<?php echo $row1->post_title; ?>
+									</option>
+									<?php }
+}
 
-											?>
+?>
 
-				</select>
+								</select>
 							</div>
 						</div>
 
 						<div class="form-group row">
 							<div class="col-sm-12 col-md-12">
-								
-									<select class="custom-select my-1 mr-sm-2" name="school_id" required>
+
+								<select class="custom-select my-1 mr-sm-2" name="school_id" required>
 									<option selected>Choose School...</option>
 									<?php
-									if ($schools->num_rows() > 0) {
-										foreach ($schools->result() as $row) {?>
-											<option value="<?php echo $row->school_id; ?>">
-												<?php echo $row->school_name; ?>
-											</option>
-											<?php
-		}
-									}?>
+if ($schools->num_rows() > 0) {
+    foreach ($schools->result() as $row) {?>
+									<option value="<?php echo $row->school_id; ?>">
+										<?php echo $row->school_name; ?>
+									</option>
+									<?php
+}
+}?>
 								</select>
 							</div>
 

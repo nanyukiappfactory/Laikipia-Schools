@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
 /*
 |--------------------------------------------------------------------------
 | Enable/Disable Migrations
@@ -29,6 +28,7 @@ $config['migration_enabled'] = true;
 |       defaults to 'sequential' for backward compatibility with CI2.
 |
  */
+
 $config['migration_type'] = 'timestamp';
 
 /*
@@ -44,7 +44,6 @@ $config['migration_type'] = 'timestamp';
 |
  */
 $config['migration_table'] = 'migrations';
-
 /*
 |--------------------------------------------------------------------------
 | Auto Migrate To Latest
@@ -58,7 +57,6 @@ $config['migration_table'] = 'migrations';
 |
  */
 $config['migration_auto_latest'] = true;
-
 /*
 |--------------------------------------------------------------------------
 | Migrations version
@@ -74,17 +72,15 @@ $config['migration_auto_latest'] = true;
 
 //$config['migration_version'] = 20190222164833;
 
-$config['migration_version'] = 20190313120400;
+$config['migration_version'] = 20190314165720;
 //$config['migration_version'] = 20190305151523;
 //$config['migration_version'] = 20190218111230;
-
 //$config['migration_version'] = 20190223134810;
-
 /*
 |--------------------------------------------------------------------------
 | Migrations Path
 |--------------------------------------------------------------------------
-|
+
 | Path to your migrations folder.
 | Typically, it will be within your application path.
 | Also, writing permission is required within the migrations path.

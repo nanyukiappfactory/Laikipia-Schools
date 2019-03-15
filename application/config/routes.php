@@ -140,8 +140,7 @@ $route['administration/delete-category/(:num)'] = 'laikipiaschools/categories/de
 $route['administration/add-school'] = 'laikipiaschools/schools/add_school';
 $route['administration/update-school/(:num)'] = 'laikipiaschools/schools/edit_school/$1';
 $route['administration/delete-school/(:num)'] = 'laikipiaschools/schools/delete_school/$1';
-$route['administration/delete-school/(:num)'] = 'laikipiaschools/schools/delete_school/$1';
-
+$route['administration/delete-school-image/(:num)'] = 'laikipiaschools/schools/delete_school_image/$1';
 $route['administration/schools'] = 'laikipiaschools/schools/index';
 // $route['administration/schools/add-schools'] = 'laikipiaschools/schools/add_school';
 // $route['administration/add-schools'] = 'laikipiaschools/schools/add_school';
@@ -152,6 +151,7 @@ $route['administration/schools/(:any)/(:any)/(:num)'] = 'laikipiaschools/schools
 $route['administration/schools/(:any)/(:any)'] = 'laikipiaschools/schools/index/$1/$2';
 $route['administration/schools/bulk-actions'] = 'laikipiaschools/schools/bulk_actions';
 $route['administration/deactivate-school/(:num)/(:num)'] = 'laikipiaschools/schools/deactivate_school/$1/$2';
+
 // $route['administration/activate-school/(:num)/(:num)'] = 'laikipiaschools/schools/activate_school/$1/$2';
 
 $route['administration/edit-school/(:num)'] = 'laikipiaschools/schools/edit_school/$1';
@@ -199,5 +199,3 @@ $route['administration/schools/get-posts-details'] = 'laikipiaschools/webservice
 $route['schools/(:any)'] = 'site/site/single_school/$1';
 $route['schools'] = 'site/site/all_schools';
 $route['home'] = 'site/site/index';
-
-

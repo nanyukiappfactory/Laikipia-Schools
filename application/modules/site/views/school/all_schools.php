@@ -1,10 +1,5 @@
-
-
-
-
-
-		<!-- Page Header -->
-		<section class="page-header" style="background-image: url('assets/img/classroom.JPG')">
+<!-- Page Header -->
+		<section class="page-header" style="background-image: url('assets/images/6.JPG')">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 offset-md-2 text-center">

@@ -87,29 +87,21 @@ if ($query->num_rows() > 0) {
 
                             <div class="owl-carousel schoolGalleryCarousel ">
                                 <?php
-    $count = 0;
-            foreach ($pictures->result() as $row1) {
-                if ($row->school_id == $row1->school_id) {
-                    $count++
-                    ?>
+$count = 0;
+        foreach ($pictures->result() as $row1) {
+            if ($row->school_id == $row1->school_id) {
+                $count++
+                ?>
                                 <div>
                                     <a href="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"><img
-                                            src="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?>"
-                                            alt="..."></a>
+                                            src="<?php echo base_url() . 'assets/uploads/' . $row1->school_image_name; ?> "
+                                            alt="..."><?php echo anchor("administration/delete-school-image/" . $row1->school_image_id, "<i class='fas fa-trash-alt'></i>", array("class" => "btn btn-danger btn-sm p-left-10", "onclick" => "return confirm('Are you sure you want to delete image?')")); ?>
+                                    </a>
+
                                 </div>
                                 <?php }}?>
                             </div>
-
-
-
-
-
-
-
-
                         </div>
-
-
                         <div class="col-md-12 col-sm-12">
                             <h6 class="title-price mt-4"><small>Write Up</small></h6>
                             <div style="width:100%;border-top:1px solid silver">
@@ -131,158 +123,7 @@ if ($query->num_rows() > 0) {
         </div>
     </td>
     <td>
-        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
-            data-target="#editModal<?php echo $row->school_id; ?>">
-            <i class="fas fa-edit"></i>
-        </button>
-        <div class="modal fade" id="editModal<?php echo $row->school_id; ?>" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">
-                            Update School
-                            Details</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <h5 class="card-title">Enter school Details to
-                            update</h5>
-                        <?php echo form_open(base_url() . 'administration/edit-school/' . $row->school_id); ?>
-                        <div class="form-group row">
-                            <label for="school_name" class="col-sm-2 col-form-label">School
-                                Name</label>
-                            <div class="col-md-10">
-                                <?php echo form_input(['name' => 'school_name', 'placeholder' => 'School Name', 'class' => 'form-control', 'value' => set_value('school_name', $row->school_name)]) ?>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="school_zone" class="col-sm-2 col-form-label">School
-                                Zone</label>
-                            <div class="col-md-10">
-                                <select id="inputState" class="form-control" name="school_zone"
-                                    value="<?php echo set_value('school_zone', $this->session->flashdata('form_inputs')['school_zone']); ?>"
-                                    required>
-                                    <option <?php echo $row->school_zone ? 'selected' : ''; ?>>
-                                        <?php echo $row->school_zone ?></option>
-                                    <option value="Daiga">Daiga </option>
-                                    <option value="Gituamba"> Gituamba </option>
-                                    <option value="Igwamiti"> Igwamiti </option>
-                                    <option value="Kinamba"> Kinamba </option>
-                                    <option value="Marmanet"> Marmanet </option>
-                                    <option value="Muhotetu"> Muhotetu </option>
-                                    <option value="Mukogodo East "> Mukogodo East </option>
-                                    <option value="Mutara"> Mutara </option>
-                                    <option value="Nanyuki North "> Nanyuki North </option>
-                                    <option value="Nanyuki South "> Nanyuki South </option>
-                                    <option value="Ngobit"> Ngobit </option>
-                                    <option value="Nyahururu "> Nyahururu </option>
-                                    <option value="Ol Moran"> Ol Moran </option>’
-                                    <option value="Rumuruti "> Rumuruti </option>
-                                    <option value="Salama"> Salama </option>
-                                    <option value="Sipili"> Sipili </option>
-                                    <option value="Sirima"> Sirima </option>
-                                    <option value="Tigithi"> Tigithi </option>
-                                </select>
-                                <small id="emailHelp" class="form-text text-muted"></small>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="school_boys_number" class="col-sm-2 col-form-label">Number
-                                of
-                                Boys</label>
-                            <div class="col-md-10">
-                                <?php echo form_input(['name' => 'school_boys_number', 'placeholder' => 'Number of boys, eg. 10', 'class' => 'form-control', 'value' => set_value('school_boys_number', $row->school_boys_number)]) ?>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="school_girls_number" class="col-sm-2 col-form-label">Number
-                                of
-                                Girls</label>
-                            <div class="col-md-10">
-                                <?php echo form_input(['name' => 'school_girls_number', 'placeholder' => 'Enter First Name', 'class' => 'form-control', 'value' => set_value('firstname', $row->school_girls_number)]) ?>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="school_girls_number" class="col-sm-2 col-form-label">School Image</label>
-                            <div class="col-md-10">
-                                <img src="<?php echo base_url() . 'assets/uploads/' . $image; ?>" height="205"
-                                    width="205">
-                            </div>
-
-                            <label for="school_girls_number" class="col-sm-2 col-form-label">Upload New
-                                Image</label>
-                            <div class="col-md-10">
-                                <input type="file" name="school_image" />
-                            </div>
-
-                        </div>
-                        <div class="form-group row">
-                            <label for="school_latitude" class="col-sm-2 col-form-label">Latitude</label>
-                            <div class="col-md-10">
-                                <?php echo form_input(['name' => 'school_latitude', 'placeholder' => 'Enter Latitude', 'class' => 'form-control', 'value' => set_value('school_latitude', $row->school_latitude)]) ?>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="school_longitude" class="col-sm-2 col-form-label">Longitude</label>
-                            <div class="col-md-10">
-                                <?php echo form_input(['name' => 'school_longitude', 'placeholder' => 'Longitude', 'class' => 'form-control', 'value' => set_value('school_longitude', $row->school_longitude)]) ?>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="school_location_name" class="col-sm-2 col-form-label">Location
-                                Name</label>
-                            <div class="col-md-10">
-                                <?php echo form_input(['name' => 'school_location_name', 'placeholder' => 'Location Name', 'class' => 'form-control', 'value' => set_value('school_location_name', $row->school_location_name)]) ?>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="school_status">School Status</label>
-                            <div class="col-sm-10 row">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="school_status" id="school_status"
-                                        value="1" checked>
-                                    <Legend class="form-check-label" for="gridRadios1">
-                                        Active
-                                    </Legend>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="school_status" id="school_status"
-                                        value="0">
-                                    <Legend class="form-check-label" for="gridRadios2">
-                                        Inactive
-                                    </Legend>
-                                </div>
-                            </div>
-                            <small id="emailHelp" class="form-text text-muted"></small>
-                        </div>
-
-                        <div class=" form-group">
-                            <label for="school_write_up">School Write Up</label>
-                            <textarea id="editable" class="editable"
-                                name="school_write_up"><?php echo set_value('school_write_up', $row->school_write_up); ?></textarea>
-                            <div class="form-group">
-                                <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
-                            </div>
-                            <small id="emailHelp" class="form-text text-muted"></small>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-10">
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
-                                            class="fas fa-times"></i>Close</button>
-                                    <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>Save
-                                        School</button>
-                                </div>
-                            </div>
-                        </div>
-                        <?php echo form_close(); ?>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php echo anchor("administration/edit-school/" . $row->school_id, "<i class='fas fa-edit'></i>", "class='btn btn-warning btn-sm p-left-10'", "style='padding-left:10px;'"); ?>
     </td>
     <td>
         <?php if ($row->school_status == 1) {

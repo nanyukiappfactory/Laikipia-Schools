@@ -64,9 +64,7 @@ class Schools_model extends CI_Model
             "school_zone" => $this->input->post("school_zone"),
             "school_image_name" => $file_name,
             "school_thumb_name" => $thumb_name,
-
             "school_status" => $this->input->post("school_status"),
-
         );
 
         if ($this->db->insert("school", $data)) {
@@ -103,6 +101,17 @@ class Schools_model extends CI_Model
         $this->db->where($where);
         $this->db->limit($limit, $page);
         $this->db->order_by($order, $order_method);
+        return $this->db->get();
+
+    }
+    public function get_schools()
+    {
+        // var_dump($where);die();
+        // $where = "school.deleted = 0";
+        $this->db->select("*");
+        $this->db->from('school');
+        $this->db->where('school.deleted != 1');
+        $this->db->order_by('school_name', 'DESC');
         return $this->db->get();
 
     }
@@ -149,8 +158,7 @@ class Schools_model extends CI_Model
             "school_location_name" => $this->input->post("school_location_name"),
             "school_latitude" => $this->input->post("school_latitude"),
             "school_longitude" => $this->input->post("school_longitude"),
-            "school_status" => 1,
-
+            "school_status" => $this->input->post("school_status"),
         );
 
         if ($file_name != false) {
@@ -166,6 +174,21 @@ class Schools_model extends CI_Model
             return false;
         }
     }
+    public function delete_school_image($school_image_id)
+    {
+        $query = $this->db->get_where('school_images', array('school_image_id' => $school_image_id));
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            $school_image_name = $row->school_image_name;
+            unlink(base_url('assets/uploads' . $school_image_name . $school_image_name));
+            $this->db->delete('school_images', array('school_image_id' => $school_image_name));
+            return true;
+        } else {
+            return false;
+
+        }
+    }
+
     public function get_images()
     {
         $this->db->select('school_images.*, school.school_id,school.school_name');
