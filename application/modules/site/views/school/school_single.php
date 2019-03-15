@@ -144,7 +144,7 @@ if ($row->total_donated > $row->target_amount) {
 
         <div class="schoolGalleryCarousel owl-carousel">
             <?php
-foreach ($schoolpictures->result() as $row) {
+                foreach ($schoolpictures->result() as $row) {
                 if ($school_name == $row->school_name) {
 
                     ?>
