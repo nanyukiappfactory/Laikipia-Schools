@@ -132,4 +132,14 @@ class Donations_model extends CI_Model
         $this->db->order_by('post_title', 'ASC');
         return $this->db->get();
     }
+
+     public function get_donor()
+    {
+        $this->db->select('post.post_id, post.post_title');
+        $this->db->from('post');
+        $this->db->join('category', 'category.category_id=post.category_id', 'left');
+        $this->db->where('post.deleted= 0 AND post.post_status=1  AND category_name="Donor" ');
+        $query =  $this->db->get();
+        return $query;
+    }
 }

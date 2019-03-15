@@ -32,8 +32,7 @@ class Site_model extends CI_Model
         $this->db->from('category');
         $this->db->join('post', 'post.category_id=category.category_id', 'left');
          $this->db->where('post.deleted=0 AND post.post_status=1 AND category.deleted=0 AND category.category_status=1');
-         //$this->db->where('post.deleted=0 AND post.post_status=1');
-         //$this->db->where('category.category_status=1');
+         
         $query =  $this->db->get();
         // echo json_encode($query->result());die();
         return $query;

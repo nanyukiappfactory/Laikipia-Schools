@@ -33,16 +33,16 @@
 									<option selected>Choose Donor...</option>
 
 									<?php
-foreach ($categories->result() as $row1) {
-    $category_name = preg_replace('/\s/', '', $row1->category_name);
-    if (strtolower($category_name) == strtolower("Donor")) {?>
-									<option value="<?php echo $row1->post_id; ?>">
-										<?php echo $row1->post_title; ?>
-									</option>
-									<?php }
-}
 
+foreach ($donor->result() as $row) {?>
+														<option value="<?php echo $row->post_id; ?>">
+															<?php echo $row->post_title; ?>
+														</option>
+														<?php
+}
 ?>
+
+					?>
 
 								</select>
 							</div>
