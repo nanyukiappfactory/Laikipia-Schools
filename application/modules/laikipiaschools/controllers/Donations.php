@@ -31,7 +31,7 @@ class Donations extends MX_Controller
         // echo json_encode( $config['total_rows']);die();
 
         $config['uri_segment'] = $segment;
-        $config['per_page'] = 20;
+        $config['per_page'] = 1;
         $config['num_links'] = 5;
         $config['full_tag_open'] = '<div class="pagging text-center"><nav aria-label="Page navigation example"><ul class="pagination">';
         $config['full_tag_close'] = '</ul></nav></div>';
@@ -70,6 +70,8 @@ class Donations extends MX_Controller
         $v_data['query'] = $query;
         $v_data['page'] = $page;
         $v_data['categories'] = $this->site_model->get_all_categories();
+        $v_data['donor'] = $this->donations_model->get_donor();
+        //echo json_encode($v_data['donor']->result());die();
         $v_data['schools'] = $this->donations_model->all_schools();
 
         $data['content'] = $this->load->view('donations/all_donations', $v_data, true);

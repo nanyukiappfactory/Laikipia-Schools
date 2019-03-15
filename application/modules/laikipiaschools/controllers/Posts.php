@@ -16,7 +16,6 @@ class posts extends MX_Controller
 
         $this->load->model("laikipiaschools/posts_model");
         $this->load->library("image_lib");
-
         $this->load->model("laikipiaschools/posts_model");
         $this->load->model("laikipiaschools/site_model");
         $this->load->model("laikipiaschools/file_model");
@@ -121,7 +120,9 @@ class posts extends MX_Controller
             $v_data['query'] = $query;
             $v_data['page'] = $page;
             $all_posts = $this->posts_model->get_posts_titles($table, 'post_title', 'ASC');
-            
+            //$all_posts = $this->posts_model->get_posts_titles($table, 'category_name', 'ASC');
+           // echo json_encode($all_posts->result());die();
+           
             $post_array = array();
             foreach ($all_posts->result() as $post) {
                 array_push($post_array, array(
@@ -134,7 +135,8 @@ class posts extends MX_Controller
             $v_data['search_options'] = $post_array;
             $v_data['route'] = 'posts';
 
-            $data = array(
+//for category
+ $data = array(
                 "title" => $this->site_model->display_page_title(),
                 "content" => $this->load->view("posts/all_posts", $v_data, true),
             );

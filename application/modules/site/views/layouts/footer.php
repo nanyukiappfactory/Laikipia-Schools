@@ -81,5 +81,4 @@
 				// other options
 			});
 		});
-
 	</script>
