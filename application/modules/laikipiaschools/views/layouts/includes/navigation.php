@@ -7,67 +7,21 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         </ul>
-        <?php if (isset($route)) {
-
-    if ($route == "posts") {?>
-        <div><?php
-echo form_open(base_url() . 'administration/search-' . $route, array("class" => "form-inline my-2 my-lg-0")) ?>
-
-            <select class="custom-select2 form-control mr-sm-2" name="categories_search">
-                <option value="">Choose category..</option>
-                <?php foreach ($search_options as $search_option) {?>
-                <option value="<?php echo $search_option['category_id']; ?>">
-                    <?php if ($search_option['category_name'] !== null) {
-        echo $search_option['category_name'];?> </option>
-                <?php }}
-        ?>
-            </select>
-        </div>
-
-        <div>
-            <select class="custom-select2 form-control mr-sm-2" name="post_titles_search">
-                <option value="">Choose post title..</option>
-                <?php foreach ($search_options as $search_option) {?>
-                <option value="<?php echo $search_option['name']; ?>">
-                    <?php echo $search_option['name']; ?> </option>
-                <?php }
-        ?>
-
-            </select>
-
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-            <?php echo form_close(); ?></div> <?php
-if ($this->session->userdata($route . "_search")) {?>
-        <a class="btn btn-outline-primary btn-sm m-2"
-            href="<?php echo base_url() . 'administration/' . $route . '/close-search'; ?>">Close Search</a>
-        <?php }} else {
-        if ($route == "schools" || $route == "categories") {
-            echo form_open(base_url() . 'administration/search-' . $route, array("class" => "form-inline my-2 my-lg-0"));
-            ?>
-        <select class="custom-select2 form-control mr-sm-2" name="search_param" required>
-            <option value="">Choose ..</option>
-            <?php foreach ($search_options as $search_option) {
-                if ($route == "schools") {?>
-            <option value="<?php echo $search_option['name']; ?>">
-                <?php echo $search_option['name']; ?> </option>
-            <?php } else {
-                    if ($route == "categories" || $route == "donations") {?>
-            <option value="<?php echo $search_option['id']; ?>"><?php echo $search_option['name']; ?></option>
-            <?php }
-                }}?>
-        </select>
-        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-        <?php echo form_close();
-            if ($this->session->userdata($route . "_search")) { ?>
-        <a class="btn btn-outline-primary btn-sm m-2"
-            href="<?php echo base_url() . 'administration/' . $route . '/close-search'; ?>">Close Search</a>
-        <?php }}}}?>
-    </div>
-    <a class="p-2 text-dark" href="#">
-        <span class="user-name"><?php if ($this->session->userdata('laikipia_admin')) {
-    echo ($this->session->userdata('laikipia_admin'))['other_name'];} else {
-    redirect('administration/login');}?>
-        </span></a>
-    <a class="btn btn-outline-danger btn-sm" href="<?php echo base_url(); ?>administration/logout"><i
-            class="fas fa-sign-out-alt"></i>Log Out</a>
+        
+    	<a class="p-2 text-dark" href="#">
+        	<span class="user-name">
+				<?php 
+				if ($this->session->userdata('laikipia_admin')) {
+					echo ($this->session->userdata('laikipia_admin'))['other_name'];
+				}
+				else {
+					redirect('administration/login');
+				}
+				?>
+			</span>
+		</a>
+		<a class="btn btn-outline-danger btn-sm" href="<?php echo base_url(); ?>administration/logout">
+			<i class="fas fa-sign-out-alt"></i>Log Out
+		</a>
+	</div>
 </nav>

@@ -177,6 +177,8 @@ $route['administration/documents/bulk-actions'] = 'laikipiadocuments/documents/b
 $route['administration/update-post/(:num)'] = 'laikipiaschools/posts/edit_post/$1';
 $route['administration/delete-post/(:num)'] = 'laikipiaschools/posts/delete_post/$1';
 $route['administration/delete-post/(:num)'] = 'laikipiaschools/posts/delete_post/$1';
+$route['posts/add-post'] = 'laikipiaschools/posts/add_post';
+$route['posts/edit-post/(:num)'] = 'laikipiaschools/posts/edit_post/$1';
 
 $route['administration/posts'] = 'laikipiaschools/posts/index';
 $route['administration/add-posts'] = 'laikipiaschools/posts/add_post';

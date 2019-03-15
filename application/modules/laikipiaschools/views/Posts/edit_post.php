@@ -1,85 +1,125 @@
-<div class="container">
-    <div class="card-header">
-        <h1> Update post Details</h1>
-    </div>
-    <div class="card-body">
-        <h5 class="card-title">Enter post Details to update</h5>
+<?php
+if ($query->num_rows() > 0) {
+	foreach ($query->result() as $row)
+	{
+        $post_id = $row->post_id;
+		$post_thumb_name = $row->post_thumb_name;
+		$post_title = $row->post_title;
+		$category_id = $row->category_id;
+		$post_status = $row->post_status;
+		$post_description = $row->post_description;
+		$post_date = $row->post_date;
+		$post_image = base_url() . 'assets/uploads/' . $post_thumb_name;
+	}
+}
 
-        <?php echo
-form_open($this->uri->uri_string()); ?>
-        <div class="form-group row">
-            <label for="post_title" class="col-sm-2 col-form-label">post Title</label>
+$error = $this->session->flashdata("error");
 
-            <div class="col-md-10">
-                <?php echo form_input(['name' => 'post_title', 'placeholder' => 'Post Title', 'class' => 'form-control', 'value' => set_value('post_title', $post_title)]) ?>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="post_description" class="col-sm-2 col-form-label">Post Description</label>
-            <div class="col-md-10">
-                <?php echo form_textarea(['name' => 'post_description', 'placeholder' => 'Describe post', 'class' => 'form-control', 'value' => set_value('post_description', $post_description)]) ?>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="school_boys_number" class="col-sm-2 col-form-label">Number of Boys</label>
-            <div class="col-md-10">
-                <?php echo form_input(['name' => 'school_boys_number', 'placeholder' => 'Number of boys, eg. 10', 'class' => 'form-control', 'value' => set_value('school_boys_number', $school_boys_number)]) ?>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="school_girls_number" class="col-sm-2 col-form-label">Number of Girls</label>
-            <div class="col-md-10">
-                <?php echo form_input(['name' => 'school_girls_number', 'placeholder' => 'Enter First Name', 'class' => 'form-control', 'value' => set_value('firstname', $school_girls_number)]) ?>
-            </div>
-
-        </div>
-        <div class="form-group row">
-            <label for="school_latitude" class="col-sm-2 col-form-label">Latitude</label>
-            <div class="col-md-10">
-                <?php echo form_input(['name' => 'school_latitude', 'placeholder' => 'Enter Latitude', 'class' => 'form-control', 'value' => set_value('school_latitude', $school_latitude)]) ?>
-            </div>
-        </div>
-
-
-        <div class="form-group row">
-            <label for="school_longitude" class="col-sm-2 col-form-label">Longitude</label>
-            <div class="col-md-10">
-                <?php echo form_input(['name' => 'school_longitude', 'placeholder' => 'Longitude', 'class' => 'form-control', 'value' => set_value('school_longitude', $school_longitude)]) ?>
-            </div>
-
-        </div>
-
-        <div class="form-group row">
-            <label for="school_location_name" class="col-sm-2 col-form-label">Location Name</label>
-            <div class="col-md-10">
-                <?php echo form_input(['name' => 'school_location_name', 'placeholder' => 'Location Name', 'class' => 'form-control', 'value' => set_value('school_location_name', $school_location_name)]) ?>
-            </div>
-        </div>
-        <div class="row">
-            <legend class="col-form-label col-sm-2 pt-0">School Status</legend>
-            <div class="form-group">
-                <input type="radio" name="status" value="1" <?php echo ($school_status == 'Active') ? 'checked' : '' ?>
-                    size="17">Active
-                <input type="radio" name="status" value="0"
-                    <?php echo ($school_status == 'Inactive') ? 'checked' : '' ?> size="17">Inactive
-            </div>
-        </div>
-
-
-        <div class="form-group row">
-            <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary">Save School</button>
-                <div class="modal-footer">
-                    <?php echo anchor('laikipiaschools/schools', 'Cancel', ['class' => 'btn btn-primary']); ?>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <?php
-form_close();
+if(!empty($error))
+{
+	$post_title = set_value("post_title");
+	$category_name = set_value("category_name");
+	$post_status = set_value("post_status");
+	$post_description = set_value("post_description");
+	$post_date = set_value("post_date");
+}
 ?>
+<div class="shadow-lg p-3 mb-5 bg-white rounded">
+	<h3>Edit Post</h3>
+	<?php echo form_open_multipart(base_url() . 'administration/edit-post/' . $row->post_id); ?>
+		<div class="form-group row">
+			<label for="post_title" class="col-sm-2 col-form-label">Post Title</label>
 
+			<div class="col-md-10">
+				<?php echo form_input(['name' => 'post_title', 'placeholder' => 'Post Name', 'class' => 'form-control', 'value' => set_value('post_title', $post_title)]) ?>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="post_title" class="col-sm-2 col-form-label">Category</label>
+			<div class="col-md-10">
+				<select id="inputState" class="form-control" name="category_id">
 
-</div>
+					<?php 
+					if ($categories->num_rows() > 0) {
+						foreach ($categories->result() as $row2) {?>
+							<option value="<?php echo $row2->category_id; ?>"
+								<?php echo $row2->category_id == $category_id ? 'selected' : ''; ?>>
+								<?php echo $row2->category_name; ?></option>
+							<?php
+						}
+					}?>
+
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="post_title" class="col-sm-2 col-form-label">Post Image</label>
+			<div class="col-md-10">
+				<img src="<?php echo $post_image;?>" class="img-fluid">
+				<input type="file" id="post_image_name" name="post_image_name" class="form-control">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="post_status">Status</label>
+			<div class="col-sm-10 row">
+				<?php if($post_status == 1){?>
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="post_status" id="post_status"
+							value="1" checked>
+						<Legend class="form-check-label" for="gridRadios1">
+							Active
+						</Legend>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="post_status" id="post_status"
+							value="0">
+						<Legend class="form-check-label" for="gridRadios2">
+							Inactive
+						</Legend>
+					</div>
+				<?php } else{?>
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="post_status" id="post_status"
+							value="1">
+						<Legend class="form-check-label" for="gridRadios1">
+							Active
+						</Legend>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="post_status" id="post_status"
+							value="0" checked>
+						<Legend class="form-check-label" for="gridRadios2">
+							Inactive
+						</Legend>
+					</div>
+				<?php } ?>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="event_name">Post Date</label>
+			<div class="input-group">
+				<input data-date-format="yyyy-mm-dd" class="form-control" id="datepicker" name="post_date" value="<?php echo $post_date;?>">
+				<span class="input-group-addon">
+					<i class="fas fa-calendar"></i>
+				</span>
+			</div>
+		</div>
+		<div class=" form-group row">
+			<label for="post_description">Post Description</label>
+			<div class="col-md-10">
+				<textarea name="post_description" class="editable" id="editable" rows="30"><?php echo $post_description;?></textarea>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-10">
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+							class="fas fa-times"></i>Close</button>
+					<button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>Save
+						Post</button>
+				</div>
+			</div>
+		</div>
+	<?php echo form_close(); ?>
 </div>
