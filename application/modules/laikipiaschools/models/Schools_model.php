@@ -181,7 +181,7 @@ class Schools_model extends CI_Model
             $row = $query->row();
             $school_image_name = $row->school_image_name;
             unlink(base_url('assets/uploads' . $school_image_name . $school_image_name));
-            $this->db->delete('school_image_name', array('school_image_id' => $school_image_name));
+            $this->db->delete('school_images', array('school_image_id' => $school_image_name));
             return true;
         } else {
             return false;
