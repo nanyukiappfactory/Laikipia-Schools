@@ -8,13 +8,37 @@ class Migration_Change_validation_for_school_image_name_to_null extends CI_Migra
     {
         $table = "school";
         $fields = array(
-            'school_image_name' => array('type' => 'VARCHAR', 'NULL' => true),
+            'school_image_name' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+                'null',
+
+            ),
+            'school_thumb_name' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+                'null',
+            ),
         );
-        $this->dbforge->add_column($table, $fields);
+        $this->dbforge->modify_column($table, $fields);
     }
     public function down()
     {
         $table = "school";
-        $this->dbforge->drop_column($table, 'school_image_name');
+        $fields = array(
+            'school_image_name' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+                'null' => false,
+
+            ),
+            'school_thumb_name' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+                'null' => false,
+            ),
+        );
+        $this->dbforge->modify_column($table, $fields);
+
     }
 }

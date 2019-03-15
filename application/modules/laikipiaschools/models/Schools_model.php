@@ -174,21 +174,21 @@ class Schools_model extends CI_Model
             return false;
         }
     }
+
     public function delete_school_image($school_image_id)
     {
-        $query = $this->db->get_where('school_images', array('school_image_id' => $school_image_id));
-        if ($query->num_rows() > 0) {
-            $row = $query->row();
-            $school_image_name = $row->school_image_name;
-            unlink(base_url('assets/uploads' . $school_image_name . $school_image_name));
-            $this->db->delete('school_images', array('school_image_id' => $school_image_name));
+        $data = array(
+            'school_image_id' => $school_image_id,
+        );
+
+        $this->db->delete_where($data, 'school_image_id', $school_image_id);
+        // $this->db->where();
+        if ($this->db->update('school_images')) {
             return true;
         } else {
             return false;
-
         }
     }
-
     public function get_images()
     {
         $this->db->select('school_images.*, school.school_id,school.school_name');
