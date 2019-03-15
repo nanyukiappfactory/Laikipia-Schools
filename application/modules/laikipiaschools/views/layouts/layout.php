@@ -43,7 +43,6 @@
     </script>
     <script src="<?php echo base_url(); ?>assets/vendor/script.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/script1.js"></script>
-    <script src="<?php echo base_url(); ?>assets/custom/js/custom.js"></script>
     <script src="<?php echo base_url(); ?>assets/themes/website/assets/vendor/owlcarousel/dist/owl.carousel.min.js" type="text/javascript">
     </script>
     <script src="<?php echo base_url(); ?>assets/themes/website/assets/vendor/tweenmax/js/TweenMax.min.js"></script>
