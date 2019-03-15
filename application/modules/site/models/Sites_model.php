@@ -47,7 +47,7 @@ class Sites_model extends CI_Model
         $this->db->select('post.*, category.category_id, category.category_name');
         $this->db->from('post');
         $this->db->join('category', 'post.category_id=category.category_id', 'left');
-        return $this->db->get();
+    return $this->db->get();
 
     }
     public function get_partners()

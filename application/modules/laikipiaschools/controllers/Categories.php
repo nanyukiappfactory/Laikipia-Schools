@@ -54,6 +54,7 @@ class Categories extends MX_Controller
         $v_data["links"] = $this->pagination->create_links();
         //var_dump($v_data['links']);die();
         $query = $this->categories_model->get_categories($table, $where, $config["per_page"], $page, $order, $order_method);
+        //echo json_encode($query->result());die();
         if ($order_method == 'DESC') {
             $order_method = 'ASC';
         } else {
@@ -70,7 +71,7 @@ class Categories extends MX_Controller
         $v_data['query'] = $query;
         $v_data['page'] = $page;
         $all_categories = $this->site_model->get_all_categories();
-        $v_data['categories'] = $all_categories;
+        $v_data['categories'] = $this->site_model->all_categories();
         $cat_parent = array();
         $categories_result = $all_categories->result();
         foreach ($categories_result as $value) {
@@ -226,8 +227,8 @@ class Categories extends MX_Controller
 
     public function create_category()
     {
-        // $this->form_validation->set_rules("parent", "parent", "required");
-        $this->form_validation->set_rules("category_name", "category name", "required|is_unique[category.category_name]");
+         $this->form_validation->set_rules("category_parent", "category_parent");
+        $this->form_validation->set_rules("category_name", "category_name", "required|is_unique[category.category_name]");
 
         if ($this->form_validation->run()) {
             $category_id = $this->categories_model->add_category();
