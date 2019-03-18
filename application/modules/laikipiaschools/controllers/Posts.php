@@ -174,48 +174,57 @@ class posts extends MX_Controller
 		if ($this->form_validation->run()) 
 		{
 			$category_id = $this->input->post('category_id');
+			$this->db->where("category_id", $category_id);
+			$query = $this->db->get("category");
 
-			//Slider
-			if($category_id == 15)
+			if($query->num_rows() > 0)
 			{
-				$resize = array(
-					"width" => 1400,
-					"height" => 400,
-				);
+				$row = $query->row();
+				$category_name = ucwords(strtolower($row->category_name));
+				//Slider
+				if($category_name == "Slider")
+				{
+					$resize = array(
+						"width" => 1400,
+						"height" => 400,
+					);
+				}
+
+				else
+				{
+					$resize = array(
+						"width" => 600,
+						"height" => 600,
+					);
+				}
+
+				if (isset($_FILES['post_image_name']) && $_FILES['post_image_name']['size'] > 0) {
+					$upload_response = $this->file_model->upload_image($this->upload_path, "post_image_name", $resize);
+					// var_dump($upload_response);die();
+
+					if ($upload_response['check'] == false) {
+						$this->session->set_flashdata('error', $upload_response['message']);
+					} else {
+						if ($this->posts_model->add_post($upload_response['file_name'], $upload_response['thumb_name'])) {
+							$this->session->set_flashdata('success', 'post Added successfully');
+							redirect('administration/posts');
+						} else {
+							$this->session->flashdata("error_message", "Unable to add  post");
+						}
+					}
+
+				} else {
+					if ($this->posts_model->add_post(null, null)) {
+						$this->session->set_flashdata('success', 'post Added successfully');
+						redirect('administration/posts');
+					} else {
+						$this->session->flashdata("error_message", "Unable to add  post");
+					}
+
+				}
+			}else {
+				$this->session->flashdata("error_message", "Selected category not found. Please try again");
 			}
-
-			else
-			{
-				$resize = array(
-					"width" => 600,
-					"height" => 600,
-				);
-			}
-
-            if (isset($_FILES['post_image_name']) && $_FILES['post_image_name']['size'] > 0) {
-                $upload_response = $this->file_model->upload_image($this->upload_path, "post_image_name", $resize);
-                // var_dump($upload_response);die();
-
-                if ($upload_response['check'] == false) {
-                    $this->session->set_flashdata('error', $upload_response['message']);
-                } else {
-                    if ($this->posts_model->add_post($upload_response['file_name'], $upload_response['thumb_name'])) {
-                        $this->session->set_flashdata('success', 'post Added successfully');
-                        redirect('administration/posts');
-                    } else {
-                        $this->session->flashdata("error_message", "Unable to add  post");
-                    }
-                }
-
-            } else {
-                if ($this->posts_model->add_post(null, null)) {
-                    $this->session->set_flashdata('success', 'post Added successfully');
-                    redirect('administration/posts');
-                } else {
-                    $this->session->flashdata("error_message", "Unable to add  post");
-                }
-
-            }
         }
 		
 		$v_data['categories'] = $this->posts_model->get_all_categories();
@@ -239,47 +248,56 @@ class posts extends MX_Controller
 		if ($this->form_validation->run()) 
 		{
 			$category_id = $this->input->post('category_id');
+			$this->db->where("category_id", $category_id);
+			$query = $this->db->get("category");
 
-			//Slider
-			if($category_id == 15)
+			if($query->num_rows() > 0)
 			{
-				$resize = array(
-					"width" => 1400,
-					"height" => 400,
-				);
+				$row = $query->row();
+				$category_name = ucwords(strtolower($row->category_name));
+				//Slider
+				if($category_name == "Slider")
+				{
+					$resize = array(
+						"width" => 1400,
+						"height" => 400,
+					);
+				}
+
+				else
+				{
+					$resize = array(
+						"width" => 600,
+						"height" => 600,
+					);
+				}
+
+				if (isset($_FILES['post_image_name']) && $_FILES['post_image_name']['size'] > 0) {
+					$upload_response = $this->file_model->upload_image($this->upload_path, "post_image_name", $resize);
+
+					if ($upload_response['check'] == false) {
+						$this->session->set_flashdata('error', $upload_response['message']);
+					} else {
+						if ($this->posts_model->update_post($post_id, $upload_response['file_name'], $upload_response['thumb_name'])) {
+							$this->session->set_flashdata('success', 'post edited successfully');
+							redirect('administration/posts');
+						} else {
+							$this->session->flashdata("error_message", "Unable to edit post");
+						}
+					}
+
+				} else {
+					if ($this->posts_model->update_post($post_id)) {
+						$this->session->set_flashdata('success', 'post edited successfully');
+						redirect('administration/posts');
+					} else {
+						$this->session->flashdata("error_message", "Unable to edit post");
+					}
+
+				}
+			}else {
+				$this->session->flashdata("error_message", "Selected category not found. Please try again");
 			}
-
-			else
-			{
-				$resize = array(
-					"width" => 600,
-					"height" => 600,
-				);
-			}
-
-            if (isset($_FILES['post_image_name']) && $_FILES['post_image_name']['size'] > 0) {
-                $upload_response = $this->file_model->upload_image($this->upload_path, "post_image_name", $resize);
-
-                if ($upload_response['check'] == false) {
-                    $this->session->set_flashdata('error', $upload_response['message']);
-                } else {
-                    if ($this->posts_model->update_post($post_id, $upload_response['file_name'], $upload_response['thumb_name'])) {
-                        $this->session->set_flashdata('success', 'post edited successfully');
-                        redirect('administration/posts');
-                    } else {
-                        $this->session->flashdata("error_message", "Unable to edit post");
-                    }
-                }
-
-            } else {
-                if ($this->posts_model->update_post($post_id)) {
-                    $this->session->set_flashdata('success', 'post edited successfully');
-                    redirect('administration/posts');
-                } else {
-                    $this->session->flashdata("error_message", "Unable to edit post");
-                }
-
-            }
 		}
         
         else 

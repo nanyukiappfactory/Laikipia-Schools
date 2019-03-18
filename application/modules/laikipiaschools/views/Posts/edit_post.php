@@ -114,10 +114,7 @@ if(!empty($error))
 		<div class="form-group row">
 			<div class="col-sm-10">
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal"><i
-							class="fas fa-times"></i>Close</button>
-					<button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>Save
-						Post</button>
+					<button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>Edit Post</button>
 				</div>
 			</div>
 		</div>
