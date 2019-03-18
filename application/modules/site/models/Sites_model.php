@@ -38,7 +38,16 @@ class Sites_model extends CI_Model
     {
         $this->db->select('post.*, category.category_id, category.category_name');
         $this->db->from('post');
-        $this->db->join('category', "post.category_id = category.category_id AND category.category_name = 'About'" , 'left');
+        $this->db->join('category', "post.category_id = category.category_id AND category.category_name = 'About'" , 'inner');
+        $this->db->where("post.deleted = '0' AND post.post_status = 1");
+        return $this->db->get();
+    }
+
+    public function get_slider_posts()
+    {
+        $this->db->select('post.*, category.category_id, category.category_name');
+        $this->db->from('post');
+        $this->db->join('category', "post.category_id = category.category_id AND category.category_name = 'Slider'" , 'inner');
         $this->db->where("post.deleted = '0' AND post.post_status = 1");
         return $this->db->get();
     }
@@ -46,7 +55,7 @@ class Sites_model extends CI_Model
     {
         $this->db->select('post.*, category.category_id, category.category_name');
         $this->db->from('post');
-        $this->db->join('category', "post.category_id=category.category_id AND category.category_name = 'Donor'", 'left');
+        $this->db->join('category', "post.category_id=category.category_id AND category.category_name = 'Donor'", 'inner');
         $this->db->where("post.deleted = '0' AND post.post_status = 1");
     	return $this->db->get();
 
@@ -55,7 +64,7 @@ class Sites_model extends CI_Model
     {
         $this->db->select('post.*, category.category_id, category.category_name');
         $this->db->from('post');
-        $this->db->join('category', "post.category_id=category.category_id AND category.category_name = 'Partners'", 'left');
+        $this->db->join('category', "post.category_id=category.category_id AND category.category_name = 'Partners'", 'inner');
         $this->db->where("post.deleted = '0' AND post.post_status = 1");
         return $this->db->get();
     }

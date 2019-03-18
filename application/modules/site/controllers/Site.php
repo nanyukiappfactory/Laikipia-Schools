@@ -60,6 +60,7 @@ class Site extends MX_Controller
         $v_data['pictures'] = $this->sites_model->get_gallery_pictures();
         $v_data['schools'] = $this->sites_model->get_schools();
         $v_data['partners'] = $this->sites_model->get_partners();
+        $v_data['slider'] = $this->sites_model->get_slider_posts();
         $v_data['allschools'] = $this->sites_model->get_all_schools();
         $v_data['map'] = $this->googlemaps->create_map();
         $project_donation_total = $project_target_total = $percentage_donated_total = 0;

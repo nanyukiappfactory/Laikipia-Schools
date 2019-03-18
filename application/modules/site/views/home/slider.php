@@ -5,7 +5,7 @@
         <div class="carousel-inner">
             <?php
 $count = 0;
-foreach ($abouts->result() as $key => $row) {
+foreach ($slider->result() as $key => $row) {
     if (strtolower($row->category_name) == strtolower("Slider")) {
         $count++;?>
 			<div class="carousel-item <?php echo $count == 1 ? "active" : ""; ?>">
