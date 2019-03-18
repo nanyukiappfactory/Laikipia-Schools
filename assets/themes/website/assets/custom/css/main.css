@@ -1019,3 +1019,8 @@ a.box_btn:hover::before {
 	left: 0;
 	z-index: -1;
 }
+.card-icon{
+	width:100%;
+	color: #ffb606;
+	text-align: center;
+}

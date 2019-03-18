@@ -38,25 +38,37 @@ class Sites_model extends CI_Model
     {
         $this->db->select('post.*, category.category_id, category.category_name');
         $this->db->from('post');
-        // $this->db->order_by('category.category_name', 'ASC');
-        $this->db->join('category', 'post.category_id=category.category_id', 'left');
+        $this->db->join('category', "post.category_id = category.category_id AND category.category_name = 'About'" , 'left');
+        $this->db->where("post.deleted = '0' AND post.post_status = 1");
         return $this->db->get();
     }
     public function get_donors()
     {
         $this->db->select('post.*, category.category_id, category.category_name');
         $this->db->from('post');
-        $this->db->join('category', 'post.category_id=category.category_id', 'left');
-    return $this->db->get();
+        $this->db->join('category', "post.category_id=category.category_id AND category.category_name = 'Donor'", 'left');
+        $this->db->where("post.deleted = '0' AND post.post_status = 1");
+    	return $this->db->get();
 
     }
     public function get_partners()
     {
         $this->db->select('post.*, category.category_id, category.category_name');
         $this->db->from('post');
-        $this->db->join('category', 'post.category_id=category.category_id', 'left');
+        $this->db->join('category', "post.category_id=category.category_id AND category.category_name = 'Partners'", 'left');
+        $this->db->where("post.deleted = '0' AND post.post_status = 1");
         return $this->db->get();
     }
+
+    public function get_blog_posts()
+    {
+        $this->db->select('post.*, category.category_id, category.category_name');
+        $this->db->from('post');
+        $this->db->join('category', "post.category_id = category.category_id AND category.category_name = 'News'" , 'left');
+        $this->db->where("post.deleted = '0' AND post.post_status = 1");
+        return $this->db->get();
+	}
+	
     public function get_schools($boys_pack_amount = 475, $girls_pack_amount = 1125)
     {
         $this->db->select('school.*, ((school.school_boys_number * ' . $boys_pack_amount . ') + (school.school_girls_number * ' . $girls_pack_amount . ')) AS target_amount, SUM(donation.donation_amount) AS total_donated');

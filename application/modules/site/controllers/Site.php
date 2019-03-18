@@ -142,5 +142,45 @@ class Site extends MX_Controller
         //  $data['title'] = $this->sites_model->decode_web_name($school_name);
         $this->load->view("site/layouts/layout", $data);
 
+	}
+	
+    public function about()
+    {
+		$v_data['about_query'] = $this->sites_model->get_about_posts();
+		
+        $data['content'] = $this->load->view('site/about', $v_data, true);
+        $data['title'] = $this->sites_model->display_page_title();
+        $this->load->view("site/layouts/layout", $data);
+
+    }
+	
+    public function contact()
+    {
+		$v_data['about_query'] = NULL;
+
+        $data['content'] = $this->load->view('site/contact', $v_data, true);
+        $data['title'] = $this->sites_model->display_page_title();
+        $this->load->view("site/layouts/layout", $data);
+
+    }
+	
+    public function blog_page()
+    {
+		$v_data['blog_query'] = $this->sites_model->get_blog_posts();
+		
+        $data['content'] = $this->load->view('site/blog/all_posts', $v_data, true);
+        $data['title'] = $this->sites_model->display_page_title();
+        $this->load->view("site/layouts/layout", $data);
+
+    }
+	
+    public function blog_single()
+    {
+		$v_data['blog_query'] = NULL;
+		
+        $data['content'] = $this->load->view('site/blog/single_post', $v_data, true);
+        $data['title'] = $this->sites_model->display_page_title();
+        $this->load->view("site/layouts/layout", $data);
+
     }
 }

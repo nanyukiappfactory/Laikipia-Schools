@@ -195,9 +195,15 @@ $route['administration/edit-post/(:num)'] = 'laikipiaschools/posts/edit_post/$1'
 $route['administration/schools/get-posts-details'] = 'laikipiaschools/webservice/get_post_details';
 
 /**
- * Posts
+ * Site
  */
+
+$route['home'] = 'site/site/index';
+$route['about'] = 'site/site/about';
+$route['schools'] = 'site/site/all_schools';
+$route['news'] = 'site/site/blog_page';
+$route['news/single'] = 'site/site/blog_single';
+$route['contact'] = 'site/site/contact';
 
 $route['schools/(:any)'] = 'site/site/single_school/$1';
 $route['schools'] = 'site/site/all_schools';
-$route['home'] = 'site/site/index';
