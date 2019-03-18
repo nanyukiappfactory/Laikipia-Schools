@@ -27,7 +27,7 @@ foreach ($slider->result() as $key => $row) {
 								<i class="fas fa-hand-holding-usd"></i>
 							</div>
 							<h5>About</h5>
-								<h3>The initiatize</h3>
+								<h3>The initiative</h3>
 							<button type="submit" class="btn btn-default btn-dark"
 								onclick="location.href='<?php echo base_url(); ?>schools'">More
 							</button>
