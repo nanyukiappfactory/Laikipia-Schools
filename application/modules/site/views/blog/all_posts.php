@@ -47,7 +47,7 @@
 							</div>
 							<div class="blog-content">
 								<div class="blog-title">
-									<h4><a href="<?php echo site_url()."news/single"?>">Mobilies UX Treend</a></h4>
+									<h4><a href="<?php echo site_url()."news/single"?>">Mobilies UX Trend</a></h4>
 									<div class="meta">
 										<ul>
 											<li>04 June 2018</li>
@@ -70,7 +70,7 @@
 							</div>
 							<div class="blog-content">
 								<div class="blog-title">
-									<h4><a href="<?php echo site_url()."news/single"?>">Mobilies UX Treend</a></h4>
+									<h4><a href="<?php echo site_url()."news/single"?>">Mobilies UX Trend</a></h4>
 									<div class="meta">
 										<ul>
 											<li>23 June 2018</li>
@@ -93,7 +93,7 @@
 							</div>
 							<div class="blog-content">
 								<div class="blog-title">
-									<h4><a href="<?php echo site_url()."news/single"?>">Mobilies UX Treend</a></h4>
+									<h4><a href="<?php echo site_url()."news/single"?>">Mobilies UX Trend</a></h4>
 									<div class="meta">
 										<ul>
 											<li>31 July 2018</li>

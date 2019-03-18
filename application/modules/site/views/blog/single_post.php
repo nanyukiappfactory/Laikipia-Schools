@@ -19,14 +19,14 @@
 					<li><a href="#"> <i class="fas fa-angle-double-right"></i> </a></li>
 					<li><a href="blog.html"> Blog </a> </li>
 					<li><a href="#"> <i class="fas fa-angle-double-right"></i> </a></li>
-					<li><a href="#"> Mobilies UX Treend</a> </li>
+					<li><a href="#"> Mobilies UX Trend</a> </li>
 				</ul>
 			</div>
 		</section>
 		<!-- Partners -->
 		<section class="schools-brief">
 			<div class="container">
-				<h3>Mobilies UX Treend</h3>
+				<h3>Mobilies UX Trend</h3>
 				<div class="row">
 					<div class="col-sm-4 col-md-3 col-lg-3">
 						<div class="school-thumb-single">
