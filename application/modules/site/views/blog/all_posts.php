@@ -15,9 +15,10 @@
 		<section class="thumbnails">
 			<div class="container">
 				<ul class="list-inline">
-					<li><a href="index.html"> Home </a></li>
+					<li><a href="<?php echo site_url();?>"> Home </a></li>
 					<li><a href="#"> <i class="fas fa-angle-double-right"></i> </a></li>
-					<li><a href="blog.html"> Blog </a> </li>
+					<li><a href="<?php echo site_url();?>blog"> Blog </a></li>
+					<li><a href="#"> Mobilies UX Trend </a></li>
 				</ul>
 			</div>
 		</section>
