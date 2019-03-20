@@ -18,39 +18,13 @@ class Schools extends MX_Controller
         $this->load->model("laikipiaschools/schools_model");
         $this->load->library("image_lib");
         $this->load->library('googlemaps');
-        $this->load->library('ckeditor');
-        $this->load->library('image_CRUD');
-
-        $this->load->library('ckfinder');
-        $this->ckeditor->basePath = base_url() . 'asset/ckeditor/';
-        $this->ckeditor->config['language'] = 'en';
-        $this->ckeditor->config['width'] = '730px';
-        $this->ckeditor->config['height'] = '300px';
-        //Add Ckfinder to Ckeditor
-        $this->ckfinder->SetupCKEditor($this->ckeditor, '../asset/ckfinder/');
 
         $this->load->model("laikipiaschools/schools_model");
         $this->load->model("laikipiaschools/site_model");
         $this->load->model("laikipiaschools/file_model");
 
     }
-    public function example1()
-    {
-        $image_crud = new image_CRUD();
-
-        $image_crud->set_table('school_images');
-
-//If your table have by default the "id" field name as a primary key this line is not required
-        $image_crud->set_primary_key_field('school_image_id');
-
-        $image_crud->set_url_field('url');
-        $image_crud->set_image_path('assets/uploads');
-
-        $output = $image_crud->render();
-
-        $this->_example_output($output);
-    }
-
+   
     public function index($start = null)
     {
         $where = 'school_id > 0 AND deleted = 0 ';
@@ -101,7 +75,7 @@ class Schools extends MX_Controller
                         $this->session->set_flashdata('success', 'school Added successfully!!');
                         redirect('laikipiaschools/schools');
                     } else {
-                        $this->session->flashdata("error_message", "Unable to add  school");
+                        $this->session->flashdata("error", "Unable to add  school");
                     }
                 }
 
