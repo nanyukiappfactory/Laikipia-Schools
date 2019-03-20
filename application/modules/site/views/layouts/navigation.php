@@ -8,13 +8,12 @@
 		<div class="navbar-collapse collapse justify-content-between align-items-center w-100" id="collapsingNavbar2">
 			<ul class="topBotomBordersOut navbar-nav text-center pl-5">
 				<li class="nav-item active">
-					<a class="nav-link" href="<?php echo base_url(); ?>home">Home</a>
+					<a class="nav-link" href="<?php echo site_url(); ?>home">Home</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-				<li class="nav-item"> <a class="nav-link" href="#">Services</a>
-				<li class="nav-item"> <a class="nav-link" href="#">Portfolio</a>
-				<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-				<li class="nav-item"> <a class="nav-link" href="#">Contact</a>
+				<li class="nav-item"><a class="nav-link" href="<?php echo site_url()."about"?>">About</a></li>
+				<li class="nav-item"> <a class="nav-link" href="<?php echo site_url()."schools"?>">Schools</a>
+				<li class="nav-item"> <a class="nav-link" href="<?php echo site_url()."news"?>">News</a>
+				<li class="nav-item"> <a class="nav-link" href="<?php echo site_url()."contact"?>">Contact</a>
 				</li>
 			</ul>
 		</div>

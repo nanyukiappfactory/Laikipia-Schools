@@ -12,7 +12,7 @@
 		</div>
 		<div id="partnerCarousel" class="owl-carousel">
 			<?php
-            foreach ($abouts->result() as $row) {
+            foreach ($partners->result() as $row) {
                 if (strtolower($row->category_name) == strtolower("Partners")) {?>
 			<div class="card">
 				<img style="max-width:100%;" src="<?php echo base_url() . 'assets/uploads/' . $row->post_image_name; ?>" class="d-block w-10" />

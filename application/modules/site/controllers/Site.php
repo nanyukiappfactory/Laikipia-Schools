@@ -60,6 +60,7 @@ class Site extends MX_Controller
         $v_data['pictures'] = $this->sites_model->get_gallery_pictures();
         $v_data['schools'] = $this->sites_model->get_schools();
         $v_data['partners'] = $this->sites_model->get_partners();
+        $v_data['slider'] = $this->sites_model->get_slider_posts();
         $v_data['allschools'] = $this->sites_model->get_all_schools();
         $v_data['map'] = $this->googlemaps->create_map();
         $project_donation_total = $project_target_total = $percentage_donated_total = 0;
@@ -140,6 +141,46 @@ class Site extends MX_Controller
         $data['content'] = $this->load->view('site/school/school_single', $v_data, true);
         $data['title'] = $this->sites_model->display_page_title();
         //  $data['title'] = $this->sites_model->decode_web_name($school_name);
+        $this->load->view("site/layouts/layout", $data);
+
+	}
+	
+    public function about()
+    {
+		$v_data['about_query'] = $this->sites_model->get_about_posts();
+		
+        $data['content'] = $this->load->view('site/about', $v_data, true);
+        $data['title'] = $this->sites_model->display_page_title();
+        $this->load->view("site/layouts/layout", $data);
+
+    }
+	
+    public function contact()
+    {
+		$v_data['about_query'] = NULL;
+
+        $data['content'] = $this->load->view('site/contact', $v_data, true);
+        $data['title'] = $this->sites_model->display_page_title();
+        $this->load->view("site/layouts/layout", $data);
+
+    }
+	
+    public function blog_page()
+    {
+		$v_data['blog_query'] = $this->sites_model->get_blog_posts();
+		
+        $data['content'] = $this->load->view('site/blog/all_posts', $v_data, true);
+        $data['title'] = $this->sites_model->display_page_title();
+        $this->load->view("site/layouts/layout", $data);
+
+    }
+	
+    public function blog_single()
+    {
+		$v_data['blog_query'] = NULL;
+		
+        $data['content'] = $this->load->view('site/blog/single_post', $v_data, true);
+        $data['title'] = $this->sites_model->display_page_title();
         $this->load->view("site/layouts/layout", $data);
 
     }
