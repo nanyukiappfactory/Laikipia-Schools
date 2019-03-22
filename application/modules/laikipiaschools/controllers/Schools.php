@@ -14,11 +14,9 @@ class Schools extends MX_Controller
 
         //get the location to upload images
         $this->upload_location = base_url() . 'assets/uploads';
-
         $this->load->model("laikipiaschools/schools_model");
         $this->load->library("image_lib");
         $this->load->library('googlemaps');
-
         $this->load->model("laikipiaschools/schools_model");
         $this->load->model("laikipiaschools/site_model");
         $this->load->model("laikipiaschools/file_model");

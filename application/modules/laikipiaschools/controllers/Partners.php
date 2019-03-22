@@ -64,7 +64,7 @@ class Partners extends MX_Controller
         $v_data["links"] = $this->pagination->create_links();
         //var_dump($v_data['links']);die();
         $query = $this->partners_model->get_partners($table, $where, $config["per_page"], $page, $order, $order_method);
-        echo json_encode($query->result());die();
+        //echo json_encode($query->result());die();
         //change of order method
         if ($order_method == 'DESC') {
             $order_method = 'ASC';
@@ -187,23 +187,19 @@ class Partners extends MX_Controller
                 $config['allowed_types'] = 'csv';
                 $config['max_size'] = '1000'; // max_size in kb
                 $config['file_name'] = $_FILES['file']['name'];
-
                 // Load upload library
                 $this->load->library('upload', $config);
-
                 // File upload
                 if ($this->upload->do_upload('file')) {
                     // Get data about the file
                     $uploadData = $this->upload->data();
                     $filename = $uploadData['file_name'];
-
                     // Reading file
                     $file = fopen($this->upload_csv_path . '/' . $filename, "r");
                     $i = 0;
-
                     $importData_arr = array();
-
-                    while (($filedata = fgetcsv($file, 1000, ",")) !== false) {
+                    while (($filedata = fgetcsv($file, 1000, ",")) !== false) 
+                    {
                         $num = count($filedata);
 
                         for ($c = 0; $c < $num; $c++) {

@@ -4,7 +4,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">Administration</a>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">ec
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         </ul>
         
