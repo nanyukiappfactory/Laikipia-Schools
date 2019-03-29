@@ -52,7 +52,7 @@ class Site extends MX_Controller
 
         $v_data["links"] = $this->pagination->create_links();
         $v_data['abouts'] = $this->sites_model->get_about_posts();
-        echo json_encode($v_data['abouts']->result());die();
+        //echo json_encode($v_data['abouts']->result());die();
         $v_data['get_donors'] = $this->sites_model->get_donations();
         $v_data['get_dignity_packs'] = $this->sites_model->get_donations();
         $donations = $this->sites_model->get_donation_totals();
