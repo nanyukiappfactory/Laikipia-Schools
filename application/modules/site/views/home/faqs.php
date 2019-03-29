@@ -1,5 +1,4 @@
 <!-- FAQs -->
-<? echo json_encode($abouts->results());die(); ?>
 <section class="faq-section" id="section">
 		<?php 
                     if ($abouts->num_rows() > 0) {
