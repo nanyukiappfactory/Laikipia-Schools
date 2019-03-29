@@ -29,7 +29,7 @@ foreach ($slider->result() as $key => $row) {
 							<h5>About</h5>
 								<h3>The initiative</h3>
 							<button type="submit" class="btn btn-default btn-dark"
-								onclick="location.href='<?php echo base_url(); ?>schools'">More
+								onclick="location.href='<?php echo base_url(); ?>#section'">More
 							</button>
 						</div>
 					</figure>
@@ -62,7 +62,7 @@ foreach ($slider->result() as $key => $row) {
 							<h5>Donations</h5>
 							<h3>Promote education</h3>
 							<button type="submit" class="btn btn-default btn-dark"
-								onclick="location.href='<?php echo base_url(); ?>allschools'">More
+								onclick="location.href='<?php echo base_url(); ?>schools'">More
 							</button>
 						</div>
 					</figure>
@@ -78,7 +78,7 @@ foreach ($slider->result() as $key => $row) {
 							<h5>Partners</h5>
 							<h3>Our partners</h3>
 							<button type="submit" class="btn btn-default btn-dark"
-								onclick="location.href='<?php echo base_url(); ?>allschools'">More
+								onclick="location.href='<?php echo base_url(); ?>#partner'">More
 							</button>
 						</div>
 					</figure>

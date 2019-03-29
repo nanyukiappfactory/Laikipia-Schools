@@ -1,10 +1,8 @@
 
     <!-- <div class="container"> -->
     <div class = "container">
-    <?php json_encode($categories->result());die();
-    
-
-$validation_errors = validation_errors();
+    <?php 
+    $validation_errors = validation_errors();
 if (!empty($validation_errors)) {
     echo $validation_errors;
 }

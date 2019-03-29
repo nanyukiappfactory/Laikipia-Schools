@@ -1,6 +1,6 @@
 <!-- Partners -->
 
-<section class="schools-brief">
+<section class="schools-brief" id="partner"> 
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 offset-md-2 text-center">

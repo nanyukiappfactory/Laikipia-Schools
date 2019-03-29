@@ -1,8 +1,9 @@
 <!-- FAQs -->
-
-		<section class="faq-section">
-		<?php
+<? echo json_encode($abouts->results());die(); ?>
+<section class="faq-section" id="section">
+		<?php 
                     if ($abouts->num_rows() > 0) {
+						
                        
                             ?>
 			<div class="container">
@@ -51,7 +52,7 @@
                                         <p>
 										<?php  
 										 foreach ($abouts->result() as $row) 
-											if(strtolower($row->post_title) == strtolower("About Laikipia School Project")){?>
+											if(strtolower($row->post_title) == strtolower("About The Project")){?>
 												<?php echo $row->post_description; ?>
 											<?php }?>
 										</p>
