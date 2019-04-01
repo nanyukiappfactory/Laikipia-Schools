@@ -97,6 +97,7 @@ class Webservice extends MX_Controller
                 'school_thumb_name' => $school_image_name,
                 'school_longitude' => $school_longitude,
                 'school_latitude' => $school_latitude,
+                'school_status'=> 1,
             );
 
             $result = $this->schools_model->save_school_flow('school', $data);
