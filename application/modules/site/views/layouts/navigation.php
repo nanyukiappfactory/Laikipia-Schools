@@ -12,7 +12,6 @@
 				</li>
 				<li class="nav-item"><a class="nav-link" href="<?php echo site_url()."about"?>">About</a></li>
 				<li class="nav-item"> <a class="nav-link" href="<?php echo site_url()."schools"?>">Schools</a>
-				<li class="nav-item"> <a class="nav-link" href="<?php echo site_url()."news"?>">News</a>
 				<li class="nav-item"> <a class="nav-link" href="<?php echo site_url()."contact"?>">Contact</a>
 				</li>
 			</ul>
