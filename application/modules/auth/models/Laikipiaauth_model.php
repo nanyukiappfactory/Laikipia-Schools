@@ -1,6 +1,6 @@
 <?php
 
-class Auth_model extends CI_Model 
+class Laikipiaauth_model extends CI_Model 
 {
 	/*
 	*	Validate a personnel's login request

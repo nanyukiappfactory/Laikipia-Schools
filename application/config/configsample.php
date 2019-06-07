@@ -25,7 +25,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 // $config['base_url'] = 'http://localhost/appfactory-projs/mpesa/';
 
-$config['base_url'] = 'https://laikipia-schools.azurewebsites.net/';
+// $config['base_url'] = 'https://laikipia-schools.azurewebsites.net/';
+$config['base_url'] = 'http://laikipia.movingground.co.ke/';
 /*
 |--------------------------------------------------------------------------
 | Index File
