@@ -7,7 +7,7 @@ class Admin extends MX_Controller
 		parent:: __construct();
 		
 		$this->load->model('admin/admin_model');
-		$this->load->model('auth/auth_model');
+		$this->load->model('auth/Auth_model');
 		$this->load->model('admin/sections_model');
 		
 		$this->load->model('admin/site_model');
