@@ -297,16 +297,22 @@ class CI_Loader {
 		{
 			$app_path = APPPATH.'core'.DIRECTORY_SEPARATOR;
 			if (file_exists($app_path.'Model.php'))
-			{
-				require_once($app_path.'Model.php');
-				if ( ! class_exists('CI_Model', FALSE))
-				{
-					throw new RuntimeException($app_path."Model.php exists, but doesn't declare class CI_Model");
-				}
+			// {
+			// 	require_once($app_path.'Model.php');
+			// 	if ( ! class_exists('CI_Model', FALSE))
+			// 	{
+			// 		throw new RuntimeException($app_path."Model.php exists, but doesn't declare class CI_Model");
+			// 	}
 
-				log_message('info', 'CI_Model class loaded');
-			}
-			elseif ( ! class_exists('CI_Model', FALSE))
+			// 	log_message('info', 'CI_Model class loaded');
+			// }
+			if (method_exists($this, '_ci_object_to_array'))
+				{
+						return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
+				} else {
+						return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_prepare_view_vars($vars), '_ci_return' => $return));
+				}
+							elseif ( ! class_exists('CI_Model', FALSE))
 			{
 				require_once(BASEPATH.'core'.DIRECTORY_SEPARATOR.'Model.php');
 			}
